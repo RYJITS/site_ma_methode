@@ -1,0 +1,12 @@
+{
+  "generatedAt": "2026-06-17T21:47:00+00:00",
+  "projectId": "01-site-ma-methode",
+  "source": "C:\\Users\\ysche\\.codex\\generated_images\\019ed767-2160-7613-93a9-31ac19f3d4ba\\ig_0d0c70fef6689ff0016a3311e247b081919d22c6bbee33cba4.png",
+  "sourceCopy": "D:\\00_Cerveau_IA\\Projet\\01_SITE_MA_METHODE\\source-assets\\realistic-thumbnails-20260617\\01-site-ma-methode.png",
+  "target": "D:\\00_Cerveau_IA\\Projet\\01_SITE_MA_METHODE\\public\\orchestrator\\thumbnails-ai\\01-site-ma-methode.webp",
+  "mode": "built-in-imagegen-import-realistic-modern",
+  "style": "realistic modern cinematic project thumbnail, dark premium Site Ma Methode visual family",
+  "processing": "center-crop to 16:9, resize to 1280x720, WebP quality 90",
+  "previousProceduralBackup": "source-assets/thumbnail-backups-20260617-procedural-before-realistic",
+  "previousAiBackup": "source-assets/thumbnail-backups-20260617-distinct"
+}

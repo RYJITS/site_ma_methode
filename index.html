@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#000000">
+    <title>J'optimise l'existant - Video WebGL</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23000'/%3E%3Cpath d='M14 16h34v34H14z' fill='none' stroke='%23ff8a18' stroke-width='5'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%2339bdf8'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Sora:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="src/styles.css?v=mobile-card-undertext-opaque-20260619">
+  </head>
+  <body>
+    <div id="boot-loader" class="boot-loader" role="status" aria-live="polite" aria-label="Chargement initial">
+      <div class="boot-loader-inner">
+        <span class="boot-loader-mark" aria-hidden="true"></span>
+        <span class="boot-loader-label">Preparation</span>
+        <div class="boot-loader-track" aria-hidden="true">
+          <span id="boot-loader-bar" class="boot-loader-bar"></span>
+        </div>
+        <span id="boot-loader-percent" class="boot-loader-percent">0%</span>
+      </div>
+    </div>
+    <video
+      id="story-video"
+      class="story-video"
+      poster="public/generated/videos/storyboard-7-scenes-v4-compress-block/kling-assembled/poster/storyboard-kling-12-clips-poster.jpg"
+      muted
+      playsinline
+      webkit-playsinline
+      preload="auto"
+      fetchpriority="high"
+      aria-label="Video 16:9 du storyboard: transformation d'un cube en tete humaine technologique">
+      <source
+        src="public/generated/videos/storyboard-7-scenes-v4-compress-block/kling-assembled/storyboard-kling-12-clips-iphone-light-20260616.mp4?v=iphone-light-20260616"
+        type="video/mp4"
+        media="(max-width: 700px)">
+      <source
+        src="public/generated/videos/storyboard-7-scenes-v4-compress-block/kling-assembled/storyboard-kling-12-clips-1080p-scroll-web-optimized-20260614.mp4?v=optimized-20260614"
+        type="video/mp4">
+    </video>
+    <img
+      id="project-final-image"
+      class="project-final-image"
+      src="data:image/gif;base64,R0lGODlhAQABAAAAACw="
+      data-src="public/generated/images/projects/project-grid-map-20260614.webp?v=optimized-20260614"
+      alt=""
+      aria-hidden="true">
+    <div id="contact-media" class="contact-media">
+      <video
+        id="contact-transition-video"
+        class="contact-transition-video"
+        poster="public/generated/videos/contact-transition/contact-final-gateway-poster-20260614.webp"
+        muted
+        playsinline
+        webkit-playsinline
+        preload="none"
+        aria-hidden="true">
+        <source
+          data-src="public/generated/videos/contact-transition/contact-transition-20260614-720p.mp4?v=contact-final-20260614"
+          type="video/mp4"
+          media="(max-width: 700px)">
+        <source
+          data-src="public/generated/videos/contact-transition/contact-transition-20260614-1080p-optimized.mp4?v=optimized-20260614"
+          type="video/mp4">
+      </video>
+      <img
+        id="contact-final-image"
+        class="contact-final-image"
+        src="data:image/gif;base64,R0lGODlhAQABAAAAACw="
+        data-src="public/generated/images/contact/contact-final-gateway-20260614.webp?v=contact-final-20260614"
+        alt=""
+        aria-hidden="true">
+    </div>
+    <button
+      id="contact-image-trigger"
+      class="contact-image-trigger"
+      type="button"
+      data-contact-cta
+      aria-label="Ouvrir le formulaire depuis le cercle contact"
+      aria-haspopup="dialog"
+      aria-expanded="false"
+      aria-controls="contact-panel"
+      disabled>
+      <span class="visually-hidden">Ouvrir le formulaire de contact</span>
+    </button>
+    <svg id="energy-links" class="energy-links" aria-hidden="true">
+      <defs>
+        <linearGradient id="energy-gradient" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#39bdf8" stop-opacity="0"></stop>
+          <stop offset="18%" stop-color="#39bdf8" stop-opacity="0.85"></stop>
+          <stop offset="62%" stop-color="#ff8a18" stop-opacity="0.92"></stop>
+          <stop offset="100%" stop-color="#ffc15a" stop-opacity="0"></stop>
+        </linearGradient>
+        <filter id="energy-glow" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur stdDeviation="3.2" result="blur"></feGaussianBlur>
+          <feColorMatrix in="blur" type="matrix" values="1 0 0 0 1 0 0.42 0 0 0.52 0 0 0.18 0 0.18 0 0 0 1 0"></feColorMatrix>
+          <feMerge>
+            <feMergeNode></feMergeNode>
+            <feMergeNode in="SourceGraphic"></feMergeNode>
+          </feMerge>
+        </filter>
+      </defs>
+      <g id="energy-link-group" class="energy-link-group">
+        <path id="energy-path-secondary" class="energy-path energy-path-secondary"></path>
+        <path id="energy-path-main" class="energy-path energy-path-main"></path>
+        <path id="energy-path-spark" class="energy-path energy-path-spark"></path>
+        <circle id="energy-impact-ring" class="energy-impact-ring" r="26"></circle>
+        <circle id="energy-impact-core" class="energy-impact-core" r="4.5"></circle>
+      </g>
+    </svg>
+    <button id="explorer-point" class="explorer-point" type="button" aria-label="Ouvrir la tuile Ma manière de fonctionner" aria-expanded="false" aria-controls="holographic-tile" hidden>
+      <span class="explorer-point-ring" aria-hidden="true"></span>
+      <span class="explorer-point-core" aria-hidden="true"></span>
+      <span class="explorer-point-label">Explorer</span>
+    </button>
+    <section id="holographic-tile" class="holographic-tile card-pack-tile" role="dialog" aria-label="Fiches interactives Explorer" hidden>
+      <div class="card-pack" aria-label="Paquet de fiches">
+        <article class="method-card method-card-blue" data-card-index="0" role="button" tabindex="0" aria-label="Afficher la fiche Ma mani&egrave;re">
+          <span class="method-card-head">
+            <span class="method-card-number">01</span>
+            <span class="method-card-title">MA PHILOSOPHIE</span>
+          </span>
+          <span class="method-card-section">Section</span>
+          <span class="method-card-text">
+            <span class="method-card-point">
+              <span class="method-card-point-title">Point de d&eacute;part</span>
+              <span class="method-card-point-copy">Je commence toujours par comprendre avant d'agir.</span>
+            </span>
+          </span>
+        </article>
+        <article class="method-card method-card-orange" data-card-index="1" role="button" tabindex="0" aria-label="Afficher la fiche Exemple">
+          <span class="method-card-head">
+            <span class="method-card-number">02</span>
+            <span class="method-card-title">MON APPROCHE</span>
+          </span>
+          <span class="method-card-section">Section</span>
+          <span class="method-card-text">
+            <span class="method-card-point">
+              <span class="method-card-point-title">Approche</span>
+              <span class="method-card-point-copy">Identifier les blocages, simplifier le flux et automatiser ce qui apporte une valeur r&eacute;elle.</span>
+            </span>
+          </span>
+        </article>
+        <article class="method-card method-card-ice" data-card-index="2" role="button" tabindex="0" aria-label="Afficher la fiche Projet">
+          <span class="method-card-head">
+            <span class="method-card-number">03</span>
+            <span class="method-card-title">APPLICATIONS</span>
+          </span>
+          <span class="method-card-section">Section</span>
+          <span class="method-card-text">
+            <span class="method-card-point">
+              <span class="method-card-point-title">Applications</span>
+              <span class="method-card-point-copy">Rendre le syst&egrave;me plus clair, plus rapide et plus solide avec des r&eacute;sultats mesurables.</span>
+            </span>
+          </span>
+        </article>
+      </div>
+    </section>
+    <section id="project-grid-overlay" class="project-grid-overlay" role="dialog" aria-modal="true" aria-labelledby="project-grid-title" hidden>
+      <div class="project-grid-shell">
+        <header class="project-grid-head">
+          <div class="project-grid-title-block">
+            <p>Applications</p>
+            <h2 id="project-grid-title">Projets</h2>
+          </div>
+          <button id="project-grid-close" class="project-grid-icon-button" type="button" aria-label="Fermer la grille projets">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 6l12 12"></path>
+              <path d="M18 6 6 18"></path>
+            </svg>
+          </button>
+        </header>
+        <div id="project-grid-stage" class="project-grid-stage" tabindex="0" aria-label="Grille des projets">
+          <div id="project-grid-track" class="project-grid-track"></div>
+          <nav id="project-grid-compass" class="project-grid-compass" aria-label="Boussole des directions projets">
+            <p>Direction</p>
+            <div class="project-grid-compass-list">
+              <button class="project-grid-compass-item project-grid-compass-design" type="button" data-project-grid-focus="design" aria-label="Aller vers les projets Design">
+                <span class="project-grid-compass-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 5v14"></path>
+                    <path d="m6 11 6-6 6 6"></path>
+                  </svg>
+                </span>
+                <span>Design</span>
+              </button>
+              <button class="project-grid-compass-item project-grid-compass-tools" type="button" data-project-grid-focus="tools" aria-label="Aller vers les projets Outils">
+                <span class="project-grid-compass-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 5v14"></path>
+                    <path d="m6 11 6-6 6 6"></path>
+                  </svg>
+                </span>
+                <span>Outils</span>
+              </button>
+              <button class="project-grid-compass-item project-grid-compass-ai" type="button" data-project-grid-focus="ai" aria-label="Aller vers les projets IA">
+                <span class="project-grid-compass-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 5v14"></path>
+                    <path d="m6 11 6-6 6 6"></path>
+                  </svg>
+                </span>
+                <span>IA</span>
+              </button>
+            </div>
+          </nav>
+          <div class="project-grid-zoom-controls" role="group" aria-label="Controle du zoom de la grille">
+            <button id="project-grid-zoom-out" class="project-grid-zoom-button" type="button" aria-label="Dezoomer la grille">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 12h14"></path>
+              </svg>
+            </button>
+            <button id="project-grid-zoom-reset" class="project-grid-zoom-level" type="button" aria-label="Reinitialiser le zoom de la grille">100%</button>
+            <button id="project-grid-zoom-in" class="project-grid-zoom-button" type="button" aria-label="Zoomer la grille">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 5v14"></path>
+                <path d="M5 12h14"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div id="project-mobile-page" class="project-mobile-page" tabindex="0" aria-label="Projets par sections"></div>
+        <aside id="project-detail-panel" class="project-detail-panel" aria-labelledby="project-detail-title" hidden></aside>
+      </div>
+    </section>
+    <canvas id="contact-webgl" class="contact-webgl" data-texture-src="public/generated/images/contact/contact-cube-face-512-20260614.webp" aria-hidden="true"></canvas>
+    <svg id="contact-energy-curves" class="contact-energy-curves" aria-hidden="true"></svg>
+    <nav id="contact-dock" class="contact-dock" data-phase="0" aria-label="Contact">
+      <button id="contact-trigger" class="contact-button contact-cube-hitbox" type="button" aria-label="Ouvrir le formulaire de contact" aria-haspopup="dialog" aria-expanded="false" aria-controls="contact-panel">
+        <span class="visually-hidden">Contact</span>
+      </button>
+    </nav>
+    <section id="contact-panel" class="contact-panel" role="dialog" aria-labelledby="contact-title" hidden>
+      <form id="contact-form" class="contact-form" action="api/contact.php" method="post">
+        <div class="contact-panel-head">
+          <p id="contact-title">Contact</p>
+          <button id="contact-close" class="contact-close" type="button" aria-label="Fermer le formulaire">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 6l12 12"></path>
+              <path d="M18 6 6 18"></path>
+            </svg>
+          </button>
+        </div>
+        <label>
+          <span>Nom</span>
+          <input name="name" type="text" autocomplete="name" required>
+        </label>
+        <label>
+          <span>Email</span>
+          <input name="email" type="email" autocomplete="email" required>
+        </label>
+        <label class="contact-hp" aria-hidden="true">
+          <span>Entreprise</span>
+          <input name="company" type="text" tabindex="-1" autocomplete="off">
+        </label>
+        <label>
+          <span>Message</span>
+          <textarea name="message" rows="4" required></textarea>
+        </label>
+        <button class="contact-submit" type="submit">Envoyer</button>
+        <p id="contact-status" class="contact-status" aria-live="polite"></p>
+      </form>
+    </section>
+    <p id="contact-received" class="contact-received" aria-live="polite" hidden>Message reçu. À bientôt.</p>
+    <main id="story-scroll" class="story-scroll" aria-label="Narration competence"></main>
+    <main id="after-story" class="after-story" aria-label="Suite de page" hidden></main>
+    <script type="module" src="src/main.js?v=mobile-card-undertext-opaque-20260619"></script>
+  </body>
+</html>

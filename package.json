@@ -1,0 +1,16 @@
+{
+  "name": "ai-video-webgl-competences-clean",
+  "version": "1.0.0",
+  "description": "Site WebGL propre pour le storyboard cube vers tete humaine technologique.",
+  "type": "module",
+  "scripts": {
+    "check": "node --check scripts/serve.mjs && node --check scripts/qa-iphone.mjs && node --check src/contact-scene.js && node --check src/main.js && node --check src/project-registry.js",
+    "dev": "node scripts/serve.mjs",
+    "dev:iphone": "node scripts/serve.mjs --host 0.0.0.0",
+    "qa:iphone": "node scripts/qa-iphone.mjs",
+    "qa:iphone:headed": "node scripts/qa-iphone.mjs --headed",
+    "start": "node scripts/serve.mjs",
+    "serve": "node scripts/serve.mjs"
+  },
+  "private": true
+}

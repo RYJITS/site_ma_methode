@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Orchestrateur global</title>
+  <desc id="desc">Illustration generee pour la vignette du projet Orchestrateur global.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fafafa"/>
+      <stop offset="0.52" stop-color="#eef6ff"/>
+      <stop offset="1" stop-color="#f8fbf7"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="55%" cy="42%" r="58%">
+      <stop offset="0" stop-color="#2563eb" stop-opacity="0.2"/>
+      <stop offset="0.48" stop-color="#22c55e" stop-opacity="0.1"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="24" flood-color="#0f172a" flood-opacity="0.16"/>
+    </filter>
+    <filter id="cardShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <rect width="1280" height="720" fill="url(#glow)"/>
+  <path d="M90 572 C270 510 370 642 548 578 C704 522 800 392 976 454 C1080 490 1154 552 1220 520" fill="none" stroke="#d7e3ee" stroke-width="3" stroke-linecap="round"/>
+  <path d="M96 152 C234 96 340 148 464 124 C612 96 724 40 888 92 C1018 134 1082 120 1192 84" fill="none" stroke="#e2e8f0" stroke-width="2" stroke-linecap="round"/>
+  
+  <g filter="url(#softShadow)">
+    <rect x="388" y="146" width="472" height="326" rx="38" fill="#ffffff" stroke="#e2e8f0"/>
+    <circle cx="624" cy="309" r="72" fill="#2563eb" opacity="0.12"/>
+    <circle cx="624" cy="309" r="46" fill="#ffffff" stroke="#2563eb" stroke-width="10"/>
+    <circle cx="462" cy="222" r="33" fill="#22c55e" opacity="0.8"/><circle cx="462" cy="222" r="18" fill="#ffffff" opacity="0.95"/><circle cx="782" cy="220" r="33" fill="#2563eb" opacity="0.8"/><circle cx="782" cy="220" r="18" fill="#ffffff" opacity="0.95"/><circle cx="474" cy="412" r="33" fill="#2563eb" opacity="0.8"/><circle cx="474" cy="412" r="18" fill="#ffffff" opacity="0.95"/><circle cx="790" cy="408" r="33" fill="#22c55e" opacity="0.8"/><circle cx="790" cy="408" r="18" fill="#ffffff" opacity="0.95"/>
+    <path d="M506 222 L578 286" stroke="#cbd5e1" stroke-width="6" stroke-linecap="round"/><path d="M742 220 L670 286" stroke="#cbd5e1" stroke-width="6" stroke-linecap="round"/><path d="M512 412 L580 334" stroke="#cbd5e1" stroke-width="6" stroke-linecap="round"/><path d="M748 408 L670 334" stroke="#cbd5e1" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <g opacity="0.92">
+    <circle cx="1036" cy="166" r="8" fill="#2563eb"/>
+    <circle cx="1088" cy="226" r="5" fill="#22c55e"/>
+    <circle cx="980" cy="530" r="6" fill="#2563eb"/>
+  </g>
+  <g filter="url(#cardShadow)">
+    <rect x="70" y="550" width="520" height="102" rx="22" fill="#ffffff" fill-opacity="0.9" stroke="#e2e8f0"/>
+    <rect x="96" y="580" width="12" height="42" rx="6" fill="#2563eb"/>
+    <text x="126" y="594" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#64748b" letter-spacing="2">OUTIL</text>
+    <text x="126" y="628" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="800" fill="#0f172a">Orchestrateur global</text>
+  </g>
+  <g transform="translate(1134 574)">
+    <circle cx="0" cy="0" r="34" fill="#ffffff" fill-opacity="0.92" stroke="#dbe5ef"/>
+    <circle cx="0" cy="0" r="18" fill="#2563eb"/>
+    <path d="M-8 0 l5 6 l12 -14" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
