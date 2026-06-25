@@ -26,6 +26,12 @@ npm run dev
 npm run start
 ```
 
+## Captures d'ecran
+
+![Capture desktop](docs/github-captures/01-site-ma-methode-2026-06-21_23-36-53-desktop.png)
+
+![Capture mobile](docs/github-captures/01-site-ma-methode-2026-06-21_23-36-53-mobile.png)
+
 ## Variables d'environnement
 
 Copier `.env.example` vers `.env` en local puis remplir les valeurs privees.
