@@ -42,9 +42,5 @@ Le projet a ete concu comme un pont documentaire: representer le systeme global 
 
 ## Mises a jour
 - Fiche actualisee depuis le registre orchestrateur et le catalogue projet.
-- Derniere mise a jour registre connue: 2026-06-24T18:41:12.581Z.
-
-## Derniere mise a jour
-2026-06-24T18:41:12.584Z
 
 > Fichier genere par l'orchestrateur pour le hub Site Ma Methode.

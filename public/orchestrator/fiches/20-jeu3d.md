@@ -47,14 +47,11 @@ Le projet a ete concu comme une base de gameplay rapide: un coeur de jeu simple,
 - Controle clavier, A/D et touch swipe
 
 ## Captures d'ecran
-- Aucune capture validee pour cette fiche.
+![Capture 1 - jeu3d](../captures/20-jeu3d/20-jeu3d-2026-06-25_02-46-46-desktop.png)
+
+![Capture 2 - jeu3d](../captures/20-jeu3d/20-jeu3d-2026-06-25_02-46-46-mobile.png)
 
 ## Mises a jour
 - Fiche actualisee depuis le registre orchestrateur et le catalogue projet.
-- Changements locaux detectes: relire la fiche apres validation des modifications.
-- Derniere mise a jour registre connue: 2026-06-25T00:46:45.686Z.
-
-## Derniere mise a jour
-2026-06-25T00:46:45.690Z
 
 > Fichier genere par l'orchestrateur pour le hub Site Ma Methode.

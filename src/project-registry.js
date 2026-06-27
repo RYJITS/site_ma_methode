@@ -75,7 +75,7 @@ export const orchestratorProjectCards = [
     "mediaPolicy": {
       "exposure": "none",
       "publicationAllowed": false,
-      "screenshotStatus": "SKIPPED_NO_SERVER"
+      "screenshotStatus": "NO_SCREENSHOTS"
     }
   },
   {
@@ -87,7 +87,7 @@ export const orchestratorProjectCards = [
     "linkPolicy": {
       "exposure": "blocked-by-security",
       "publicationAllowed": false,
-      "securityStatus": "FAIL_SECRETS"
+      "securityStatus": "OK_PRIVATE"
     },
     "ficheUrl": "public/orchestrator/fiches/00-orchestrateur.md",
     "localPath": "D:/00_Cerveau_IA/Projet/00_ORCHESTRATEUR",
@@ -95,8 +95,8 @@ export const orchestratorProjectCards = [
       "Node.js"
     ],
     "status": {
-      "global": "SENSITIVE_BLOCKED",
-      "security": "FAIL_SECRETS",
+      "global": "PRIVATE_INTERNAL",
+      "security": "OK_PRIVATE",
       "functionality": "FONCTIONNEL",
       "publication": "PRIVATE_INTERNAL"
     },
@@ -151,8 +151,8 @@ export const orchestratorProjectCards = [
     },
     "highlights": [
       "Savoir quoi faire, qui doit l'appliquer, tous les combien de temps, et bloquer les actions dangereuses avant diffusion.",
-      "Statut: SENSITIVE_BLOCKED.",
-      "Securite: FAIL_SECRETS."
+      "Statut: PRIVATE_INTERNAL.",
+      "Securite: OK_PRIVATE."
     ],
     "functions": [
       "Centralise la liste des taches, responsables et frequences.",
@@ -254,7 +254,7 @@ export const orchestratorProjectCards = [
     "mediaPolicy": {
       "exposure": "none",
       "publicationAllowed": false,
-      "screenshotStatus": "SKIPPED_SECURITY"
+      "screenshotStatus": "NO_SCREENSHOTS"
     }
   },
   {
@@ -264,6 +264,7 @@ export const orchestratorProjectCards = [
     "comment": "Vitrine interactive et hub des projets. Elle presente la methode de travail, affiche la carte des applications et ouvre des fiches detaillees synchronisees par l'orchestrateur.",
     "image": "public/orchestrator/thumbnails-ai/01-site-ma-methode.webp",
     "url": "https://cv.c2rdesign.com/",
+    "githubUrl": "https://github.com/RYJITS/site_ma_methode",
     "hostingerUrl": "https://cv.c2rdesign.com/",
     "linkPolicy": {
       "exposure": "publication-ready",
@@ -348,7 +349,7 @@ export const orchestratorProjectCards = [
     "mediaPolicy": {
       "exposure": "publication-ready",
       "publicationAllowed": true,
-      "screenshotStatus": "CAPTURED"
+      "screenshotStatus": "HAS_SCREENSHOTS"
     }
   },
   {
@@ -430,7 +431,7 @@ export const orchestratorProjectCards = [
     "mediaPolicy": {
       "exposure": "none",
       "publicationAllowed": true,
-      "screenshotStatus": "SKIPPED_NO_SERVER"
+      "screenshotStatus": "NO_SCREENSHOTS"
     }
   },
   {
@@ -440,6 +441,7 @@ export const orchestratorProjectCards = [
     "comment": "Tableau de bord de planification autour d'un classeur metier. Il sert a organiser les lignes de suivi, les jalons, les priorites et les donnees utiles au pilotage.",
     "image": "public/orchestrator/thumbnails-ai/05-bord-planif.webp",
     "url": "https://planner.c2rdesign.com/",
+    "githubUrl": "https://github.com/RYJITS/bord_planif",
     "hostingerUrl": "https://planner.c2rdesign.com/",
     "linkPolicy": {
       "exposure": "publication-ready",
@@ -449,12 +451,12 @@ export const orchestratorProjectCards = [
     "ficheUrl": "public/orchestrator/fiches/05-bord-planif.md",
     "localPath": "D:/00_Cerveau_IA/Projet/05_Bord_PLANIF",
     "stack": [
-      "Dossier projet"
+      "HTML statique"
     ],
     "status": {
-      "global": "PUBLIC_CANDIDATE",
+      "global": "PUBLIC_READY",
       "security": "OK_PUBLIC",
-      "functionality": "NON_TESTABLE_MANQUE_INFO",
+      "functionality": "FONCTIONNEL",
       "publication": "PUBLIC_CANDIDATE"
     },
     "details": {
@@ -504,7 +506,7 @@ export const orchestratorProjectCards = [
     },
     "highlights": [
       "Transformer un fichier de planification en cockpit lisible, suivi par l'orchestrateur et pret a etre relie au hub sans ecraser les donnees source.",
-      "Statut: PUBLIC_CANDIDATE.",
+      "Statut: PUBLIC_READY.",
       "Securite: OK_PUBLIC.",
       "Lien Hostinger connu: https://planner.c2rdesign.com/."
     ],
@@ -532,6 +534,7 @@ export const orchestratorProjectCards = [
     "name": "Generateur image C2R",
     "comment": "Studio local de generation d'images C2R. Il expose une interface web, lit le corpus Image valide, lance les generations et organise les retours utiles.",
     "image": "public/orchestrator/thumbnails-ai/05-generateur-image-c2r.webp",
+    "githubUrl": "https://github.com/RYJITS/generateur-image-c2r",
     "linkPolicy": {
       "exposure": "publication-ready",
       "publicationAllowed": true,
@@ -618,7 +621,7 @@ export const orchestratorProjectCards = [
     "mediaPolicy": {
       "exposure": "publication-ready",
       "publicationAllowed": true,
-      "screenshotStatus": "CAPTURED"
+      "screenshotStatus": "HAS_SCREENSHOTS"
     }
   },
   {
@@ -627,21 +630,22 @@ export const orchestratorProjectCards = [
     "name": "Gestions Commande Matiere",
     "comment": "Outil de suivi des commandes matiere. Il organise les besoins, les quantites, les etats de stock et les flux de commande autour d'un classeur metier.",
     "image": "public/orchestrator/thumbnails-ai/05-gestions-commande-matiere.webp",
+    "githubUrl": "https://github.com/RYJITS/gestions_commande_mati-re",
     "linkPolicy": {
-      "exposure": "blocked-by-security",
-      "publicationAllowed": false,
-      "securityStatus": "FAIL_SECRETS"
+      "exposure": "publication-ready",
+      "publicationAllowed": true,
+      "securityStatus": "OK_PUBLIC"
     },
     "ficheUrl": "public/orchestrator/fiches/05-gestions-commande-matiere.md",
     "localPath": "D:/00_Cerveau_IA/Projet/05_Gestions_Commande_Matière",
     "stack": [
-      "Dossier projet"
+      "HTML statique"
     ],
     "status": {
-      "global": "SENSITIVE_BLOCKED",
-      "security": "FAIL_SECRETS",
-      "functionality": "NON_TESTABLE_MANQUE_INFO",
-      "publication": "SENSITIVE_BLOCKED"
+      "global": "PUBLIC_READY",
+      "security": "OK_PUBLIC",
+      "functionality": "FONCTIONNEL",
+      "publication": "PUBLIC_CANDIDATE"
     },
     "details": {
       "application": "Gestions Commande Matiere est une application web locale reconstruite depuis l'analyse du classeur COMMANDE_MATIERE.xlsm. Elle sert a piloter des commandes matiere fictives, les archives, les referentiels et le suivi galva sans reutiliser les donnees metier sensibles du fichier original.",
@@ -692,8 +696,8 @@ export const orchestratorProjectCards = [
     },
     "highlights": [
       "Rendre les commandes matiere plus lisibles, controlables et synchronisables avec le hub sans exposer les donnees sensibles du fichier source.",
-      "Statut: SENSITIVE_BLOCKED.",
-      "Securite: FAIL_SECRETS."
+      "Statut: PUBLIC_READY.",
+      "Securite: OK_PUBLIC."
     ],
     "functions": [
       "Reference le classeur de commande matiere.",
@@ -705,7 +709,7 @@ export const orchestratorProjectCards = [
     "screenshots": [],
     "mediaPolicy": {
       "exposure": "none",
-      "publicationAllowed": false,
+      "publicationAllowed": true,
       "screenshotStatus": "HAS_SCREENSHOTS",
       "publicScreenshotReview": "SAFE_SYNTHETIC_UI"
     }
@@ -716,10 +720,13 @@ export const orchestratorProjectCards = [
     "name": "Orbe SkyIA",
     "comment": "Prototype immersif de SkyIA avec orbe WebGL, selection de modeles, modes chat/jeu, voix, credits, sauvegardes et statistiques.",
     "image": "public/orchestrator/thumbnails-ai/05-orbe-skyia.webp",
+    "url": "https://orbe.skyia.net/",
+    "githubUrl": "https://github.com/RYJITS/orbe_skyia",
+    "hostingerUrl": "https://orbe.skyia.net/",
     "linkPolicy": {
-      "exposure": "blocked-by-security",
-      "publicationAllowed": false,
-      "securityStatus": "FAIL_SECRETS"
+      "exposure": "publication-ready",
+      "publicationAllowed": true,
+      "securityStatus": "OK_PUBLIC"
     },
     "ficheUrl": "public/orchestrator/fiches/05-orbe-skyia.md",
     "localPath": "D:/00_Cerveau_IA/Projet/05_Orbe_skyia",
@@ -730,10 +737,10 @@ export const orchestratorProjectCards = [
       "Node.js"
     ],
     "status": {
-      "global": "SENSITIVE_BLOCKED",
-      "security": "FAIL_SECRETS",
-      "functionality": "NON_FONCTIONNEL_REPARABLE",
-      "publication": "SENSITIVE_BLOCKED"
+      "global": "PUBLIC_READY",
+      "security": "OK_PUBLIC",
+      "functionality": "FONCTIONNEL",
+      "publication": "PUBLIC_CANDIDATE"
     },
     "details": {
       "application": "Orbe SkyIA est une version experimentale et immersive de SkyIA. L'utilisateur interagit avec une presence visuelle en forme d'orbe, choisit des modeles, lance des modes chat ou jeu, utilise la voix et peut sauvegarder ses sessions.",
@@ -784,8 +791,9 @@ export const orchestratorProjectCards = [
     },
     "highlights": [
       "Explorer une experience SkyIA plus visuelle, vivante et memorisable.",
-      "Statut: SENSITIVE_BLOCKED.",
-      "Securite: FAIL_SECRETS."
+      "Statut: PUBLIC_READY.",
+      "Securite: OK_PUBLIC.",
+      "Lien Hostinger connu: https://orbe.skyia.net/."
     ],
     "functions": [
       "Met en scene SkyIA sous forme d'orbe interactif.",
@@ -798,11 +806,14 @@ export const orchestratorProjectCards = [
       "Build automatisable detecte.",
       "Tests automatises detectes."
     ],
-    "screenshots": [],
+    "screenshots": [
+      "public/orchestrator/captures/05-orbe-skyia/05-orbe-skyia-2026-06-25_03-17-04-desktop.png",
+      "public/orchestrator/captures/05-orbe-skyia/05-orbe-skyia-2026-06-25_03-17-04-mobile.png"
+    ],
     "mediaPolicy": {
-      "exposure": "none",
-      "publicationAllowed": false,
-      "screenshotStatus": "SKIPPED_SECURITY"
+      "exposure": "publication-ready",
+      "publicationAllowed": true,
+      "screenshotStatus": "HAS_SCREENSHOTS"
     }
   },
   {
@@ -812,6 +823,7 @@ export const orchestratorProjectCards = [
     "comment": "Application principale de jugement IA adversarial. Elle compare des modeles, orchestre des duels, archive les rapports et suit les performances.",
     "image": "public/orchestrator/thumbnails-ai/05-skyia.webp",
     "url": "https://skyia.net/",
+    "githubUrl": "https://github.com/RYJITS/skyia",
     "hostingerUrl": "https://skyia.net/",
     "linkPolicy": {
       "exposure": "publication-ready",
@@ -902,7 +914,7 @@ export const orchestratorProjectCards = [
     "mediaPolicy": {
       "exposure": "publication-ready",
       "publicationAllowed": true,
-      "screenshotStatus": "CAPTURED"
+      "screenshotStatus": "HAS_SCREENSHOTS"
     }
   },
   {
@@ -911,10 +923,13 @@ export const orchestratorProjectCards = [
     "name": "Garden Inn",
     "comment": "Site vitrine multilingue pour Bukit Lawang Garden Inn. Il presente les chambres, le restaurant, les excursions, les transferts, les packages et le contact.",
     "image": "public/orchestrator/thumbnails-ai/10-garden-inn.webp",
+    "url": "https://garden-inn.c2rdesign.com/",
+    "githubUrl": "https://github.com/RYJITS/garden-inn",
+    "hostingerUrl": "https://garden-inn.c2rdesign.com/",
     "linkPolicy": {
-      "exposure": "blocked-by-security",
-      "publicationAllowed": false,
-      "securityStatus": "FAIL_SECRETS"
+      "exposure": "publication-ready",
+      "publicationAllowed": true,
+      "securityStatus": "OK_PUBLIC"
     },
     "ficheUrl": "public/orchestrator/fiches/10-garden-inn.md",
     "localPath": "D:/00_Cerveau_IA/Projet/10_garden-inn",
@@ -924,10 +939,10 @@ export const orchestratorProjectCards = [
       "Node.js"
     ],
     "status": {
-      "global": "SENSITIVE_BLOCKED",
-      "security": "FAIL_SECRETS",
+      "global": "PUBLIC_READY",
+      "security": "OK_PUBLIC",
       "functionality": "FONCTIONNEL",
-      "publication": "SENSITIVE_BLOCKED"
+      "publication": "PUBLIC_CANDIDATE"
     },
     "details": {
       "application": "Garden Inn est le site vitrine de Bukit Lawang Garden Inn. Il presente l'hebergement, les chambres, le restaurant, les excursions, les transferts, les packages et les informations de contact pour convertir les visiteurs en reservations.",
@@ -977,8 +992,9 @@ export const orchestratorProjectCards = [
     },
     "highlights": [
       "Valoriser l'hebergement et orienter les visiteurs vers la reservation directe.",
-      "Statut: SENSITIVE_BLOCKED.",
-      "Securite: FAIL_SECRETS."
+      "Statut: PUBLIC_READY.",
+      "Securite: OK_PUBLIC.",
+      "Lien Hostinger connu: https://garden-inn.c2rdesign.com/."
     ],
     "functions": [
       "Presente l'etablissement et ses offres.",
@@ -989,11 +1005,14 @@ export const orchestratorProjectCards = [
       "Lancement local disponible via npm run dev.",
       "Build automatisable detecte."
     ],
-    "screenshots": [],
+    "screenshots": [
+      "public/orchestrator/captures/10-garden-inn/10-garden-inn-2026-06-25_03-17-59-desktop.png",
+      "public/orchestrator/captures/10-garden-inn/10-garden-inn-2026-06-25_03-17-59-mobile.png"
+    ],
     "mediaPolicy": {
-      "exposure": "none",
-      "publicationAllowed": false,
-      "screenshotStatus": "SKIPPED_SECURITY"
+      "exposure": "publication-ready",
+      "publicationAllowed": true,
+      "screenshotStatus": "HAS_SCREENSHOTS"
     }
   },
   {
@@ -1183,13 +1202,13 @@ export const orchestratorProjectCards = [
       "Build automatisable detecte."
     ],
     "screenshots": [
-      "public/orchestrator/captures/20-chess-3d-ultimate/20-chess-3d-ultimate-2026-06-25_02-55-45-desktop.png",
-      "public/orchestrator/captures/20-chess-3d-ultimate/20-chess-3d-ultimate-2026-06-25_02-55-45-mobile.png"
+      "public/orchestrator/captures/20-chess-3d-ultimate/20-chess-3d-ultimate-2026-06-27_23-58-17-desktop.png",
+      "public/orchestrator/captures/20-chess-3d-ultimate/20-chess-3d-ultimate-2026-06-27_23-58-17-mobile.png"
     ],
     "mediaPolicy": {
       "exposure": "publication-ready",
       "publicationAllowed": true,
-      "screenshotStatus": "CAPTURED"
+      "screenshotStatus": "HAS_SCREENSHOTS"
     }
   },
   {
@@ -1215,9 +1234,9 @@ export const orchestratorProjectCards = [
       "Node.js"
     ],
     "status": {
-      "global": "NEEDS_REPAIR",
+      "global": "PUBLIC_READY",
       "security": "OK_PUBLIC",
-      "functionality": "NON_FONCTIONNEL_REPARABLE",
+      "functionality": "FONCTIONNEL",
       "publication": "PUBLIC_CANDIDATE"
     },
     "details": {
@@ -1269,7 +1288,7 @@ export const orchestratorProjectCards = [
     },
     "highlights": [
       "Tester une base de jeu 3D reutilisable et relier le gameplay a l'ecosysteme SkyIA.",
-      "Statut: NEEDS_REPAIR.",
+      "Statut: PUBLIC_READY.",
       "Securite: OK_PUBLIC.",
       "Lien Hostinger connu: https://neon-rush.skyia.net/."
     ],
@@ -1289,7 +1308,7 @@ export const orchestratorProjectCards = [
     "mediaPolicy": {
       "exposure": "publication-ready",
       "publicationAllowed": true,
-      "screenshotStatus": "CAPTURED"
+      "screenshotStatus": "HAS_SCREENSHOTS"
     }
   },
   {
@@ -1298,10 +1317,13 @@ export const orchestratorProjectCards = [
     "name": "Morphostyle",
     "comment": "Application IA de conseil coiffure et style. Elle analyse une photo, propose des styles adaptes puis genere des apercus et angles supplementaires.",
     "image": "public/orchestrator/thumbnails-ai/20-morphostyle.webp",
+    "url": "https://morphostyle.c2rdesign.com/",
+    "githubUrl": "https://github.com/RYJITS/morphostyle",
+    "hostingerUrl": "https://morphostyle.c2rdesign.com/",
     "linkPolicy": {
-      "exposure": "blocked-by-security",
-      "publicationAllowed": false,
-      "securityStatus": "FAIL_SESSIONS"
+      "exposure": "publication-ready",
+      "publicationAllowed": true,
+      "securityStatus": "OK_PUBLIC"
     },
     "ficheUrl": "public/orchestrator/fiches/20-morphostyle.md",
     "localPath": "D:/00_Cerveau_IA/Projet/20_morphostyle",
@@ -1311,10 +1333,10 @@ export const orchestratorProjectCards = [
       "Node.js"
     ],
     "status": {
-      "global": "SENSITIVE_BLOCKED",
-      "security": "FAIL_SESSIONS",
+      "global": "PUBLIC_READY",
+      "security": "OK_PUBLIC",
       "functionality": "FONCTIONNEL",
-      "publication": "SENSITIVE_BLOCKED"
+      "publication": "PUBLIC_CANDIDATE"
     },
     "details": {
       "application": "Morphostyle est une application IA de conseil visuel pour coiffure et style. Elle part d'une photo, recueille un profil de consultation, analyse la morphologie, propose des styles et genere des apercus realistes.",
@@ -1364,8 +1386,9 @@ export const orchestratorProjectCards = [
     },
     "highlights": [
       "Transformer une photo et un besoin de style en recommandations visuelles exploitables.",
-      "Statut: SENSITIVE_BLOCKED.",
-      "Securite: FAIL_SESSIONS."
+      "Statut: PUBLIC_READY.",
+      "Securite: OK_PUBLIC.",
+      "Lien Hostinger connu: https://morphostyle.c2rdesign.com/."
     ],
     "functions": [
       "Analyse la morphologie a partir d'une image.",
@@ -1376,11 +1399,14 @@ export const orchestratorProjectCards = [
       "Lancement local disponible via npm run dev.",
       "Build automatisable detecte."
     ],
-    "screenshots": [],
+    "screenshots": [
+      "public/orchestrator/captures/20-morphostyle/20-morphostyle-2026-06-25_03-17-30-desktop.png",
+      "public/orchestrator/captures/20-morphostyle/20-morphostyle-2026-06-25_03-17-30-mobile.png"
+    ],
     "mediaPolicy": {
-      "exposure": "none",
-      "publicationAllowed": false,
-      "screenshotStatus": "SKIPPED_SECURITY"
+      "exposure": "publication-ready",
+      "publicationAllowed": true,
+      "screenshotStatus": "HAS_SCREENSHOTS"
     }
   },
   {
@@ -1470,7 +1496,7 @@ export const orchestratorProjectCards = [
     "mediaPolicy": {
       "exposure": "none",
       "publicationAllowed": false,
-      "screenshotStatus": "SKIPPED_SECURITY"
+      "screenshotStatus": "NO_SCREENSHOTS"
     }
   }
 ];

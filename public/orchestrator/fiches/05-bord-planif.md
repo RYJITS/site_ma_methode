@@ -2,7 +2,7 @@
 
 ## Liens vers l'application
 - Lien public: https://planner.c2rdesign.com/
-- GitHub: non detecte
+- GitHub: https://github.com/RYJITS/bord_planif
 
 ## A quoi sert le projet
 Bord PLANIF est une application web locale qui reconstruit un cockpit de planification depuis l'analyse du classeur BORD_DEC_MRPC17.xlsm. Elle ne recopie pas les donnees reelles du fichier: elle reproduit la structure, les feuilles, les volumes, les familles de formules et les actions observables avec un jeu de donnees fictif.
@@ -50,10 +50,5 @@ Le projet a ete concu comme un clone fonctionnel et prudent du classeur metier: 
 
 ## Mises a jour
 - Fiche actualisee depuis le registre orchestrateur et le catalogue projet.
-- Changements locaux detectes: relire la fiche apres validation des modifications.
-- Derniere mise a jour registre connue: 2026-06-21T21:46:01.602Z.
-
-## Derniere mise a jour
-2026-06-21T21:46:01.605Z
 
 > Fichier genere par l'orchestrateur pour le hub Site Ma Methode.
