@@ -2,7 +2,7 @@
 
 ## Liens vers l'application
 - Lien public: non detecte
-- GitHub: non detecte
+- GitHub: [https://github.com/RYJITS/gestions_commande_mati-re](https://github.com/RYJITS/gestions_commande_mati-re)
 
 ## A quoi sert le projet
 Gestions Commande Matiere est une application web locale reconstruite depuis l'analyse du classeur COMMANDE_MATIERE.xlsm. Elle sert a piloter des commandes matiere fictives, les archives, les referentiels et le suivi galva sans reutiliser les donnees metier sensibles du fichier original.
@@ -12,6 +12,13 @@ L'application demarre sur un module de commande matiere avec trois champs manuel
 
 ## Comment le projet a ete construit
 Le projet a ete concu comme une reproduction securisee du flux de commande matiere: conserver le parcours utilisateur, les champs et les volumes du classeur, mais remplacer les valeurs reelles par des donnees fictives. Le code met en avant les modules utiles au quotidien: saisie rapide, auto-remplissage, archive exploitable, referentiels modifiables et audit de la structure Excel.
+
+## Installation et utilisation
+### Installation
+Le projet ne declare pas d'installation applicative standard. Consulter le README public ou la fiche technique du depot si une version partageable existe.
+
+### Utilisation
+Utiliser le projet selon les instructions du README public ou de la documentation associee.
 
 ## Fonctions disponibles dans l'application
 - Creer une commande matiere fictive PROD ou MET
@@ -47,14 +54,11 @@ Le projet a ete concu comme une reproduction securisee du flux de commande matie
 - Export JSON de l'etat courant
 
 ## Captures d'ecran
-- Aucune capture validee pour cette fiche.
+![Capture 1 - Gestions Commande Matière](../captures/05-gestions-commande-matiere/05-gestions-commande-matiere-2026-06-20_1858-commande.png)
+
+![Capture 2 - Gestions Commande Matière](../captures/05-gestions-commande-matiere/05-gestions-commande-matiere-2026-06-20_1858-archives.png)
 
 ## Mises a jour
 - Fiche actualisee depuis le registre orchestrateur et le catalogue projet.
-- Changements locaux detectes: relire la fiche apres validation des modifications.
-- Derniere mise a jour registre connue: 2026-06-21T21:46:01.683Z.
-
-## Derniere mise a jour
-2026-06-21T21:46:01.686Z
 
 > Fichier genere par l'orchestrateur pour le hub Site Ma Methode.

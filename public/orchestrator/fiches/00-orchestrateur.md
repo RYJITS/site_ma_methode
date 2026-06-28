@@ -13,6 +13,17 @@ L'application lit deux sources: le registre des projets et le registre des tache
 ## Comment le projet a ete construit
 Il a ete concu comme une couche prudente au-dessus de toute la racine projets. Chaque action importante est rattachee a une tache explicite, un responsable, une frequence, un executeur et des garde-fous: scanner avant modification, ne pas supprimer directement, ne pas publier sans audit securite OK, archiver ou sauvegarder avant intervention, et garder Site Ma Methode comme hub de lecture plutot que cible isolee.
 
+## Installation et utilisation
+### Installation
+Installation locale standard pour la version partageable du projet:
+
+```powershell
+npm install
+```
+
+### Utilisation
+Utiliser le projet selon les instructions du README public ou de la documentation associee.
+
 ## Fonctions disponibles dans l'application
 - Ouvrir le dashboard par raccourci Bureau
 - Ajouter ou supprimer des taches
@@ -54,10 +65,5 @@ Il a ete concu comme une couche prudente au-dessus de toute la racine projets. C
 
 ## Mises a jour
 - Fiche actualisee depuis le registre orchestrateur et le catalogue projet.
-- Changements locaux detectes: relire la fiche apres validation des modifications.
-- Derniere mise a jour registre connue: 2026-06-21T21:46:01.353Z.
-
-## Derniere mise a jour
-2026-06-21T21:46:01.361Z
 
 > Fichier genere par l'orchestrateur pour le hub Site Ma Methode.

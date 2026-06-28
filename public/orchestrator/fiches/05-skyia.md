@@ -1,8 +1,8 @@
 # SkyIA
 
 ## Liens vers l'application
-- Lien public: https://skyia.net
-- GitHub: non detecte
+- Lien public: [https://skyia.net](https://skyia.net)
+- GitHub: [https://github.com/RYJITS/skyia](https://github.com/RYJITS/skyia)
 
 ## A quoi sert le projet
 SkyIA est l'application principale de jugement IA adversarial. Elle met en face un humain ou une IA defensive avec un juge hostile, compare les modeles, archive les duels et transforme les resultats en observatoire de performance.
@@ -12,6 +12,19 @@ Le frontend React pilote les conversations, les modeles, les sessions et les rap
 
 ## Comment le projet a ete construit
 SkyIA a ete concu en deux couches: une interface de jeu/benchmark pour l'utilisateur et une API serveur qui conserve les donnees importantes. Le projet separe les modeles gratuits serveur, les modeles BYOK, les statistiques, les rapports publics et les donnees sensibles pour pouvoir evoluer vers une publication plus propre.
+
+## Installation et utilisation
+### Installation
+Installation locale standard pour la version partageable du projet:
+
+```powershell
+npm install
+npm run build
+npm run dev
+```
+
+### Utilisation
+Lancer le serveur de developpement, ouvrir l'adresse locale indiquee par l'outil, puis utiliser l'interface principale du projet.
 
 ## Fonctions disponibles dans l'application
 - Lancer une conversation avec SkyIA
@@ -55,10 +68,5 @@ SkyIA a ete concu en deux couches: une interface de jeu/benchmark pour l'utilisa
 
 ## Mises a jour
 - Fiche actualisee depuis le registre orchestrateur et le catalogue projet.
-- Changements locaux detectes: relire la fiche apres validation des modifications.
-- Derniere mise a jour registre connue: 2026-06-21T21:46:01.807Z.
-
-## Derniere mise a jour
-2026-06-21T21:46:01.809Z
 
 > Fichier genere par l'orchestrateur pour le hub Site Ma Methode.

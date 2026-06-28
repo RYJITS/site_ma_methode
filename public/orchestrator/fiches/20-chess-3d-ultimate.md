@@ -1,8 +1,8 @@
 # Chess 3D Ultimate
 
 ## Liens vers l'application
-- Lien public: https://chess.c2rdesign.com/
-- GitHub: https://github.com/RYJITS/chess-3d-ultimate
+- Lien public: [https://chess.c2rdesign.com/](https://chess.c2rdesign.com/)
+- GitHub: [https://github.com/RYJITS/chess-3d-ultimate](https://github.com/RYJITS/chess-3d-ultimate)
 
 ## A quoi sert le projet
 Chess 3D Ultimate est un jeu d'echecs 3D jouable dans le navigateur. Il propose un plateau interactif, des pieces procedurales, plusieurs themes visuels et une IA adverse.
@@ -12,6 +12,19 @@ La partie est geree par chess.js: selection d'une piece, affichage des coups val
 
 ## Comment le projet a ete construit
 Le projet a ete concu en separant la logique d'echecs de la scene 3D. Les regles restent fiables grace a chess.js, tandis que Three.js gere le rendu, les themes, les effets et l'interaction souris/raycast.
+
+## Installation et utilisation
+### Installation
+Installation locale standard pour la version partageable du projet:
+
+```powershell
+npm install
+npm run build
+npm run dev
+```
+
+### Utilisation
+Lancer le serveur de developpement, ouvrir l'adresse locale indiquee par l'outil, puis utiliser l'interface principale du projet.
 
 ## Fonctions disponibles dans l'application
 - Jouer une partie d'echecs 3D

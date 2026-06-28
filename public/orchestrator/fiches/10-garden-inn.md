@@ -1,8 +1,8 @@
 # Garden Inn
 
 ## Liens vers l'application
-- Lien public: lien detecte mais masque par securite orchestrateur
-- GitHub: lien detecte mais masque par securite orchestrateur
+- Lien public: [https://bukitlawang-garden-inn.com](https://bukitlawang-garden-inn.com)
+- GitHub: [https://github.com/RYJITS/garden-inn](https://github.com/RYJITS/garden-inn)
 
 ## A quoi sert le projet
 Garden Inn est le site vitrine de Bukit Lawang Garden Inn. Il presente l'hebergement, les chambres, le restaurant, les excursions, les transferts, les packages et les informations de contact pour convertir les visiteurs en reservations.
@@ -12,6 +12,19 @@ L'application React affiche les sections principales et suit la section active p
 
 ## Comment le projet a ete construit
 Le site a ete concu comme une vitrine touristique orientee reservation. Le contenu est structure par parcours visiteur: decouvrir le lieu, comprendre les offres, filtrer les transferts ou excursions, puis reserver ou contacter.
+
+## Installation et utilisation
+### Installation
+Installation locale standard pour la version partageable du projet:
+
+```powershell
+npm install
+npm run build
+npm run dev
+```
+
+### Utilisation
+Lancer le serveur de developpement, ouvrir l'adresse locale indiquee par l'outil, puis utiliser l'interface principale du projet.
 
 ## Fonctions disponibles dans l'application
 - Presenter les chambres
@@ -45,14 +58,11 @@ Le site a ete concu comme une vitrine touristique orientee reservation. Le conte
 - Generation de routes Google Maps pour les transferts
 
 ## Captures d'ecran
-- Aucune capture validee pour cette fiche.
+![Capture 1 - garden-inn](../captures/10-garden-inn/10-garden-inn-2026-06-25_03-17-59-desktop.png)
+
+![Capture 2 - garden-inn](../captures/10-garden-inn/10-garden-inn-2026-06-25_03-17-59-mobile.png)
 
 ## Mises a jour
 - Fiche actualisee depuis le registre orchestrateur et le catalogue projet.
-- Changements locaux detectes: relire la fiche apres validation des modifications.
-- Derniere mise a jour registre connue: 2026-06-21T21:46:01.847Z.
-
-## Derniere mise a jour
-2026-06-21T21:46:01.850Z
 
 > Fichier genere par l'orchestrateur pour le hub Site Ma Methode.

@@ -1,8 +1,8 @@
 # Bord PLANIF
 
 ## Liens vers l'application
-- Lien public: https://planner.c2rdesign.com/
-- GitHub: https://github.com/RYJITS/bord_planif
+- Lien public: [https://planner.c2rdesign.com/](https://planner.c2rdesign.com/)
+- GitHub: [https://github.com/RYJITS/bord_planif](https://github.com/RYJITS/bord_planif)
 
 ## A quoi sert le projet
 Bord PLANIF est une application web locale qui reconstruit un cockpit de planification depuis l'analyse du classeur BORD_DEC_MRPC17.xlsm. Elle ne recopie pas les donnees reelles du fichier: elle reproduit la structure, les feuilles, les volumes, les familles de formules et les actions observables avec un jeu de donnees fictif.
@@ -12,6 +12,13 @@ L'application ouvre une interface type Excel avec ruban d'actions, onglets de fe
 
 ## Comment le projet a ete construit
 Le projet a ete concu comme un clone fonctionnel et prudent du classeur metier: garder l'ergonomie et la logique de pilotage sans publier les valeurs sensibles du fichier source. La page web separe les jeux fictifs, les calculs recalcules en JavaScript, les vues specialisees et les actions de simulation pour pouvoir presenter ou tester le fonctionnement sans ouvrir le classeur original.
+
+## Installation et utilisation
+### Installation
+Le projet ne declare pas d'installation applicative standard. Consulter le README public ou la fiche technique du depot si une version partageable existe.
+
+### Utilisation
+Utiliser le projet selon les instructions du README public ou de la documentation associee.
 
 ## Fonctions disponibles dans l'application
 - Naviguer dans 18 feuilles de planification type Excel

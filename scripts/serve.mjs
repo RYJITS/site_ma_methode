@@ -6,9 +6,12 @@ import { networkInterfaces } from "node:os";
 
 const root = resolve(new URL("..", import.meta.url).pathname.slice(1));
 const args = parseArgs(process.argv.slice(2));
-const port = Number(args.port || process.env.PORT || 4177);
+let port = Number(args.port || process.env.PORT || 4177);
 const host = String(args.host || process.env.HOST || "127.0.0.1");
+const strictPort = Boolean(args.strictPort || process.env.STRICT_PORT === "true" || process.env.STRICT_PORT === "1");
 const isProduction = process.env.NODE_ENV === "production";
+const maxPortAttempts = 20;
+let portAttempts = 0;
 
 const mime = {
   ".html": "text/html; charset=utf-8",
@@ -23,7 +26,7 @@ const mime = {
   ".mp4": "video/mp4"
 };
 
-createServer(async (request, response) => {
+const server = createServer(async (request, response) => {
   const url = new URL(request.url || "/", `http://127.0.0.1:${port}`);
   const requested = url.pathname === "/" ? "/index.html" : decodeURIComponent(url.pathname);
   const filePath = normalize(join(root, requested));
@@ -78,7 +81,27 @@ createServer(async (request, response) => {
     response.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
     response.end("Not found");
   }
-}).listen(port, host, () => {
+});
+
+server.on("error", (error) => {
+  if (error.code !== "EADDRINUSE") throw error;
+
+  if (!strictPort && portAttempts < maxPortAttempts) {
+    const busyPort = port;
+    port += 1;
+    portAttempts += 1;
+    console.warn(`Port ${busyPort} deja utilise, essai sur ${port}.`);
+    server.listen(port, host);
+    return;
+  }
+
+  console.error(`Port ${port} deja utilise sur ${host}.`);
+  console.error(`Site possiblement deja lance: http://127.0.0.1:${port}`);
+  console.error(`Autre port: npm run dev -- --port ${port + 1}`);
+  process.exit(1);
+});
+
+server.listen(port, host, () => {
   console.log(`AI Video WebGL clean site: http://127.0.0.1:${port}`);
   if (host === "0.0.0.0" || host === "::") {
     getLanAddresses().forEach((address) => {
@@ -97,8 +120,11 @@ function parseArgs(values) {
   const result = {};
   for (let index = 0; index < values.length; index += 1) {
     const value = values[index];
+    if (value === "--strictPort" || value === "--strict-port") result.strictPort = true;
     if (value === "--host") result.host = values[index + 1];
     if (value === "--port") result.port = values[index + 1];
+    if (value.startsWith("--host=")) result.host = value.slice("--host=".length);
+    if (value.startsWith("--port=")) result.port = value.slice("--port=".length);
   }
   return result;
 }

@@ -1,8 +1,8 @@
 # Orbe SkyIA
 
 ## Liens vers l'application
-- Lien public: https://orbe.skyia.net/
-- GitHub: https://github.com/RYJITS/orbe_skyia
+- Lien public: [https://orbe.skyia.net/](https://orbe.skyia.net/)
+- GitHub: [https://github.com/RYJITS/orbe_skyia](https://github.com/RYJITS/orbe_skyia)
 
 ## A quoi sert le projet
 Orbe SkyIA est une version experimentale et immersive de SkyIA. L'utilisateur interagit avec une presence visuelle en forme d'orbe, choisit des modeles, lance des modes chat ou jeu, utilise la voix et peut sauvegarder ses sessions.
@@ -12,6 +12,19 @@ L'application demarre un noyau SkyIA, prepare le backend, charge les modeles dis
 
 ## Comment le projet a ete construit
 Le projet a ete concu comme laboratoire d'experience IA: meme logique de jugement et de modeles que SkyIA, mais avec une interface plus expressive. La partie visuelle, la voix, les credits et les sauvegardes servent a tester ce qui peut rendre l'assistant plus present et engageant.
+
+## Installation et utilisation
+### Installation
+Installation locale standard pour la version partageable du projet:
+
+```powershell
+npm install
+npm run build
+npm run dev
+```
+
+### Utilisation
+Lancer le serveur de developpement, ouvrir l'adresse locale indiquee par l'outil, puis utiliser l'interface principale du projet.
 
 ## Fonctions disponibles dans l'application
 - Discuter avec SkyIA en mode immersif

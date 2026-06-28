@@ -2,7 +2,7 @@
 
 ## Liens vers l'application
 - Lien public: non detecte
-- GitHub: https://github.com/RYJITS/generateur-image-c2r
+- GitHub: [https://github.com/RYJITS/generateur-image-c2r](https://github.com/RYJITS/generateur-image-c2r)
 
 ## A quoi sert le projet
 Generateur image C2R est un studio local pour piloter la generation d'images. Il permet de consulter le corpus Image valide, lancer des generations, suivre les jobs, recuperer les images produites et indiquer celles qui doivent etre gardees ou rejetees.
@@ -12,6 +12,19 @@ Le serveur Express expose des routes de sante, configuration, galerie, generatio
 
 ## Comment le projet a ete construit
 L'outil a ete concu comme une passerelle propre entre l'ancienne chaine C2R et une interface web plus confortable. Les donnees lourdes et le corpus existant ne sont pas dupliques dans le projet; ils sont references par configuration pour garder le depot plus propre.
+
+## Installation et utilisation
+### Installation
+Installation locale standard pour la version partageable du projet:
+
+```powershell
+npm install
+npm run build
+npm run dev
+```
+
+### Utilisation
+Lancer le serveur de developpement, ouvrir l'adresse locale indiquee par l'outil, puis utiliser l'interface principale du projet.
 
 ## Fonctions disponibles dans l'application
 - Consulter la galerie Image valide

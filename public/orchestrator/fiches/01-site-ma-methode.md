@@ -1,8 +1,8 @@
 # Site Ma Methode
 
 ## Liens vers l'application
-- Lien public: https://cv.c2rdesign.com/
-- GitHub: non detecte
+- Lien public: [https://cv.c2rdesign.com/](https://cv.c2rdesign.com/)
+- GitHub: [https://github.com/RYJITS/site_ma_methode](https://github.com/RYJITS/site_ma_methode)
 
 ## A quoi sert le projet
 Site Ma Methode est la vitrine centrale qui relie les projets du Cerveau IA. La page raconte la methode, propose une experience scroll/video, puis ouvre une carte interactive ou chaque application possede sa vignette, son statut, ses liens et sa fiche.
@@ -12,6 +12,18 @@ Le site importe un module project-registry.js genere par l'orchestrateur. A l'ou
 
 ## Comment le projet a ete construit
 Il a ete concu comme un hub vivant plutot qu'une liste statique. Le design existant garde la narration immersive, mais la couche projet est maintenant alimentee par les donnees de l'orchestrateur pour eviter de recoder les cartes a la main et pour garder les projets synchronises.
+
+## Installation et utilisation
+### Installation
+Installation locale standard pour la version partageable du projet:
+
+```powershell
+npm install
+npm run dev
+```
+
+### Utilisation
+Lancer le serveur de developpement, ouvrir l'adresse locale indiquee par l'outil, puis utiliser l'interface principale du projet.
 
 ## Fonctions disponibles dans l'application
 - Presenter la methode de travail
@@ -49,10 +61,5 @@ Il a ete concu comme un hub vivant plutot qu'une liste statique. Le design exist
 
 ## Mises a jour
 - Fiche actualisee depuis le registre orchestrateur et le catalogue projet.
-- Changements locaux detectes: relire la fiche apres validation des modifications.
-- Derniere mise a jour registre connue: 2026-06-21T21:46:01.500Z.
-
-## Derniere mise a jour
-2026-06-21T21:46:01.503Z
 
 > Fichier genere par l'orchestrateur pour le hub Site Ma Methode.

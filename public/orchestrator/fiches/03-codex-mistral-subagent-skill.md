@@ -2,7 +2,7 @@
 
 ## Liens vers l'application
 - Lien public: non detecte
-- GitHub: https://github.com/RYJITS/codex-mistral-subagent-skill
+- GitHub: [https://github.com/RYJITS/codex-mistral-subagent-skill](https://github.com/RYJITS/codex-mistral-subagent-skill)
 
 ## A quoi sert le projet
 Ce projet est un skill Codex qui permet d'utiliser Mistral comme sous-agent encadre. Il sert a confier des taches bornees comme resumer un dossier, classer des informations, extraire des points importants, relire un texte ou proposer un brouillon.
@@ -12,6 +12,17 @@ Le skill decrit les cas d'usage autorises, les limites de delegation, les format
 
 ## Comment le projet a ete construit
 Il a ete concu pour ajouter une aide IA sans perdre le controle principal. Mistral peut accelerer l'analyse ou la redaction, mais il ne publie pas, ne supprime pas, ne pousse pas de code et ne remplace pas les validations de Codex.
+
+## Installation et utilisation
+### Installation
+Installation locale standard pour la version partageable du projet:
+
+```powershell
+npm install
+```
+
+### Utilisation
+Utiliser le projet selon les instructions du README public ou de la documentation associee.
 
 ## Fonctions disponibles dans l'application
 - Deleguer un resume a Mistral
@@ -44,10 +55,5 @@ Il a ete concu pour ajouter une aide IA sans perdre le controle principal. Mistr
 
 ## Mises a jour
 - Fiche actualisee depuis le registre orchestrateur et le catalogue projet.
-- Changements locaux detectes: relire la fiche apres validation des modifications.
-- Derniere mise a jour registre connue: 2026-06-21T21:46:01.563Z.
-
-## Derniere mise a jour
-2026-06-21T21:46:01.567Z
 
 > Fichier genere par l'orchestrateur pour le hub Site Ma Methode.

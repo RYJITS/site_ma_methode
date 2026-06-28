@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-27T22:12:51.184Z",
+  "generatedAt": "2026-06-28T01:12:09.599Z",
   "source": "00_ORCHESTRATEUR",
   "projects": [
     {
@@ -176,8 +176,8 @@
     {
       "id": "01-nas",
       "category": "tools",
-      "name": "NAS",
-      "comment": "Documentation d'infrastructure pour le serveur personnel: Docker, n8n, PostgreSQL, Caddy, Tailscale, Nextcloud et sauvegardes.",
+      "name": "Documentation d'infrastructure serveur personnel - NAS",
+      "comment": "Manuel opérationnel pour l'administration, la maintenance et la récupération d'un serveur personnel sécurisé hébergeant n8n, Nextcloud, PostgreSQL et services associés via Docker Compose.",
       "image": "public/orchestrator/thumbnails-ai/01-nas.webp",
       "linkPolicy": {
         "exposure": "blocked-by-security",
@@ -196,60 +196,64 @@
         "publication": "PRIVATE_INTERNAL"
       },
       "details": {
-        "application": "NAS est une documentation d'exploitation pour l'infrastructure personnelle. Elle explique comment sont organises le serveur Debian, Docker Compose, n8n, PostgreSQL, Caddy, Tailscale, Nextcloud, les volumes et les sauvegardes.",
-        "fonctionnement": "Le projet ne lance pas une application publique: il sert de manuel operationnel. Les documents indiquent les chemins serveur, les commandes docker compose, les validations Caddy, les logs, les dossiers de donnees et les gestes de recuperation. Il permet donc de retrouver rapidement comment redemarrer les services, verifier l'etat du serveur ou comprendre la structure des sauvegardes.",
-        "conception": "Il a ete concu comme un espace prive et pratique, indexe par l'orchestrateur mais non publie. La structure privilegie les procedures lisibles et les reperes de maintenance, car le contenu touche a l'infrastructure et peut contenir des informations sensibles.",
+        "application": "Ce projet est une documentation technique structurée sous forme de fichiers Markdown et JSON, conçue pour centraliser les procédures d'administration, de maintenance et de récupération d'un serveur personnel sécurisé. Il couvre l'installation, la configuration, la gestion des services (n8n, Nextcloud, PostgreSQL, Caddy, Tailscale), les sauvegardes automatiques et manuelles, ainsi que les procédures de récupération après incident. L'objectif est de fournir un manuel opérationnel clair et reproductible pour les administrateurs système ou les utilisateurs techniques, tout en garantissant la sécurité et la confidentialité des données.",
+        "fonctionnement": "Le projet fonctionne comme une documentation technique organisée en fichiers Markdown (README.md, documentation_n8n_server.md, etc.) et JSON (rapports, audits). Les services sont gérés via Docker Compose avec des fichiers YAML détaillés pour chaque composant (n8n, PostgreSQL, Caddy, Tailscale). Les sauvegardes sont automatisées via des scripts shell planifiés via cron, incluant des dumps SQL pour les bases de données et des compressions tar.gz des données. Les procédures incluent des commandes pour démarrer, arrêter, vérifier l'état des services, consulter les logs, et effectuer des sauvegardes ou restaurations. La documentation est indexée par l'orchestrateur pour une synchronisation centralisée et une traçabilité des mises à jour.",
+        "conception": "Le projet a été conçu comme un espace privé et pratique, indexé par l'orchestrateur mais non publié, afin de répondre à un besoin de centralisation des procédures techniques pour un serveur personnel. La structure privilégie la lisibilité, l'efficacité et la sécurité, avec une séparation claire entre documentation technique et exécution des commandes. Les choix de conception incluent : une documentation modulaire (README, rapports, audits) pour faciliter la maintenance ; des procédures claires et reproductibles pour les tâches critiques (sauvegarde, restauration, récupération) ; une intégration avec l'orchestrateur pour la synchronisation et la traçabilité ; une approche conservative pour éviter toute exposition de données sensibles ou de secrets. La stack technique repose sur Docker Compose pour l'orchestration, des scripts shell pour les sauvegardes, et des outils comme Caddy pour le reverse proxy et HTTPS, Tailscale pour le réseau privé, et UFW pour le pare-feu.",
         "capabilities": [
-          "Retrouver les procedures serveur",
-          "Comprendre l'organisation n8n et Nextcloud",
-          "Verifier les commandes de maintenance",
-          "Suivre les sauvegardes",
-          "Documenter les chemins critiques",
-          "Preparer la recuperation apres incident"
+          "Gestion centralisée des services via Docker Compose",
+          "Automatisation des sauvegardes (dumps SQL, compression tar.gz)",
+          "Configuration sécurisée (HTTPS via Caddy, pare-feu UFW)",
+          "Réseau privé via Tailscale",
+          "Procédures de récupération après incident",
+          "Documentation modulaire et traçable",
+          "Vérification de l'état des services (logs, commandes Docker)",
+          "Maintenance et optimisation des services"
         ],
         "tools": [
-          "Serveur Debian",
           "Docker Compose",
-          "n8n",
-          "PostgreSQL",
-          "Nextcloud",
-          "Caddy reverse proxy",
-          "Tailscale",
-          "Script de backup",
-          "Cron serveur",
-          "Logs de sauvegarde"
+          "Caddy (reverse proxy + HTTPS)",
+          "Tailscale (réseau privé virtuel)",
+          "PostgreSQL (base de données)",
+          "n8n (automatisation de workflows)",
+          "Nextcloud (stockage et collaboration)",
+          "UFW (pare-feu)",
+          "Bash (scripts de sauvegarde)",
+          "Cron (planification des sauvegardes)",
+          "VS Code / WinSCP (accès distant)"
         ],
         "techniques": [
           "Debian 12",
+          "Docker",
           "Docker Compose",
-          "n8n",
-          "PostgreSQL",
-          "Caddy reverse proxy",
-          "Tailscale",
-          "Nextcloud",
-          "Scripts shell et documentation Markdown"
+          "Markdown",
+          "JSON",
+          "Bash",
+          "Let's Encrypt (certificats HTTPS)",
+          "Shell scripting"
         ],
         "automations": [
-          "Sauvegarde automatique par script shell",
-          "Dump SQL Nextcloud/MariaDB",
-          "Compression tar.gz des donnees",
+          "Sauvegardes automatiques planifiées via cron (exécution à 02:00)",
+          "Dumps SQL pour Nextcloud/PostgreSQL",
+          "Compression tar.gz des données",
           "Purge des sauvegardes de plus de 7 jours",
-          "Journalisation dans /var/log/n8n_backup.log",
-          "Execution planifiee par cron a 02:00",
-          "Indexation dans le registre orchestrateur",
-          "Blocage publication par statut prive"
+          "Journalisation des sauvegardes dans `un dossier local dedie`",
+          "Indexation automatique dans l'orchestrateur"
         ]
       },
       "highlights": [
-        "Rendre les procedures serveur et sauvegardes faciles a retrouver, verifier et maintenir.",
+        "Centraliser et structurer les procédures d'installation, de configuration, de maintenance, de sauvegarde et de récupération pour un serveur personnel sécurisé, afin de faciliter la gestion opérationnelle et la résilience de l'infrastructure.",
         "Statut: PRIVATE_INTERNAL.",
         "Securite: OK_PRIVATE."
       ],
       "functions": [
-        "Documente le serveur Debian et les services Docker.",
-        "Regroupe les procedures n8n, Nextcloud, Caddy et Tailscale.",
-        "Explique la sauvegarde automatique et les actions de maintenance.",
-        "Reste prive par defaut.",
+        "Documentation des procédures d'installation et de configuration",
+        "Centralisation des commandes Docker Compose",
+        "Automatisation des sauvegardes (scripts shell et cron)",
+        "Vérification de l'état des services (n8n, PostgreSQL, Caddy, Tailscale)",
+        "Procédures de récupération après incident",
+        "Maintenance et optimisation des services",
+        "Gestion des certificats HTTPS via Caddy",
+        "Configuration réseau sécurisée (Tailscale, UFW)",
         "Fiche projet synchronisee depuis l'orchestrateur."
       ],
       "screenshots": [],
@@ -433,7 +437,7 @@
       "mediaPolicy": {
         "exposure": "none",
         "publicationAllowed": true,
-        "screenshotStatus": "NO_SCREENSHOTS"
+        "screenshotStatus": "SKIPPED_NO_SERVER"
       }
     },
     {
@@ -712,7 +716,7 @@
       "mediaPolicy": {
         "exposure": "none",
         "publicationAllowed": true,
-        "screenshotStatus": "HAS_SCREENSHOTS",
+        "screenshotStatus": "SKIPPED_NO_SERVER",
         "publicScreenshotReview": "SAFE_SYNTHETIC_UI"
       }
     },
@@ -739,9 +743,9 @@
         "Node.js"
       ],
       "status": {
-        "global": "PUBLIC_READY",
+        "global": "NEEDS_REPAIR",
         "security": "OK_PUBLIC",
-        "functionality": "FONCTIONNEL",
+        "functionality": "NON_FONCTIONNEL_REPARABLE",
         "publication": "PUBLIC_CANDIDATE"
       },
       "details": {
@@ -793,7 +797,7 @@
       },
       "highlights": [
         "Explorer une experience SkyIA plus visuelle, vivante et memorisable.",
-        "Statut: PUBLIC_READY.",
+        "Statut: NEEDS_REPAIR.",
         "Securite: OK_PUBLIC.",
         "Lien Hostinger connu: https://orbe.skyia.net/."
       ],

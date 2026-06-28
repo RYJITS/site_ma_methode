@@ -13,6 +13,13 @@ La racine reste a son emplacement habituel. L'orchestrateur scanne le dossier de
 ## Comment le projet a ete construit
 Le projet a ete concu comme un pont documentaire: representer le systeme global dans le registre sans deplacer les fichiers, sans recopier les secrets, et sans rendre publique la structure interne detaillee. Il reste donc un projet prive/interne.
 
+## Installation et utilisation
+### Installation
+Le projet ne declare pas d'installation applicative standard. Consulter le README public ou la fiche technique du depot si une version partageable existe.
+
+### Utilisation
+Utiliser le projet selon les instructions du README public ou de la documentation associee.
+
 ## Fonctions disponibles dans l'application
 - Representer la racine Cerveau IA dans le registre
 - Documenter les dossiers transverses

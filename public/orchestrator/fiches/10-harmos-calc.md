@@ -1,8 +1,8 @@
 # Harmos Calc
 
 ## Liens vers l'application
-- Lien public: https://mamoyenne.c2rdesign.com/
-- GitHub: https://github.com/RYJITS/harmos-calc
+- Lien public: [https://mamoyenne.c2rdesign.com/](https://mamoyenne.c2rdesign.com/)
+- GitHub: [https://github.com/RYJITS/harmos-calc](https://github.com/RYJITS/harmos-calc)
 
 ## A quoi sert le projet
 HarmoS Calc est un outil familial de suivi scolaire. Il permet de saisir les notes par matiere, choisir les niveaux A/B/C, calculer les moyennes et comprendre l'orientation possible dans le systeme suisse.
@@ -12,6 +12,19 @@ L'utilisateur ajoute des notes et composants par matiere. L'application calcule 
 
 ## Comment le projet a ete construit
 Le projet a ete concu comme un outil de decision simple pour les parents et l'eleve. Il combine calcul scolaire, visualisation immediate et mecanique de motivation, avec un espace parent protege pour gerer les regles sensibles.
+
+## Installation et utilisation
+### Installation
+Installation locale standard pour la version partageable du projet:
+
+```powershell
+npm install
+npm run build
+npm run dev
+```
+
+### Utilisation
+Lancer le serveur de developpement, ouvrir l'adresse locale indiquee par l'outil, puis utiliser l'interface principale du projet.
 
 ## Fonctions disponibles dans l'application
 - Saisir les notes par matiere
@@ -45,15 +58,11 @@ Le projet a ete concu comme un outil de decision simple pour les parents et l'el
 - Persistance locale des parametres et resultats
 
 ## Captures d'ecran
-![Capture 1 - harmos-calc](../captures/10-harmos-calc/10-harmos-calc-2026-06-25_00-15-15-desktop.png)
+![Capture 1 - harmos-calc](../captures/10-harmos-calc/10-harmos-calc-2026-06-25_01-33-15-desktop.png)
 
-![Capture 2 - harmos-calc](../captures/10-harmos-calc/10-harmos-calc-2026-06-25_00-15-15-mobile.png)
+![Capture 2 - harmos-calc](../captures/10-harmos-calc/10-harmos-calc-2026-06-25_01-33-15-mobile.png)
 
 ## Mises a jour
 - Fiche actualisee depuis le registre orchestrateur et le catalogue projet.
-- Derniere mise a jour registre connue: 2026-06-24T23:33:14.020Z.
-
-## Derniere mise a jour
-2026-06-24T23:33:14.024Z
 
 > Fichier genere par l'orchestrateur pour le hub Site Ma Methode.

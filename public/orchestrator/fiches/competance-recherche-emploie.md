@@ -13,6 +13,13 @@ Le flux principal part de l'inbox et des sources d'offres, lance des recherches 
 ## Comment le projet a ete construit
 Le projet a ete concu comme systeme personnel sensible: il melange CV, profil, scoring, sources, candidatures et automatisation IA. La prudence est donc prioritaire: l'orchestrateur l'indexe et le documente, mais bloque la publication automatique et signale les modifications Git existantes.
 
+## Installation et utilisation
+### Installation
+Le projet ne declare pas d'installation applicative standard. Consulter le README public ou la fiche technique du depot si une version partageable existe.
+
+### Utilisation
+Utiliser le projet selon les instructions du README public ou de la documentation associee.
+
 ## Fonctions disponibles dans l'application
 - Centraliser les offres
 - Scanner des sources
@@ -58,10 +65,5 @@ Le projet a ete concu comme systeme personnel sensible: il melange CV, profil, s
 
 ## Mises a jour
 - Fiche actualisee depuis le registre orchestrateur et le catalogue projet.
-- Changements locaux detectes: relire la fiche apres validation des modifications.
-- Derniere mise a jour registre connue: 2026-06-21T21:46:02.391Z.
-
-## Derniere mise a jour
-2026-06-21T21:46:02.393Z
 
 > Fichier genere par l'orchestrateur pour le hub Site Ma Methode.

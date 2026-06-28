@@ -1,8 +1,8 @@
 # Jeu 3D
 
 ## Liens vers l'application
-- Lien public: https://neon-rush.skyia.net/
-- GitHub: https://github.com/RYJITS/jeu3d
+- Lien public: [https://neon-rush.skyia.net/](https://neon-rush.skyia.net/)
+- GitHub: [https://github.com/RYJITS/jeu3d](https://github.com/RYJITS/jeu3d)
 
 ## A quoi sert le projet
 Jeu 3D est un runner navigateur en 3D. Le joueur evite des obstacles, gagne des points, monte de niveau, charge une invincibilite, conserve des scores locaux et peut gagner des codes promo SkyIA.
@@ -12,6 +12,19 @@ La scene React Three Fiber affiche le joueur, l'environnement, les obstacles et 
 
 ## Comment le projet a ete construit
 Le projet a ete concu comme une base de gameplay rapide: un coeur de jeu simple, un rendu WebGL, une progression lisible et une connexion a l'ecosysteme SkyIA via les codes promo.
+
+## Installation et utilisation
+### Installation
+Installation locale standard pour la version partageable du projet:
+
+```powershell
+npm install
+npm run build
+npm run dev
+```
+
+### Utilisation
+Lancer le serveur de developpement, ouvrir l'adresse locale indiquee par l'outil, puis utiliser l'interface principale du projet.
 
 ## Fonctions disponibles dans l'application
 - Jouer un runner 3D
