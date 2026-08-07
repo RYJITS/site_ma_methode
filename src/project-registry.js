@@ -84,7 +84,6 @@ export const orchestratorProjectCards = [
       "Produit les fiches lisibles par projet.",
       "Controle securite, fonctionnement, GitHub, publication publique et synchronisation site.",
       "Alimente le hub Site Ma Methode avec des donnees propres.",
-      "Fiche projet synchronisee depuis l'orchestrateur.",
       "Validation exacte du registre disponible via npm run registry:check.",
       "Controle automatisable detecte via npm run check."
     ],
@@ -171,8 +170,7 @@ export const orchestratorProjectCards = [
       "Documente le serveur Debian et les services Docker.",
       "Regroupe les procedures n8n, Nextcloud, Caddy et Tailscale.",
       "Explique la sauvegarde automatique et les actions de maintenance.",
-      "Reste prive par defaut.",
-      "Fiche projet synchronisee depuis l'orchestrateur."
+      "Reste prive par defaut."
     ],
     "screenshots": [],
     "mediaPolicy": {
@@ -263,7 +261,6 @@ export const orchestratorProjectCards = [
       "Ouvre une fiche simple et lisible pour chaque application.",
       "Montre les liens publics disponibles quand ils sont autorises.",
       "Garde les informations sensibles hors de la vitrine.",
-      "Fiche projet synchronisee depuis l'orchestrateur.",
       "Controle automatisable detecte via npm run check.",
       "Lancement local disponible via npm run dev."
     ],
@@ -346,7 +343,6 @@ export const orchestratorProjectCards = [
       "Encadrement des tâches non destructives (résumé, classification, extraction, brouillon)",
       "Validation des modèles et des commandes avant toute action",
       "Génération de références techniques ou documentaires contrôlées",
-      "Fiche projet synchronisee depuis l'orchestrateur.",
       "Validation automatisable detectee via npm run validate."
     ],
     "screenshots": [],
@@ -439,8 +435,7 @@ export const orchestratorProjectCards = [
       "Génération déterministe de 14 905 lignes fictives sur 18 feuilles",
       "Recalcul dynamique des indicateurs (taux de couverture, buffers, capacités, retards)",
       "Affichage de heatmaps de charge et graphiques KPI",
-      "Design responsive et compatible Windows 11 / Fluent",
-      "Fiche projet synchronisee depuis l'orchestrateur."
+      "Design responsive et compatible Windows 11 / Fluent"
     ],
     "screenshots": [
       "public/orchestrator/captures/05-bord-planif/05-bord-planif-2026-06-20_1858-cockpit.png",
@@ -537,7 +532,6 @@ export const orchestratorProjectCards = [
       "Rafraîchir le manifeste des images validées",
       "Configurer les paramètres de génération (version, dry-run, etc.)",
       "Visualiser les logs et métriques des jobs",
-      "Fiche projet synchronisee depuis l'orchestrateur.",
       "Controle automatisable detecte via npm run check.",
       "Controle compatibilite detecte via npm run compat:check.",
       "Lancement local disponible via npm run dev.",
@@ -635,8 +629,7 @@ export const orchestratorProjectCards = [
       "Modification des référentiels et suivi galva",
       "Persistance des données via localStorage",
       "Design responsive adapté aux écrans mobiles",
-      "Fenêtre SAP simulée pour tracer les actions",
-      "Fiche projet synchronisee depuis l'orchestrateur."
+      "Fenêtre SAP simulée pour tracer les actions"
     ],
     "screenshots": [],
     "mediaPolicy": {
@@ -740,7 +733,6 @@ export const orchestratorProjectCards = [
       "Tableau de bord de statistiques utilisateur",
       "Interface de configuration et de personnalisation",
       "Effets visuels dynamiques (CRT, arrière-plan défilant)",
-      "Fiche projet synchronisee depuis l'orchestrateur.",
       "Controle automatisable detecte via npm run check.",
       "Lancement local disponible via npm run dev.",
       "Build automatisable detecte.",
@@ -851,7 +843,6 @@ export const orchestratorProjectCards = [
       "Streaming des réponses IA en temps réel",
       "Génération de rapports PDF détaillés",
       "Suivi des performances et classements",
-      "Fiche projet synchronisee depuis l'orchestrateur.",
       "Lancement local disponible via npm run dev.",
       "Build automatisable detecte.",
       "Tests automatises detectes."
@@ -957,7 +948,6 @@ export const orchestratorProjectCards = [
       "Affichage des notes Google Places avec fallback",
       "Navigation active au scroll avec détection de section",
       "Pré-chargement optimisé des ressources",
-      "Fiche projet synchronisee depuis l'orchestrateur.",
       "Lancement local disponible via npm run dev.",
       "Build automatisable detecte."
     ],
@@ -1062,7 +1052,6 @@ export const orchestratorProjectCards = [
       "Classification automatique de l'orientation HarmoS",
       "Génération de conseils personnalisés basés sur les résultats",
       "Système de bonus/malus configurable",
-      "Fiche projet synchronisee depuis l'orchestrateur.",
       "Lancement local disponible via npm run dev.",
       "Build automatisable detecte."
     ],
@@ -1165,7 +1154,6 @@ export const orchestratorProjectCards = [
       "Réinitialisation instantanée de la partie",
       "Contrôle de la caméra pour explorer la scène 3D",
       "Interface responsive adaptée aux écrans desktop et mobile",
-      "Fiche projet synchronisee depuis l'orchestrateur.",
       "Lancement local disponible via npm run dev.",
       "Build automatisable detecte."
     ],
@@ -1264,7 +1252,6 @@ export const orchestratorProjectCards = [
       "Gestion des codes promo et des scores",
       "Rendu optimisé avec post-traitement graphique",
       "Mode plein écran et adaptation responsive",
-      "Fiche projet synchronisee depuis l'orchestrateur.",
       "Lancement local disponible via npm run dev.",
       "Build automatisable detecte."
     ],
@@ -1363,7 +1350,6 @@ export const orchestratorProjectCards = [
       "Conservation automatique des vêtements, du fond et de l'éclairage",
       "Gestion des erreurs et retries automatiques en cas de saturation du service",
       "Validation stricte des âges pour éviter les suggestions inappropriées",
-      "Fiche projet synchronisee depuis l'orchestrateur.",
       "Lancement local disponible via npm run dev.",
       "Build automatisable detecte."
     ],
@@ -1426,14 +1412,7 @@ export const orchestratorProjectCards = [
         "Stockage local JSON",
         "Fonctions avancees repoussees apres validation du MVP"
       ],
-      "automations": [
-        "Prevoir une saisie rapide d'idee avec titre, categorie, priorite et statut.",
-        "Prevoir la transformation d'une idee en fiche projet structuree.",
-        "Prevoir l'export des fiches au format Markdown.",
-        "Prevoir un stockage local JSON et des statuts de progression.",
-        "Prevoir une description courte et un prompt de vignette pour chaque projet.",
-        "Prevoir un tableau de bord simple pour retrouver les projets et leurs informations manquantes."
-      ]
+      "automations": []
     },
     "highlights": [
       "Preparer un MVP capable de clarifier une idee, produire une fiche reutilisable et faciliter sa publication dans un portfolio.",
@@ -1446,8 +1425,7 @@ export const orchestratorProjectCards = [
       "Prevoir l'export des fiches au format Markdown.",
       "Prevoir un stockage local JSON et des statuts de progression.",
       "Prevoir une description courte et un prompt de vignette pour chaque projet.",
-      "Prevoir un tableau de bord simple pour retrouver les projets et leurs informations manquantes.",
-      "Fiche projet synchronisee depuis l'orchestrateur."
+      "Prevoir un tableau de bord simple pour retrouver les projets et leurs informations manquantes."
     ],
     "screenshots": [],
     "mediaPolicy": {
@@ -1529,8 +1507,7 @@ export const orchestratorProjectCards = [
       "Centralise les competences et outils reutilisables entre plusieurs projets.",
       "Isole les configurations API locales et les donnees sensibles.",
       "Structure les projets dans des dossiers independants avec des regles communes.",
-      "Produit une vue publique assainie sans publier le cerveau central complet.",
-      "Fiche projet synchronisee depuis l'orchestrateur."
+      "Produit une vue publique assainie sans publier le cerveau central complet."
     ],
     "screenshots": [],
     "mediaPolicy": {
@@ -1611,8 +1588,7 @@ export const orchestratorProjectCards = [
       "Génération de dossiers de candidature structurés",
       "Suivi des candidatures envoyées et relances automatiques",
       "Archivage des offres non retenues ou obsolètes",
-      "Versioning de la structure du projet et des configurations",
-      "Fiche projet synchronisee depuis l'orchestrateur."
+      "Versioning de la structure du projet et des configurations"
     ],
     "screenshots": [],
     "mediaPolicy": {
