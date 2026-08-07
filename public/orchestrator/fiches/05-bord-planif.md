@@ -54,8 +54,4 @@ Aucune installation applicative standard n'est requise. L'application est conçu
 ![Capture 2 - Bord PLANIF](../captures/05-bord-planif/05-bord-planif-2026-06-20_1858-planning.png)
 
 ## Mises a jour
-- Documentation projet synchronisée avec le registre orchestrateur
-- Statut projet : PUBLIC_READY, sécurité : OK_PUBLIC
-- Validation des audits de nettoyage, optimisation et sécurité
-- Préparation GitHub publique validée pour publication
-- Synchronisation de la documentation projet avec le registre orchestrateur
+- Premiere fiche projet documentee.

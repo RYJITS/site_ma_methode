@@ -55,7 +55,6 @@ Après installation, l'application est accessible via un navigateur web à l'adr
 ![Capture 2 - Generateur image C2R](../captures/05-generateur-image-c2r/05-generateur-image-c2r-2026-06-21_23-36-58-mobile.png)
 
 ## Mises a jour
-- Statut projet : PUBLIC_READY avec sécurité OK_PUBLIC
 - Compatibilité vérifiée avec le moteur C2R historique et ComfyUI
 - Mode dry-run intégré pour tester les générations sans impact
 - Rafraîchissement automatique du manifeste des images validées

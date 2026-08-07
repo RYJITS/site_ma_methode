@@ -1,55 +1,45 @@
-# PulseDeck - Hub de gestion des méthodes et processus Cerveau IA
+# C2R PulseDeck
 
 ## Liens vers l'application
 - Lien public: non detecte
 - GitHub: [https://github.com/RYJITS/pulsedeck](https://github.com/RYJITS/pulsedeck)
 
 ## A quoi sert le projet
-PulseDeck est un hub dédié à la gestion centralisée des méthodes et processus internes de Cerveau IA. Il permet aux équipes de consulter, documenter et maintenir les méthodes utilisées dans les projets, en assurant une cohérence et une traçabilité. Le projet vise à centraliser les bonnes pratiques, les procédures et les guides méthodologiques pour faciliter leur adoption et leur amélioration continue. Les méthodes sont organisées par thèmes (développement, qualité, sécurité, etc.) et peuvent être consultées via une interface web ou des outils intégrés.
+C2R PulseDeck est actuellement un cahier des charges, pas encore une application executable. Le concept decrit un futur outil local qui devra recevoir une idee brute, la clarifier et produire une fiche projet prete a relire ou a publier.
 
 ## Fonctionnement de l'application ou du projet
-PulseDeck fonctionne comme un dépôt structuré de documents méthodologiques, accessible via une interface web ou des outils intégrés. Les méthodes sont organisées par catégories et peuvent être consultées, recherchées ou mises à jour par les contributeurs autorisés. Le système permet de gérer les versions des méthodes, d'assurer leur validation avant publication et de maintenir un historique des modifications. Les utilisateurs peuvent filtrer les méthodes par mots-clés ou catégories, et les contributeurs peuvent proposer des mises à jour via des pull requests ou des commits validés.
+Le MVP prevu devra proposer une saisie d'idee, transformer cette saisie en blocs structures, conserver les projets dans un fichier JSON local et exporter une fiche Markdown. Les fonctions de tableau de bord, de detection des fiches incompletes et d'assistance IA sont decrites comme des etapes a developper; elles ne sont pas encore implementees dans ce dossier.
 
 ## Comment le projet a ete construit
-Le projet a été conçu pour répondre à un besoin de centralisation et de standardisation des méthodes internes. La structure repose sur une arborescence de fichiers organisés par thèmes, avec des métadonnées associées (auteur, date de création, version, statut de validation) pour faciliter la recherche et la gestion des versions. Les choix de conception incluent : une documentation claire et modulaire, une gestion des accès pour les contributeurs, une intégration avec les outils de suivi de Cerveau IA pour assurer la cohérence globale, et une approche collaborative pour favoriser l'amélioration continue des méthodes. La modularité permet d'ajouter ou de modifier des méthodes sans impacter l'ensemble du système.
+Le brief propose une application React et TypeScript construite avec Vite et Tailwind CSS, sans backend ni cloud pour le MVP. Les ecrans envisages sont la capture d'idee, la fiche generee et un tableau de bord. La priorite est de valider un parcours simple avant d'ajouter des automatisations ou des effets visuels avances.
 
 ## Installation et utilisation
 ### Installation
-L'installation locale de PulseDeck repose sur la récupération du dépôt et la configuration d'un environnement de travail adapté. Aucun package manager spécifique n'est requis, car le projet est structuré comme un dépôt de fichiers documentaires. Les prérequis incluent un éditeur de texte ou un IDE pour contribuer aux méthodes, un navigateur web pour consulter l'interface, et Git pour gérer les versions et les contributions. La configuration locale consiste à cloner le dépôt et à configurer les outils de documentation (Markdown, JSON) pour structurer les méthodes.
+Le depot actuel contient la specification du projet. Cloner le depot, entrer dans le dossier puis ouvrir `projet_c2r_pulsedeck.md`. Aucune installation de dependances n'est necessaire tant que le MVP React n'a pas ete implemente.
 
 ### Utilisation
-Après installation, les utilisateurs peuvent consulter les méthodes via l'interface web ou les fichiers locaux. Les contributeurs peuvent mettre à jour les méthodes en suivant les procédures de contribution définies (ex : via des pull requests ou des commits validés). Les méthodes sont structurées pour être facilement compréhensibles et actionnables, avec des exemples concrets et des références aux outils internes. Les utilisateurs peuvent rechercher des méthodes par mots-clés, filtrer par catégorie, ou consulter l'historique des versions. Les contributeurs peuvent proposer des améliorations ou des corrections via les outils de versioning.
+Dans l'etat actuel, utiliser le depot pour lire et affiner le cahier des charges, definir le perimetre du MVP et suivre les prochaines etapes. Une fois le MVP developpe, le parcours prevu sera: saisir une idee, generer la fiche, la corriger, puis l'exporter en Markdown.
 
 ## Fonctions disponibles dans l'application
-- Consultation des méthodes par catégorie, mot-clé ou statut de validation
-- Recherche avancée dans les documents méthodologiques avec filtres multiples
-- Gestion des versions des méthodes avec historique et validation avant publication
-- Contribution collaborative via des outils de versioning (Git, pull requests)
-- Intégration avec les outils de suivi de Cerveau IA pour la traçabilité et la cohérence
-- Documentation structurée et modulaire pour faciliter la maintenance et l'évolution
-- Validation des méthodes avant publication pour garantir leur conformité
-- Gestion des accès pour les contributeurs et les lecteurs
+- Specification du parcours de capture d'idee
+- Definition du format de fiche projet
+- Definition de l'export Markdown
+- Definition des statuts de progression
+- Definition du stockage JSON local
+- Planification d'un tableau de bord MVP
 
 ## Outils, IA et moteurs en arriere-plan
-- Git pour la gestion des versions et la collaboration
-- Un éditeur de texte ou un IDE (ex : VS Code, Sublime Text) pour contribuer aux méthodes
-- Un navigateur web pour consulter l'interface web ou les fichiers locaux
-- Outils de documentation (Markdown pour la rédaction, JSON pour les métadonnées)
-- Outils de versioning pour la contribution collaborative
+- Markdown pour le cahier des charges
+- Git pour versionner la specification
+- React, TypeScript, Vite et Tailwind CSS proposes pour le futur MVP
+- JSON local propose pour les donnees
 
 ## Automatisations integrees
-- Génération automatique de rapports de fonctionnalité pour valider la complétude des méthodes
-- Audit de sécurité intégré pour vérifier la conformité des méthodes avant publication
-- Validation des contributions via des pull requests ou des commits signés
-- Intégration avec les outils de suivi de Cerveau IA pour la traçabilité des méthodes
+- Non renseigne.
 
 ## Captures d'ecran
 - Aucune capture validee pour cette fiche.
 
 ## Mises a jour
-- Ajout d'un audit de sécurité validé en juin 2026, confirmant l'absence d'alertes et la possibilité de publication publique
-- Complétion de la documentation fonctionnelle en juin 2026, bien que des vérifications manuelles restent nécessaires pour certains aspects
-- Validation en cours pour une publication publique après vérification finale des statuts
-- Amélioration de la structure des métadonnées pour faciliter la recherche et la gestion des versions
-- Audit de sécurité validé (statut OK_PUBLIC) en juin 2026, confirmant l'absence d'alertes et la possibilité de publication publique
-- Documentation fonctionnelle complétée en juin 2026, bien que des vérifications manuelles restent nécessaires pour certains aspects
+- Cahier des charges du MVP documente dans projet_c2r_pulsedeck.md
+- Depot GitHub public initialise le 7 aout 2026

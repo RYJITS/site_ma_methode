@@ -60,7 +60,6 @@ Consulter le README, la fiche projet, le guide d'installation general et le chan
 - Aucune capture validee pour cette fiche.
 
 ## Mises a jour
-- Synchronisation de la documentation pour Debian 12, n8n, PostgreSQL, Caddy, Tailscale et Nextcloud
 - Ajout des procédures de sauvegarde automatique et de restauration
 - Clarification des configurations réseau et des redirections de port
 - Mise à jour des commandes utiles et des logs de maintenance

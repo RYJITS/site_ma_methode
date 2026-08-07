@@ -1380,8 +1380,8 @@ export const orchestratorProjectCards = [
   {
     "id": "30-pulsedeck",
     "category": "tools",
-    "name": "PulseDeck - Hub de gestion des méthodes et processus Cerveau IA",
-    "comment": "Un hub centralisé pour organiser, documenter et partager les méthodes et processus internes de Cerveau IA.",
+    "name": "C2R PulseDeck",
+    "comment": "Cahier des charges d'une application locale qui doit transformer des idees brutes en fiches projet structurees et exportables en Markdown.",
     "image": "public/orchestrator/thumbnails/30-pulsedeck.webp",
     "githubUrl": "https://github.com/RYJITS/pulsedeck",
     "linkPolicy": {
@@ -1402,52 +1402,51 @@ export const orchestratorProjectCards = [
       "publication": "PUBLIC_CANDIDATE"
     },
     "details": {
-      "application": "PulseDeck est un hub dédié à la gestion centralisée des méthodes et processus internes de Cerveau IA. Il permet aux équipes de consulter, documenter et maintenir les méthodes utilisées dans les projets, en assurant une cohérence et une traçabilité. Le projet vise à centraliser les bonnes pratiques, les procédures et les guides méthodologiques pour faciliter leur adoption et leur amélioration continue. Les méthodes sont organisées par thèmes (développement, qualité, sécurité, etc.) et peuvent être consultées via une interface web ou des outils intégrés.",
-      "fonctionnement": "PulseDeck fonctionne comme un dépôt structuré de documents méthodologiques, accessible via une interface web ou des outils intégrés. Les méthodes sont organisées par catégories et peuvent être consultées, recherchées ou mises à jour par les contributeurs autorisés. Le système permet de gérer les versions des méthodes, d'assurer leur validation avant publication et de maintenir un historique des modifications. Les utilisateurs peuvent filtrer les méthodes par mots-clés ou catégories, et les contributeurs peuvent proposer des mises à jour via des pull requests ou des commits validés.",
-      "conception": "Le projet a été conçu pour répondre à un besoin de centralisation et de standardisation des méthodes internes. La structure repose sur une arborescence de fichiers organisés par thèmes, avec des métadonnées associées (auteur, date de création, version, statut de validation) pour faciliter la recherche et la gestion des versions. Les choix de conception incluent : une documentation claire et modulaire, une gestion des accès pour les contributeurs, une intégration avec les outils de suivi de Cerveau IA pour assurer la cohérence globale, et une approche collaborative pour favoriser l'amélioration continue des méthodes. La modularité permet d'ajouter ou de modifier des méthodes sans impacter l'ensemble du système.",
+      "application": "C2R PulseDeck est actuellement un cahier des charges, pas encore une application executable. Le concept decrit un futur outil local qui devra recevoir une idee brute, la clarifier et produire une fiche projet prete a relire ou a publier.",
+      "fonctionnement": "Le MVP prevu devra proposer une saisie d'idee, transformer cette saisie en blocs structures, conserver les projets dans un fichier JSON local et exporter une fiche Markdown. Les fonctions de tableau de bord, de detection des fiches incompletes et d'assistance IA sont decrites comme des etapes a developper; elles ne sont pas encore implementees dans ce dossier.",
+      "conception": "Le brief propose une application React et TypeScript construite avec Vite et Tailwind CSS, sans backend ni cloud pour le MVP. Les ecrans envisages sont la capture d'idee, la fiche generee et un tableau de bord. La priorite est de valider un parcours simple avant d'ajouter des automatisations ou des effets visuels avances.",
       "capabilities": [
-        "Consultation des méthodes par catégorie, mot-clé ou statut de validation",
-        "Recherche avancée dans les documents méthodologiques avec filtres multiples",
-        "Gestion des versions des méthodes avec historique et validation avant publication",
-        "Contribution collaborative via des outils de versioning (Git, pull requests)",
-        "Intégration avec les outils de suivi de Cerveau IA pour la traçabilité et la cohérence",
-        "Documentation structurée et modulaire pour faciliter la maintenance et l'évolution",
-        "Validation des méthodes avant publication pour garantir leur conformité",
-        "Gestion des accès pour les contributeurs et les lecteurs"
+        "Specification du parcours de capture d'idee",
+        "Definition du format de fiche projet",
+        "Definition de l'export Markdown",
+        "Definition des statuts de progression",
+        "Definition du stockage JSON local",
+        "Planification d'un tableau de bord MVP"
       ],
       "tools": [
-        "Git pour la gestion des versions et la collaboration",
-        "Un éditeur de texte ou un IDE (ex : VS Code, Sublime Text) pour contribuer aux méthodes",
-        "Un navigateur web pour consulter l'interface web ou les fichiers locaux",
-        "Outils de documentation (Markdown pour la rédaction, JSON pour les métadonnées)",
-        "Outils de versioning pour la contribution collaborative"
+        "Markdown pour le cahier des charges",
+        "Git pour versionner la specification",
+        "React, TypeScript, Vite et Tailwind CSS proposes pour le futur MVP",
+        "JSON local propose pour les donnees"
       ],
       "techniques": [
-        "Markdown pour la rédaction des méthodes et des guides",
-        "JSON pour la structuration des métadonnées (auteur, version, statut, etc.)",
-        "Git pour la gestion des versions et la collaboration",
-        "Arborescence de fichiers organisée par thèmes pour faciliter la navigation",
-        "Métadonnées associées aux méthodes pour la recherche et la traçabilité"
+        "MVP local sans backend",
+        "Separation entre saisie, fiche et tableau de bord",
+        "Export Markdown",
+        "Stockage local JSON",
+        "Fonctions avancees repoussees apres validation du MVP"
       ],
       "automations": [
-        "Génération automatique de rapports de fonctionnalité pour valider la complétude des méthodes",
-        "Audit de sécurité intégré pour vérifier la conformité des méthodes avant publication",
-        "Validation des contributions via des pull requests ou des commits signés",
-        "Intégration avec les outils de suivi de Cerveau IA pour la traçabilité des méthodes"
+        "Prevoir une saisie rapide d'idee avec titre, categorie, priorite et statut.",
+        "Prevoir la transformation d'une idee en fiche projet structuree.",
+        "Prevoir l'export des fiches au format Markdown.",
+        "Prevoir un stockage local JSON et des statuts de progression.",
+        "Prevoir une description courte et un prompt de vignette pour chaque projet.",
+        "Prevoir un tableau de bord simple pour retrouver les projets et leurs informations manquantes."
       ]
     },
     "highlights": [
-      "Centraliser et standardiser les méthodes et processus internes afin d'assurer une traçabilité, une cohérence et une amélioration continue dans leur application par les équipes projets.",
+      "Preparer un MVP capable de clarifier une idee, produire une fiche reutilisable et faciliter sa publication dans un portfolio.",
       "Statut: PUBLIC_CANDIDATE.",
       "Securite: OK_PUBLIC."
     ],
     "functions": [
-      "Consultation des méthodes et processus par catégorie ou mot-clé",
-      "Documentation structurée et modulaire des méthodes",
-      "Gestion des versions et des mises à jour des méthodes",
-      "Recherche avancée dans les documents méthodologiques",
-      "Contribution collaborative via des outils de versioning",
-      "Validation et traçabilité des méthodes avant publication",
+      "Prevoir une saisie rapide d'idee avec titre, categorie, priorite et statut.",
+      "Prevoir la transformation d'une idee en fiche projet structuree.",
+      "Prevoir l'export des fiches au format Markdown.",
+      "Prevoir un stockage local JSON et des statuts de progression.",
+      "Prevoir une description courte et un prompt de vignette pour chaque projet.",
+      "Prevoir un tableau de bord simple pour retrouver les projets et leurs informations manquantes.",
       "Fiche projet synchronisee depuis l'orchestrateur."
     ],
     "screenshots": [],

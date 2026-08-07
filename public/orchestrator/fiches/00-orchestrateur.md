@@ -91,4 +91,3 @@ Les taches 06 et 08 restent protegees: GitHub exige une publication explicite ap
 - Intégration des subagents Mistral et Qwen pour les analyses sécurisées
 - Renforcement des garde-fous avant publication (audit sécurité, vérification Hostinger)
 - Optimisation des scripts de scan et de synchronisation des projets
-- Validation des statuts de publication via des rapports automatisés
