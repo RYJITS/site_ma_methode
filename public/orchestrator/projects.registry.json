@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-07T20:32:32.092Z",
+  "generatedAt": "2026-08-07T21:14:38.140Z",
   "source": "00_ORCHESTRATEUR",
   "projects": [
     {
@@ -186,8 +186,8 @@
     {
       "id": "01-site-ma-methode",
       "category": "design",
-      "name": "Site Ma Méthode - Hub des projets et vitrine interactive",
-      "comment": "Un hub centralisé et immersif présentant les projets sous forme de grille navigable avec des fiches détaillées, synchronisé avec l'orchestrateur Cerveau IA.",
+      "name": "Site Ma Methode",
+      "comment": "Vitrine interactive et hub des projets. Elle presente la methode de travail, affiche la carte des applications et ouvre des fiches detaillees synchronisees par l'orchestrateur.",
       "image": "public/orchestrator/thumbnails-ai/01-site-ma-methode.webp",
       "url": "https://cv.c2rdesign.com/",
       "githubUrl": "https://github.com/RYJITS/site_ma_methode",
@@ -211,61 +211,60 @@
         "publication": "PUBLIC_CANDIDATE"
       },
       "details": {
-        "application": "Site web interactif conçu comme un hub centralisé pour présenter les projets développés. Il permet aux visiteurs de naviguer dans une grille de projets, d'accéder à des fiches détaillées pour chaque projet, et d'interagir avec une scène de contact immersive. Le projet s'appuie sur un registre généré automatiquement par l'orchestrateur Cerveau IA, garantissant une synchronisation en temps réel des données affichées.",
-        "fonctionnement": "Le site charge un registre de projets (project-registry.js) contenant les métadonnées des projets (noms, statuts, liens, familles, etc.). Une grille interactive affiche les projets sous forme de cartes positionnées dans des zones prédéfinies. L'utilisateur peut zoomer, se déplacer et cliquer sur une carte pour ouvrir une fiche détaillée. La scène de contact, basée sur WebGL, permet d'envoyer des messages via une API PHP dédiée. Toutes les interactions sont vérifiées pour éviter l'exposition de données sensibles.",
-        "conception": "Le projet a été conçu comme un hub vivant plutôt qu'une simple liste statique, afin de faciliter la mise à jour et la synchronisation avec les données de l'orchestrateur. La structure repose sur un module JavaScript modulaire (main.js) qui gère la grille, les interactions et l'affichage des fiches. Le design immersif utilise du CSS responsive et des animations contrôlées par le scroll pour une expérience utilisateur fluide. Les choix techniques incluent l'utilisation de Vite pour le développement, Node.js pour le serveur local, et des outils comme Playwright pour les tests automatisés. Les vignettes sont générées par IA et optimisées en WebP pour un rendu performant.",
+        "application": "Site Ma Methode est la vitrine centrale qui relie les projets du Cerveau IA. La page raconte la methode, propose une experience scroll/video, puis ouvre une carte interactive ou chaque application possede sa vignette, son statut, ses liens et sa fiche.",
+        "fonctionnement": "Le site importe un module project-registry.js genere par l'orchestrateur. A l'ouverture de la grille, il place les projets par zones, gere le zoom, le deplacement, les boutons de focus et le panneau detail. Quand une carte est ouverte, le panneau affiche l'image, le resume, les statuts, le lien public, le lien GitHub, la fiche, puis les sections Application, Fonctionnement, Conception, Techniques et Automatisations. Le contact passe par une scene interactive et une API PHP dediee.",
+        "conception": "Il a ete concu comme un hub vivant plutot qu'une liste statique. Le design existant garde la narration immersive, mais la couche projet est maintenant alimentee par les donnees de l'orchestrateur pour eviter de recoder les cartes a la main et pour garder les projets synchronises.",
         "capabilities": [
-          "Affichage dynamique d'une grille de projets synchronisée avec l'orchestrateur",
-          "Navigation immersive avec zoom et déplacement",
-          "Ouverture de fiches détaillées par projet avec sections structurées",
-          "Affichage des vignettes générées par IA",
-          "Vérification automatique de la compatibilité des navigateurs",
-          "Responsive design pour une utilisation sur mobile et desktop",
-          "Module de contact interactif avec vérification navigateur",
-          "Filtres visuels par familles de projets"
+          "Presenter la methode de travail",
+          "Ouvrir une carte interactive des projets",
+          "Filtrer visuellement par familles de projets",
+          "Afficher une fiche detaillee par application",
+          "Donner le lien public et GitHub quand ils sont autorises",
+          "Afficher les vignettes generees",
+          "Envoyer un message via le contact",
+          "Garder les contenus sensibles hors de la vitrine"
         ],
         "tools": [
-          "Vite (serveur de développement et bundler)",
-          "Node.js (runtime pour le serveur local)",
-          "Playwright (vérification automatisée des navigateurs)",
-          "API PHP dédiée pour le module de contact",
-          "WebGL (pour la scène de contact interactive)",
-          "Registre de projets généré par l'orchestrateur (project-registry.js)",
-          "JavaScript modulaire (ES Modules)",
-          "CSS responsive immersif avec animations contrôlées par le scroll",
-          "Format d'images WebP pour l'optimisation"
+          "Registre fourni par l'orchestrateur",
+          "Fiches Markdown publiques",
+          "Vignettes IA WebP",
+          "Panneau detail dynamique",
+          "Scene contact interactive",
+          "API PHP de contact",
+          "Verification navigateur automatisee",
+          "Regles de non-exposition des secrets"
         ],
         "techniques": [
-          "JavaScript modulaire (ES Modules)",
-          "CSS avec animations contrôlées par le scroll",
-          "WebGL pour les scènes interactives",
-          "Format WebP pour les images",
-          "Vérification des secrets et données sensibles via scripts dédiés",
-          "Génération automatique du registre de projets"
+          "Vite",
+          "JavaScript modulaire",
+          "CSS responsive immersif",
+          "Video controlee par le scroll",
+          "WebGL pour la scene contact",
+          "Registre JavaScript genere",
+          "Fiches Markdown publiques",
+          "Images WebP optimisees"
         ],
         "automations": [
-          "Génération automatique du registre de projets (project-registry.js) à partir des données de l'orchestrateur",
-          "Copie des fiches Markdown publiques vers le dossier de publication",
-          "Synchronisation des statuts, liens et vignettes avec les données de l'orchestrateur",
-          "Vérification du rendu via Playwright pour garantir la compatibilité",
-          "Contrôle des données sensibles pour éviter leur exposition"
+          "Generation automatique de project-registry.js",
+          "Copie des fiches publiques vers public/orchestrator/fiches",
+          "Synchronisation des statuts, liens et vignettes",
+          "Verification du rendu par script Chromium",
+          "Controle que les secrets ne sont pas exposes",
+          "Ouverture QA via parametre qaScroll",
+          "Import des vignettes IA depuis le dossier thumbnails-ai"
         ]
       },
       "highlights": [
-        "Centraliser et diffuser de manière claire et immersive les projets développés, en offrant une navigation intuitive et des informations structurées pour les visiteurs, partenaires et clients. Le projet transforme des données brutes en une présentation visuelle et cohérente, tout en garantissant la confidentialité des informations sensibles.",
+        "Transformer les projets locaux en presentation claire, navigable et diffusable.",
         "Statut: PUBLIC_READY.",
         "Securite: OK_PUBLIC.",
         "Lien Hostinger connu: https://cv.c2rdesign.com/."
       ],
       "functions": [
-        "Affichage d'une grille interactive des projets",
-        "Navigation par zoom et déplacement dans la grille",
-        "Ouverture de fiches détaillées pour chaque projet",
-        "Affichage des statuts, liens publics et GitHub (quand autorisés)",
-        "Présentation de la méthode de travail via une narration immersive",
-        "Filtres visuels par familles de projets",
-        "Intégration de vignettes générées par IA",
-        "Module de contact interactif avec vérification navigateur",
+        "Affiche une grille navigable de tous les projets.",
+        "Ouvre une fiche simple et lisible pour chaque application.",
+        "Montre les liens publics disponibles quand ils sont autorises.",
+        "Garde les informations sensibles hors de la vitrine.",
         "Fiche projet synchronisee depuis l'orchestrateur.",
         "Controle automatisable detecte via npm run check.",
         "Lancement local disponible via npm run dev."
@@ -299,9 +298,9 @@
         "Node.js"
       ],
       "status": {
-        "global": "PUBLIC_READY",
+        "global": "NEEDS_REPAIR",
         "security": "OK_PUBLIC",
-        "functionality": "FONCTIONNEL",
+        "functionality": "NON_FONCTIONNEL_REPARABLE",
         "publication": "PUBLIC_CANDIDATE"
       },
       "details": {
@@ -340,7 +339,7 @@
       },
       "highlights": [
         "Permettre à l'orchestrateur Cerveau IA de déléguer des tâches analytiques ou rédactionnelles à Mistral tout en conservant un contrôle strict sur les actions finales, évitant ainsi les risques de modifications non autorisées ou de décisions critiques.",
-        "Statut: PUBLIC_READY.",
+        "Statut: NEEDS_REPAIR.",
         "Securite: OK_PUBLIC."
       ],
       "functions": [
@@ -673,9 +672,9 @@
         "Node.js"
       ],
       "status": {
-        "global": "NEEDS_REPAIR",
+        "global": "PUBLIC_READY",
         "security": "OK_PUBLIC",
-        "functionality": "NON_FONCTIONNEL_REPARABLE",
+        "functionality": "FONCTIONNEL",
         "publication": "PUBLIC_CANDIDATE"
       },
       "details": {
@@ -728,7 +727,7 @@
       },
       "highlights": [
         "Fournir un laboratoire d'innovation pour concevoir une interface IA plus expressive, immersive et mémorable que les assistants textuels traditionnels, tout en testant des fonctionnalités avancées comme la reconnaissance vocale, la synthèse vocale et la gestion de sessions persistantes.",
-        "Statut: NEEDS_REPAIR.",
+        "Statut: PUBLIC_READY.",
         "Securite: OK_PUBLIC.",
         "Lien Hostinger connu: https://orbe.skyia.net/."
       ],
@@ -1385,7 +1384,8 @@
       "category": "tools",
       "name": "PulseDeck - Hub de gestion des méthodes et processus Cerveau IA",
       "comment": "Un hub centralisé pour organiser, documenter et partager les méthodes et processus internes de Cerveau IA.",
-      "image": "public/generated/images/projects/project-grid-map-20260614.webp",
+      "image": "public/orchestrator/thumbnails/30-pulsedeck.webp",
+      "githubUrl": "https://github.com/RYJITS/pulsedeck",
       "linkPolicy": {
         "exposure": "publication-ready",
         "publicationAllowed": true,
@@ -1456,7 +1456,7 @@
       "mediaPolicy": {
         "exposure": "none",
         "publicationAllowed": true,
-        "screenshotStatus": "NOT_CAPTURED"
+        "screenshotStatus": "SKIPPED_NO_SERVER"
       }
     },
     {
@@ -1548,11 +1548,12 @@
       "name": "Compétence Recherche Emploi",
       "comment": "Pipeline structuré pour automatiser la recherche et la candidature à des offres d'emploi ciblant un profil hybride (industrie, supply chain, IA et automatisation).",
       "image": "public/orchestrator/thumbnails-ai/competance-recherche-emploie.webp",
+      "githubUrl": "https://github.com/RYJITS/competance_recherche_emploie-showcase",
       "linkPolicy": {
-        "exposure": "blocked-by-security",
+        "exposure": "showcase-only",
         "publicationAllowed": false,
-        "githubShowcaseAllowed": false,
-        "securityStatus": "FAIL_SESSIONS"
+        "githubShowcaseAllowed": true,
+        "securityStatus": "OK_PRIVATE"
       },
       "ficheUrl": "public/orchestrator/fiches/competance-recherche-emploie.md",
       "localPath": "D:/00_Cerveau_IA/Projet/Competance_Recherche_emploie",
@@ -1560,8 +1561,8 @@
         "Dossier projet"
       ],
       "status": {
-        "global": "SENSITIVE_BLOCKED",
-        "security": "FAIL_SESSIONS",
+        "global": "PRIVATE_INTERNAL",
+        "security": "OK_PRIVATE",
         "functionality": "NON_TESTABLE_MANQUE_INFO",
         "publication": "PRIVATE_INTERNAL"
       },
@@ -1603,8 +1604,8 @@
       },
       "highlights": [
         "Automatiser et organiser la recherche d'emploi en identifiant des postes alignés sur un profil professionnel hybride combinant expérience industrielle, supply chain, planification, ERP/SAP, KPI, et une transition vers l'IA appliquée, l'automatisation et le développement d'outils métiers. Le projet vise à réduire le temps de traitement manuel tout en garantissant une traçabilité des candidatures.",
-        "Statut: SENSITIVE_BLOCKED.",
-        "Securite: FAIL_SESSIONS."
+        "Statut: PRIVATE_INTERNAL.",
+        "Securite: OK_PRIVATE."
       ],
       "functions": [
         "Collecte automatisée d'offres d'emploi depuis des sources configurables",
@@ -1620,7 +1621,7 @@
       "mediaPolicy": {
         "exposure": "none",
         "publicationAllowed": false,
-        "screenshotStatus": "NO_SCREENSHOTS"
+        "screenshotStatus": "SKIPPED_SECURITY"
       }
     }
   ]

@@ -2,7 +2,7 @@
 
 ## Liens vers l'application
 - Lien public: non detecte
-- GitHub: non detecte
+- GitHub: [https://github.com/RYJITS/competance_recherche_emploie-showcase](https://github.com/RYJITS/competance_recherche_emploie-showcase)
 
 ## A quoi sert le projet
 Ce projet est un pipeline automatisé et structuré pour la recherche d'emploi, conçu pour des profils hybrides combinant expérience industrielle (supply chain, planification, ERP/SAP, KPI) et une transition vers l'IA appliquée, l'automatisation et le développement d'outils métiers. Il permet de centraliser, filtrer, valider et suivre les candidatures de manière systématique, en réduisant les tâches manuelles répétitives.
@@ -28,24 +28,18 @@ Le projet a été conçu comme un pipeline modulaire et versionné pour garantir
 
 ## Installation et utilisation
 ### Installation
-Pour installer le projet localement :
-1. Cloner le dépôt Git : `git clone <url_du_depot>`.
-2. Installer les dépendances locales si nécessaire (ex: services comme SearXNG pour la recherche).
-3. Configurer les fichiers de configuration dans le dossier `config/` selon les besoins (critères de recherche, scoring, sources).
-4. Initialiser les dossiers vides selon la structure définie (ex: `00_inbox/`, `01_sources_offres/`).
+Cette vitrine contient la documentation generale partageable du projet. Pour la consulter localement:
 
-Prérequis : Git, Python (si des scripts Python sont utilisés), et les outils nécessaires pour les services locaux (ex: Docker pour SearXNG).
+```powershell
+git clone https://github.com/RYJITS/competance_recherche_emploie-showcase.git
+cd competance_recherche_emploie-showcase
+Get-Content README.md
+```
+
+Les configurations serveur, adresses reseau et sauvegardes operationnelles restent privees.
 
 ### Utilisation
-Après installation, l'utilisation du projet suit ces étapes :
-1. **Collecte** : Ajouter des offres brutes dans `00_inbox/` ou configurer des sources automatiques.
-2. **Exécution** : Lancer les recherches automatisées (ex: via des scripts ou services configurés) pour peupler `02_runs/`.
-3. **Validation** : Utiliser l'interface Telegram pour valider les offres dans `03_validations_telegram/`.
-4. **Dossiers** : Les offres validées sont automatiquement déplacées dans `04_dossiers_valides/` pour constitution des dossiers de candidature.
-5. **Postulation** : Envoyer les candidatures via les scripts ou outils configurés, et suivre les relances dans `05_postulations/`.
-6. **Archivage** : Archiver les offres non retenues ou obsolètes dans `06_archives/`.
-
-Les commandes utiles incluent : `git status`, `git add`, `git commit`, et `git tag` pour versionner les changements.
+Consulter le README, la fiche projet, le guide d'installation general et le changelog. Le deploiement reel necessite les fichiers prives qui ne font pas partie de cette vitrine.
 
 ## Fonctions disponibles dans l'application
 - Collecte automatisée d'offres depuis des sources configurables

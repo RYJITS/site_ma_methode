@@ -2,7 +2,7 @@
 
 ## Liens vers l'application
 - Lien public: non detecte
-- GitHub: non detecte
+- GitHub: [https://github.com/RYJITS/pulsedeck](https://github.com/RYJITS/pulsedeck)
 
 ## A quoi sert le projet
 PulseDeck est un hub dédié à la gestion centralisée des méthodes et processus internes de Cerveau IA. Il permet aux équipes de consulter, documenter et maintenir les méthodes utilisées dans les projets, en assurant une cohérence et une traçabilité. Le projet vise à centraliser les bonnes pratiques, les procédures et les guides méthodologiques pour faciliter leur adoption et leur amélioration continue. Les méthodes sont organisées par thèmes (développement, qualité, sécurité, etc.) et peuvent être consultées via une interface web ou des outils intégrés.

@@ -77,12 +77,6 @@ Le site importe un module project-registry.js genere par l'orchestrateur. A l'ou
 - Optimisation des vignettes en format WebP pour un chargement plus rapide
 - Mise en place d'une vérification automatisée des navigateurs via Playwright pour garantir la compatibilité
 - Enrichissement de la documentation avec des rapports fonctionnels et des captures d'écran
-- Intégration d'un registre de projets généré automatiquement pour éviter la maintenance manuelle
-- Ajout d'une scène de contact interactive basée sur WebGL
-- Optimisation des vignettes en WebP pour un chargement plus rapide
-- Mise en place d'une vérification automatisée des navigateurs via Playwright
-- Enrichissement du README avec des rapports fonctionnels et des captures d'écran
-- Enrichissement du README avec des rapports fonctionnels et des captures d'écran pour une meilleure documentation
 
 ## Comment le projet a ete reflechi et construit
 

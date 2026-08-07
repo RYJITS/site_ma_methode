@@ -87,6 +87,8 @@ Les taches 06 et 08 restent protegees: GitHub exige une publication explicite ap
 - Aucune capture validee pour cette fiche.
 
 ## Mises a jour
-- Ajout des scripts `auto:08:publish` et `auto:06:api` pour une meilleure intégration des APIs externes dans les workflows.
-- Intégration des contrôles de sécurité renforcés avant publication Hostinger et GitHub.
-- Optimisation des routines de scan et de synchronisation des projets.
+- Ajout des routines daily, weekly et monthly pour automatiser les contrôles récurrents
+- Intégration des subagents Mistral et Qwen pour les analyses sécurisées
+- Renforcement des garde-fous avant publication (audit sécurité, vérification Hostinger)
+- Optimisation des scripts de scan et de synchronisation des projets
+- Validation des statuts de publication via des rapports automatisés
