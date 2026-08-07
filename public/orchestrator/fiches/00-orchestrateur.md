@@ -2,7 +2,7 @@
 
 ## Liens vers l'application
 - Lien public: non detecte
-- GitHub: non detecte
+- GitHub: [https://github.com/RYJITS/orchestrateur-showcase](https://github.com/RYJITS/orchestrateur-showcase)
 
 ## A quoi sert le projet
 L'Orchestrateur global est l'application locale qui pilote tout le dossier Projet. Elle sert a savoir quelles taches existent, qui doit les appliquer, a quelle frequence, quels projets sont concernes, quels garde-fous bloquent les risques, et quelles commandes peuvent etre lancees depuis le dashboard.
@@ -15,14 +15,37 @@ Il a ete concu comme une couche prudente au-dessus de toute la racine projets. C
 
 ## Installation et utilisation
 ### Installation
-Installation locale standard pour la version partageable du projet:
-
-```powershell
-npm install
-```
+L'orchestrateur demande Git, PowerShell et Node.js 20 ou plus recent. Pour piloter plusieurs projets, placer son dossier a cote des autres projets dans une meme racine. Apres le clonage, executer `npm install`, puis `npm run check`. Aucune cle API reelle ne doit etre ajoutee au depot.
 
 ### Utilisation
-Utiliser le projet selon les instructions du README public ou de la documentation associee.
+### Utiliser le dashboard
+
+1. Lancer `npm run dashboard`.
+2. Ouvrir `http://127.0.0.1:4188` dans le navigateur.
+3. Choisir un projet, puis une tache.
+4. Lire le dry-run et les garde-fous avant d'autoriser une action reelle.
+
+### Utiliser la ligne de commande
+
+Lister les projets reconnus:
+
+```powershell
+npm run auto:projects:list
+```
+
+Simuler les huit taches pour un seul projet, sans publication:
+
+```powershell
+npm run auto:8 -- --project "00-orchestrateur" --workflow --test --local-only
+```
+
+Executer le workflow local apres verification du dry-run:
+
+```powershell
+npm run auto:8 -- --project "00-orchestrateur" --workflow --local-only
+```
+
+Les taches 06 et 08 restent protegees: GitHub exige une publication explicite apres audit securite, et Hostinger passe obligatoirement par le MCP Hostinger.
 
 ## Fonctions disponibles dans l'application
 - Ouvrir le dashboard par raccourci Bureau
@@ -64,6 +87,6 @@ Utiliser le projet selon les instructions du README public ou de la documentatio
 - Aucune capture validee pour cette fiche.
 
 ## Mises a jour
-- Fiche actualisee depuis le registre orchestrateur et le catalogue projet.
-
-> Fichier genere par l'orchestrateur pour le hub Site Ma Methode.
+- Ajout des scripts `auto:08:publish` et `auto:06:api` pour une meilleure intégration des APIs externes dans les workflows.
+- Intégration des contrôles de sécurité renforcés avant publication Hostinger et GitHub.
+- Optimisation des routines de scan et de synchronisation des projets.
