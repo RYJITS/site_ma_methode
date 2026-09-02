@@ -153,9 +153,9 @@ Il a ete concu comme un hub vivant plutot qu'une liste statique. Le design exist
 
 ## Captures d'ecran
 
-![Capture desktop](docs/github-captures/01-site-ma-methode-2026-08-07_23-10-20-desktop.png)
+![Capture desktop](docs/github-captures/01-site-ma-methode-2026-09-02_14-55-33-desktop.png)
 
-![Capture mobile](docs/github-captures/01-site-ma-methode-2026-08-07_23-10-20-mobile.png)
+![Capture mobile](docs/github-captures/01-site-ma-methode-2026-09-02_14-55-33-mobile.png)
 
 ## Variables d'environnement
 

@@ -1,26 +1,12 @@
 # Générateur Image C2R
 
-## Liens vers l'application
-- Lien public: non detecte
-- GitHub: [https://github.com/RYJITS/generateur-image-c2r](https://github.com/RYJITS/generateur-image-c2r)
+## Projet
+Interface web locale pour piloter et visualiser la génération d'images via le moteur C2R historique, facilitant le prototypage et la réutilisation des assets graphiques.
 
-## A quoi sert le projet
+## A quoi il sert
 Le Générateur Image C2R est une application web locale qui agit comme une interface moderne pour piloter le moteur historique C2R. Elle permet de générer des images via des prompts, de suivre les jobs de génération en temps réel, et de valider ou rejeter les résultats. Les images validées sont automatiquement ajoutées à un corpus centralisé, et leur manifeste est rafraîchi dynamiquement. L'application évite la duplication des données lourdes en s'appuyant sur des chemins de fichiers existants, et intègre un mode dry-run pour tester les générations sans impact.
 
-## Fonctionnement de l'application ou du projet
-L'application fonctionne en deux parties distinctes : un serveur Express (Node.js) qui expose une API REST et gère les jobs de génération, et un client React/Vite qui fournit l'interface utilisateur. Le serveur lit un manifeste JSON des images validées, exécute les générations via le moteur C2R, et sert les images générées. Le client permet de lancer des générations, de suivre les jobs, et de valider les résultats. Les jobs sont exécutés de manière asynchrone, et les feedbacks utilisateurs sont journalisés en JSONL pour une traçabilité complète.
-
-## Comment le projet a ete construit
-Le projet a été conçu comme une passerelle entre l'ancien moteur C2R et une interface moderne, en évitant la duplication des données lourdes (corpus d'images). Les choix de conception incluent : une architecture modulaire avec séparation claire entre le serveur et le client, une gestion centralisée des jobs via un store in-memory, un mode dry-run pour les tests, et une journalisation des feedbacks pour l'analyse. L'interface est responsive et utilise des composants React pour une expérience utilisateur intuitive. Le serveur est écrit en Node.js avec Express pour une API REST simple et efficace, et le client utilise Vite pour un développement rapide et une optimisation de production. La sécurité est renforcée par des vérifications de chemins pour éviter les accès non autorisés.
-
-## Installation et utilisation
-### Installation
-[object Object]
-
-### Utilisation
-Après installation, l'application est accessible via un navigateur web à l'adresse `http://localhost:<port>`. L'interface propose plusieurs onglets : une galerie des images validées, un formulaire pour lancer une génération, une liste des jobs en cours, et une section pour configurer les paramètres. Pour générer une image, l'utilisateur saisit un prompt, sélectionne une version du moteur C2R, et lance la génération. Les résultats sont affichés dans l'interface, et l'utilisateur peut valider ou rejeter l'image. Les images validées sont automatiquement ajoutées au corpus et le manifeste est rafraîchi.
-
-## Fonctions disponibles dans l'application
+## Fonctions
 - Génération d'images via le moteur C2R historique
 - Suivi en temps réel des jobs de génération
 - Validation ou rejet des résultats avec feedback utilisateur
@@ -28,37 +14,14 @@ Après installation, l'application est accessible via un navigateur web à l'adr
 - Mode dry-run pour tester les générations sans impact
 - Journalisation des feedbacks en JSONL pour analyse
 - Configuration flexible des paramètres de génération
-- Interface responsive adaptée aux écrans desktop et mobile
-- Rafraîchissement automatique du manifeste des images validées
-- Contrôle de santé du projet, du corpus et des outils associés
 
-## Outils, IA et moteurs en arriere-plan
-- Express (serveur API REST)
-- React/Vite (interface utilisateur)
-- Node.js (runtime)
-- ComfyUI (détection via health check)
-- Manifestes JSON (gestion du corpus d'images)
-- Journalisation en JSONL (feedback utilisateur)
+## Avancement
+- Etat du projet: pret cote usage public.
+- Fonctionnement: fonctionnel.
+- Securite: OK pour une presentation publique.
+- Ma Methode: fiche explicative visible.
+- Publication externe: candidat public, validation finale separee.
 
-## Automatisations integrees
-- Rafraîchissement automatique du manifeste des images validées
-- Contrôle de santé du projet, du corpus et des outils associés
-- Création et suivi des jobs de génération
-- Exécution asynchrone des générations
-- Copie automatique des images validées dans le corpus
-- Mise à jour du manifeste après validation d'une image
-- Vérification de compatibilité avec le moteur C2R historique
-
-## Captures d'ecran
-![Capture 1 - Generateur image C2R](../captures/05-generateur-image-c2r/05-generateur-image-c2r-2026-06-21_23-36-58-desktop.png)
-
-![Capture 2 - Generateur image C2R](../captures/05-generateur-image-c2r/05-generateur-image-c2r-2026-06-21_23-36-58-mobile.png)
-
-## Mises a jour
-- Compatibilité vérifiée avec le moteur C2R historique et ComfyUI
-- Mode dry-run intégré pour tester les générations sans impact
-- Rafraîchissement automatique du manifeste des images validées
-- Journalisation des feedbacks utilisateurs en JSONL pour traçabilité
-- Amélioration de l'interface utilisateur avec des composants React plus ergonomiques
-- Optimisation des performances du serveur et du client
-- Ajout de vérifications de santé pour le corpus et les outils associés
+## Liens
+- Application: pas encore disponible.
+- [GitHub](https://github.com/RYJITS/generateur-image-c2r)

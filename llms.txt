@@ -1,0 +1,38 @@
+# Ma Méthode - Yann Scheidegger
+
+Ma Méthode est la page publique de Yann Scheidegger pour C2R Design. Elle présente une manière de travailler centrée sur l'optimisation de systèmes existants, l'automatisation IA, la conception d'outils métier, les interfaces WebGL et la documentation de projets concrets.
+
+## Page principale
+
+- Accueil: https://cv.c2rdesign.com/
+- Grille projets: https://cv.c2rdesign.com/#projets
+- GitHub: https://github.com/RYJITS
+
+## Sujets principaux
+
+- Optimisation digitale
+- Automatisation IA
+- Interfaces WebGL
+- Design d'outils métier
+- Portfolio de projets
+- Méthode de travail C2R Design
+- Références projets: Garden Inn, Harmos Calc, Chess 3D Ultimate, MorphoStyle AI, SkyIA, Orbe SkyIA, Générateur Image C2R
+
+## Résumé
+
+Yann Scheidegger conçoit des expériences et des outils numériques pour rendre les systèmes plus clairs, plus rapides et plus solides. Le site relie une narration interactive, une grille de projets avec vignettes, un formulaire de contact, des références projets visibles et des liens GitHub quand ils sont disponibles.
+
+## Références projets publiques
+
+- Site Ma Méthode: https://cv.c2rdesign.com/ et https://github.com/RYJITS/site_ma_methode
+- Garden Inn: https://garden-inn.c2rdesign.com/ et https://github.com/RYJITS/garden-inn
+- Harmos Calc: https://mamoyenne.c2rdesign.com/ et https://github.com/RYJITS/harmos-calc
+- Chess 3D Ultimate: https://chess.c2rdesign.com/ et https://github.com/RYJITS/chess-3d-ultimate
+- MorphoStyle AI: https://morphostyle.c2rdesign.com/ et https://github.com/RYJITS/morphostyle
+- SkyIA: https://skyia.net/ et https://github.com/RYJITS/skyia
+- Orbe SkyIA: https://orbe.skyia.net/ et https://github.com/RYJITS/orbe_skyia
+- Générateur Image C2R: https://github.com/RYJITS/generateur-image-c2r
+
+## Indexation
+
+La version canonique publique est https://cv.c2rdesign.com/. L'ancienne page https://cv.c2rdesign.com/projets.html n'est plus publiée; les projets sont accessibles depuis l'ancre https://cv.c2rdesign.com/#projets et les références lisibles depuis https://cv.c2rdesign.com/#references-projets.

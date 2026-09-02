@@ -1,8 +1,18 @@
 # Site Ma Methode
 
+## Statut de diffusion
+Projet explique sur Site Ma Methode: la fiche publique peut presenter son utilite, ses fonctions, son avancement et ses liens disponibles.
+
 ## Liens vers l'application
-- Lien public: [https://cv.c2rdesign.com/](https://cv.c2rdesign.com/)
+- Application: [https://cv.c2rdesign.com/](https://cv.c2rdesign.com/)
 - GitHub: [https://github.com/RYJITS/site_ma_methode](https://github.com/RYJITS/site_ma_methode)
+
+## Avancement du projet
+- Etat du projet: pret cote usage public.
+- Fonctionnement: fonctionnel.
+- Securite: OK pour une presentation publique.
+- Ma Methode: fiche explicative visible.
+- Publication externe: candidat public, validation finale separee.
 
 ## A quoi sert le projet
 Site Ma Methode est la vitrine centrale qui relie les projets du Cerveau IA. La page raconte la methode, propose une experience scroll/video, puis ouvre une carte interactive ou chaque application possede sa vignette, son statut, ses liens et sa fiche.
@@ -50,9 +60,9 @@ Après installation, accéder au site via un navigateur en local (par défaut su
 - Import des vignettes IA depuis le dossier thumbnails-ai
 
 ## Captures d'ecran
-![Capture 1 - SITE MA METHODE](docs/captures/01-site-ma-methode-2026-06-21_23-36-53-desktop.png)
+![Capture 1 - SITE MA METHODE](docs/captures/01-site-ma-methode-2026-08-30_00-28-27-desktop.png)
 
-![Capture 2 - SITE MA METHODE](docs/captures/01-site-ma-methode-2026-06-21_23-36-53-mobile.png)
+![Capture 2 - SITE MA METHODE](docs/captures/01-site-ma-methode-2026-08-30_00-28-27-mobile.png)
 
 ## Mises a jour
 - Intégration d'un registre de projets généré automatiquement par l'orchestrateur pour éviter la maintenance manuelle des cartes

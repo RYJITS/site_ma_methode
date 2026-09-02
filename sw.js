@@ -1,10 +1,13 @@
-const CACHE_NAME = "site-ma-methode-project-registry-20260620";
+const CACHE_NAME = "site-ma-methode-visual-cards-story-v8-20260902";
 
 const PRECACHE_URLS = [
   "./",
   "./index.html",
-  "./src/styles.css?v=mobile-card-undertext-opaque-20260619",
-  "./src/main.js?v=mobile-card-undertext-opaque-20260619",
+  "./src/styles.css?v=visual-cards-story-v8-20260902",
+  "./src/main.js?v=visual-cards-story-v8-20260902",
+  "./public/generated/images/method-cards/ma-philosophie-preferred-image-v1-20260902.webp",
+  "./public/generated/images/method-cards/mon-approche-visual-card-v8-20260902.webp",
+  "./public/generated/images/method-cards/applications-visual-card-v8-20260902.webp",
   "./public/generated/videos/storyboard-7-scenes-v4-compress-block/kling-assembled/poster/storyboard-kling-12-clips-poster.jpg",
   "./public/generated/images/textures/method-card-edge-v2/method-card-edge-v2-plate.webp",
   "./public/generated/images/textures/method-card-edge-v2/method-card-edge-v2-grain.webp",

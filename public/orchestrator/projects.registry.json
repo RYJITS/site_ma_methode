@@ -1,101 +1,7 @@
 {
-  "generatedAt": "2026-08-23T22:48:49.797Z",
+  "generatedAt": "2026-09-02T13:04:46.080Z",
   "source": "00_ORCHESTRATEUR",
   "projects": [
-    {
-      "id": "00-orchestrateur",
-      "category": "tools",
-      "name": "Orchestrateur global",
-      "comment": "Application locale de pilotage du Cerveau IA. Elle gere les taches, les responsables, les frequences, les routines jour/semaine/mois, les audits, les fiches et la synchronisation du hub Site Ma Methode.",
-      "image": "public/orchestrator/thumbnails-ai/00-orchestrateur.webp",
-      "githubUrl": "https://github.com/RYJITS/orchestrateur-showcase",
-      "linkPolicy": {
-        "exposure": "showcase-only",
-        "publicationAllowed": false,
-        "githubShowcaseAllowed": true,
-        "securityStatus": "OK_PRIVATE"
-      },
-      "ficheUrl": "public/orchestrator/fiches/00-orchestrateur.md",
-      "localPath": "D:/00_Cerveau_IA/Projet/00_ORCHESTRATEUR",
-      "stack": [
-        "Node.js"
-      ],
-      "status": {
-        "global": "PRIVATE_INTERNAL",
-        "security": "OK_PRIVATE",
-        "functionality": "FONCTIONNEL",
-        "publication": "PRIVATE_INTERNAL"
-      },
-      "details": {
-        "application": "L'Orchestrateur global est l'application locale qui pilote tout le dossier Projet. Elle sert a savoir quelles taches existent, qui doit les appliquer, a quelle frequence, quels projets sont concernes, quels garde-fous bloquent les risques, et quelles commandes peuvent etre lancees depuis le dashboard.",
-        "fonctionnement": "L'application lit deux sources: le registre des projets et le registre des taches. Le registre des taches definit les actions a faire, leur cadence, le responsable, la commande, les routines ou elles apparaissent et les conditions de securite. Le dashboard affiche ce plan de travail, permet de filtrer par frequence ou responsable, et lance uniquement les actions autorisees via l'API locale. Pour chaque action, l'utilisateur choisit l'executeur: script local, Codex superviseur, Mistral API ou Alibaba/Qwen API. Avant une action globale, le dashboard relance un scan de la racine projets pour inclure les nouveaux dossiers.",
-        "conception": "Il a ete concu comme une couche prudente au-dessus de toute la racine projets. Chaque action importante est rattachee a une tache explicite, un responsable, une frequence, un executeur et des garde-fous: scanner avant modification, ne pas supprimer directement, ne pas publier sans audit securite OK, archiver ou sauvegarder avant intervention, et garder Site Ma Methode comme hub de lecture plutot que cible isolee.",
-        "capabilities": [
-          "Ouvrir le dashboard par raccourci Bureau",
-          "Ajouter ou supprimer des taches",
-          "Creer des sous-taches",
-          "Mettre une tache ou sous-tache en pause",
-          "Definir quand et par qui chaque action est faite",
-          "Installer plus tard les taches depuis le store",
-          "Choisir l'executeur par action",
-          "Inclure les nouveaux projets par scan automatique",
-          "Faire les repos GitHub comme tache active principale",
-          "Servir de garde-fou avant diffusion"
-        ],
-        "tools": [
-          "Raccourci Windows Bureau",
-          "Registre des taches avec store",
-          "Gestion sous-taches",
-          "API locale du dashboard",
-          "Executeur script local",
-          "Executeur Codex superviseur",
-          "Mistral API analyse-only",
-          "Alibaba/Qwen API analyse-only",
-          "Store reinstallable des anciennes taches",
-          "Tache active GitHub repos"
-        ],
-        "techniques": [
-          "Node.js en modules ESM",
-          "Registre JSON central",
-          "Schemas JSON",
-          "Scripts npm multi-projets",
-          "Rapports Markdown et JSON",
-          "Playwright pour verifier le rendu du hub",
-          "Sharp pour normaliser les vignettes",
-          "Regles GitHub et publication publique separees"
-        ],
-        "automations": [
-          "Scan global des projets",
-          "Audit securite et blocage des secrets",
-          "Audit nettoyage en dry-run",
-          "Verification build/test/lint/dev selon scripts disponibles",
-          "Generation des fiches FICHE_PROJET, INSTALLATION_FR et CHANGELOG_FR",
-          "Synchronisation Site Ma Methode",
-          "Import et optimisation des vignettes IA",
-          "Routines daily, weekly et monthly"
-        ]
-      },
-      "highlights": [
-        "Savoir quoi faire, qui doit l'appliquer, tous les combien de temps, et bloquer les actions dangereuses avant diffusion.",
-        "Statut: PRIVATE_INTERNAL.",
-        "Securite: OK_PRIVATE."
-      ],
-      "functions": [
-        "Centralise la liste des taches, responsables et frequences.",
-        "Centralise la liste des projets et leurs statuts.",
-        "Produit les fiches lisibles par projet.",
-        "Controle securite, fonctionnement, GitHub, publication publique et synchronisation site.",
-        "Alimente le hub Site Ma Methode avec des donnees propres.",
-        "Validation exacte du registre disponible via npm run registry:check.",
-        "Controle automatisable detecte via npm run check."
-      ],
-      "screenshots": [],
-      "mediaPolicy": {
-        "exposure": "none",
-        "publicationAllowed": false,
-        "screenshotStatus": "SKIPPED_SECURITY"
-      }
-    },
     {
       "id": "01-nas",
       "category": "tools",
@@ -110,7 +16,7 @@
         "securityStatus": "OK_PRIVATE"
       },
       "ficheUrl": "public/orchestrator/fiches/01-nas.md",
-      "localPath": "D:/00_Cerveau_IA/Projet/01_NAS",
+      "localPath": "01_NAS",
       "stack": [
         "NAS/Documentation"
       ],
@@ -124,6 +30,7 @@
         "application": "NAS est une documentation d'exploitation pour l'infrastructure personnelle. Elle explique comment sont organises le serveur Debian, Docker Compose, n8n, PostgreSQL, Caddy, Tailscale, Nextcloud, les volumes et les sauvegardes.",
         "fonctionnement": "Le projet ne lance pas une application publique: il sert de manuel operationnel. Les documents indiquent les chemins serveur, les commandes docker compose, les validations Caddy, les logs, les dossiers de donnees et les gestes de recuperation. Il permet donc de retrouver rapidement comment redemarrer les services, verifier l'etat du serveur ou comprendre la structure des sauvegardes.",
         "conception": "Il a ete concu comme un espace prive et pratique. La structure privilegie les procedures lisibles, les reperes de maintenance et la separation entre documentation generale et parametres sensibles.",
+        "avancement": "Etat du projet: reserve a l'usage interne. Fonctionnement: non teste faute d'informations suffisantes. Securite: reserve au prive. Ma Methode: fiche explicative visible. Publication externe: interne.",
         "capabilities": [
           "Retrouver les procedures serveur",
           "Comprendre l'organisation n8n et Nextcloud",
@@ -163,10 +70,18 @@
           "Execution nocturne planifiee par cron"
         ]
       },
+      "progress": [
+        "Etat du projet: reserve a l'usage interne.",
+        "Fonctionnement: non teste faute d'informations suffisantes.",
+        "Securite: reserve au prive.",
+        "Ma Methode: fiche explicative visible.",
+        "Publication externe: interne."
+      ],
       "highlights": [
         "Rendre les procedures serveur et sauvegardes faciles a retrouver, verifier et maintenir.",
-        "Statut: PRIVATE_INTERNAL.",
-        "Securite: OK_PRIVATE."
+        "Etat du projet: reserve a l'usage interne.",
+        "Fonctionnement: non teste faute d'informations suffisantes.",
+        "Securite: reserve au prive."
       ],
       "functions": [
         "Documente le serveur Debian et les services Docker.",
@@ -179,6 +94,11 @@
         "exposure": "none",
         "publicationAllowed": false,
         "screenshotStatus": "SKIPPED_SECURITY"
+      },
+      "publicationGate": {
+        "maMethode": "EXPLAINED_ON_MA_METHODE",
+        "contentStatus": "SUFFICIENT_INFORMATION",
+        "reasons": []
       }
     },
     {
@@ -191,13 +111,13 @@
       "githubUrl": "https://github.com/RYJITS/site_ma_methode",
       "hostingerUrl": "https://cv.c2rdesign.com/",
       "linkPolicy": {
-        "exposure": "publication-ready",
+        "exposure": "public-links",
         "publicationAllowed": true,
         "githubShowcaseAllowed": false,
         "securityStatus": "OK_PUBLIC"
       },
       "ficheUrl": "public/orchestrator/fiches/01-site-ma-methode.md",
-      "localPath": "D:/00_Cerveau_IA/Projet/01_SITE_MA_METHODE",
+      "localPath": "01_SITE_MA_METHODE",
       "stack": [
         "Vite/Dev server",
         "Node.js"
@@ -212,6 +132,7 @@
         "application": "Site Ma Methode est la vitrine centrale qui relie les projets du Cerveau IA. La page raconte la methode, propose une experience scroll/video, puis ouvre une carte interactive ou chaque application possede sa vignette, son statut, ses liens et sa fiche.",
         "fonctionnement": "Le site importe un module project-registry.js genere par l'orchestrateur. A l'ouverture de la grille, il place les projets par zones, gere le zoom, le deplacement, les boutons de focus et le panneau detail. Quand une carte est ouverte, le panneau affiche l'image, le resume, les statuts, le lien public, le lien GitHub, la fiche, puis les sections Application, Fonctionnement, Conception, Techniques et Automatisations. Le contact passe par une scene interactive et une API PHP dediee.",
         "conception": "Il a ete concu comme un hub vivant plutot qu'une liste statique. Le design existant garde la narration immersive, mais la couche projet est maintenant alimentee par les donnees de l'orchestrateur pour eviter de recoder les cartes a la main et pour garder les projets synchronises.",
+        "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
         "capabilities": [
           "Presenter la methode de travail",
           "Ouvrir une carte interactive des projets",
@@ -252,11 +173,19 @@
           "Import des vignettes IA depuis le dossier thumbnails-ai"
         ]
       },
+      "progress": [
+        "Etat du projet: pret cote usage public.",
+        "Fonctionnement: fonctionnel.",
+        "Securite: OK pour une presentation publique.",
+        "Ma Methode: fiche explicative visible.",
+        "Publication externe: candidat public, validation finale separee."
+      ],
       "highlights": [
         "Transformer les projets locaux en presentation claire, navigable et diffusable.",
-        "Statut: PUBLIC_READY.",
-        "Securite: OK_PUBLIC.",
-        "Lien Hostinger connu: https://cv.c2rdesign.com/."
+        "Etat du projet: pret cote usage public.",
+        "Fonctionnement: fonctionnel.",
+        "Securite: OK pour une presentation publique.",
+        "Application disponible: https://cv.c2rdesign.com/."
       ],
       "functions": [
         "Affiche une grille navigable de tous les projets.",
@@ -267,13 +196,18 @@
         "Lancement local disponible via npm run dev."
       ],
       "screenshots": [
-        "public/orchestrator/captures/01-site-ma-methode/01-site-ma-methode-2026-06-21_23-36-53-desktop.png",
-        "public/orchestrator/captures/01-site-ma-methode/01-site-ma-methode-2026-06-21_23-36-53-mobile.png"
+        "public/orchestrator/captures/01-site-ma-methode/01-site-ma-methode-2026-08-30_00-28-27-desktop.png",
+        "public/orchestrator/captures/01-site-ma-methode/01-site-ma-methode-2026-08-30_00-28-27-mobile.png"
       ],
       "mediaPolicy": {
         "exposure": "publication-ready",
         "publicationAllowed": true,
-        "screenshotStatus": "HAS_SCREENSHOTS"
+        "screenshotStatus": "PUBLIC_SAFE_CAPTURED"
+      },
+      "publicationGate": {
+        "maMethode": "EXPLAINED_ON_MA_METHODE",
+        "contentStatus": "SUFFICIENT_INFORMATION",
+        "reasons": []
       }
     },
     {
@@ -284,26 +218,27 @@
       "image": "public/orchestrator/thumbnails-ai/03-codex-mistral-subagent-skill.webp",
       "githubUrl": "https://github.com/RYJITS/codex-mistral-subagent-skill",
       "linkPolicy": {
-        "exposure": "publication-ready",
+        "exposure": "public-links",
         "publicationAllowed": true,
         "githubShowcaseAllowed": false,
         "securityStatus": "OK_PUBLIC"
       },
       "ficheUrl": "public/orchestrator/fiches/03-codex-mistral-subagent-skill.md",
-      "localPath": "D:/00_Cerveau_IA/Projet/03_codex-mistral-subagent-skill",
+      "localPath": "03_codex-mistral-subagent-skill",
       "stack": [
         "Node.js"
       ],
       "status": {
-        "global": "NEEDS_REPAIR",
+        "global": "PUBLIC_READY",
         "security": "OK_PUBLIC",
-        "functionality": "NON_FONCTIONNEL_REPARABLE",
+        "functionality": "FONCTIONNEL",
         "publication": "PUBLIC_CANDIDATE"
       },
       "details": {
         "application": "Ce skill permet d'intégrer Mistral comme sous-agent dans des workflows automatisés, en limitant ses actions à des tâches non destructives (analyse, synthèse, extraction). Il produit des sorties structurées (JSON ou Markdown) que Codex peut relire, valider ou modifier avant toute intégration. L'objectif est d'accélérer les tâches répétitives tout en maintenant un contrôle strict sur les décisions finales.",
         "fonctionnement": "Le skill fonctionne en deux phases : 1) Délégation de la tâche à Mistral via un helper Node.js qui transmet un contexte précis (schéma, contraintes, commandes autorisées), 2) Validation et intégration par Codex des sorties produites. Mistral ne peut pas publier, supprimer ou modifier directement le code ou la documentation. Toutes les sorties sont relues et validées avant toute action.",
         "conception": "Le projet a été conçu pour répondre à un besoin de délégation contrôlée d'IA dans un environnement technique. Les choix clés incluent : une séparation claire entre proposition du sous-agent et action réelle, un schéma JSON strict pour éviter les hallucinations, une validation systématique des commandes et chemins, et une documentation précise des cas d'usage autorisés. L'architecture repose sur un helper Node.js modulaire et des scripts de validation pour garantir la cohérence des sorties.",
+        "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
         "capabilities": [
           "Extraction structurée d'informations à partir de briefs techniques",
           "Génération de brouillons de documentation ou de références",
@@ -334,10 +269,18 @@
           "Utilisation en mode dry-run pour tester les capacités avant intégration"
         ]
       },
+      "progress": [
+        "Etat du projet: pret cote usage public.",
+        "Fonctionnement: fonctionnel.",
+        "Securite: OK pour une presentation publique.",
+        "Ma Methode: fiche explicative visible.",
+        "Publication externe: candidat public, validation finale separee."
+      ],
       "highlights": [
         "Permettre à l'orchestrateur Cerveau IA de déléguer des tâches analytiques ou rédactionnelles à Mistral tout en conservant un contrôle strict sur les actions finales, évitant ainsi les risques de modifications non autorisées ou de décisions critiques.",
-        "Statut: NEEDS_REPAIR.",
-        "Securite: OK_PUBLIC."
+        "Etat du projet: pret cote usage public.",
+        "Fonctionnement: fonctionnel.",
+        "Securite: OK pour une presentation publique."
       ],
       "functions": [
         "Délégation sécurisée de tâches analytiques à Mistral",
@@ -352,25 +295,133 @@
         "exposure": "none",
         "publicationAllowed": true,
         "screenshotStatus": "SKIPPED_NO_SERVER"
+      },
+      "publicationGate": {
+        "maMethode": "EXPLAINED_ON_MA_METHODE",
+        "contentStatus": "SUFFICIENT_INFORMATION",
+        "reasons": []
       }
     },
     {
       "id": "05-bord-planif",
       "category": "tools",
-      "name": "Bord PLANIF - Cockpit de planification MRP",
-      "comment": "Application web autonome simulant un cockpit de planification MRP à partir d'une structure métier analysée, avec interface type Excel et données fictives.",
+      "name": "Bord PLANIF - Toolkit de planification",
+      "comment": "Application web de planification MRP pour suivre les lignes a planifier, les priorites, les capacites, les retards et les indicateurs de pilotage.",
       "image": "public/orchestrator/thumbnails-ai/05-bord-planif.webp",
-      "url": "https://planner.c2rdesign.com/",
       "githubUrl": "https://github.com/RYJITS/bord_planif",
-      "hostingerUrl": "https://planner.c2rdesign.com/",
       "linkPolicy": {
-        "exposure": "publication-ready",
+        "exposure": "public-links",
         "publicationAllowed": true,
         "githubShowcaseAllowed": false,
         "securityStatus": "OK_PUBLIC"
       },
       "ficheUrl": "public/orchestrator/fiches/05-bord-planif.md",
-      "localPath": "D:/00_Cerveau_IA/Projet/05_Bord_PLANIF",
+      "localPath": "05_Bord_PLANIF",
+      "stack": [
+        "HTML statique"
+      ],
+      "status": {
+        "global": "PUBLIC_READY",
+        "security": "OK_PUBLIC",
+        "functionality": "FONCTIONNEL",
+        "publication": "PUBLIC_CANDIDATE"
+      },
+      "details": {
+        "application": "Bord PLANIF est un toolkit de planification MRP. L'application aide a piloter un planning operationnel en regroupant les lignes a traiter, les statuts, les priorites, les capacites, les retards, les risques et les indicateurs utiles dans une interface claire. Elle sert a voir rapidement ce qui doit etre planifie, ce qui est bloque, ce qui est sous surveillance et ce qui peut etre archive.",
+        "fonctionnement": "L'application s'ouvre dans un navigateur et presente un cockpit avec indicateurs, ruban d'actions, vues specialisees, grille paginee, filtres et edition de lignes. L'utilisateur peut passer d'une vue planning a une vue capacite ou audit, filtrer les informations, modifier une ligne, simuler une actualisation, exporter les donnees en CSV ou creer un snapshot. Les changements restent sauvegardes localement dans le navigateur.",
+        "conception": "Le projet est une application statique HTML, CSS et JavaScript concue comme un outil de pilotage leger. La logique cote client gere la navigation, les filtres, les calculs d'indicateurs, les graphiques, les heatmaps, les modales d'edition, l'import/export CSV et la persistance locale. Le jeu de demonstration reste fictif pour presenter les fonctions sans exposer de donnees sensibles.",
+        "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
+        "capabilities": [
+          "Cockpit KPI avec risques et indicateurs",
+          "Navigation multi-vues de planification",
+          "Filtrage multi-criteres par statut, semaine, recherche et groupe de colonnes",
+          "Edition CRUD des lignes avec validation integree",
+          "Recalcul dynamique des couvertures, capacites, buffers et retards",
+          "Graphiques et heatmaps de charge",
+          "Snapshots d'archive",
+          "Import/export CSV",
+          "Persistance locale des modifications",
+          "Interface responsive compatible navigateur moderne"
+        ],
+        "tools": [
+          "HTML5, CSS3 et JavaScript vanilla",
+          "Canvas pour les graphiques KPI",
+          "localStorage pour la persistance",
+          "Import/export CSV natif",
+          "Architecture statique HTML/CSS/JS"
+        ],
+        "techniques": [
+          "Calculs cote client",
+          "Pagination et tri cote client",
+          "Filtres synchronises",
+          "Modales d'edition",
+          "Rendu dynamique des graphiques",
+          "Persistance locale"
+        ],
+        "automations": [
+          "Generation du jeu de demonstration au chargement",
+          "Recalcul des indicateurs apres edition",
+          "Sauvegarde automatique des modifications dans localStorage",
+          "Rendu dynamique des graphiques selon la vue active",
+          "Simulation d'actualisation et journalisation des actions"
+        ]
+      },
+      "progress": [
+        "Etat du projet: pret cote usage public.",
+        "Fonctionnement: fonctionnel.",
+        "Securite: OK pour une presentation publique.",
+        "Ma Methode: fiche explicative visible.",
+        "Publication externe: candidat public, validation finale separee."
+      ],
+      "highlights": [
+        "Donner une vue claire et exploitable du planning operationnel: savoir quoi traiter, quoi surveiller, ou sont les blocages et quelles capacites restent disponibles.",
+        "Etat du projet: pret cote usage public.",
+        "Fonctionnement: fonctionnel.",
+        "Securite: OK pour une presentation publique."
+      ],
+      "functions": [
+        "Afficher un cockpit KPI de planification",
+        "Naviguer dans les vues Planning, Buffer, Capacite, MET, Sources et Audit",
+        "Filtrer les lignes par statut, semaine, recherche et groupes de colonnes",
+        "Identifier rapidement les retards, risques, blocages et priorites",
+        "Modifier, ajouter ou supprimer des lignes de planning dans l'interface",
+        "Recalculer les indicateurs de couverture, capacite, buffer et retard",
+        "Afficher des graphiques et heatmaps de charge",
+        "Importer et exporter des tables en CSV",
+        "Creer des snapshots d'archive pour garder un etat du planning",
+        "Conserver les modifications localement dans le navigateur"
+      ],
+      "screenshots": [
+        "public/orchestrator/captures/05-bord-planif/05-bord-planif-2026-09-02_15-03-21-desktop.png",
+        "public/orchestrator/captures/05-bord-planif/05-bord-planif-2026-09-02_15-03-21-mobile.png"
+      ],
+      "mediaPolicy": {
+        "exposure": "publication-ready",
+        "publicationAllowed": true,
+        "screenshotStatus": "PUBLIC_SAFE_CAPTURED",
+        "publicScreenshotReview": "SAFE_SYNTHETIC_UI"
+      },
+      "publicationGate": {
+        "maMethode": "EXPLAINED_ON_MA_METHODE",
+        "contentStatus": "SUFFICIENT_INFORMATION",
+        "reasons": []
+      }
+    },
+    {
+      "id": "05-bord-planif-design-phase6",
+      "category": "tools",
+      "name": "Bord PLANIF - Cockpit de planification MRP",
+      "comment": "Application web autonome simulant un cockpit de planification MRP à partir d'une structure métier analysée, avec interface type Excel et données fictives.",
+      "image": "public/orchestrator/thumbnails/05-bord-planif-design-phase6.webp",
+      "githubUrl": "https://github.com/RYJITS/bord_planif",
+      "linkPolicy": {
+        "exposure": "public-links",
+        "publicationAllowed": true,
+        "githubShowcaseAllowed": false,
+        "securityStatus": "OK_PUBLIC"
+      },
+      "ficheUrl": "public/orchestrator/fiches/05-bord-planif-design-phase6.md",
+      "localPath": "05_Bord_PLANIF_design_phase6",
       "stack": [
         "HTML statique"
       ],
@@ -384,6 +435,7 @@
         "application": "Bord PLANIF est une application web locale qui reconstruit un cockpit de planification depuis l'analyse structurelle du classeur métier BORD_DEC_MRPC17.xlsm. Elle ne recopie pas les données réelles du fichier mais reproduit sa structure, ses feuilles, ses volumes, ses familles de formules et ses actions avec un jeu de données fictif. L'application permet de visualiser, éditer et analyser des données de planification MRP via une interface inspirée d'Excel, tout en garantissant la confidentialité des données sensibles.",
         "fonctionnement": "L'application s'exécute dans un navigateur moderne et présente une interface composée d'un ruban d'actions, de 18 onglets de feuilles (PLANING, BUFFER, CLIENT, SUIVI_MET, CAPAMET, etc.), d'une barre de formule, d'une grille paginée, de filtres, d'un mode compact/complet et d'une édition de lignes. Elle génère environ 14 905 lignes fictives réparties sur les feuilles, avec des calculs JavaScript simulant les taux de couverture, buffers, capacités, retards et heatmaps de charge. Les modifications sont sauvegardées localement via localStorage et peuvent être importées/exportées en CSV.",
         "conception": "Le projet a été conçu comme un clone fonctionnel et prudent du classeur métier, en séparant les jeux de données fictifs, les calculs recalculés en JavaScript, les vues spécialisées et les actions de simulation. L'architecture repose sur une interface HTML/CSS/JavaScript autonome, avec une séparation claire entre la logique métier (simulée) et l'interface utilisateur. Les choix de design incluent une grille type Excel, un ruban d'actions, une barre de formule explicative, des graphiques Canvas pour les KPI, et une persistance locale des overrides. Le projet utilise une seed déterministe pour générer les données fictives et recalcule dynamiquement les indicateurs après chaque édition. L'approche CRUD avec modales permet une édition intuitive des lignes.",
+        "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
         "capabilities": [
           "Génération déterministe de 14 905 lignes fictives sur 18 feuilles",
           "Recalcul dynamique des indicateurs (taux de couverture, buffers, capacités, retards)",
@@ -420,11 +472,18 @@
           "Simulation de refresh et journalisation des actions"
         ]
       },
+      "progress": [
+        "Etat du projet: pret cote usage public.",
+        "Fonctionnement: fonctionnel.",
+        "Securite: OK pour une presentation publique.",
+        "Ma Methode: fiche explicative visible.",
+        "Publication externe: candidat public, validation finale separee."
+      ],
       "highlights": [
         "Fournir une interface visuelle et interactive pour organiser, suivre et piloter les lignes de planification, jalons, priorités et données opérationnelles sans exposer les données sensibles du fichier source.",
-        "Statut: PUBLIC_READY.",
-        "Securite: OK_PUBLIC.",
-        "Lien Hostinger connu: https://planner.c2rdesign.com/."
+        "Etat du projet: pret cote usage public.",
+        "Fonctionnement: fonctionnel.",
+        "Securite: OK pour une presentation publique."
       ],
       "functions": [
         "Navigation multi-feuilles (18 onglets)",
@@ -440,14 +499,124 @@
         "Design responsive et compatible Windows 11 / Fluent"
       ],
       "screenshots": [
-        "public/orchestrator/captures/05-bord-planif/05-bord-planif-2026-06-20_1858-cockpit.png",
-        "public/orchestrator/captures/05-bord-planif/05-bord-planif-2026-06-20_1858-planning.png"
+        "public/orchestrator/captures/05-bord-planif-design-phase6/05-bord-planif-design-phase6-2026-09-02_15-03-26-desktop.png",
+        "public/orchestrator/captures/05-bord-planif-design-phase6/05-bord-planif-design-phase6-2026-09-02_15-03-26-mobile.png"
       ],
       "mediaPolicy": {
         "exposure": "publication-ready",
         "publicationAllowed": true,
-        "screenshotStatus": "SKIPPED_NO_SERVER",
-        "publicScreenshotReview": "SAFE_SYNTHETIC_UI"
+        "screenshotStatus": "PUBLIC_SAFE_CAPTURED"
+      },
+      "publicationGate": {
+        "maMethode": "EXPLAINED_ON_MA_METHODE",
+        "contentStatus": "SUFFICIENT_INFORMATION",
+        "reasons": []
+      }
+    },
+    {
+      "id": "05-bord-planif-design-phase6-redo",
+      "category": "tools",
+      "name": "Bord PLANIF - Cockpit de planification MRP",
+      "comment": "Application web autonome simulant un cockpit de planification MRP à partir d'une structure métier analysée, avec interface type Excel et données fictives.",
+      "image": "public/orchestrator/thumbnails/05-bord-planif-design-phase6-redo.webp",
+      "githubUrl": "https://github.com/RYJITS/bord_planif",
+      "linkPolicy": {
+        "exposure": "public-links",
+        "publicationAllowed": true,
+        "githubShowcaseAllowed": false,
+        "securityStatus": "OK_PUBLIC"
+      },
+      "ficheUrl": "public/orchestrator/fiches/05-bord-planif-design-phase6-redo.md",
+      "localPath": "05_Bord_PLANIF_design_phase6_redo",
+      "stack": [
+        "HTML statique"
+      ],
+      "status": {
+        "global": "PUBLIC_READY",
+        "security": "OK_PUBLIC",
+        "functionality": "FONCTIONNEL",
+        "publication": "PUBLIC_CANDIDATE"
+      },
+      "details": {
+        "application": "Bord PLANIF est une application web locale qui reconstruit un cockpit de planification depuis l'analyse structurelle du classeur métier BORD_DEC_MRPC17.xlsm. Elle ne recopie pas les données réelles du fichier mais reproduit sa structure, ses feuilles, ses volumes, ses familles de formules et ses actions avec un jeu de données fictif. L'application permet de visualiser, éditer et analyser des données de planification MRP via une interface inspirée d'Excel, tout en garantissant la confidentialité des données sensibles.",
+        "fonctionnement": "L'application s'exécute dans un navigateur moderne et présente une interface composée d'un ruban d'actions, de 18 onglets de feuilles (PLANING, BUFFER, CLIENT, SUIVI_MET, CAPAMET, etc.), d'une barre de formule, d'une grille paginée, de filtres, d'un mode compact/complet et d'une édition de lignes. Elle génère environ 14 905 lignes fictives réparties sur les feuilles, avec des calculs JavaScript simulant les taux de couverture, buffers, capacités, retards et heatmaps de charge. Les modifications sont sauvegardées localement via localStorage et peuvent être importées/exportées en CSV.",
+        "conception": "Le projet a été conçu comme un clone fonctionnel et prudent du classeur métier, en séparant les jeux de données fictifs, les calculs recalculés en JavaScript, les vues spécialisées et les actions de simulation. L'architecture repose sur une interface HTML/CSS/JavaScript autonome, avec une séparation claire entre la logique métier (simulée) et l'interface utilisateur. Les choix de design incluent une grille type Excel, un ruban d'actions, une barre de formule explicative, des graphiques Canvas pour les KPI, et une persistance locale des overrides. Le projet utilise une seed déterministe pour générer les données fictives et recalcule dynamiquement les indicateurs après chaque édition. L'approche CRUD avec modales permet une édition intuitive des lignes.",
+        "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
+        "capabilities": [
+          "Génération déterministe de 14 905 lignes fictives sur 18 feuilles",
+          "Recalcul dynamique des indicateurs (taux de couverture, buffers, capacités, retards)",
+          "Affichage de heatmaps de charge et graphiques KPI",
+          "Filtrage multi-critères (statut, semaine, recherche, groupes de colonnes)",
+          "Édition CRUD des lignes avec validation intégrée",
+          "Persistance locale des modifications via localStorage",
+          "Simulation de refresh PowerQuery et journalisation des actions",
+          "Création de snapshots d'archive depuis les lignes planning",
+          "Import/export CSV des tables",
+          "Design responsive et compatible Windows 11 / Fluent"
+        ],
+        "tools": [
+          "HTML5, CSS3, JavaScript vanilla",
+          "Canvas pour les graphiques KPI",
+          "localStorage pour la persistance",
+          "Seed déterministe pour les données fictives",
+          "Import/export CSV natif",
+          "Icônes Lucide (via CDN)",
+          "Architecture statique HTML/CSS/JS"
+        ],
+        "techniques": [
+          "Recalcul de formules Excel en JavaScript",
+          "Pagination et tri côté client",
+          "Design Windows 11 / Fluent",
+          "Approche CRUD avec modales",
+          "Seed déterministe pour reproductibilité"
+        ],
+        "automations": [
+          "Génération automatique des données fictives au chargement",
+          "Recalcul des indicateurs après chaque édition",
+          "Sauvegarde automatique des modifications dans localStorage",
+          "Rendu dynamique des graphiques selon la vue active",
+          "Simulation de refresh et journalisation des actions"
+        ]
+      },
+      "progress": [
+        "Etat du projet: pret cote usage public.",
+        "Fonctionnement: fonctionnel.",
+        "Securite: OK pour une presentation publique.",
+        "Ma Methode: fiche explicative visible.",
+        "Publication externe: candidat public, validation finale separee."
+      ],
+      "highlights": [
+        "Fournir une interface visuelle et interactive pour organiser, suivre et piloter les lignes de planification, jalons, priorités et données opérationnelles sans exposer les données sensibles du fichier source.",
+        "Etat du projet: pret cote usage public.",
+        "Fonctionnement: fonctionnel.",
+        "Securite: OK pour une presentation publique."
+      ],
+      "functions": [
+        "Navigation multi-feuilles (18 onglets)",
+        "Affichage de cockpits KPI avec risques et indicateurs",
+        "Filtrage avancé (statut, semaine, recherche, groupes de colonnes)",
+        "Édition CRUD des lignes fictives",
+        "Simulation de refresh et création de snapshots",
+        "Import/export CSV des tables",
+        "Persistance locale des modifications",
+        "Génération déterministe de 14 905 lignes fictives sur 18 feuilles",
+        "Recalcul dynamique des indicateurs (taux de couverture, buffers, capacités, retards)",
+        "Affichage de heatmaps de charge et graphiques KPI",
+        "Design responsive et compatible Windows 11 / Fluent"
+      ],
+      "screenshots": [
+        "public/orchestrator/captures/05-bord-planif-design-phase6-redo/05-bord-planif-design-phase6-redo-2026-09-02_15-03-30-desktop.png",
+        "public/orchestrator/captures/05-bord-planif-design-phase6-redo/05-bord-planif-design-phase6-redo-2026-09-02_15-03-30-mobile.png"
+      ],
+      "mediaPolicy": {
+        "exposure": "publication-ready",
+        "publicationAllowed": true,
+        "screenshotStatus": "PUBLIC_SAFE_CAPTURED"
+      },
+      "publicationGate": {
+        "maMethode": "EXPLAINED_ON_MA_METHODE",
+        "contentStatus": "SUFFICIENT_INFORMATION",
+        "reasons": []
       }
     },
     {
@@ -458,13 +627,13 @@
       "image": "public/orchestrator/thumbnails-ai/05-generateur-image-c2r.webp",
       "githubUrl": "https://github.com/RYJITS/generateur-image-c2r",
       "linkPolicy": {
-        "exposure": "publication-ready",
+        "exposure": "public-links",
         "publicationAllowed": true,
         "githubShowcaseAllowed": false,
         "securityStatus": "OK_PUBLIC"
       },
       "ficheUrl": "public/orchestrator/fiches/05-generateur-image-c2r.md",
-      "localPath": "D:/00_Cerveau_IA/Projet/05_Generateur image C2R",
+      "localPath": "05_Generateur image C2R",
       "stack": [
         "Vite/Dev server",
         "React",
@@ -480,6 +649,7 @@
         "application": "Le Générateur Image C2R est une application web locale qui agit comme une interface moderne pour piloter le moteur historique C2R. Elle permet de générer des images via des prompts, de suivre les jobs de génération en temps réel, et de valider ou rejeter les résultats. Les images validées sont automatiquement ajoutées à un corpus centralisé, et leur manifeste est rafraîchi dynamiquement. L'application évite la duplication des données lourdes en s'appuyant sur des chemins de fichiers existants, et intègre un mode dry-run pour tester les générations sans impact.",
         "fonctionnement": "L'application fonctionne en deux parties distinctes : un serveur Express (Node.js) qui expose une API REST et gère les jobs de génération, et un client React/Vite qui fournit l'interface utilisateur. Le serveur lit un manifeste JSON des images validées, exécute les générations via le moteur C2R, et sert les images générées. Le client permet de lancer des générations, de suivre les jobs, et de valider les résultats. Les jobs sont exécutés de manière asynchrone, et les feedbacks utilisateurs sont journalisés en JSONL pour une traçabilité complète.",
         "conception": "Le projet a été conçu comme une passerelle entre l'ancien moteur C2R et une interface moderne, en évitant la duplication des données lourdes (corpus d'images). Les choix de conception incluent : une architecture modulaire avec séparation claire entre le serveur et le client, une gestion centralisée des jobs via un store in-memory, un mode dry-run pour les tests, et une journalisation des feedbacks pour l'analyse. L'interface est responsive et utilise des composants React pour une expérience utilisateur intuitive. Le serveur est écrit en Node.js avec Express pour une API REST simple et efficace, et le client utilise Vite pour un développement rapide et une optimisation de production. La sécurité est renforcée par des vérifications de chemins pour éviter les accès non autorisés.",
+        "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
         "capabilities": [
           "Génération d'images via le moteur C2R historique",
           "Suivi en temps réel des jobs de génération",
@@ -520,10 +690,18 @@
           "Vérification de compatibilité avec le moteur C2R historique"
         ]
       },
+      "progress": [
+        "Etat du projet: pret cote usage public.",
+        "Fonctionnement: fonctionnel.",
+        "Securite: OK pour une presentation publique.",
+        "Ma Methode: fiche explicative visible.",
+        "Publication externe: candidat public, validation finale separee."
+      ],
       "highlights": [
         "Fournir un studio visuel ergonomique pour créer, valider et organiser des images générées par le moteur C2R, en évitant la duplication des données lourdes (corpus d'images) et en centralisant la gestion des jobs de génération.",
-        "Statut: PUBLIC_READY.",
-        "Securite: OK_PUBLIC."
+        "Etat du projet: pret cote usage public.",
+        "Fonctionnement: fonctionnel.",
+        "Securite: OK pour une presentation publique."
       ],
       "functions": [
         "Consulter la galerie des images validées",
@@ -540,13 +718,18 @@
         "Build automatisable detecte."
       ],
       "screenshots": [
-        "public/orchestrator/captures/05-generateur-image-c2r/05-generateur-image-c2r-2026-06-21_23-36-58-desktop.png",
-        "public/orchestrator/captures/05-generateur-image-c2r/05-generateur-image-c2r-2026-06-21_23-36-58-mobile.png"
+        "public/orchestrator/captures/05-generateur-image-c2r/05-generateur-image-c2r-2026-08-30_00-29-28-desktop.png",
+        "public/orchestrator/captures/05-generateur-image-c2r/05-generateur-image-c2r-2026-08-30_00-29-28-mobile.png"
       ],
       "mediaPolicy": {
         "exposure": "publication-ready",
         "publicationAllowed": true,
-        "screenshotStatus": "HAS_SCREENSHOTS"
+        "screenshotStatus": "PUBLIC_SAFE_CAPTURED"
+      },
+      "publicationGate": {
+        "maMethode": "EXPLAINED_ON_MA_METHODE",
+        "contentStatus": "SUFFICIENT_INFORMATION",
+        "reasons": []
       }
     },
     {
@@ -557,13 +740,13 @@
       "image": "public/orchestrator/thumbnails-ai/05-gestions-commande-matiere.webp",
       "githubUrl": "https://github.com/RYJITS/gestions_commande_mati-re",
       "linkPolicy": {
-        "exposure": "publication-ready",
+        "exposure": "public-links",
         "publicationAllowed": true,
         "githubShowcaseAllowed": false,
         "securityStatus": "OK_PUBLIC"
       },
       "ficheUrl": "public/orchestrator/fiches/05-gestions-commande-matiere.md",
-      "localPath": "D:/00_Cerveau_IA/Projet/05_Gestions_Commande_Matière",
+      "localPath": "05_Gestions_Commande_Matière",
       "stack": [
         "HTML statique"
       ],
@@ -577,6 +760,7 @@
         "application": "L'application est une reconstruction sécurisée du flux métier du classeur Excel COMMANDE_MATIERE.xlsm. Elle permet de piloter des commandes matière fictives, d’archiver des saisies, de consulter et modifier des référentiels, de suivre des lignes galva, et de visualiser des indicateurs clés — le tout sans exposer aucune donnée sensible du fichier source. Elle remplace les macros VBA, les connexions SAP/ADO/Outlook par des simulations locales fiables et traçables.",
         "fonctionnement": "L'application fonctionne entièrement côté client en HTML/CSS/JavaScript. Elle démarre sur un module de saisie (Commande) où l'utilisateur entre machine, nombre d'OF et type (PROD/MET). Les champs calculés sont générés localement via des fonctions déterministes basées sur des hash. Une fois validée, la commande est ajoutée aux Archives, qui offrent filtrage, tri, pagination et édition inline. Les modules Référentiels et Suivi galva exposent des listes modifiables. Les indicateurs (KPI) sont mis à jour dynamiquement depuis les données locales. Toutes les modifications sont persistées dans localStorage.",
         "conception": "Le projet a été conçu comme une reconstruction sécurisée : il conserve la structure, les volumes, les noms de colonnes et les cas d'usage du classeur source, mais remplace systématiquement les données métiers par des valeurs fictives générées localement à partir de seeds reproductibles. L’approche statique (sans backend) garantit zéro exposition de données. Le design suit les principes Windows 11 (Mica, Segoe UI, navigation latérale, boutons compacts) et intègre une compatibilité mobile via des tables horizontales scrollables. La modularité des vues (Tableau, Commande, Archives, Référentiels) facilite la maintenance. La fenêtre SAP simulée assure traçabilité des actions, tandis que les calculs JavaScript traduisent fidèlement les formules Excel (IFERROR, XLOOKUP) pour les statuts planif et taux de couverture.",
+        "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
         "capabilities": [
           "Saisie rapide avec auto-remplissage déterministe",
           "Édition inline des archives et référentiels",
@@ -614,10 +798,18 @@
           "Affichage dynamique des indicateurs (KPI)"
         ]
       },
+      "progress": [
+        "Etat du projet: pret cote usage public.",
+        "Fonctionnement: fonctionnel.",
+        "Securite: OK pour une presentation publique.",
+        "Ma Methode: fiche explicative visible.",
+        "Publication externe: candidat public, validation finale separee."
+      ],
       "highlights": [
         "Fournir une interface simplifiée et sécurisée pour gérer les flux de commande matière (PROD/MET), les archives, les indicateurs et les référentiels, en reproduisant la structure et les volumes du classeur métier COMMANDE_MATIERE.xlsm mais avec des données fictives.",
-        "Statut: PUBLIC_READY.",
-        "Securite: OK_PUBLIC."
+        "Etat du projet: pret cote usage public.",
+        "Fonctionnement: fonctionnel.",
+        "Securite: OK pour une presentation publique."
       ],
       "functions": [
         "Création de commandes matière fictives (PROD/MET)",
@@ -633,12 +825,20 @@
         "Design responsive adapté aux écrans mobiles",
         "Fenêtre SAP simulée pour tracer les actions"
       ],
-      "screenshots": [],
+      "screenshots": [
+        "public/orchestrator/captures/05-gestions-commande-matiere/05-gestions-commande-matiere-2026-08-30_02-27-37-desktop.png",
+        "public/orchestrator/captures/05-gestions-commande-matiere/05-gestions-commande-matiere-2026-08-30_02-27-37-mobile.png"
+      ],
       "mediaPolicy": {
-        "exposure": "none",
+        "exposure": "publication-ready",
         "publicationAllowed": true,
-        "screenshotStatus": "SKIPPED_NO_SERVER",
+        "screenshotStatus": "PUBLIC_SAFE_CAPTURED",
         "publicScreenshotReview": "SAFE_SYNTHETIC_UI"
+      },
+      "publicationGate": {
+        "maMethode": "EXPLAINED_ON_MA_METHODE",
+        "contentStatus": "SUFFICIENT_INFORMATION",
+        "reasons": []
       }
     },
     {
@@ -651,13 +851,13 @@
       "githubUrl": "https://github.com/RYJITS/orbe_skyia",
       "hostingerUrl": "https://orbe.skyia.net/",
       "linkPolicy": {
-        "exposure": "publication-ready",
+        "exposure": "public-links",
         "publicationAllowed": true,
         "githubShowcaseAllowed": false,
         "securityStatus": "OK_PUBLIC"
       },
       "ficheUrl": "public/orchestrator/fiches/05-orbe-skyia.md",
-      "localPath": "D:/00_Cerveau_IA/Projet/05_Orbe_skyia",
+      "localPath": "05_Orbe_skyia",
       "stack": [
         "Vite/Dev server",
         "React",
@@ -674,6 +874,7 @@
         "application": "Orbe SkyIA est un prototype qui matérialise l'assistant SkyIA sous la forme d'une orbe interactive en 3D, permettant une expérience utilisateur plus immersive que les interfaces textuelles classiques. L'application combine un noyau fonctionnel SkyIA avec une interface visuelle riche, intégrant des services externes (modèles IA, synthèse vocale, paiements) pour tester des scénarios d'interaction avancés. Le projet sert de banc d'essai pour évaluer l'impact de l'immersion visuelle et sonore sur l'engagement utilisateur, tout en fournissant un outil de démonstration pour les partenaires techniques.",
         "fonctionnement": "L'application démarre un serveur Node.js qui initialise les services Firebase (Auth, Firestore) et prépare l'environnement d'exécution. Le frontend React, construit avec Vite, charge les composants principaux (orbe WebGL, interface de chat, tableaux de bord) et établit une connexion avec les services IA via OpenRouter ou l'API Google. Les interactions vocales sont gérées par la Web Speech API, tandis que les sauvegardes sont stockées localement ou synchronisées avec Firestore. Les crédits sont vérifiés via Stripe, et les rapports de session sont générés dynamiquement en PDF. L'orbe 3D réagit aux messages de l'IA et aux actions utilisateur, créant une boucle de feedback visuel.",
         "conception": "Le projet a été conçu comme un laboratoire d'innovation pour les interfaces IA, avec une architecture modulaire séparant clairement les responsabilités : frontend (React + Three.js), backend (Node.js + Firebase), services externes (IA, voix, paiements) et gestion d'état (React Context). Les choix clés incluent l'utilisation de Three.js pour le rendu 3D afin de garantir une expérience fluide, l'intégration de Firebase pour une gestion centralisée des utilisateurs et des sessions, et l'adoption de TypeScript pour une robustesse accrue. L'interface a été pensée pour être intuitive malgré sa complexité, avec des effets visuels (CRT, arrière-plan) servant à renforcer l'immersion sans distraire de la fonction principale. La sécurité a été renforcée via des règles Firestore strictes et des mécanismes d'auto-réparation pour les documents utilisateurs.",
+        "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
         "capabilities": [
           "Rendu 3D temps réel de l'orbe SkyIA avec réactions aux messages",
           "Sélection dynamique de modèles IA parmi une liste de fournisseurs (OpenRouter)",
@@ -718,11 +919,19 @@
           "Tests de sécurité et de compatibilité au build"
         ]
       },
+      "progress": [
+        "Etat du projet: pret cote usage public.",
+        "Fonctionnement: fonctionnel.",
+        "Securite: OK pour une presentation publique.",
+        "Ma Methode: fiche explicative visible.",
+        "Publication externe: candidat public, validation finale separee."
+      ],
       "highlights": [
         "Fournir un laboratoire d'innovation pour concevoir une interface IA plus expressive, immersive et mémorable que les assistants textuels traditionnels, tout en testant des fonctionnalités avancées comme la reconnaissance vocale, la synthèse vocale et la gestion de sessions persistantes.",
-        "Statut: PUBLIC_READY.",
-        "Securite: OK_PUBLIC.",
-        "Lien Hostinger connu: https://orbe.skyia.net/."
+        "Etat du projet: pret cote usage public.",
+        "Fonctionnement: fonctionnel.",
+        "Securite: OK pour une presentation publique.",
+        "Application disponible: https://orbe.skyia.net/."
       ],
       "functions": [
         "Visualisation interactive de l'assistant IA sous forme d'orbe WebGL",
@@ -741,13 +950,18 @@
         "Tests automatises detectes."
       ],
       "screenshots": [
-        "public/orchestrator/captures/05-orbe-skyia/05-orbe-skyia-2026-06-25_03-17-04-desktop.png",
-        "public/orchestrator/captures/05-orbe-skyia/05-orbe-skyia-2026-06-25_03-17-04-mobile.png"
+        "public/orchestrator/captures/05-orbe-skyia/05-orbe-skyia-2026-08-30_00-29-33-desktop.png",
+        "public/orchestrator/captures/05-orbe-skyia/05-orbe-skyia-2026-08-30_00-29-33-mobile.png"
       ],
       "mediaPolicy": {
         "exposure": "publication-ready",
         "publicationAllowed": true,
-        "screenshotStatus": "HAS_SCREENSHOTS"
+        "screenshotStatus": "PUBLIC_SAFE_CAPTURED"
+      },
+      "publicationGate": {
+        "maMethode": "EXPLAINED_ON_MA_METHODE",
+        "contentStatus": "SUFFICIENT_INFORMATION",
+        "reasons": []
       }
     },
     {
@@ -760,13 +974,13 @@
       "githubUrl": "https://github.com/RYJITS/skyia",
       "hostingerUrl": "https://skyia.net/",
       "linkPolicy": {
-        "exposure": "publication-ready",
+        "exposure": "public-links",
         "publicationAllowed": true,
         "githubShowcaseAllowed": false,
         "securityStatus": "OK_PUBLIC"
       },
       "ficheUrl": "public/orchestrator/fiches/05-skyia.md",
-      "localPath": "D:/00_Cerveau_IA/Projet/05_skyia",
+      "localPath": "05_skyia",
       "stack": [
         "Vite/Dev server",
         "React",
@@ -782,6 +996,7 @@
         "application": "SkyIA est une plateforme full-stack conçue pour évaluer et comparer les modèles d'IA via des duels adversariaux. Elle permet aux utilisateurs de lancer des conversations avec un ou plusieurs modèles, d'organiser des duels structurés, et de sauvegarder leurs sessions. Les résultats sont archivés et exportables sous forme de rapports détaillés, incluant des métriques de performance comme la latence et la qualité des réponses. L'application intègre également un système de gestion des crédits et des modèles personnalisés (BYOK), ainsi qu'une interface immersive inspirée des terminaux rétro pour une expérience utilisateur unique.",
         "fonctionnement": "L'application fonctionne en deux couches principales : un frontend React/Vite gérant l'interface utilisateur et une API PHP/MySQL assurant la persistance des données et la logique métier. Le frontend pilote les interactions utilisateur (conversations, duels, sauvegardes) tandis que l'API gère l'authentification, le routage vers les fournisseurs de modèles, le streaming des réponses, et l'archivage des rapports. Les services frontaux intègrent des mécanismes de compaction de contexte pour les modèles à faible capacité token, et des optimisations pour le streaming SSE afin d'améliorer l'expérience utilisateur.",
         "conception": "Le projet a été conçu avec une architecture modulaire et sécurisée, séparant clairement les responsabilités entre frontend et backend. Le frontend utilise React avec TypeScript pour un typage strict et une maintenabilité accrue, tandis que le backend repose sur une API PHP/MySQL pour une compatibilité avec les hébergements mutualisés. La sécurité est renforcée par un stockage chiffré des clés BYOK côté utilisateur et une séparation des données sensibles (tokens, sessions) des données publiques (rapports, statistiques). L'interface utilisateur a été pensée pour être intuitive tout en intégrant des éléments visuels inspirés des interfaces rétro (style terminal, effets CRT) pour une expérience immersive. L'architecture a été optimisée pour une évolutivité et une maintenabilité à long terme, avec des tests automatisés et des audits de sécurité intégrés.",
+        "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
         "capabilities": [
           "Lancement de duels IA en temps réel",
           "Comparaison multi-modèles avec streaming des réponses",
@@ -826,11 +1041,19 @@
           "Génération automatique des rapports PDF après un duel"
         ]
       },
+      "progress": [
+        "Etat du projet: pret cote usage public.",
+        "Fonctionnement: fonctionnel.",
+        "Securite: OK pour une presentation publique.",
+        "Ma Methode: fiche explicative visible.",
+        "Publication externe: candidat public, validation finale separee."
+      ],
       "highlights": [
         "Fournir une interface centralisée et un protocole standardisé pour comparer objectivement les modèles IA (gratuits, serveurs, BYOK), archiver les résultats, mesurer les latences et générer des rapports détaillés. Destiné aux chercheurs, développeurs et observatoires de modèles.",
-        "Statut: PUBLIC_READY.",
-        "Securite: OK_PUBLIC.",
-        "Lien Hostinger connu: https://skyia.net/."
+        "Etat du projet: pret cote usage public.",
+        "Fonctionnement: fonctionnel.",
+        "Securite: OK pour une presentation publique.",
+        "Application disponible: https://skyia.net."
       ],
       "functions": [
         "Lancement de conversations et duels IA",
@@ -850,13 +1073,133 @@
         "Tests automatises detectes."
       ],
       "screenshots": [
-        "public/orchestrator/captures/05-skyia/05-skyia-2026-06-21_23-37-02-desktop.png",
-        "public/orchestrator/captures/05-skyia/05-skyia-2026-06-21_23-37-02-mobile.png"
+        "public/orchestrator/captures/05-skyia/05-skyia-2026-08-30_00-29-38-desktop.png",
+        "public/orchestrator/captures/05-skyia/05-skyia-2026-08-30_00-29-38-mobile.png"
       ],
       "mediaPolicy": {
         "exposure": "publication-ready",
         "publicationAllowed": true,
-        "screenshotStatus": "HAS_SCREENSHOTS"
+        "screenshotStatus": "PUBLIC_SAFE_CAPTURED"
+      },
+      "publicationGate": {
+        "maMethode": "EXPLAINED_ON_MA_METHODE",
+        "contentStatus": "SUFFICIENT_INFORMATION",
+        "reasons": []
+      }
+    },
+    {
+      "id": "05-skyia-worktree-uiux-2026",
+      "category": "ai",
+      "name": "SkyIA - Protocole de Jugement Adversarial pour Modèles IA",
+      "comment": "Plateforme open source dédiée à l'évaluation, au benchmark et au suivi des performances des modèles d'intelligence artificielle via des duels structurés et des sessions comparatives.",
+      "image": "public/orchestrator/thumbnails/05-skyia-worktree-uiux-2026.webp",
+      "githubUrl": "https://github.com/RYJITS/skyia",
+      "linkPolicy": {
+        "exposure": "public-links",
+        "publicationAllowed": true,
+        "githubShowcaseAllowed": false,
+        "securityStatus": "OK_PUBLIC"
+      },
+      "ficheUrl": "public/orchestrator/fiches/05-skyia-worktree-uiux-2026.md",
+      "localPath": "05_skyia__worktree_uiux_2026",
+      "stack": [
+        "Vite/Dev server",
+        "React",
+        "Node.js"
+      ],
+      "status": {
+        "global": "PUBLIC_READY",
+        "security": "OK_PUBLIC",
+        "functionality": "FONCTIONNEL",
+        "publication": "PUBLIC_CANDIDATE"
+      },
+      "details": {
+        "application": "SkyIA est une plateforme full-stack permettant d'évaluer et de comparer des modèles d'intelligence artificielle via des duels structurés. L'application se compose d'un frontend React/Vite pour l'interface utilisateur et d'une API PHP/MySQL pour la persistance des données et la logique métier. Les utilisateurs peuvent lancer des conversations avec un ou plusieurs modèles, organiser des duels adversariaux, sauvegarder leurs sessions, consulter des rapports détaillés et exporter ces rapports au format PDF. L'interface propose également un mode immersif avec des effets visuels rétro pour une expérience utilisateur unique.",
+        "fonctionnement": "L'application fonctionne en deux couches principales : un frontend React/Vite gérant l'interface utilisateur et une API PHP/MySQL assurant la persistance des données et la logique métier. Le frontend pilote les interactions utilisateur (conversations, duels, sauvegardes) tandis que l'API gère l'authentification, le routage vers les fournisseurs de modèles, le streaming des réponses et l'archivage des rapports. Les services frontaux intègrent des mécanismes de compaction de contexte pour les modèles à faible capacité token et des optimisations pour le streaming SSE afin d'améliorer l'expérience utilisateur.",
+        "conception": "Le projet a été conçu avec une architecture modulaire et sécurisée, séparant clairement les responsabilités entre frontend et backend. Le frontend utilise React avec TypeScript pour un typage strict et une maintenabilité accrue, tandis que le backend repose sur une API PHP/MySQL pour une compatibilité avec les hébergements mutualisés. La sécurité est renforcée par un stockage chiffré des clés BYOK côté utilisateur et une séparation des données sensibles (tokens, sessions) des données publiques (rapports, statistiques). L'interface utilisateur a été pensée pour être intuitive tout en intégrant des éléments visuels inspirés des interfaces rétro (style terminal, effets CRT) pour une expérience immersive. L'architecture a été optimisée pour une évolutivité et une maintenabilité à long terme, avec des tests automatisés et des audits de sécurité intégrés.",
+        "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
+        "capabilities": [
+          "Lancement de duels IA structurés",
+          "Comparaison multi-modèles en temps réel",
+          "Archivage et export de rapports de duel",
+          "Benchmark de latence des modèles",
+          "Gestion des modèles personnalisés (BYOK)",
+          "Sauvegarde et restauration de sessions",
+          "Suivi des statistiques et classements",
+          "Interface immersive en style terminal rétro",
+          "Export de rapports au format PDF"
+        ],
+        "tools": [
+          "React (v19+) avec TypeScript",
+          "Vite (v7+) comme outil de build et serveur de développement",
+          "PHP (v8+) et MySQL (v8+) pour le backend et la persistance",
+          "Firebase Auth pour l'authentification utilisateur",
+          "Stripe pour la gestion des paiements et crédits",
+          "OpenRouter et Groq comme fournisseurs de modèles IA gratuits",
+          "Recharts pour la visualisation des données",
+          "html2canvas et jspdf pour l'export PDF",
+          "TailwindCSS pour le styling",
+          "Vitest pour les tests unitaires"
+        ],
+        "techniques": [
+          "Architecture full-stack séparée (frontend React, backend PHP/MySQL)",
+          "Streaming SSE pour les réponses IA en temps réel",
+          "Stockage chiffré des clés BYOK côté utilisateur",
+          "Séparation des données sensibles et publiques",
+          "Typage strict avec TypeScript",
+          "Tests automatisés avec Vitest",
+          "Optimisation des performances via Vite",
+          "Responsive design avec TailwindCSS"
+        ],
+        "automations": [
+          "Warm-up automatique du backend au démarrage",
+          "Routage dynamique des requêtes vers les fournisseurs de modèles",
+          "Compaction automatique du contexte pour les modèles à faible TPM",
+          "Migrations automatiques de la base de données (via scripts PHP)",
+          "Backfill des rapports archivés lors des mises à jour",
+          "Tests automatisés des endpoints et fonctionnalités critiques",
+          "Génération automatique des rapports PDF après un duel"
+        ]
+      },
+      "progress": [
+        "Etat du projet: pret cote usage public.",
+        "Fonctionnement: fonctionnel.",
+        "Securite: OK pour une presentation publique.",
+        "Ma Methode: fiche explicative visible.",
+        "Publication externe: candidat public, validation finale separee."
+      ],
+      "highlights": [
+        "Fournir une interface centralisée et un protocole standardisé pour comparer objectivement les modèles IA (gratuits, serveurs, BYOK), archiver les résultats, mesurer les latences et générer des rapports détaillés. Destinée aux chercheurs, développeurs et observatoires de modèles.",
+        "Etat du projet: pret cote usage public.",
+        "Fonctionnement: fonctionnel.",
+        "Securite: OK pour une presentation publique."
+      ],
+      "functions": [
+        "Lancement de conversations et duels IA",
+        "Comparaison multi-modèles en temps réel",
+        "Archivage et export de rapports de duel",
+        "Benchmark de latence des modèles",
+        "Gestion des modèles personnalisés (BYOK)",
+        "Sauvegarde et restauration de sessions",
+        "Suivi des statistiques et classements",
+        "Interface immersive en style terminal rétro",
+        "Lancement local disponible via npm run dev.",
+        "Build automatisable detecte.",
+        "Tests automatises detectes."
+      ],
+      "screenshots": [
+        "public/orchestrator/captures/05-skyia-worktree-uiux-2026/05-skyia-worktree-uiux-2026-2026-09-02_15-03-36-desktop.png",
+        "public/orchestrator/captures/05-skyia-worktree-uiux-2026/05-skyia-worktree-uiux-2026-2026-09-02_15-03-36-mobile.png"
+      ],
+      "mediaPolicy": {
+        "exposure": "publication-ready",
+        "publicationAllowed": true,
+        "screenshotStatus": "PUBLIC_SAFE_CAPTURED"
+      },
+      "publicationGate": {
+        "maMethode": "EXPLAINED_ON_MA_METHODE",
+        "contentStatus": "SUFFICIENT_INFORMATION",
+        "reasons": []
       }
     },
     {
@@ -869,13 +1212,13 @@
       "githubUrl": "https://github.com/RYJITS/garden-inn",
       "hostingerUrl": "https://garden-inn.c2rdesign.com/",
       "linkPolicy": {
-        "exposure": "publication-ready",
+        "exposure": "public-links",
         "publicationAllowed": true,
         "githubShowcaseAllowed": false,
         "securityStatus": "OK_PUBLIC"
       },
       "ficheUrl": "public/orchestrator/fiches/10-garden-inn.md",
-      "localPath": "D:/00_Cerveau_IA/Projet/10_garden-inn",
+      "localPath": "10_garden-inn",
       "stack": [
         "Vite/Dev server",
         "React",
@@ -891,6 +1234,7 @@
         "application": "Site vitrine moderne pour Bukit Lawang Garden Inn, conçu comme une plateforme de découverte et de réservation. L'application présente les chambres, le restaurant, les excursions et les services de transfert avec une interface responsive et accessible. Les fonctionnalités clés incluent une navigation multilingue, une conversion de devises en temps réel, et des outils d'interaction comme les itinéraires Google Maps et les liens de réservation directe.",
         "fonctionnement": "L'application React s'appuie sur une architecture modulaire où chaque section (accueil, chambres, restaurant, etc.) est un composant indépendant. Les données sont chargées dynamiquement et traduites selon la langue sélectionnée. La détection de section active au scroll est gérée via IntersectionObserver, tandis que les prix sont convertis en temps réel via une API de taux de change. Les liens de réservation directe et les itinéraires Google Maps sont intégrés pour faciliter l'action des visiteurs.",
         "conception": "Le projet a été conçu comme une vitrine touristique orientée réservation, avec une structure claire et des parcours utilisateurs logiques : découverte du lieu, compréhension des offres, filtrage des services, puis réservation ou contact. L'architecture repose sur des contextes React (langue et devise) pour centraliser la gestion des préférences utilisateur. Les choix techniques incluent Vite pour le bundling, TypeScript pour le typage strict, et Tailwind CSS pour le styling. Les images sont versionnées pour éviter les problèmes de cache, et un système de fallback est implémenté pour les contenus externes (notes Google Places).",
+        "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
         "capabilities": [
           "Affichage des chambres avec descriptions et photos",
           "Présentation du restaurant et de ses menus",
@@ -935,11 +1279,19 @@
           "Logging des événements utilisateur (clics, erreurs, etc.)"
         ]
       },
+      "progress": [
+        "Etat du projet: pret cote usage public.",
+        "Fonctionnement: fonctionnel.",
+        "Securite: OK pour une presentation publique.",
+        "Ma Methode: fiche explicative visible.",
+        "Publication externe: candidat public, validation finale separee."
+      ],
       "highlights": [
         "Valoriser l'établissement Bukit Lawang Garden Inn en fournissant une vitrine claire, accessible et engageante pour les voyageurs internationaux, avec des outils facilitant la réservation et la découverte des services.",
-        "Statut: PUBLIC_READY.",
-        "Securite: OK_PUBLIC.",
-        "Lien Hostinger connu: https://garden-inn.c2rdesign.com/."
+        "Etat du projet: pret cote usage public.",
+        "Fonctionnement: fonctionnel.",
+        "Securite: OK pour une presentation publique.",
+        "Application disponible: https://bukitlawang-garden-inn.com."
       ],
       "functions": [
         "Présentation des chambres, du restaurant, des excursions et des transferts",
@@ -954,13 +1306,18 @@
         "Build automatisable detecte."
       ],
       "screenshots": [
-        "public/orchestrator/captures/10-garden-inn/10-garden-inn-2026-06-25_03-17-59-desktop.png",
-        "public/orchestrator/captures/10-garden-inn/10-garden-inn-2026-06-25_03-17-59-mobile.png"
+        "public/orchestrator/captures/10-garden-inn/10-garden-inn-2026-08-30_00-29-42-desktop.png",
+        "public/orchestrator/captures/10-garden-inn/10-garden-inn-2026-08-30_00-29-42-mobile.png"
       ],
       "mediaPolicy": {
         "exposure": "publication-ready",
         "publicationAllowed": true,
-        "screenshotStatus": "HAS_SCREENSHOTS"
+        "screenshotStatus": "PUBLIC_SAFE_CAPTURED"
+      },
+      "publicationGate": {
+        "maMethode": "EXPLAINED_ON_MA_METHODE",
+        "contentStatus": "SUFFICIENT_INFORMATION",
+        "reasons": []
       }
     },
     {
@@ -973,13 +1330,13 @@
       "githubUrl": "https://github.com/RYJITS/harmos-calc",
       "hostingerUrl": "https://mamoyenne.c2rdesign.com/",
       "linkPolicy": {
-        "exposure": "publication-ready",
+        "exposure": "public-links",
         "publicationAllowed": true,
         "githubShowcaseAllowed": false,
         "securityStatus": "OK_PUBLIC"
       },
       "ficheUrl": "public/orchestrator/fiches/10-harmos-calc.md",
-      "localPath": "D:/00_Cerveau_IA/Projet/10_harmos-calc",
+      "localPath": "10_harmos-calc",
       "stack": [
         "Vite/Dev server",
         "React",
@@ -995,6 +1352,7 @@
         "application": "Harmos Calc est une application web interactive conçue pour aider les familles à suivre la progression scolaire des élèves selon le système HarmoS suisse. L'application permet de saisir des notes par matière et composant, calcule automatiquement les moyennes pondérées, et évalue l'orientation scolaire (Général, Moderne, Pré-gymnasial) en fonction des niveaux A/B/C. Un système de bonus/malus transforme les performances en temps de jeu, offrant une motivation supplémentaire. Le mode parent, sécurisé par mot de passe, permet de configurer les seuils et de consulter l'historique des actions.",
         "fonctionnement": "L'application fonctionne en temps réel : à chaque saisie de note, les moyennes sont recalculées instantanément. Le système HarmoS analyse les niveaux A/B/C par matière pour déterminer une orientation. Le mode bonus/malus est appliqué automatiquement selon des règles configurables (ex : +15 min par note ≥ 5, -15 min par note < 4). Le timer de jeu est synchronisé avec ces bonus/malus. Le mode parent, protégé par mot de passe, permet de configurer les seuils et de consulter l'historique des actions.",
         "conception": "Le projet a été conçu comme un outil familial simple et visuel, combinant calcul scolaire, visualisation immédiate et mécanique de motivation. L'architecture repose sur une séparation claire entre l'interface utilisateur (React), la logique métier (calculs locaux) et les services externes (appel à une API pour les règles HarmoS). Le choix de React et Vite permet une interface responsive et un développement modulaire. Le stockage des données est local (IndexedDB ou localStorage) pour garantir la confidentialité. La sécurité est renforcée par un mode parent protégé et une journalisation des actions. L'optimisation inclut un recalcul différé des moyennes pour éviter les blocages UI.",
+        "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
         "capabilities": [
           "Calcul dynamique des moyennes pondérées",
           "Évaluation automatique de l'orientation HarmoS",
@@ -1035,11 +1393,19 @@
           "Synchronisation du timer de jeu avec les bonus/malus"
         ]
       },
+      "progress": [
+        "Etat du projet: pret cote usage public.",
+        "Fonctionnement: fonctionnel.",
+        "Securite: OK pour une presentation publique.",
+        "Ma Methode: fiche explicative visible.",
+        "Publication externe: candidat public, validation finale separee."
+      ],
       "highlights": [
         "Simplifier le suivi scolaire des élèves en transformant les notes brutes en informations actionnables (moyennes, orientation, progression) et en motivant l'élève via un système de récompenses temporelles.",
-        "Statut: PUBLIC_READY.",
-        "Securite: OK_PUBLIC.",
-        "Lien Hostinger connu: https://mamoyenne.c2rdesign.com/."
+        "Etat du projet: pret cote usage public.",
+        "Fonctionnement: fonctionnel.",
+        "Securite: OK pour une presentation publique.",
+        "Application disponible: https://mamoyenne.c2rdesign.com/."
       ],
       "functions": [
         "Saisie des notes par matière et composant",
@@ -1058,13 +1424,18 @@
         "Build automatisable detecte."
       ],
       "screenshots": [
-        "public/orchestrator/captures/10-harmos-calc/10-harmos-calc-2026-06-25_01-33-15-desktop.png",
-        "public/orchestrator/captures/10-harmos-calc/10-harmos-calc-2026-06-25_01-33-15-mobile.png"
+        "public/orchestrator/captures/10-harmos-calc/10-harmos-calc-2026-08-30_00-29-47-desktop.png",
+        "public/orchestrator/captures/10-harmos-calc/10-harmos-calc-2026-08-30_00-29-47-mobile.png"
       ],
       "mediaPolicy": {
         "exposure": "publication-ready",
         "publicationAllowed": true,
-        "screenshotStatus": "HAS_SCREENSHOTS"
+        "screenshotStatus": "PUBLIC_SAFE_CAPTURED"
+      },
+      "publicationGate": {
+        "maMethode": "EXPLAINED_ON_MA_METHODE",
+        "contentStatus": "SUFFICIENT_INFORMATION",
+        "reasons": []
       }
     },
     {
@@ -1077,13 +1448,13 @@
       "githubUrl": "https://github.com/RYJITS/chess-3d-ultimate",
       "hostingerUrl": "https://chess.c2rdesign.com/",
       "linkPolicy": {
-        "exposure": "publication-ready",
+        "exposure": "public-links",
         "publicationAllowed": true,
         "githubShowcaseAllowed": false,
         "securityStatus": "OK_PUBLIC"
       },
       "ficheUrl": "public/orchestrator/fiches/20-chess-3d-ultimate.md",
-      "localPath": "D:/00_Cerveau_IA/Projet/20_chess-3d-ultimate",
+      "localPath": "20_chess-3d-ultimate",
       "stack": [
         "Vite/Dev server",
         "React",
@@ -1100,6 +1471,7 @@
         "application": "Chess 3D Ultimate est une application web interactive permettant de jouer aux échecs en 3D directement dans un navigateur. Le projet combine une logique de jeu robuste (via chess.js) avec un rendu 3D immersif (via Three.js) pour offrir une expérience visuelle et tactile unique. Les utilisateurs peuvent affronter une IA locale paramétrable (niveaux de difficulté) ou une IA externe (Gemini) en fournissant une clé API valide. L'application propose également plusieurs thèmes visuels (Classic, Disney, LEGO) pour personnaliser l'apparence du plateau et des pièces. La caméra est contrôlable via la souris pour une exploration libre de la scène, et les animations (captures, sélections) renforcent l'immersion.",
         "fonctionnement": "L'application repose sur une architecture modulaire où la logique du jeu (gestion des coups, vérification des règles) est séparée de la scène 3D (affichage, interactions, animations). Lorsque l'utilisateur sélectionne une pièce, un raycast est utilisé pour détecter la case cliquée. Si le coup est valide selon chess.js, la pièce est déplacée et la scène est mise à jour. Après le tour du joueur, l'IA locale ou externe génère un coup, qui est validé avant d'être exécuté. Les thèmes visuels sont appliqués dynamiquement, et les effets (comme les messages de capture) sont affichés en overlay. La caméra est contrôlable via la souris pour une exploration libre de la scène.",
         "conception": "Le projet a été conçu avec une séparation claire des responsabilités : chess.js gère la logique des échecs, tandis que Three.js s'occupe du rendu 3D et des interactions. L'architecture suit une approche modulaire avec des composants React pour l'interface utilisateur (HUD, paramètres) et une scène Three.js encapsulée dans un composant dédié. Les choix de design incluent : l'utilisation de pièces procédurales pour une génération dynamique, des thèmes visuels variés pour personnaliser l'expérience, et une gestion centralisée des paramètres de jeu. L'application est responsive et optimisée pour une utilisation fluide sur desktop et mobile. La sécurité a été prise en compte en évitant l'exposition de données sensibles (comme les clés API) dans le code public.",
+        "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
         "capabilities": [
           "Génération procédurale du plateau et des pièces d'échecs",
           "Détection des coups légaux via raycasting",
@@ -1140,11 +1512,19 @@
           "Affichage automatique des effets visuels (captures, animations)"
         ]
       },
+      "progress": [
+        "Etat du projet: pret cote usage public.",
+        "Fonctionnement: fonctionnel.",
+        "Securite: OK pour une presentation publique.",
+        "Ma Methode: fiche explicative visible.",
+        "Publication externe: candidat public, validation finale separee."
+      ],
       "highlights": [
         "Fournir une expérience visuelle et interactive de jeu d'échecs en 3D, accessible directement depuis un navigateur, avec des fonctionnalités avancées comme le jeu contre une IA locale ou un adversaire externe (Gemini), des thèmes visuels variés et une gestion dynamique des coups.",
-        "Statut: PUBLIC_READY.",
-        "Securite: OK_PUBLIC.",
-        "Lien Hostinger connu: https://chess.c2rdesign.com/."
+        "Etat du projet: pret cote usage public.",
+        "Fonctionnement: fonctionnel.",
+        "Securite: OK pour une presentation publique.",
+        "Application disponible: https://chess.c2rdesign.com/."
       ],
       "functions": [
         "Affichage 3D interactif du plateau et des pièces d'échecs",
@@ -1160,13 +1540,18 @@
         "Build automatisable detecte."
       ],
       "screenshots": [
-        "public/orchestrator/captures/20-chess-3d-ultimate/20-chess-3d-ultimate-2026-06-27_23-58-17-desktop.png",
-        "public/orchestrator/captures/20-chess-3d-ultimate/20-chess-3d-ultimate-2026-06-27_23-58-17-mobile.png"
+        "public/orchestrator/captures/20-chess-3d-ultimate/20-chess-3d-ultimate-2026-08-30_00-29-52-desktop.png",
+        "public/orchestrator/captures/20-chess-3d-ultimate/20-chess-3d-ultimate-2026-08-30_00-29-52-mobile.png"
       ],
       "mediaPolicy": {
         "exposure": "publication-ready",
         "publicationAllowed": true,
-        "screenshotStatus": "HAS_SCREENSHOTS"
+        "screenshotStatus": "PUBLIC_SAFE_CAPTURED"
+      },
+      "publicationGate": {
+        "maMethode": "EXPLAINED_ON_MA_METHODE",
+        "contentStatus": "SUFFICIENT_INFORMATION",
+        "reasons": []
       }
     },
     {
@@ -1179,13 +1564,13 @@
       "githubUrl": "https://github.com/RYJITS/jeu3d",
       "hostingerUrl": "https://neon-rush.skyia.net/",
       "linkPolicy": {
-        "exposure": "publication-ready",
+        "exposure": "public-links",
         "publicationAllowed": true,
         "githubShowcaseAllowed": false,
         "securityStatus": "OK_PUBLIC"
       },
       "ficheUrl": "public/orchestrator/fiches/20-jeu3d.md",
-      "localPath": "D:/00_Cerveau_IA/Projet/20_jeu3d",
+      "localPath": "20_jeu3d",
       "stack": [
         "Vite/Dev server",
         "React",
@@ -1202,6 +1587,7 @@
         "application": "Neon Rush 3D est un jeu 3D temps réel développé avec React, Three.js et Vite. L'application permet aux utilisateurs de naviguer dans un environnement 3D dynamique, de collecter des objets, d'éviter des obstacles et de tirer sur des cibles. Le jeu repose sur une architecture modulaire où chaque composant gère une partie spécifique : la scène 3D, le joueur, les obstacles, les projectiles, l'interface utilisateur et le système audio. L'état du jeu est centralisé via un store Zustand, assurant une synchronisation fluide entre les éléments. Three.js est utilisé pour le rendu graphique, avec des effets de post-traitement pour améliorer l'immersion visuelle.",
         "fonctionnement": "L'application fonctionne en temps réel grâce à un serveur de développement Vite qui permet une mise à jour instantanée des modifications. Le jeu est structuré autour d'une boucle principale qui gère les entrées utilisateur, les mises à jour de l'état du jeu et le rendu graphique. Les interactions sont capturées via des événements clavier ou tactiles, puis traitées par les composants dédiés. Les collisions sont détectées et gérées par des algorithmes simples, tandis que les effets visuels et sonores sont synchronisés avec les actions du joueur. L'état global du jeu est stocké dans un store Zustand, permettant une réactivité optimale.",
         "conception": "Le projet a été conçu avec une approche modulaire et scalable, en séparant clairement les responsabilités entre les composants React, les utilitaires et le store d'état. Three.js a été choisi pour son intégration native avec React via @react-three/fiber, offrant une syntaxe déclarative pour la création d'objets 3D. L'architecture a été pensée pour faciliter la maintenance et l'ajout de nouvelles fonctionnalités, avec une attention particulière portée à la performance et à l'optimisation du rendu. Les choix techniques incluent l'utilisation de Tailwind CSS pour le style, Zustand pour la gestion d'état, et Firebase pour les fonctionnalités backend optionnelles. L'application est optimisée pour une expérience fluide sur desktop et mobile.",
+        "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
         "capabilities": [
           "Rendu 3D temps réel avec Three.js et @react-three/fiber",
           "Gestion des collisions et de la physique basique",
@@ -1239,11 +1625,19 @@
           "Génération automatique de rapports de fonctionnalité et de réparation"
         ]
       },
+      "progress": [
+        "Etat du projet: pret cote usage public.",
+        "Fonctionnement: fonctionnel.",
+        "Securite: OK pour une presentation publique.",
+        "Ma Methode: fiche explicative visible.",
+        "Publication externe: candidat public, validation finale separee."
+      ],
       "highlights": [
         "Créer une application web interactive permettant aux utilisateurs de naviguer dans un environnement 3D dynamique, de collecter des objets, d'éviter des obstacles et de tirer sur des cibles, avec un rendu visuel optimisé et une gestion d'état centralisée.",
-        "Statut: PUBLIC_READY.",
-        "Securite: OK_PUBLIC.",
-        "Lien Hostinger connu: https://neon-rush.skyia.net/."
+        "Etat du projet: pret cote usage public.",
+        "Fonctionnement: fonctionnel.",
+        "Securite: OK pour une presentation publique.",
+        "Application disponible: https://neon-rush.skyia.net/."
       ],
       "functions": [
         "Navigation 3D en temps réel avec gestion des collisions",
@@ -1258,13 +1652,18 @@
         "Build automatisable detecte."
       ],
       "screenshots": [
-        "public/orchestrator/captures/20-jeu3d/20-jeu3d-2026-06-25_02-46-46-desktop.png",
-        "public/orchestrator/captures/20-jeu3d/20-jeu3d-2026-06-25_02-46-46-mobile.png"
+        "public/orchestrator/captures/20-jeu3d/20-jeu3d-2026-08-30_00-29-57-desktop.png",
+        "public/orchestrator/captures/20-jeu3d/20-jeu3d-2026-08-30_00-29-57-mobile.png"
       ],
       "mediaPolicy": {
         "exposure": "publication-ready",
         "publicationAllowed": true,
-        "screenshotStatus": "HAS_SCREENSHOTS"
+        "screenshotStatus": "PUBLIC_SAFE_CAPTURED"
+      },
+      "publicationGate": {
+        "maMethode": "EXPLAINED_ON_MA_METHODE",
+        "contentStatus": "SUFFICIENT_INFORMATION",
+        "reasons": []
       }
     },
     {
@@ -1277,13 +1676,13 @@
       "githubUrl": "https://github.com/RYJITS/morphostyle",
       "hostingerUrl": "https://morphostyle.c2rdesign.com/",
       "linkPolicy": {
-        "exposure": "publication-ready",
+        "exposure": "public-links",
         "publicationAllowed": true,
         "githubShowcaseAllowed": false,
         "securityStatus": "OK_PUBLIC"
       },
       "ficheUrl": "public/orchestrator/fiches/20-morphostyle.md",
-      "localPath": "D:/00_Cerveau_IA/Projet/20_morphostyle",
+      "localPath": "20_morphostyle",
       "stack": [
         "Vite/Dev server",
         "React",
@@ -1299,6 +1698,7 @@
         "application": "MorphoStyle AI est une application web qui permet de tester une consultation coiffure/visagisme. Elle combine cinq profils demo prepares en base statique et un parcours photo personnelle utilisant OpenAI Image cote serveur. L'objectif est de montrer des recommandations morphologiques realistes sans multiplier les appels API inutiles.",
         "fonctionnement": "L'application suit deux parcours. Les profils demo chargent des planches statiques deja preparees et decoupees localement. Pour une photo personnelle, l'utilisateur charge son portrait, choisit ses reglages, puis OpenAI genere une premiere planche 4x4 avec quatre propositions. L'utilisateur selectionne une proposition et une seconde planche finale est generee puis decoupee en face, profil gauche, profil droit et dos. Le serveur applique une limite d'un essai complet OpenAI par jour et conserve uniquement des empreintes de session pour le quota.",
         "conception": "Le projet a ete reconstruit autour d'une logique economique et controlable: les exemples restent statiques, les images personnelles utilisent deux appels OpenAI maximum par essai, et le serveur garde les cles API hors du navigateur. Les planches sont decoupees avec Sharp pour afficher des portraits independants et agrandissables. L'interface React garde un parcours simple: selection d'un profil ou upload, reglages, choix d'une proposition, resultat final avec vues complementaires.",
+        "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
         "capabilities": [
           "Selection de profils demo statiques",
           "Upload d'une photo personnelle",
@@ -1339,11 +1739,19 @@
           "Conservation automatique de l'identite, de la lumiere et du contexte dans les prompts"
         ]
       },
+      "progress": [
+        "Etat du projet: pret cote usage public.",
+        "Fonctionnement: fonctionnel.",
+        "Securite: OK pour une presentation publique.",
+        "Ma Methode: fiche explicative visible.",
+        "Publication externe: candidat public, validation finale separee."
+      ],
       "highlights": [
         "Démocratiser l'accès à des conseils professionnels en coiffure et style en combinant analyse morphologique automatisée et génération d'images réalistes, pour fournir des recommandations personnalisées et immédiates.",
-        "Statut: PUBLIC_READY.",
-        "Securite: OK_PUBLIC.",
-        "Lien Hostinger connu: https://morphostyle.c2rdesign.com/."
+        "Etat du projet: pret cote usage public.",
+        "Fonctionnement: fonctionnel.",
+        "Securite: OK pour une presentation publique.",
+        "Application disponible: https://morphostyle.c2rdesign.com."
       ],
       "functions": [
         "Analyse morphologique automatique du visage à partir d'une photo",
@@ -1357,13 +1765,117 @@
         "Build automatisable detecte."
       ],
       "screenshots": [
-        "public/orchestrator/captures/20-morphostyle/20-morphostyle-2026-06-25_03-17-30-desktop.png",
-        "public/orchestrator/captures/20-morphostyle/20-morphostyle-2026-06-25_03-17-30-mobile.png"
+        "public/orchestrator/captures/20-morphostyle/20-morphostyle-2026-08-30_01-01-36-desktop.png",
+        "public/orchestrator/captures/20-morphostyle/20-morphostyle-2026-08-30_01-01-36-mobile.png"
       ],
       "mediaPolicy": {
         "exposure": "publication-ready",
         "publicationAllowed": true,
-        "screenshotStatus": "HAS_SCREENSHOTS"
+        "screenshotStatus": "PUBLIC_SAFE_CAPTURED"
+      },
+      "publicationGate": {
+        "maMethode": "EXPLAINED_ON_MA_METHODE",
+        "contentStatus": "SUFFICIENT_INFORMATION",
+        "reasons": []
+      }
+    },
+    {
+      "id": "20-morphostyle-publish",
+      "category": "design",
+      "name": "MorphoStyle Studio - Plateforme de génération et partage de coiffures assistée par IA",
+      "comment": "Plateforme web permettant de générer des propositions de coiffures personnalisées via intelligence artificielle et de les partager avec une communauté.",
+      "image": "public/orchestrator/thumbnails/20-morphostyle-publish.webp",
+      "linkPolicy": {
+        "exposure": "public-links",
+        "publicationAllowed": true,
+        "githubShowcaseAllowed": false,
+        "securityStatus": "OK_PUBLIC"
+      },
+      "ficheUrl": "public/orchestrator/fiches/20-morphostyle-publish.md",
+      "localPath": "20_morphostyle_publish",
+      "stack": [
+        "Dossier projet"
+      ],
+      "status": {
+        "global": "PUBLIC_CANDIDATE",
+        "security": "OK_PUBLIC",
+        "functionality": "NON_TESTABLE_MANQUE_INFO",
+        "publication": "PUBLIC_CANDIDATE"
+      },
+      "details": {
+        "application": "MorphoStyle Studio est une application web progressive (PWA) conçue pour aider les utilisateurs à découvrir des styles de coiffure adaptés à leur morphologie faciale. Le projet intègre une interface de génération assistée par IA, permettant de créer des propositions personnalisées à partir de photos ou de modèles 3D. Les utilisateurs peuvent explorer des planches de tendances, valider des styles, et partager leurs créations au sein d'une communauté sécurisée. Le système inclut des mécanismes de validation des âges et de gestion des retries pour garantir une expérience robuste.",
+        "fonctionnement": "L'application fonctionne en trois étapes principales : 1) Analyse morphologique via IA pour proposer des styles adaptés, 2) Prévisualisation interactive des propositions sur des modèles ou photos, 3) Partage sécurisé des créations avec contrôle des paramètres de confidentialité. Le backend gère les requêtes IA, les validations, et les interactions utilisateur, tandis que le frontend propose une interface responsive avec des animations fluides pour les transitions entre planches.",
+        "conception": "Le projet a été conçu comme une PWA pour offrir une expérience utilisateur fluide et accessible sur tous les appareils. L'architecture repose sur une séparation claire entre frontend (React avec TypeScript) et backend (Node.js). Les choix de design incluent l'utilisation de Tailwind CSS pour le styling, des animations CSS pour les transitions, et une gestion stricte des permissions pour les publications. La sécurité est renforcée par une politique de contenu strict (CSP) et une validation systématique des entrées utilisateur.",
+        "avancement": "Etat du projet: candidat public avec controles a finaliser. Fonctionnement: non teste faute d'informations suffisantes. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
+        "capabilities": [
+          "Génération de styles de coiffure personnalisés via IA",
+          "Prévisualisation interactive avec animations fluides",
+          "Partage sécurisé des créations avec contrôle des paramètres de confidentialité",
+          "Navigation entre planches de profils et de tendances",
+          "Validation des âges pour exclure les suggestions inappropriées",
+          "Gestion automatique des retries en cas de saturation du service IA",
+          "Mode OpenAI Image avec quota limité",
+          "Interface responsive adaptée aux mobiles et tablettes"
+        ],
+        "tools": [
+          "React (frontend)",
+          "Node.js (backend)",
+          "TypeScript",
+          "Tailwind CSS",
+          "PostCSS",
+          "Python (scripts de génération de planches)",
+          "MySQL (base de données pour le socle multi-utilisateur)",
+          "Hostinger (hébergement cible)"
+        ],
+        "techniques": [
+          "PWA (Progressive Web App)",
+          "IA générative pour les propositions de coiffures",
+          "Validation des entrées utilisateur côté serveur",
+          "Gestion des retries avec délai exponentiel",
+          "Schéma JSON robuste pour l'analyse morphologique",
+          "Animations CSS pour les transitions fluides",
+          "CSP (Content Security Policy) pour la sécurité",
+          "Responsive Design avec Tailwind CSS"
+        ],
+        "automations": [
+          "Scripts Python pour la génération automatique de planches de profils et de tendances",
+          "Validation automatique des âges pour exclure les suggestions inappropriées",
+          "Gestion automatique des retries en cas de saturation du service IA"
+        ]
+      },
+      "progress": [
+        "Etat du projet: candidat public avec controles a finaliser.",
+        "Fonctionnement: non teste faute d'informations suffisantes.",
+        "Securite: OK pour une presentation publique.",
+        "Ma Methode: fiche explicative visible.",
+        "Publication externe: candidat public, validation finale separee."
+      ],
+      "highlights": [
+        "Offrir aux utilisateurs un outil interactif pour explorer des styles de coiffure adaptés à leur morphologie faciale, avec une interface de partage sécurisée et des fonctionnalités de personnalisation avancées.",
+        "Etat du projet: candidat public avec controles a finaliser.",
+        "Fonctionnement: non teste faute d'informations suffisantes.",
+        "Securite: OK pour une presentation publique."
+      ],
+      "functions": [
+        "Génération de propositions de coiffures personnalisées via IA",
+        "Prévisualisation interactive des styles sur photos ou modèles 3D",
+        "Partage sécurisé des créations au sein d'une communauté",
+        "Gestion des préférences de confidentialité pour les publications",
+        "Navigation entre différentes planches de profils et styles",
+        "Génération de planches de tendances et de recommandations",
+        "Validation des âges pour exclure les suggestions inappropriées",
+        "Gestion des retries automatiques en cas de saturation du service IA"
+      ],
+      "screenshots": [],
+      "mediaPolicy": {
+        "exposure": "none",
+        "publicationAllowed": true,
+        "screenshotStatus": "SKIPPED_NO_SERVER"
+      },
+      "publicationGate": {
+        "maMethode": "EXPLAINED_ON_MA_METHODE",
+        "contentStatus": "SUFFICIENT_INFORMATION",
+        "reasons": []
       }
     },
     {
@@ -1374,13 +1886,13 @@
       "image": "public/orchestrator/thumbnails/30-pulsedeck.webp",
       "githubUrl": "https://github.com/RYJITS/pulsedeck",
       "linkPolicy": {
-        "exposure": "publication-ready",
+        "exposure": "public-links",
         "publicationAllowed": true,
         "githubShowcaseAllowed": false,
         "securityStatus": "OK_PUBLIC"
       },
       "ficheUrl": "public/orchestrator/fiches/30-pulsedeck.md",
-      "localPath": "D:/00_Cerveau_IA/Projet/30_pulsedeck",
+      "localPath": "30_pulsedeck",
       "stack": [
         "Dossier projet"
       ],
@@ -1394,6 +1906,7 @@
         "application": "C2R PulseDeck est actuellement un cahier des charges, pas encore une application executable. Le concept decrit un futur outil local qui devra recevoir une idee brute, la clarifier et produire une fiche projet prete a relire ou a publier.",
         "fonctionnement": "Le MVP prevu devra proposer une saisie d'idee, transformer cette saisie en blocs structures, conserver les projets dans un fichier JSON local et exporter une fiche Markdown. Les fonctions de tableau de bord, de detection des fiches incompletes et d'assistance IA sont decrites comme des etapes a developper; elles ne sont pas encore implementees dans ce dossier.",
         "conception": "Le brief propose une application React et TypeScript construite avec Vite et Tailwind CSS, sans backend ni cloud pour le MVP. Les ecrans envisages sont la capture d'idee, la fiche generee et un tableau de bord. La priorite est de valider un parcours simple avant d'ajouter des automatisations ou des effets visuels avances.",
+        "avancement": "Etat du projet: candidat public avec controles a finaliser. Fonctionnement: non teste faute d'informations suffisantes. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
         "capabilities": [
           "Specification du parcours de capture d'idee",
           "Definition du format de fiche projet",
@@ -1417,10 +1930,18 @@
         ],
         "automations": []
       },
+      "progress": [
+        "Etat du projet: candidat public avec controles a finaliser.",
+        "Fonctionnement: non teste faute d'informations suffisantes.",
+        "Securite: OK pour une presentation publique.",
+        "Ma Methode: fiche explicative visible.",
+        "Publication externe: candidat public, validation finale separee."
+      ],
       "highlights": [
         "Preparer un MVP capable de clarifier une idee, produire une fiche reutilisable et faciliter sa publication dans un portfolio.",
-        "Statut: PUBLIC_CANDIDATE.",
-        "Securite: OK_PUBLIC."
+        "Etat du projet: candidat public avec controles a finaliser.",
+        "Fonctionnement: non teste faute d'informations suffisantes.",
+        "Securite: OK pour une presentation publique."
       ],
       "functions": [
         "Prevoir une saisie rapide d'idee avec titre, categorie, priorite et statut.",
@@ -1435,6 +1956,116 @@
         "exposure": "none",
         "publicationAllowed": true,
         "screenshotStatus": "SKIPPED_NO_SERVER"
+      },
+      "publicationGate": {
+        "maMethode": "EXPLAINED_ON_MA_METHODE",
+        "contentStatus": "SUFFICIENT_INFORMATION",
+        "reasons": []
+      }
+    },
+    {
+      "id": "50-assurance-maladie",
+      "category": "tools",
+      "name": "Assurance maladie",
+      "comment": "Application locale pour analyser les factures médicales suisses et estimer leur traitement par l'assurance obligatoire LAMal ou complémentaire LCA.",
+      "image": "public/orchestrator/thumbnails/50-assurance-maladie.webp",
+      "githubUrl": "https://github.com/RYJITS/assurance_maladie",
+      "linkPolicy": {
+        "exposure": "public-links",
+        "publicationAllowed": true,
+        "githubShowcaseAllowed": false,
+        "securityStatus": "OK_PUBLIC"
+      },
+      "ficheUrl": "public/orchestrator/fiches/50-assurance-maladie.md",
+      "localPath": "50_assurance_maladie",
+      "stack": [
+        "Vite/Dev server",
+        "React",
+        "Node.js"
+      ],
+      "status": {
+        "global": "PUBLIC_READY",
+        "security": "OK_PUBLIC",
+        "functionality": "FONCTIONNEL",
+        "publication": "PUBLIC_CANDIDATE"
+      },
+      "details": {
+        "application": "Application web locale (React/Vite) conçue pour analyser les factures médicales suisses et estimer leur traitement par l'assurance obligatoire LAMal ou complémentaire LCA. L'application permet de configurer les membres de la famille, leurs contrats d'assurance, et d'importer des factures au format PDF ou texte pour une analyse automatique. Les estimations sont basées sur les règles configurées pour chaque contrat et chaque membre, avec une attention particulière aux franchises, quote-parts et limites annuelles. L'application ne stocke aucun mot de passe d'assureur et guide l'utilisateur pour l'envoi des justificatifs via les portails officiels.",
+        "fonctionnement": "L'application fonctionne en local-first : toutes les données restent dans le navigateur de l'utilisateur. L'analyse des factures repose sur l'extraction du texte (PDF ou texte brut) et sa parsing pour détecter les champs clés (montant, date, prestataire, catégorie de soin, mode de facturation). Un moteur de remboursement calcule ensuite les montants estimés selon les règles configurées pour chaque contrat (LAMal et complémentaires). L'application propose des presets pour les assureurs Visana et Groupe Mutuel, mais ne se connecte pas directement à leurs portails. Les estimations sont affichées avec les montants, les justificatifs requis et les raisons du choix de traitement.",
+        "conception": "L'application est conçue comme une application locale, sans publication web, pour garantir la confidentialité des données de santé. L'architecture repose sur React pour l'interface, Vite pour le bundling, et TypeScript pour la typage fort. Le projet est structuré en modules clairs : types de domaine, données d'exemple, connecteurs d'assureurs, moteur de remboursement, parsing de factures et persistance locale. Les choix de design incluent une interface responsive, des composants modulaires, et une séparation claire entre la logique métier et l'interface utilisateur. La sécurité est renforcée par l'absence de stockage de données personnelles et l'utilisation de chemins relatifs pour le mode portable.",
+        "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
+        "capabilities": [
+          "Configuration des membres de la famille et de leurs contrats d'assurance",
+          "Analyse automatique de factures médicales (PDF ou texte brut)",
+          "Détection des champs clés : montant, date, prestataire, catégorie de soin, mode de facturation",
+          "Estimation des remboursements LAMal et complémentaires selon les règles configurées",
+          "Calcul des franchises et quote-parts restantes",
+          "Présentation des montants estimés, des justificatifs requis et des raisons du choix de traitement",
+          "Mode portable pour une utilisation locale sans dépendance à un chemin absolu",
+          "Persistance locale des données (famille, contrats, état des franchises)"
+        ],
+        "tools": [
+          "React 19.x pour l'interface utilisateur",
+          "Vite 8.x pour le bundling et le serveur de développement",
+          "TypeScript pour le typage fort",
+          "pdfjs-dist pour l'extraction de texte depuis les PDF",
+          "lucide-react pour les icônes",
+          "oxlint pour le linting",
+          "Playwright pour les tests E2E"
+        ],
+        "techniques": [
+          "Architecture locale-first (toutes les données restent dans le navigateur)",
+          "Parsing de texte pour extraire les champs clés des factures",
+          "Moteur de remboursement basé sur des règles configurables",
+          "Persistance locale via localStorage",
+          "Mode portable avec chemins relatifs et vérification des prérequis",
+          "Responsive design pour une utilisation sur mobile et desktop",
+          "Typage fort avec TypeScript pour garantir la robustesse du code"
+        ],
+        "automations": [
+          "Vérification des prérequis pour le mode portable (dossiers, build, dépendances, Ollama)",
+          "Extraction automatique de texte depuis les PDF importés",
+          "Analyse automatique des champs clés des factures",
+          "Calcul automatique des remboursements selon les règles configurées"
+        ]
+      },
+      "progress": [
+        "Etat du projet: pret cote usage public.",
+        "Fonctionnement: fonctionnel.",
+        "Securite: OK pour une presentation publique.",
+        "Ma Methode: fiche explicative visible.",
+        "Publication externe: candidat public, validation finale separee."
+      ],
+      "highlights": [
+        "Aider les familles suisses à gérer leurs contrats d'assurance maladie en analysant les factures médicales, en estimant les remboursements selon les règles LAMal et LCA, et en guidant l'envoi des justificatifs vers les portails des assureurs.",
+        "Etat du projet: pret cote usage public.",
+        "Fonctionnement: fonctionnel.",
+        "Securite: OK pour une presentation publique."
+      ],
+      "functions": [
+        "Configuration des membres de la famille et de leurs contrats d'assurance",
+        "Analyse automatique de factures médicales (PDF ou texte brut)",
+        "Estimation des remboursements LAMal et complémentaires selon les règles configurées",
+        "Détection des franchises et quote-parts restantes",
+        "Guidage pour l'envoi des justificatifs vers les portails des assureurs",
+        "Présentation des montants estimés et des justificatifs requis",
+        "Mode portable pour une utilisation locale sans dépendance à un chemin absolu",
+        "Lancement local disponible via npm run dev.",
+        "Build automatisable detecte."
+      ],
+      "screenshots": [
+        "public/orchestrator/captures/50-assurance-maladie/50-assurance-maladie-2026-08-30_01-01-47-desktop.png",
+        "public/orchestrator/captures/50-assurance-maladie/50-assurance-maladie-2026-08-30_01-01-47-mobile.png"
+      ],
+      "mediaPolicy": {
+        "exposure": "publication-ready",
+        "publicationAllowed": true,
+        "screenshotStatus": "PUBLIC_SAFE_CAPTURED"
+      },
+      "publicationGate": {
+        "maMethode": "EXPLAINED_ON_MA_METHODE",
+        "contentStatus": "SUFFICIENT_INFORMATION",
+        "reasons": []
       }
     },
     {
@@ -1442,16 +2073,16 @@
       "category": "ai",
       "name": "Cerveau IA",
       "comment": "Espace de travail IA local qui organise les instructions, la memoire, les competences, les integrations API et les projets dans un systeme coherent.",
-      "image": "public/orchestrator/thumbnails/89-cerveau-ia-local.webp",
+      "image": "public/orchestrator/thumbnails-ai/89-cerveau-ia-local.webp",
       "githubUrl": "https://github.com/RYJITS/cerveau_ia_local-showcase",
       "linkPolicy": {
-        "exposure": "publication-ready",
-        "publicationAllowed": true,
-        "githubShowcaseAllowed": false,
+        "exposure": "showcase-only",
+        "publicationAllowed": false,
+        "githubShowcaseAllowed": true,
         "securityStatus": "OK_PUBLIC"
       },
       "ficheUrl": "public/orchestrator/fiches/89-cerveau-ia-local.md",
-      "localPath": "D:/00_Cerveau_IA/Projet/89_cerveau_ia_local",
+      "localPath": "89_cerveau_ia_local",
       "stack": [
         "Dossier projet"
       ],
@@ -1465,6 +2096,7 @@
         "application": "Cerveau IA est un environnement local de travail assiste par IA. Il rassemble des instructions communes, des memoires persistantes, des competences reutilisables, des configurations API locales et un ensemble de projets independants. Son objectif est de conserver la continuite du travail entre les sessions et les outils sans melanger les donnees de chaque projet.",
         "fonctionnement": "Le systeme separe les responsabilites en espaces dedies: les instructions definissent les regles de travail, la memoire conserve les decisions et apprentissages, les competences apportent des methodes reutilisables, les configurations API restent locales, et chaque projet garde ses propres sources et documents. Les assistants utilisent ce contexte commun pour travailler de maniere coherente tout en respectant les limites de chaque projet.",
         "conception": "Le projet suit une approche locale, modulaire et prudente. Les informations partagees entre projets sont centralisees uniquement lorsqu'elles sont reellement transverses; les sources, secrets et donnees metier restent separes. Une representation publique limitee permet de presenter le concept et les fonctions sans exposer la structure privee complete.",
+        "avancement": "Etat du projet: reserve a l'usage interne. Fonctionnement: non teste faute d'informations suffisantes. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: interne.",
         "capabilities": [
           "Conserver un contexte IA durable",
           "Maintenir une memoire utilisateur et des memoires projet",
@@ -1499,10 +2131,18 @@
           "Lecture locale des configurations API sans les publier"
         ]
       },
+      "progress": [
+        "Etat du projet: reserve a l'usage interne.",
+        "Fonctionnement: non teste faute d'informations suffisantes.",
+        "Securite: OK pour une presentation publique.",
+        "Ma Methode: fiche explicative visible.",
+        "Publication externe: interne."
+      ],
       "highlights": [
         "Conserver un contexte durable entre les assistants IA et les projets, reutiliser les memes competences et appliquer des regles communes sans exposer les donnees privees.",
-        "Statut: PRIVATE_INTERNAL.",
-        "Securite: OK_PUBLIC."
+        "Etat du projet: reserve a l'usage interne.",
+        "Fonctionnement: non teste faute d'informations suffisantes.",
+        "Securite: OK pour une presentation publique."
       ],
       "functions": [
         "Organise les instructions communes utilisees par les assistants IA.",
@@ -1517,6 +2157,11 @@
         "exposure": "none",
         "publicationAllowed": false,
         "screenshotStatus": "SKIPPED_NO_SERVER"
+      },
+      "publicationGate": {
+        "maMethode": "EXPLAINED_ON_MA_METHODE",
+        "contentStatus": "SUFFICIENT_INFORMATION",
+        "reasons": []
       }
     },
     {
@@ -1533,9 +2178,9 @@
         "securityStatus": "OK_PRIVATE"
       },
       "ficheUrl": "public/orchestrator/fiches/competance-recherche-emploie.md",
-      "localPath": "D:/00_Cerveau_IA/Projet/Competance_Recherche_emploie",
+      "localPath": "Competance_Recherche_emploie",
       "stack": [
-        "Dossier projet"
+        "HTML statique"
       ],
       "status": {
         "global": "PRIVATE_INTERNAL",
@@ -1547,6 +2192,7 @@
         "application": "Ce projet est un pipeline automatisé et structuré pour la recherche d'emploi, conçu pour des profils hybrides combinant expérience industrielle (supply chain, planification, ERP/SAP, KPI) et une transition vers l'IA appliquée, l'automatisation et le développement d'outils métiers. Il permet de centraliser, filtrer, valider et suivre les candidatures de manière systématique, en réduisant les tâches manuelles répétitives.",
         "fonctionnement": "Le projet fonctionne comme un pipeline en 7 étapes :\n1. **Inbox** : Collecte manuelle ou automatisée d'offres brutes (liens, notes).\n2. **Sources Offres** : Vérification et catalogage des sources d'offres.\n3. **Runs** : Exécution de recherches automatisées horodatées selon des critères configurés.\n4. **Validations Telegram** : Interface de validation manuelle des offres via un bot Telegram.\n5. **Dossiers Valides** : Constitution de dossiers de candidature pour les offres retenues.\n6. **Postulations** : Envoi des candidatures et suivi des relances.\n7. **Archives** : Archivage des offres non retenues ou obsolètes.\n\nLes données sensibles (offres brutes, validations, postulations) sont ignorées par Git et stockées localement.",
         "conception": "Le projet a été conçu comme un pipeline modulaire et versionné pour garantir une traçabilité des évolutions. La structure en dossiers est pensée pour séparer clairement les données brutes, les processus automatisés, les validations manuelles et les archives. Les choix de conception incluent :\n- **Versioning** : Utilisation de Git pour versionner la structure, les configurations et la documentation, avec des règles strictes pour les commits et les tags.\n- **Modularité** : Séparation des étapes du pipeline en dossiers distincts pour faciliter la maintenance et les mises à jour.\n- **Automatisation** : Intégration de services locaux (ex: SearXNG pour la recherche) et d'interfaces de validation (ex: Telegram) pour réduire l'intervention manuelle.\n- **Traçabilité** : Système de mémoire projet pour enregistrer les décisions clés et les apprentissages.",
+        "avancement": "Etat du projet: reserve a l'usage interne. Fonctionnement: non teste faute d'informations suffisantes. Securite: reserve au prive. Ma Methode: fiche explicative visible. Publication externe: interne.",
         "capabilities": [
           "Collecte automatisée d'offres depuis des sources configurables",
           "Filtrage et scoring des offres selon des critères métiers (ex: mots-clés, technologies, localisation)",
@@ -1579,10 +2225,18 @@
           "Relances automatiques pour le suivi des candidatures"
         ]
       },
+      "progress": [
+        "Etat du projet: reserve a l'usage interne.",
+        "Fonctionnement: non teste faute d'informations suffisantes.",
+        "Securite: reserve au prive.",
+        "Ma Methode: fiche explicative visible.",
+        "Publication externe: interne."
+      ],
       "highlights": [
         "Automatiser et organiser la recherche d'emploi en identifiant des postes alignés sur un profil professionnel hybride combinant expérience industrielle, supply chain, planification, ERP/SAP, KPI, et une transition vers l'IA appliquée, l'automatisation et le développement d'outils métiers. Le projet vise à réduire le temps de traitement manuel tout en garantissant une traçabilité des candidatures.",
-        "Statut: PRIVATE_INTERNAL.",
-        "Securite: OK_PRIVATE."
+        "Etat du projet: reserve a l'usage interne.",
+        "Fonctionnement: non teste faute d'informations suffisantes.",
+        "Securite: reserve au prive."
       ],
       "functions": [
         "Collecte automatisée d'offres d'emploi depuis des sources configurables",
@@ -1593,11 +2247,20 @@
         "Archivage des offres non retenues ou obsolètes",
         "Versioning de la structure du projet et des configurations"
       ],
-      "screenshots": [],
+      "screenshots": [
+        "public/orchestrator/captures/competance-recherche-emploie/competance-recherche-emploie-2026-08-30_02-37-02-desktop.png",
+        "public/orchestrator/captures/competance-recherche-emploie/competance-recherche-emploie-2026-08-30_02-37-02-mobile.png"
+      ],
       "mediaPolicy": {
-        "exposure": "none",
+        "exposure": "safe-reviewed-captures",
         "publicationAllowed": false,
-        "screenshotStatus": "SKIPPED_SECURITY"
+        "screenshotStatus": "PUBLIC_SAFE_CAPTURED",
+        "publicScreenshotReview": "SAFE_SYNTHETIC_UI"
+      },
+      "publicationGate": {
+        "maMethode": "EXPLAINED_ON_MA_METHODE",
+        "contentStatus": "SUFFICIENT_INFORMATION",
+        "reasons": []
       }
     }
   ]

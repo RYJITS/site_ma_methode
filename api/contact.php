@@ -15,9 +15,17 @@ if ($honeypot !== '') {
 
 $name = trim($_POST['name'] ?? '');
 $email = trim($_POST['email'] ?? '');
+$subjectKey = trim($_POST['subject'] ?? '');
 $message = trim($_POST['message'] ?? '');
+$allowedSubjects = [
+  'demande-cv' => 'Demande CV',
+  'demande-projet' => 'Demande projet',
+  'collaboration' => 'Collaboration',
+  'question-technique' => 'Question technique',
+  'autre' => 'Autre'
+];
 
-if ($name === '' || $email === '' || $message === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+if ($name === '' || $email === '' || $message === '' || !isset($allowedSubjects[$subjectKey]) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
   http_response_code(400);
   echo json_encode(['ok' => false, 'message' => 'Champs invalides']);
   exit;
@@ -30,9 +38,10 @@ $subjectName = function_exists('mb_substr') ? mb_substr($safeName, 0, 80) : subs
 $to = 'info@c2rdesign.com';
 $fromEmail = 'info@c2rdesign.com';
 $source = 'CV';
-$subject = 'CV - Contact - ' . $subjectName;
+$safeSubject = $allowedSubjects[$subjectKey];
+$subject = 'CV - ' . $safeSubject . ' - ' . $subjectName;
 $encodedSubject = function_exists('mb_encode_mimeheader') ? mb_encode_mimeheader($subject, 'UTF-8') : $subject;
-$body = "Source: {$source}\nNom: {$name}\nEmail: {$email}\n\nMessage:\n{$message}\n";
+$body = "Source: {$source}\nSujet: {$safeSubject}\nNom: {$name}\nEmail: {$email}\n\nMessage:\n{$message}\n";
 $headers = [
   'From: CV C2R Design <' . $fromEmail . '>',
   'Reply-To: ' . $safeEmail,

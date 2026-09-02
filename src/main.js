@@ -1,7 +1,9 @@
 const CONTACT_SCENE_MODULE = "./contact-scene.js?v=contact-lazy-20260616";
-const PROJECT_REGISTRY_MODULE = "./project-registry.js?v=project-registry-20260620";
-const PROJECT_THUMBNAIL_VERSION = "project-registry-20260620";
+const PROJECT_REGISTRY_MODULE = "./project-registry.js?v=visual-cards-story-v8-20260902";
+const PROJECT_THUMBNAIL_VERSION = "visual-cards-story-v8-20260902";
 const DEBUG_MOBILE = new URLSearchParams(window.location.search).has("debugMobile");
+const PROJECT_GRID_HASHES = Object.freeze(["#projets", "#projet", "#applications"]);
+const STATIC_ANCHOR_IDS = Object.freeze(["ma-methode", "references-projets"]);
 const METHOD_CARD_ASSET_SOURCES = Object.freeze([
   "public/generated/images/textures/method-card-edge-v2/method-card-edge-v2-plate.webp",
   "public/generated/images/textures/method-card-edge-v2/method-card-edge-v2-grain.webp"
@@ -29,6 +31,7 @@ const contactPanel = document.getElementById("contact-panel");
 const contactClose = document.getElementById("contact-close");
 const contactForm = document.getElementById("contact-form");
 const contactStatus = document.getElementById("contact-status");
+const contactResizeHandle = document.getElementById("contact-resize-handle");
 const contactReceived = document.getElementById("contact-received");
 const bootLoader = document.getElementById("boot-loader");
 const bootLoaderBar = document.getElementById("boot-loader-bar");
@@ -95,6 +98,10 @@ const PROJECT_GRID_INITIAL_THEME = "tools";
 const PROJECT_GRID_ZOOM_MIN = 0.46;
 const PROJECT_GRID_ZOOM_MAX = 1.85;
 const PROJECT_GRID_ZOOM_STEP = 0.16;
+const CONTACT_PANEL_MIN_WIDTH = 320;
+const CONTACT_PANEL_MIN_HEIGHT = 420;
+const CONTACT_PANEL_VIEWPORT_GAP = 24;
+const CONTACT_PANEL_KEYBOARD_STEP = 28;
 const PROJECT_GRID_BASE_CELL_SIZE = 83.2;
 const PROJECT_GRID_THEME_ZONES = {
   tools: { x: -1180, y: 170, width: 1500, height: 1320 },
@@ -125,6 +132,31 @@ const methodCoreCards = [
     "Le projet devient un syst\u00e8me clair: donn\u00e9es, automatisations, application et suivi restent reli\u00e9s."
   ]
 ];
+const METHOD_CARD_VISUALS = {
+  methodologie: {
+    0: {
+      mode: "cover",
+      image: "/public/generated/images/method-cards/ma-philosophie-preferred-image-v1-20260902.webp",
+      alt: "Des sources dispersées passent dans un prisme d'analyse et deviennent un flux clair avec les chiffres 12, 4, 1 et -45%.",
+      words: ["Comprendre", "Relier", "Simplifier"],
+      phrase: "12 sources -> 4 étapes -> 1 flux clair = -45%."
+    },
+    1: {
+      mode: "cover",
+      image: "/public/generated/images/method-cards/mon-approche-visual-card-v8-20260902.webp",
+      alt: "Un audit terrain montre plusieurs personnes concernées, leurs points de vue et le tri des informations utiles.",
+      words: ["Terrain", "Tri", "Utile"],
+      phrase: "Tous les points de vue -> tri utile."
+    },
+    2: {
+      mode: "cover",
+      image: "/public/generated/images/method-cards/applications-visual-card-v8-20260902.webp",
+      alt: "Des sources et outils disponibles sont triés, simplifiés puis reliés à une application avec suivi KPI continu.",
+      words: ["Choisir", "Simplifier", "Suivre"],
+      phrase: "Outils utiles -> flux simple -> KPI suivis."
+    }
+  }
+};
 const holographicTiles = {
   methodologie: {
     label: "Ma mani\u00e8re de fonctionner",
@@ -440,6 +472,7 @@ const cameraStops = [
 ];
 
 let projectCards = [];
+let projectRegistryRequestId = 0;
 
 let rafId = 0;
 let contactPhase = -1;
@@ -447,6 +480,14 @@ let contactReturnFocus = null;
 let contactScene = createNoopContactScene();
 let contactSceneReady = null;
 let contactSceneLoaded = false;
+const contactPanelResize = {
+  active: false,
+  pointerId: -1,
+  startX: 0,
+  startY: 0,
+  startWidth: 0,
+  startHeight: 0
+};
 let activeTileId = "";
 let explorerPointState = null;
 let storyStateLock = null;
@@ -503,11 +544,14 @@ window.addEventListener("resize", requestViewportSync);
 window.addEventListener("resize", scheduleMethodCardFit);
 window.addEventListener("resize", syncProjectGridPresentationMode);
 window.visualViewport?.addEventListener("resize", requestViewportSync);
-window.addEventListener("hashchange", requestSync);
+window.addEventListener("hashchange", handleRouteChange);
+window.addEventListener("popstate", handleRouteChange);
 window.addEventListener("load", requestSync);
 if (document.fonts?.ready) document.fonts.ready.then(scheduleMethodCardFit).catch(() => {});
 requestSync();
 setTimeout(requestSync, 500);
+handleProjectGridRoute();
+handleStaticAnchorRoute();
 
 const qaScroll = Number(new URLSearchParams(window.location.search).get("qaScroll"));
 if (Number.isFinite(qaScroll)) {
@@ -533,9 +577,54 @@ function requestViewportSync() {
     positionHolographicTile(explorerPointState);
     scheduleMethodCardFit();
   }
+  fitContactPanelToViewport();
   requestSync();
   window.setTimeout(requestSync, 120);
   window.setTimeout(requestSync, 360);
+}
+
+function handleRouteChange() {
+  requestSync();
+  handleProjectGridRoute();
+  handleStaticAnchorRoute();
+}
+
+function handleProjectGridRoute() {
+  if (isProjectGridHash()) {
+    if (!isProjectGridOpen()) void openProjectGridFromApplications({ updateHash: false });
+    return;
+  }
+  if (isProjectGridOpen()) closeProjectGridToApplications({ updateHash: false });
+}
+
+function isProjectGridHash(hash = window.location.hash) {
+  return PROJECT_GRID_HASHES.includes(String(hash || "").toLowerCase());
+}
+
+function setProjectGridHash() {
+  if (isProjectGridHash()) return;
+  window.history?.pushState?.(null, "", `${window.location.pathname}${window.location.search}#projets`);
+}
+
+function clearProjectGridHash() {
+  if (!isProjectGridHash()) return;
+  window.history?.pushState?.(null, "", `${window.location.pathname}${window.location.search}`);
+}
+
+function handleStaticAnchorRoute() {
+  if (isProjectGridHash()) return;
+  const targetId = String(window.location.hash || "").toLowerCase();
+  if (!STATIC_ANCHOR_IDS.some((id) => targetId === `#${id}`)) return;
+  const anchorId = targetId.slice(1);
+  requestAnimationFrame(() => scrollToStaticAnchor(anchorId));
+  window.setTimeout(() => scrollToStaticAnchor(anchorId), 260);
+  window.setTimeout(() => scrollToStaticAnchor(anchorId), 920);
+}
+
+function scrollToStaticAnchor(anchorId) {
+  if (String(window.location.hash || "").toLowerCase() !== `#${anchorId}`) return;
+  document.getElementById(anchorId)?.scrollIntoView({ block: "start" });
+  requestSync();
 }
 
 function prepareVideoForScroll() {
@@ -775,7 +864,7 @@ function registerSiteWorker() {
   if (!canRegister) return;
   window.addEventListener("load", () => {
     navigator.serviceWorker
-      .register("./sw.js?v=mobile-card-undertext-opaque-20260619")
+      .register("./sw.js?v=visual-cards-story-v8-20260902")
       .then((registration) => registration.update?.())
       .catch((error) => {
         window.__siteWorkerError = String(error?.message || error);
@@ -821,7 +910,7 @@ function buildStory() {
     <section class="story-section story-section-${block.side}" data-index="${index}" data-id="${block.id}" style="--copy-left: ${block.copyLeft}; --copy-top: ${block.copyTop};">
       <div class="story-copy">
         <p class="text-meta">${escapeHtml(block.meta)}</p>
-        <h1 class="story-title">${block.title.map((line, lineIndex) => `<span class="${lineIndex === block.signalLine ? "signal-word" : ""}">${escapeHtml(line)}</span>`).join("")}</h1>
+        <h2 class="story-title">${block.title.map((line, lineIndex) => `<span class="${lineIndex === block.signalLine ? "signal-word" : ""}">${escapeHtml(line)}</span>`).join("")}</h2>
         ${block.body ? `<p class="story-body">${escapeHtml(block.body)}</p>` : ""}
         ${block.foot ? `<p class="text-foot">${escapeHtml(block.foot)}</p>` : ""}
       </div>
@@ -942,7 +1031,7 @@ function updateAfterStoryState() {
 }
 
 function isAfterStoryVisible() {
-  return [afterStory, document.getElementById("project-grid-entry"), document.getElementById("contact-entry")]
+  return [afterStory, document.getElementById("ma-methode"), document.getElementById("project-grid-entry"), document.getElementById("contact-entry")]
     .some((section) => {
       const rect = section?.getBoundingClientRect();
       return rect && rect.top < window.innerHeight * 0.94 && rect.bottom > 0;
@@ -951,6 +1040,8 @@ function isAfterStoryVisible() {
 
 function bindContactForm() {
   if (!contactTrigger || !contactPanel || !contactForm) return;
+
+  bindContactResize();
 
   contactTrigger.addEventListener("click", () => {
     contactReturnFocus = contactTrigger;
@@ -1035,6 +1126,7 @@ function openContactPanel(options = {}) {
   void contactPanel.offsetWidth;
   if (materialize) contactPanel.classList.add("is-materializing");
   contactPanel.classList.add("is-open");
+  fitContactPanelToViewport();
   window.setTimeout(() => {
     contactPanel.querySelector("input[name='name']")?.focus();
   }, materialize ? 920 : 0);
@@ -1046,6 +1138,7 @@ function openContactPanel(options = {}) {
 function closeContactPanel(options = {}) {
   if (!contactPanel || !contactTrigger) return;
   const restoreFocus = options.restoreFocus !== false;
+  clearContactPanelResizeState();
   contactPanel.classList.remove("is-open");
   contactPanel.classList.remove("is-materializing");
   document.body.classList.remove("is-contact-panel-open");
@@ -1066,6 +1159,133 @@ function setContactCtaExpanded(expanded) {
   document.querySelectorAll("[data-contact-cta]").forEach((button) => {
     button.setAttribute("aria-expanded", expanded ? "true" : "false");
   });
+}
+
+function bindContactResize() {
+  if (!contactResizeHandle || !contactPanel || !contactForm) return;
+
+  contactResizeHandle.addEventListener("pointerdown", startContactPanelResize);
+  contactResizeHandle.addEventListener("keydown", handleContactResizeKeydown);
+}
+
+function startContactPanelResize(event) {
+  if (!canResizeContactPanel()) return;
+
+  event.preventDefault();
+  event.stopPropagation();
+  contactResizeHandle.focus({ preventScroll: true });
+  const rect = contactPanel.getBoundingClientRect();
+  contactPanelResize.active = true;
+  contactPanelResize.pointerId = event.pointerId;
+  contactPanelResize.startX = event.clientX;
+  contactPanelResize.startY = event.clientY;
+  contactPanelResize.startWidth = rect.width;
+  contactPanelResize.startHeight = rect.height;
+  document.body.classList.add("is-contact-resizing");
+  contactPanel.classList.add("is-resizing");
+  contactResizeHandle.setPointerCapture?.(event.pointerId);
+  window.addEventListener("pointermove", resizeContactPanel, { passive: false });
+  window.addEventListener("pointerup", stopContactPanelResize);
+  window.addEventListener("pointercancel", stopContactPanelResize);
+}
+
+function resizeContactPanel(event) {
+  if (!contactPanelResize.active || event.pointerId !== contactPanelResize.pointerId) return;
+
+  event.preventDefault();
+  const width = contactPanelResize.startWidth + (event.clientX - contactPanelResize.startX) * 2;
+  const height = contactPanelResize.startHeight + (event.clientY - contactPanelResize.startY) * 2;
+  setContactPanelSize(width, height);
+}
+
+function stopContactPanelResize(event) {
+  if (!contactPanelResize.active || event.pointerId !== contactPanelResize.pointerId) return;
+
+  contactResizeHandle?.releasePointerCapture?.(event.pointerId);
+  clearContactPanelResizeState();
+}
+
+function handleContactResizeKeydown(event) {
+  if (!canResizeContactPanel()) return;
+
+  const rect = contactPanel.getBoundingClientRect();
+  let width = rect.width;
+  let height = rect.height;
+
+  if (event.key === "ArrowRight") width += CONTACT_PANEL_KEYBOARD_STEP;
+  else if (event.key === "ArrowLeft") width -= CONTACT_PANEL_KEYBOARD_STEP;
+  else if (event.key === "ArrowDown") height += CONTACT_PANEL_KEYBOARD_STEP;
+  else if (event.key === "ArrowUp") height -= CONTACT_PANEL_KEYBOARD_STEP;
+  else if (event.key === "Home") {
+    event.preventDefault();
+    clearContactPanelSize();
+    return;
+  } else {
+    return;
+  }
+
+  event.preventDefault();
+  setContactPanelSize(width, height);
+}
+
+function canResizeContactPanel() {
+  return Boolean(contactPanel && contactForm && contactResizeHandle && !isMobileViewport());
+}
+
+function setContactPanelSize(width, height) {
+  const limits = getContactPanelSizeLimits();
+  const nextWidth = clamp(width, limits.minWidth, limits.maxWidth);
+  const nextHeight = clamp(height, limits.minHeight, limits.maxHeight);
+
+  contactPanel.style.setProperty("--contact-panel-width", `${Math.round(nextWidth)}px`);
+  contactPanel.style.setProperty("--contact-panel-height", `${Math.round(nextHeight)}px`);
+  contactPanel.classList.add("is-user-resized");
+}
+
+function fitContactPanelToViewport() {
+  if (!contactPanel || !contactPanel.classList.contains("is-user-resized")) return;
+
+  if (!canResizeContactPanel()) {
+    clearContactPanelSize();
+    return;
+  }
+
+  const rect = contactPanel.getBoundingClientRect();
+  setContactPanelSize(rect.width, rect.height);
+}
+
+function clearContactPanelSize() {
+  if (!contactPanel) return;
+
+  clearContactPanelResizeState();
+  contactPanel.classList.remove("is-user-resized", "is-resizing");
+  contactPanel.style.removeProperty("--contact-panel-width");
+  contactPanel.style.removeProperty("--contact-panel-height");
+}
+
+function clearContactPanelResizeState() {
+  contactPanelResize.active = false;
+  contactPanelResize.pointerId = -1;
+  document.body.classList.remove("is-contact-resizing");
+  contactPanel?.classList.remove("is-resizing");
+  window.removeEventListener("pointermove", resizeContactPanel);
+  window.removeEventListener("pointerup", stopContactPanelResize);
+  window.removeEventListener("pointercancel", stopContactPanelResize);
+}
+
+function getContactPanelSizeLimits() {
+  const viewport = window.visualViewport || window;
+  const viewportWidth = Number(viewport.width) || window.innerWidth;
+  const viewportHeight = Number(viewport.height) || window.innerHeight;
+  const maxWidth = Math.max(1, viewportWidth - CONTACT_PANEL_VIEWPORT_GAP * 2);
+  const maxHeight = Math.max(1, viewportHeight - CONTACT_PANEL_VIEWPORT_GAP * 2);
+
+  return {
+    minWidth: Math.min(CONTACT_PANEL_MIN_WIDTH, maxWidth),
+    minHeight: Math.min(CONTACT_PANEL_MIN_HEIGHT, maxHeight),
+    maxWidth,
+    maxHeight
+  };
 }
 
 function sampleCamera(progress) {
@@ -1381,6 +1601,7 @@ function openTile(sectionId) {
 function closeTile(options = {}) {
   if (!holographicTile || !explorerPoint) return;
   const restoreFocus = options.restoreFocus === true;
+  const restoreScroll = options.restoreScroll !== false;
   const closingId = activeTileId;
   activeTileId = "";
   document.body.classList.remove("is-tile-open");
@@ -1406,7 +1627,7 @@ function closeTile(options = {}) {
   explorerPoint.classList.remove("is-active");
   explorerPoint.setAttribute("aria-expanded", "false");
   energy.layer?.classList.remove("is-explorer-open");
-  unlockMethodCardPageScroll();
+  unlockMethodCardPageScroll({ restoreScroll });
   window.setTimeout(() => {
     if (!activeTileId) {
       holographicTile.hidden = true;
@@ -1591,8 +1812,8 @@ function lockMethodCardPageScroll() {
   document.body.style.overscrollBehavior = "none";
 }
 
-function unlockMethodCardPageScroll() {
-  const shouldRestoreScroll = methodCardScrollLocked;
+function unlockMethodCardPageScroll(options = {}) {
+  const shouldRestoreScroll = methodCardScrollLocked && options.restoreScroll !== false;
   const restoreY = methodCardScrollY;
   const restoreSectionId = methodCardScrollSectionId;
   const inlineStyles = methodCardScrollInlineStyles;
@@ -1614,7 +1835,7 @@ function unlockMethodCardPageScroll() {
   }
   if (shouldRestoreScroll) restoreStoryScroll({ sectionId: restoreSectionId, y: restoreY });
   requestStoryStateRefresh(shouldRestoreScroll ? { sectionId: restoreSectionId, y: restoreY } : null);
-  releaseStoryState({ delay: 520 });
+  releaseStoryState({ delay: shouldRestoreScroll ? 520 : 0 });
 }
 
 function requestStoryStateRefresh(restore = null) {
@@ -1930,68 +2151,162 @@ function renderTileCards(sectionId, options = {}) {
   methodCards.forEach((card, index) => {
     const lines = tile.cards[index] || [];
     const title = CARD_TITLES[index] || `FICHE ${index + 1}`;
+    const visual = getMethodCardVisual(sectionId, index);
     const existingGridLink = card.querySelector(".method-card-grid-link");
+    const existingProjectIcon = card.querySelector(".method-card-project-icon");
+    const text = card.querySelector(".method-card-text");
+    const visualCover = Boolean(visual?.mode === "cover" && visual.image);
     resetMethodCardFit(card);
     existingGridLink?.remove();
-    card.setAttribute("aria-label", `Afficher la fiche ${title} - ${tile.label}`);
+    existingProjectIcon?.remove();
+    card.classList.toggle("method-card-has-visual", Boolean(visual));
+    card.classList.toggle("method-card-visual-cover", visualCover);
+    card.classList.toggle("method-card-has-grid-link", false);
+    card.classList.toggle("method-card-has-project-icon", sectionId === "methodologie");
+    if (visualCover) {
+      card.style.setProperty("--method-card-visual-image", `url("${escapeCssUrl(visual.image)}")`);
+    } else {
+      card.style.removeProperty("--method-card-visual-image");
+    }
+    card.setAttribute("aria-label", visual?.alt ? `Afficher la fiche ${title}. ${visual.alt}` : `Afficher la fiche ${title} - ${tile.label}`);
     card.querySelector(".method-card-number").textContent = String(index + 1).padStart(2, "0");
-    card.querySelector(".method-card-section").textContent = tile.label;
+    const sectionLabel = card.querySelector(".method-card-section");
+    if (sectionLabel) {
+      sectionLabel.textContent = visualCover ? "" : tile.label;
+      sectionLabel.hidden = false;
+    }
     card.querySelector(".method-card-title").textContent = title;
-    card.querySelector(".method-card-text").innerHTML = lines
-      .map((line, lineIndex) => `
-        <span class="method-card-point">
-          <span class="method-card-point-title">${escapeHtml(getCardPointTitle(index, lineIndex))}</span>
-          <span class="method-card-point-copy">${escapeHtml(line)}</span>
-        </span>
-      `)
-      .join("");
+    if (text) {
+      text.classList.toggle("method-card-text-visual", Boolean(visual));
+      text.hidden = false;
+      text.innerHTML = visual
+        ? renderMethodCardVisual(visual)
+        : lines
+          .map((line, lineIndex) => `
+            <span class="method-card-point">
+              <span class="method-card-point-title">${escapeHtml(getCardPointTitle(index, lineIndex))}</span>
+              <span class="method-card-point-copy">${escapeHtml(line)}</span>
+            </span>
+          `)
+          .join("");
+    }
 
-    if (index === 2) {
-      const gridLink = document.createElement("button");
-      gridLink.type = "button";
-      gridLink.className = "method-card-grid-link";
-      gridLink.dataset.projectGridLink = "";
-      gridLink.innerHTML = `
-        <span>Voir la grille projets</span>
+    if (sectionId === "methodologie") {
+      const projectIcon = document.createElement("button");
+      projectIcon.type = "button";
+      projectIcon.className = "method-card-project-icon";
+      projectIcon.dataset.projectGridLink = "";
+      projectIcon.title = "Projets";
+      projectIcon.setAttribute("aria-label", `Ouvrir les projets depuis la fiche ${title}`);
+      projectIcon.innerHTML = `
         <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M5 12h14"></path>
-          <path d="m13 6 6 6-6 6"></path>
+          <path d="M3.5 7.5h5.6l2 2H20.5v8.5H3.5z"></path>
+          <path d="M3.5 7.5v-2h5l2 2"></path>
         </svg>
       `;
-      card.appendChild(gridLink);
+      card.appendChild(projectIcon);
     }
   });
   if (options.scheduleFit !== false) scheduleMethodCardFit();
+}
+
+function getMethodCardVisual(sectionId, cardIndex) {
+  return METHOD_CARD_VISUALS[sectionId]?.[cardIndex] || null;
+}
+
+function renderMethodCardVisual(visual) {
+  const words = Array.isArray(visual.words) ? visual.words.slice(0, 3) : [];
+  const phrase = String(visual.phrase || "").trim();
+  const image = String(visual.image || "").trim();
+  const alt = String(visual.alt || words.join(", ")).trim();
+  const cover = Boolean(visual.mode === "cover" && image);
+  const overlay = Boolean(visual.mode === "overlay" && image);
+  const artClass = image ? "method-card-visual-art method-card-visual-art-image" : "method-card-visual-art";
+  const artAttributes = image ? "" : ` role="img" aria-label="${escapeHtml(words.join(", "))}"`;
+  const artContent = image
+    ? `<img class="method-card-visual-image" src="${escapeHtml(image)}" alt="${escapeHtml(alt)}" loading="eager" decoding="async">`
+    : `
+      <svg class="method-card-visual-map" viewBox="0 0 320 220" aria-hidden="true" focusable="false">
+        <path class="method-card-visual-path is-muted" d="M38 54 C86 28 119 70 158 96"></path>
+        <path class="method-card-visual-path is-muted" d="M34 156 C88 184 120 138 158 119"></path>
+        <path class="method-card-visual-path is-muted" d="M50 104 C98 96 125 102 158 106"></path>
+        <path class="method-card-visual-path is-main" d="M188 108 C222 104 246 94 284 70"></path>
+        <path class="method-card-visual-path is-main" d="M188 108 C224 116 246 130 284 150"></path>
+        <circle class="method-card-visual-node is-small" cx="39" cy="54" r="7"></circle>
+        <circle class="method-card-visual-node is-small" cx="34" cy="156" r="7"></circle>
+        <circle class="method-card-visual-node is-small" cx="50" cy="104" r="7"></circle>
+        <circle class="method-card-visual-ring" cx="174" cy="108" r="36"></circle>
+        <circle class="method-card-visual-core" cx="174" cy="108" r="13"></circle>
+        <circle class="method-card-visual-node is-clear" cx="284" cy="70" r="8"></circle>
+        <circle class="method-card-visual-node is-clear" cx="284" cy="150" r="8"></circle>
+      </svg>
+    `;
+  return `
+    <span class="method-card-visual ${overlay ? "method-card-visual-overlay-mode" : ""}">
+      ${cover && alt ? `<span class="visually-hidden">${escapeHtml(alt)}</span>` : ""}
+      ${cover ? "" : `<span class="${artClass}"${artAttributes}>
+        ${artContent}
+        ${overlay ? renderMethodCardVisualOverlay(words, phrase) : ""}
+      </span>`}
+      ${overlay ? "" : renderMethodCardVisualOverlay(words, phrase)}
+    </span>
+  `;
+}
+
+function renderMethodCardVisualOverlay(words, phrase) {
+  return `
+    <span class="method-card-visual-overlay">
+      <span class="method-card-visual-words">
+        ${words.map((word) => `<span class="method-card-visual-word">${escapeHtml(word)}</span>`).join("")}
+      </span>
+      ${phrase ? `<span class="method-card-visual-caption">${escapeHtml(phrase)}</span>` : ""}
+    </span>
+  `;
 }
 
 function getCardPointTitle(cardIndex, lineIndex) {
   return CARD_POINT_TITLES[cardIndex]?.[lineIndex] || `Point ${lineIndex + 1}`;
 }
 
+function escapeCssUrl(value) {
+  return String(value || "").replace(/\\/g, "\\\\").replace(/"/g, "\\\"");
+}
+
 window.openTile = openTile;
 window.closeTile = closeTile;
 window.openProjectGrid = openProjectGridFromApplications;
 
-async function preloadProjectRegistryModule() {
-  if (projectCardsReady || projectCards.length) return projectCardsReady;
-  projectCardsReady = import(PROJECT_REGISTRY_MODULE)
+async function preloadProjectRegistryModule(options = {}) {
+  const refresh = Boolean(options.refresh);
+  if (!refresh && (projectCardsReady || projectCards.length)) return projectCardsReady;
+  const requestId = projectRegistryRequestId + 1;
+  projectRegistryRequestId = requestId;
+  const importUrl = refresh ? cacheBustedProjectRegistryModule() : PROJECT_REGISTRY_MODULE;
+  projectCardsReady = import(importUrl)
     .then((module) => {
-      projectCards = Array.isArray(module.orchestratorProjectCards)
+      const nextProjectCards = Array.isArray(module.orchestratorProjectCards)
         ? module.orchestratorProjectCards
         : [];
+      if (requestId === projectRegistryRequestId) projectCards = nextProjectCards;
       return projectCards;
     })
     .catch((error) => {
       window.__projectRegistryError = String(error?.message || error);
-      projectCards = [];
+      if (requestId === projectRegistryRequestId) projectCards = [];
       return projectCards;
     });
   return projectCardsReady;
 }
 
-async function buildProjectGrid() {
-  if (!projectGridTrack || projectGridBuilt) return;
-  await preloadProjectRegistryModule();
+function cacheBustedProjectRegistryModule() {
+  const separator = PROJECT_REGISTRY_MODULE.includes("?") ? "&" : "?";
+  return `${PROJECT_REGISTRY_MODULE}${separator}refresh=${Date.now()}`;
+}
+
+async function buildProjectGrid(options = {}) {
+  const refreshRegistry = Boolean(options.refreshRegistry);
+  if (!projectGridTrack || projectGridBuilt && !refreshRegistry) return;
+  await preloadProjectRegistryModule({ refresh: refreshRegistry });
   if (!projectCards.length) return;
   projectGridBasePositions = createProjectGridBasePositions();
 
@@ -2116,10 +2431,10 @@ function bindProjectGrid() {
     if (!trigger) return;
     event.preventDefault();
     event.stopPropagation();
-    void openProjectGridFromApplications();
+    void openProjectGridFromApplications({ updateHash: true });
   });
 
-  projectGridClose?.addEventListener("click", closeProjectGridToApplications);
+  projectGridClose?.addEventListener("click", closeProjectGridToHome);
   projectGridZoomOut?.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
@@ -2206,8 +2521,9 @@ function bindProjectGrid() {
 
 async function openProjectGridFromApplications(options = {}) {
   if (!projectGridOverlay) return;
-  await buildProjectGrid();
+  await buildProjectGrid({ refreshRegistry: true });
   if (!projectGridBuilt) return;
+  if (options.updateHash !== false) setProjectGridHash();
   const mobileMode = isMobileProjectGridMode();
   projectGridReturnSectionId = options.returnSectionId || activeTileId || holographicTile?.dataset.sectionId || explorerPointState?.returnSectionId || explorerPointState?.sectionId || "methodologie";
   setActiveMethodCard(2);
@@ -2228,8 +2544,27 @@ async function openProjectGridFromApplications(options = {}) {
   projectGridStage?.focus({ preventScroll: true });
 }
 
-function closeProjectGridToApplications() {
+function closeProjectGridToApplications(options = {}) {
   if (!projectGridOverlay) return;
+  if (options.updateHash !== false) clearProjectGridHash();
+  hideProjectGridOverlay();
+  restoreApplicationsCard();
+}
+
+function closeProjectGridToHome(options = {}) {
+  if (!projectGridOverlay) return;
+  if (options.updateHash !== false) clearProjectGridHash();
+  hideProjectGridOverlay();
+  closeTile({ restoreScroll: false });
+  projectGridReturnSectionId = "intro";
+  requestStoryStateRefresh({ progress: 0, sectionId: "intro", y: 0 });
+  requestAnimationFrame(() => {
+    window.scrollTo(0, 0);
+    requestSync();
+  });
+}
+
+function hideProjectGridOverlay() {
   cancelProjectGridDrag();
   stopProjectGridAnimation();
   closeProjectDetail();
@@ -2237,7 +2572,6 @@ function closeProjectGridToApplications() {
   projectGridOverlay.classList.remove("is-mobile-list");
   projectGridOverlay.hidden = true;
   document.body.classList.remove("is-project-grid-open");
-  restoreApplicationsCard();
 }
 
 function restoreApplicationsCard() {
@@ -2808,15 +3142,13 @@ function closeProjectDetail() {
 function renderProjectDetail(project) {
   const imageSrc = getProjectImageSrc(project);
   return `
+    <button class="project-detail-close" type="button" data-project-detail-close aria-label="Fermer la fiche projet">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M18 6 6 18"></path>
+        <path d="M6 6l12 12"></path>
+      </svg>
+    </button>
     <article class="project-detail-card">
-      <header class="project-detail-head">
-        <button class="project-detail-close" type="button" data-project-detail-close aria-label="Fermer la fiche et revenir a la grille projets">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M18 6 6 18"></path>
-            <path d="M6 6l12 12"></path>
-          </svg>
-        </button>
-      </header>
       <div class="project-detail-hero">
         <img src="${escapeHtml(imageSrc)}" alt="${escapeHtml(project.name)}" loading="lazy" decoding="async">
         <div>
@@ -2828,12 +3160,10 @@ function renderProjectDetail(project) {
         </div>
       </div>
       ${renderProjectTags(project.stack)}
-      ${renderProjectTextBlock("Application", project.details?.application, "project-detail-text-blue")}
-      ${renderProjectTextBlock("Fonctionnement", project.details?.fonctionnement, "project-detail-text-green")}
-      ${renderProjectTextBlock("Conception", project.details?.conception, "project-detail-text-amber")}
-      ${renderProjectList("Fonctions disponibles", project.details?.capabilities || project.functions, "project-detail-list-green")}
-      ${renderProjectList("Outils, IA et moteurs", project.details?.tools || project.details?.techniques, "project-detail-list-blue")}
-      ${renderProjectList("Automatisations integrees", project.details?.automations, "project-detail-list-amber")}
+      ${renderProjectTextBlock("A quoi il sert", project.details?.application || project.comment, "project-detail-text-blue")}
+      ${renderProjectList("Fonctions", project.details?.capabilities || project.functions, "project-detail-list-green")}
+      ${renderProjectList("Avancement", project.progress || project.details?.avancement || [], "project-detail-list-amber")}
+      ${renderProjectLinks(project)}
       ${renderProjectScreenshots(project)}
     </article>
   `;
@@ -2860,9 +3190,19 @@ function renderProjectHostingerLink(project) {
 
 function renderProjectActions(project) {
   const actions = [];
-  if (project.githubUrl) actions.push(renderProjectAction(project.githubUrl, "GitHub"));
+  if (project.githubUrl) actions.push(renderProjectAction(project.githubUrl, "Details GitHub"));
   if (!actions.length) return "";
   return `<div class="project-detail-actions">${actions.join("")}</div>`;
+}
+
+function renderProjectLinks(project) {
+  const links = [];
+  const applicationLink = getProjectPrimaryApplicationLink(project);
+  if (applicationLink) links.push(`Application publique: ${formatProjectUrl(applicationLink.url)}`);
+  else links.push("Application publique: pas encore disponible.");
+  if (project.githubUrl) links.push(`Details GitHub: ${formatProjectUrl(project.githubUrl)}`);
+  else links.push("GitHub: pas encore disponible.");
+  return renderProjectList("Liens", links, "project-detail-list-blue");
 }
 
 function getProjectHostingerUrl(project) {
@@ -2871,7 +3211,7 @@ function getProjectHostingerUrl(project) {
 
 function getProjectPrimaryApplicationLink(project) {
   const hostingerUrl = getProjectHostingerUrl(project);
-  if (hostingerUrl) return { url: hostingerUrl, label: "Application Hostinger" };
+  if (hostingerUrl) return { url: hostingerUrl, label: "Application" };
   if (project.privateUrl) return { url: project.privateUrl, label: project.privateLabel || "Acces prive" };
   return null;
 }
@@ -2917,12 +3257,15 @@ function renderProjectTextBlock(title, body, className = "") {
 }
 
 function renderProjectList(title, lines = [], className = "") {
-  if (!lines.length) return "";
+  const items = (Array.isArray(lines) ? lines : [lines])
+    .map((line) => String(line || "").replace(/\s+/g, " ").trim())
+    .filter(Boolean);
+  if (!items.length) return "";
   return `
     <section class="project-detail-list ${className}">
       <p>${escapeHtml(title)}</p>
       <ul>
-        ${lines.map((line) => `<li><span></span>${escapeHtml(line)}</li>`).join("")}
+        ${items.map((line) => `<li><span></span>${escapeHtml(line)}</li>`).join("")}
       </ul>
     </section>
   `;
@@ -2932,15 +3275,18 @@ function renderProjectScreenshots(project) {
   const screenshots = project.screenshots || [];
   if (!screenshots.length) return "";
   return `
-    <div class="project-detail-shots">
-      ${screenshots
-        .map((shot) => `
-          <figure>
-            <img src="${escapeHtml(shot)}" alt="${escapeHtml(project.name)} capture d'ecran" loading="lazy" decoding="async">
-          </figure>
-        `)
-        .join("")}
-    </div>
+    <section class="project-detail-shots" aria-label="Captures d'ecran">
+      <p>Captures d'ecran</p>
+      <div>
+        ${screenshots
+          .map((shot) => `
+            <figure>
+              <img src="${escapeHtml(shot)}" alt="${escapeHtml(project.name)} capture d'ecran" loading="lazy" decoding="async">
+            </figure>
+          `)
+          .join("")}
+      </div>
+    </section>
   `;
 }
 
@@ -3063,7 +3409,7 @@ function escapeHtml(value) {
 
 function getProjectImageSrc(project) {
   const image = String(project?.image || "");
-  if (!image.includes("public/orchestrator/thumbnails-ai/")) return image;
+  if (!/public\/orchestrator\/thumbnails(?:-ai)?\//.test(image)) return image;
   if (image.includes(PROJECT_THUMBNAIL_VERSION)) return image;
   const separator = image.includes("?") ? "&" : "?";
   return `${image}${separator}v=${PROJECT_THUMBNAIL_VERSION}`;

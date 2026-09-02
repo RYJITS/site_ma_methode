@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Crawler IA et recherche generative: acces autorise.
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+Sitemap: https://cv.c2rdesign.com/sitemap.xml
