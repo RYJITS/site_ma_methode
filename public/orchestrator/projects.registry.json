@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-02T13:39:54.832Z",
+  "generatedAt": "2026-09-03T08:28:03.166Z",
   "source": "00_ORCHESTRATEUR",
   "projects": [
     {
@@ -203,6 +203,92 @@
         "exposure": "publication-ready",
         "publicationAllowed": true,
         "screenshotStatus": "PUBLIC_SAFE_CAPTURED"
+      },
+      "publicationGate": {
+        "maMethode": "EXPLAINED_ON_MA_METHODE",
+        "contentStatus": "SUFFICIENT_INFORMATION",
+        "reasons": []
+      }
+    },
+    {
+      "id": "03-agent-design",
+      "category": "ai",
+      "name": "Agent Design - Equipe IA de conception web",
+      "comment": "Projet autonome pour construire un agent capable d'analyser un site, de produire une direction visuelle sourcee, de faire choisir les layouts de toutes les pages, puis d'appliquer le design choisi dans une copie isolee avec verification.",
+      "image": "public/generated/images/projects/project-grid-map-20260614.webp",
+      "githubUrl": "https://github.com/RYJITS/agent_design",
+      "linkPolicy": {
+        "exposure": "public-links",
+        "publicationAllowed": true,
+        "githubShowcaseAllowed": false,
+        "securityStatus": "OK_PUBLIC"
+      },
+      "ficheUrl": "public/orchestrator/fiches/03-agent-design.md",
+      "localPath": "03_AGENT_DESIGN",
+      "stack": [
+        "Node.js"
+      ],
+      "status": {
+        "global": "PUBLIC_READY",
+        "security": "OK_PUBLIC",
+        "functionality": "FONCTIONNEL",
+        "publication": "PUBLIC_CANDIDATE"
+      },
+      "details": {
+        "application": "Agent Design est un projet de conception d'agent, pas encore une application executable.",
+        "fonctionnement": "Le workflow suit une chaine en serie: mission, cadrage, audit, recherche, diagnostic, architecture UX, direction artistique, layouts pages avec choix utilisateur, design system, implementation, QA, critique et finalisation.",
+        "conception": "Agent Design est construit comme un centre de pilotage multi-projets: un orchestrateur ouvre chaque mission, des sous-agents specialises produisent les livrables de phase, puis des gates explicites bloquent les passages sensibles. Le depot public expose le moteur, les contrats, les templates, les scripts de controle et les catalogues; les memoires locales, missions utilisateur, runs de projets cibles, captures de travail et exports restent hors diffusion.",
+        "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
+        "capabilities": [
+          "Architecture d'agents specialisee UI/UX",
+          "Catalogues de sources qualifiees",
+          "Templates de livrables design",
+          "Memoire locale du projet",
+          "Verification de structure"
+        ],
+        "tools": [
+          "Node.js pour les scripts de controle",
+          "Markdown pour la memoire et les specifications",
+          "Mermaid pour les schemas",
+          "Futurs sous-agents Codex pour l'execution"
+        ],
+        "techniques": [
+          "Node.js"
+        ],
+        "automations": [
+          "Automatisations propres au projet a identifier"
+        ]
+      },
+      "progress": [
+        "Etat du projet: pret cote usage public.",
+        "Fonctionnement: fonctionnel.",
+        "Securite: OK pour une presentation publique.",
+        "Ma Methode: fiche explicative visible.",
+        "Publication externe: candidat public, validation finale separee."
+      ],
+      "highlights": [
+        "Creer une chaine de production design inspiree d'une entreprise web, avec orchestrateur, sous-agents, catalogues de sources gratuites, gates de validation et livrables verificables.",
+        "Etat du projet: pret cote usage public.",
+        "Fonctionnement: fonctionnel.",
+        "Securite: OK pour une presentation publique."
+      ],
+      "functions": [
+        "Cadrer une mission design avant toute recherche ou implementation",
+        "Auditer un site ou projet web existant",
+        "Qualifier des sources d'inspiration, de methode et d'execution",
+        "Produire une direction artistique validee visuellement",
+        "Faire choisir trois layouts distincts pour chaque page du perimetre",
+        "Attendre le choix utilisateur avant implementation",
+        "Construire un design system coherent",
+        "Modifier un projet cible uniquement en copie isolee",
+        "Verifier le rendu avec captures, tests et QA visuelle",
+        "Controle automatisable detecte via npm run check."
+      ],
+      "screenshots": [],
+      "mediaPolicy": {
+        "exposure": "none",
+        "publicationAllowed": true,
+        "screenshotStatus": "SKIPPED_MA_METHODE_GATE"
       },
       "publicationGate": {
         "maMethode": "EXPLAINED_ON_MA_METHODE",

@@ -115,7 +115,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Sora:wght@300;400;500;600;700;800&display=swap">
-    <link rel="stylesheet" href="src/styles.css?v=visual-cards-story-v8-20260902">
+    <link rel="stylesheet" href="src/styles.css?v=mobile-scroll-swipe-hint-v22-20260903">
   </head>
   <body>
     <div id="boot-loader" class="boot-loader" role="status" aria-live="polite" aria-label="Chargement initial">
@@ -252,14 +252,24 @@
       <span class="explorer-point-core" aria-hidden="true"></span>
       <span class="explorer-point-label">Explorer</span>
     </button>
+    <div id="scroll-coach" class="scroll-coach" aria-hidden="true">
+      <span class="scroll-coach-arrow"></span>
+      <span class="scroll-coach-arrow"></span>
+      <span class="scroll-coach-arrow"></span>
+      <span class="scroll-coach-arrow"></span>
+    </div>
+    <div id="guided-cursor" class="guided-cursor" aria-hidden="true">
+      <span class="guided-cursor-pointer"></span>
+      <span class="guided-cursor-pulse"></span>
+    </div>
     <section id="holographic-tile" class="holographic-tile card-pack-tile" role="dialog" aria-label="Fiches interactives Explorer" hidden>
       <div class="card-pack" aria-label="Paquet de fiches">
-        <article class="method-card method-card-blue method-card-has-visual method-card-visual-cover method-card-has-project-icon" data-card-index="0" role="button" tabindex="0" aria-label="Afficher la fiche MA PHILOSOPHIE. Des sources dispersées passent dans un prisme d'analyse et deviennent un flux clair avec les chiffres 12, 4, 1 et -45%." style="--method-card-visual-image: url('/public/generated/images/method-cards/ma-philosophie-preferred-image-v1-20260902.webp');">
+        <article class="method-card method-card-blue method-card-has-visual method-card-visual-cover method-card-has-project-icon" data-card-index="0" role="button" tabindex="0" aria-label="Afficher la fiche MA PHILOSOPHIE. Des sources dispersées passent dans un prisme d'analyse et deviennent un flux clair avec les chiffres 12, 4, 1 et -45%." style="--method-card-visual-image: url('/public/generated/images/method-cards/ma-philosophie-cyan-gold-v3-20260902.webp');">
           <span class="method-card-head">
             <span class="method-card-number">01</span>
             <span class="method-card-title">MA PHILOSOPHIE</span>
           </span>
-          <button class="method-card-project-icon" type="button" data-project-grid-link title="Projets" aria-label="Ouvrir les projets depuis la fiche MA PHILOSOPHIE">
+          <button class="method-card-project-icon" type="button" data-project-grid-link title="Projet" aria-label="Ouvrir la grille projet depuis la fiche MA PHILOSOPHIE">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M3.5 7.5h5.6l2 2H20.5v8.5H3.5z"></path>
               <path d="M3.5 7.5v-2h5l2 2"></path>
@@ -278,12 +288,12 @@
             </span>
           </span>
         </article>
-        <article class="method-card method-card-orange method-card-has-visual method-card-visual-cover method-card-has-project-icon" data-card-index="1" role="button" tabindex="0" aria-label="Afficher la fiche MON APPROCHE. Un audit terrain montre plusieurs personnes concernées, leurs points de vue et le tri des informations utiles." style="--method-card-visual-image: url('/public/generated/images/method-cards/mon-approche-visual-card-v8-20260902.webp');">
+        <article class="method-card method-card-orange method-card-has-visual method-card-visual-cover method-card-has-project-icon" data-card-index="1" role="button" tabindex="0" aria-label="Afficher la fiche MON APPROCHE. Un audit terrain montre plusieurs personnes concernées, leurs points de vue et le tri des informations utiles." style="--method-card-visual-image: url('/public/generated/images/method-cards/mon-approche-neutral-people-cyan-gold-v11-20260902.webp');">
           <span class="method-card-head">
             <span class="method-card-number">02</span>
             <span class="method-card-title">MON APPROCHE</span>
           </span>
-          <button class="method-card-project-icon" type="button" data-project-grid-link title="Projets" aria-label="Ouvrir les projets depuis la fiche MON APPROCHE">
+          <button class="method-card-project-icon" type="button" data-project-grid-link title="Projet" aria-label="Ouvrir la grille projet depuis la fiche MON APPROCHE">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M3.5 7.5h5.6l2 2H20.5v8.5H3.5z"></path>
               <path d="M3.5 7.5v-2h5l2 2"></path>
@@ -302,12 +312,12 @@
             </span>
           </span>
         </article>
-        <article class="method-card method-card-ice method-card-has-visual method-card-visual-cover method-card-has-project-icon" data-card-index="2" role="button" tabindex="0" aria-label="Afficher la fiche APPLICATIONS. Des sources et outils disponibles sont triés, simplifiés puis reliés à une application avec suivi KPI continu." style="--method-card-visual-image: url('/public/generated/images/method-cards/applications-visual-card-v8-20260902.webp');">
+        <article class="method-card method-card-ice method-card-has-visual method-card-visual-cover method-card-has-project-icon" data-card-index="2" role="button" tabindex="0" aria-label="Afficher la fiche APPLICATIONS. Des sources et outils disponibles sont triés, simplifiés puis reliés à une application avec suivi KPI continu." style="--method-card-visual-image: url('/public/generated/images/method-cards/applications-cyan-gold-v10-20260902.webp');">
           <span class="method-card-head">
             <span class="method-card-number">03</span>
             <span class="method-card-title">APPLICATIONS</span>
           </span>
-          <button class="method-card-project-icon" type="button" data-project-grid-link title="Projets" aria-label="Ouvrir les projets depuis la fiche APPLICATIONS">
+          <button class="method-card-project-icon" type="button" data-project-grid-link title="Projet" aria-label="Ouvrir la grille projet depuis la fiche APPLICATIONS">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M3.5 7.5h5.6l2 2H20.5v8.5H3.5z"></path>
               <path d="M3.5 7.5v-2h5l2 2"></path>
@@ -327,12 +337,19 @@
           </span>
         </article>
       </div>
+      <div class="method-card-swipe-hint" role="note" aria-label="Faites glisser la fiche vers la gauche pour voir la suivante.">
+        <svg class="method-card-swipe-hint-arrow" viewBox="0 0 36 18" aria-hidden="true">
+          <path d="M34 9H4"></path>
+          <path d="m11 2-7 7 7 7"></path>
+        </svg>
+        <span>Glisser à gauche</span>
+      </div>
     </section>
     <section id="project-grid-overlay" class="project-grid-overlay" role="dialog" aria-modal="true" aria-labelledby="project-grid-title" hidden>
       <div class="project-grid-shell">
         <header class="project-grid-head">
           <div class="project-grid-title-block">
-            <p>Applications</p>
+            <p>Grille projet</p>
             <h2 id="project-grid-title">Projets</h2>
           </div>
           <button id="project-grid-close" class="project-grid-icon-button" type="button" aria-label="Retour a l'accueil">
@@ -466,7 +483,7 @@
         <p class="seo-summary-kicker">Ma Méthode</p>
         <h1 id="ma-methode-title">Ma Méthode - Yann Scheidegger</h1>
         <p class="seo-summary-lede">
-          Je conçois et optimise des systèmes numériques pour C2R Design: automatisation IA, interfaces WebGL, outils métier et parcours plus clairs. Cette page publique rassemble ma manière de travailler, mes projets et les preuves concrètes de ce que je construis.
+          Je conçois et optimise des systèmes numériques : automatisation IA, interfaces WebGL, outils métier et parcours plus clairs. Cette page publique rassemble ma manière de travailler, mes projets et les preuves concrètes de ce que je construis.
         </p>
         <div class="seo-summary-grid" aria-label="Résumé de Ma Méthode">
           <section class="seo-summary-block">
@@ -495,7 +512,7 @@
           <div class="project-reference-list">
             <article class="project-reference-item">
               <h3>Site Ma Méthode</h3>
-              <p>Vitrine interactive de Yann Scheidegger pour C2R Design, avec narration WebGL, formulaire de contact, grille de projets et fiches synchronisées par l'orchestrateur.</p>
+              <p>Vitrine interactive de Yann Scheidegger, avec narration WebGL, formulaire de contact, grille de projets et fiches synchronisées par l'orchestrateur.</p>
               <div class="project-reference-links">
                 <a href="#projets" data-project-grid-link>Voir dans la grille</a>
                 <a href="https://github.com/RYJITS/site_ma_methode" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -562,6 +579,6 @@
       </div>
     </section>
     <main id="after-story" class="after-story" aria-label="Suite de page" hidden></main>
-    <script type="module" src="src/main.js?v=visual-cards-story-v8-20260902"></script>
+    <script type="module" src="src/main.js?v=mobile-scroll-swipe-hint-v22-20260903"></script>
   </body>
 </html>

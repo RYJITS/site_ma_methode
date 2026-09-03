@@ -91,7 +91,7 @@ try {
       ok: afterGrid.mobileProjectPage && afterGrid.mobileCards >= afterGrid.gridCards && afterGrid.firstMobileSection === "tools"
     },
     {
-      name: "Fiche projet mobile ouvrable",
+      name: "Projet mobile ouvrable",
       ok: afterMobileDetail.projectDetailOpen
     }
   ];
