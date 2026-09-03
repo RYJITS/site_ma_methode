@@ -1,27 +1,28 @@
 # Site Ma Methode
 
 ## Statut de developpement
-Copie isolee optimisee et publiee le 3 septembre 2026 comme version publique du projet canonique.
+Projet canonique officiel local depuis le 3 septembre 2026. Les optimisations `v37` ont ete integrees dans `D:\00_Cerveau_IA\Projet\01_SITE_MA_METHODE` apres sauvegarde Git de l'ancien etat, fusion et validation complete.
 
-Diffusion Ma Methode: **active sur le domaine principal**.
+Diffusion Ma Methode: **version `v33` active sur le domaine principal; version officielle locale `v37` non publiee**.
 
 Validations principales:
 - Audit securite central: `OK_PUBLIC`, aucune alerte.
 - Verification fonctionnelle, tests desktop et iPhone: OK.
 - Porte Hostinger: OK.
 - Deploiement Hostinger `v33`: termine.
-- Candidat local `v37`: optimisations mobile `v36` conservées et pied de page discret ajouté avec auteur, droits réservés, confidentialité repliable et Contact; non publié.
+- Version officielle locale `v37`: optimisations mobile `v36` conservees et pied de page discret ajoute avec auteur, droits reserves, confidentialite repliable et Contact; non publiee.
+- Ancienne copie d'optimisation archivee dans `D:\00_Cerveau_IA\Projet\99_Archive\01_SITE_MA_METHODE_OPTIMISATION_20260902_ARCHIVE_20260903`.
 
 ## Liens vers l'application
 - Application: [https://c2rdesign.com/](https://c2rdesign.com/)
 - GitHub: non detecte
 
 ## Avancement du projet
-- Etat du projet: publie.
-- Fonctionnement: fonctionnel et valide en ligne.
+- Etat du projet: canonique local `v37`; public `v33`.
+- Fonctionnement: `v37` fonctionnelle et validee localement; `v33` validee en ligne.
 - Securite: `OK_PUBLIC`.
 - Ma Methode: 18 fiches synchronisees.
-- Publication externe: active sur `c2rdesign.com`.
+- Publication externe: `v33` active sur `c2rdesign.com`; aucune publication `v37` effectuee pendant l'officialisation locale.
 
 ## A quoi sert le projet
 Site Ma Methode est la vitrine centrale qui relie les projets du Cerveau IA. La page raconte la methode, propose une experience scroll/video, puis ouvre une carte interactive ou chaque application possede sa vignette, son statut, ses liens et sa fiche.
@@ -78,6 +79,8 @@ La vidéo de scroll choisit automatiquement la 1080p quand le débit mesuré att
 - Aucune capture validee pour cette fiche.
 
 ## Mises a jour
+- Officialisation locale de la v37 dans `01_SITE_MA_METHODE`, avec sauvegarde Git de l'ancien etat canonique, 55/55 tests, QA iPhone et audits centraux verts
+- Archivage sans suppression du worktree d'optimisation sous `99_Archive`; branche Git de reprise conservee
 - Publication v33 sur c2rdesign.com apres controles locaux, audit securite et validation Hostinger
 - Synchronisation des 18 fiches et medias depuis le registre Ma Methode courant
 - Couleurs de titres Liste desktop alignees sur mobile et accents publics corriges

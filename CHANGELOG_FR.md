@@ -1,7 +1,9 @@
-# Changelog - SITE MA METHODE OPTIMISATION 20260902
+# Changelog - SITE MA METHODE
 
 ## Evolutions documentees
 
+- 3 septembre 2026: `v37` devient la version officielle locale de `D:\00_Cerveau_IA\Projet\01_SITE_MA_METHODE`; ancien etat canonique sauvegarde dans Git, fusion terminee, video 900p reintegree sous suivi, 55/55 tests, QA iPhone, audit securite `OK_PUBLIC` et verification `FONCTIONNEL`; aucune publication en ligne
+- 3 septembre 2026: worktree `01_SITE_MA_METHODE_OPTIMISATION_20260902` archive sans suppression dans `D:\00_Cerveau_IA\Projet\99_Archive\01_SITE_MA_METHODE_OPTIMISATION_20260902_ARCHIVE_20260903`; branche Git de reprise conservee
 - 3 septembre 2026: préparation locale `v37`: ajout d'un pied de page discret identifiant Yann Scheidegger et C2R Design, avec mentions de droit d'auteur, information de confidentialité repliable et accès au formulaire Contact; aucune société ni aucun statut juridique inventé; publication non lancée
 - 3 septembre 2026: préparation locale `v36`: retrait sur mobile de la tuile `Résultat` affichée au-dessus des fiches; les fiches et leurs boutons Projet restent visibles, et l'encart demeure inchangé sur desktop; publication non lancée
 - 3 septembre 2026: préparation locale `v35`: retrait sur mobile du raccourci global `Grille projet` affiché au-dessus des fiches; les boutons Projet de chaque fiche restent visibles et fonctionnels; publication non lancée

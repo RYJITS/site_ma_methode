@@ -2,7 +2,7 @@
 
 Portfolio immersif de Yann Scheidegger et hub public des projets C2R Design.
 
-Version optimisee `v33` publiee sur [https://c2rdesign.com/](https://c2rdesign.com/).
+Version officielle locale `v37` dans ce dossier. La version publique actuellement en ligne reste la `v33` sur [https://c2rdesign.com/](https://c2rdesign.com/); aucune publication `v37` n'a ete effectuee pendant son officialisation locale.
 
 ## Fonctions
 
@@ -69,7 +69,7 @@ Le serveur Node sert uniquement les fichiers publics autorises. Il n'execute pas
 
 Le serveur local compresse a la volee les fichiers texte de plus de 1 Ko quand le navigateur accepte Gzip. La configuration Apache applique la meme politique a l'hebergement. Les images, les videos et toutes les reponses partielles `Range` restent intactes afin de conserver la lecture et le scroll video.
 
-Mesure de validation sur la copie isolee:
+Mesure de validation sur la version optimisee:
 
 - JavaScript principal: 168 785 octets bruts, 38 597 octets transferes;
 - CSS principal: 165 340 octets bruts, 26 376 octets transferes;
@@ -83,7 +83,7 @@ Les fonctions du formulaire Contact et le rendu complet d'une fiche Projet viven
 - `src/contact-panel.js` est charge au premier clic sur Contact;
 - `src/project-detail.js` est charge au premier affichage d'une fiche;
 - le registre et les 18 vignettes restent disponibles comme avant;
-- le service worker utilise la version `v33` pour ne jamais reutiliser l'ancien module principal.
+- le service worker utilise la version `v37` pour ne jamais reutiliser l'ancien module principal.
 
 Le module principal passe de 168 785 a 155 964 octets bruts (-7,6 %) et de 38 597 a 36 043 octets transferes en Gzip (-6,6 %). Le couple JavaScript principal + CSS passe ainsi de 64 973 a 62 419 octets transferes. Les deux modules differes representent 4 256 octets Gzip au total et ne sont demandes que si la fonction correspondante est utilisee.
 
@@ -102,7 +102,9 @@ Autres optimisations finales:
 
 ### Synchronisation et publication v33
 
-La copie isolee a ete resynchronisee avec le registre Ma Methode courant. Elle contient 18 fiches et leurs medias, dont Agent Design. La vue Liste desktop reprend exactement les couleurs de sections utilisees sur mobile, et les textes publics ont ete corriges pour conserver les accents hors libelles volontairement affiches en majuscules.
+La version optimisee a ete resynchronisee avec le registre Ma Methode courant. Elle contient 18 fiches et leurs medias, dont Agent Design. La vue Liste desktop reprend exactement les couleurs de sections utilisees sur mobile, et les textes publics ont ete corriges pour conserver les accents hors libelles volontairement affiches en majuscules.
+
+Le 3 septembre 2026, cette version `v37` a remplace localement l'ancien contenu du projet canonique `01_SITE_MA_METHODE`, apres sauvegarde Git et validation complete. L'ancien worktree d'optimisation est conserve sans suppression dans `99_Archive`. Cette officialisation locale ne modifie pas la version `v33` deja en ligne.
 
 La publication Hostinger du 3 septembre 2026 a ete validee en ligne: videos 900p/1080p avec plages HTTP, formulaire PHP, ouverture des fiches, images desktop/iPhone, protections HTTP et absence d'erreur console. Lighthouse mesure 100/100 sur desktop dans les quatre categories; sur mobile, 91 en performance et 100 en accessibilite, bonnes pratiques et SEO.
 
