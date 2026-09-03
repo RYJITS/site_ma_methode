@@ -20,7 +20,7 @@ Orbe SkyIA est un prototype qui matérialise l'assistant SkyIA sous la forme d'u
 - Fonctionnement: fonctionnel.
 - Securite: OK pour une presentation publique.
 - Ma Methode: fiche explicative visible.
-- Publication externe: candidat public, validation finale separee.
+- Publication externe: GitHub public actif.
 
 ## Liens
 - [Application](https://orbe.skyia.net/)

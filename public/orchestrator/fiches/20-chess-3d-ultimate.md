@@ -20,7 +20,7 @@ Chess 3D Ultimate est une application web interactive permettant de jouer aux é
 - Fonctionnement: fonctionnel.
 - Securite: OK pour une presentation publique.
 - Ma Methode: fiche explicative visible.
-- Publication externe: candidat public, validation finale separee.
+- Publication externe: GitHub public actif.
 
 ## Liens
 - [Application](https://chess.c2rdesign.com/)

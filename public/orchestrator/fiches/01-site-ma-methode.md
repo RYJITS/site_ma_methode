@@ -20,7 +20,7 @@ Site Ma Methode est la vitrine centrale qui relie les projets du Cerveau IA. La 
 - Fonctionnement: fonctionnel.
 - Securite: OK pour une presentation publique.
 - Ma Methode: fiche explicative visible.
-- Publication externe: candidat public, validation finale separee.
+- Publication externe: GitHub public actif.
 
 ## Liens
 - [Application](https://cv.c2rdesign.com/)

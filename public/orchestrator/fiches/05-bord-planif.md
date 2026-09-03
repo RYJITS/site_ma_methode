@@ -20,7 +20,7 @@ Bord PLANIF est un toolkit de planification MRP. L'application aide a piloter un
 - Fonctionnement: fonctionnel.
 - Securite: OK pour une presentation publique.
 - Ma Methode: fiche explicative visible.
-- Publication externe: candidat public, validation finale separee.
+- Publication externe: GitHub public actif.
 
 ## Liens
 - Application: pas encore disponible.

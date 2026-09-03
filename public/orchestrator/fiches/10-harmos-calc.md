@@ -20,7 +20,7 @@ Harmos Calc est une application web interactive conçue pour aider les familles 
 - Fonctionnement: fonctionnel.
 - Securite: OK pour une presentation publique.
 - Ma Methode: fiche explicative visible.
-- Publication externe: candidat public, validation finale separee.
+- Publication externe: GitHub public actif.
 
 ## Liens
 - [Application](https://mamoyenne.c2rdesign.com/)

@@ -19,7 +19,7 @@ C2R PulseDeck est actuellement un cahier des charges, pas encore une application
 - Fonctionnement: non teste faute d'informations suffisantes.
 - Securite: OK pour une presentation publique.
 - Ma Methode: fiche explicative visible.
-- Publication externe: candidat public, validation finale separee.
+- Publication externe: GitHub public actif.
 
 ## Liens
 - Application: pas encore disponible.

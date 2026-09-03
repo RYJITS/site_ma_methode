@@ -20,7 +20,7 @@ SkyIA est une plateforme full-stack conçue pour évaluer et comparer les modèl
 - Fonctionnement: fonctionnel.
 - Securite: OK pour une presentation publique.
 - Ma Methode: fiche explicative visible.
-- Publication externe: candidat public, validation finale separee.
+- Publication externe: GitHub public actif.
 
 ## Liens
 - [Application](https://skyia.net)

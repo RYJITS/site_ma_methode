@@ -130,7 +130,7 @@ export const orchestratorProjectCards = [
       "application": "Site Ma Methode est la vitrine centrale qui relie les projets du Cerveau IA. La page raconte la methode, propose une experience scroll/video, puis ouvre une carte interactive ou chaque application possede sa vignette, son statut, ses liens et sa fiche.",
       "fonctionnement": "Le site importe un module project-registry.js genere par l'orchestrateur. A l'ouverture de la grille, il place les projets par zones, gere le zoom, le deplacement, les boutons de focus et le panneau detail. Quand une carte est ouverte, le panneau affiche l'image, le resume, les statuts, le lien public, le lien GitHub, la fiche, puis les sections Application, Fonctionnement, Conception, Techniques et Automatisations. Le contact passe par une scene interactive et une API PHP dediee.",
       "conception": "Il a ete concu comme un hub vivant plutot qu'une liste statique. Le design existant garde la narration immersive, mais la couche projet est maintenant alimentee par les donnees de l'orchestrateur pour eviter de recoder les cartes a la main et pour garder les projets synchronises.",
-      "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
+      "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: GitHub public actif.",
       "capabilities": [
         "Presenter la methode de travail",
         "Ouvrir une carte interactive des projets",
@@ -176,7 +176,7 @@ export const orchestratorProjectCards = [
       "Fonctionnement: fonctionnel.",
       "Securite: OK pour une presentation publique.",
       "Ma Methode: fiche explicative visible.",
-      "Publication externe: candidat public, validation finale separee."
+      "Publication externe: GitHub public actif."
     ],
     "highlights": [
       "Transformer les projets locaux en presentation claire, navigable et diffusable.",
@@ -213,7 +213,7 @@ export const orchestratorProjectCards = [
     "category": "ai",
     "name": "Agent Design - Equipe IA de conception web",
     "comment": "Projet autonome pour construire un agent capable d'analyser un site, de produire une direction visuelle sourcee, de faire choisir les layouts de toutes les pages, puis d'appliquer le design choisi dans une copie isolee avec verification.",
-    "image": "public/generated/images/projects/project-grid-map-20260614.webp",
+    "image": "public/orchestrator/thumbnails/03-agent-design.webp",
     "githubUrl": "https://github.com/RYJITS/agent_design",
     "linkPolicy": {
       "exposure": "public-links",
@@ -236,7 +236,7 @@ export const orchestratorProjectCards = [
       "application": "Agent Design est un projet de conception d'agent, pas encore une application executable.",
       "fonctionnement": "Le workflow suit une chaine en serie: mission, cadrage, audit, recherche, diagnostic, architecture UX, direction artistique, layouts pages avec choix utilisateur, design system, implementation, QA, critique et finalisation.",
       "conception": "Agent Design est construit comme un centre de pilotage multi-projets: un orchestrateur ouvre chaque mission, des sous-agents specialises produisent les livrables de phase, puis des gates explicites bloquent les passages sensibles. Le depot public expose le moteur, les contrats, les templates, les scripts de controle et les catalogues; les memoires locales, missions utilisateur, runs de projets cibles, captures de travail et exports restent hors diffusion.",
-      "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
+      "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: GitHub public actif.",
       "capabilities": [
         "Architecture d'agents specialisee UI/UX",
         "Catalogues de sources qualifiees",
@@ -262,7 +262,7 @@ export const orchestratorProjectCards = [
       "Fonctionnement: fonctionnel.",
       "Securite: OK pour une presentation publique.",
       "Ma Methode: fiche explicative visible.",
-      "Publication externe: candidat public, validation finale separee."
+      "Publication externe: GitHub public actif."
     ],
     "highlights": [
       "Creer une chaine de production design inspiree d'une entreprise web, avec orchestrateur, sous-agents, catalogues de sources gratuites, gates de validation et livrables verificables.",
@@ -322,7 +322,7 @@ export const orchestratorProjectCards = [
       "application": "Ce skill permet d'intégrer Mistral comme sous-agent dans des workflows automatisés, en limitant ses actions à des tâches non destructives (analyse, synthèse, extraction). Il produit des sorties structurées (JSON ou Markdown) que Codex peut relire, valider ou modifier avant toute intégration. L'objectif est d'accélérer les tâches répétitives tout en maintenant un contrôle strict sur les décisions finales.",
       "fonctionnement": "Le skill fonctionne en deux phases : 1) Délégation de la tâche à Mistral via un helper Node.js qui transmet un contexte précis (schéma, contraintes, commandes autorisées), 2) Validation et intégration par Codex des sorties produites. Mistral ne peut pas publier, supprimer ou modifier directement le code ou la documentation. Toutes les sorties sont relues et validées avant toute action.",
       "conception": "Le projet a été conçu pour répondre à un besoin de délégation contrôlée d'IA dans un environnement technique. Les choix clés incluent : une séparation claire entre proposition du sous-agent et action réelle, un schéma JSON strict pour éviter les hallucinations, une validation systématique des commandes et chemins, et une documentation précise des cas d'usage autorisés. L'architecture repose sur un helper Node.js modulaire et des scripts de validation pour garantir la cohérence des sorties.",
-      "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
+      "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: GitHub public actif.",
       "capabilities": [
         "Extraction structurée d'informations à partir de briefs techniques",
         "Génération de brouillons de documentation ou de références",
@@ -358,7 +358,7 @@ export const orchestratorProjectCards = [
       "Fonctionnement: fonctionnel.",
       "Securite: OK pour une presentation publique.",
       "Ma Methode: fiche explicative visible.",
-      "Publication externe: candidat public, validation finale separee."
+      "Publication externe: GitHub public actif."
     ],
     "highlights": [
       "Permettre à l'orchestrateur Cerveau IA de déléguer des tâches analytiques ou rédactionnelles à Mistral tout en conservant un contrôle strict sur les actions finales, évitant ainsi les risques de modifications non autorisées ou de décisions critiques.",
@@ -414,7 +414,7 @@ export const orchestratorProjectCards = [
       "application": "Bord PLANIF est un toolkit de planification MRP. L'application aide a piloter un planning operationnel en regroupant les lignes a traiter, les statuts, les priorites, les capacites, les retards, les risques et les indicateurs utiles dans une interface claire. Elle sert a voir rapidement ce qui doit etre planifie, ce qui est bloque, ce qui est sous surveillance et ce qui peut etre archive.",
       "fonctionnement": "L'application s'ouvre dans un navigateur et presente un cockpit avec indicateurs, ruban d'actions, vues specialisees, grille paginee, filtres et edition de lignes. L'utilisateur peut passer d'une vue planning a une vue capacite ou audit, filtrer les informations, modifier une ligne, simuler une actualisation, exporter les donnees en CSV ou creer un snapshot. Les changements restent sauvegardes localement dans le navigateur.",
       "conception": "Le projet est une application statique HTML, CSS et JavaScript concue comme un outil de pilotage leger. La logique cote client gere la navigation, les filtres, les calculs d'indicateurs, les graphiques, les heatmaps, les modales d'edition, l'import/export CSV et la persistance locale. Le jeu de demonstration reste fictif pour presenter les fonctions sans exposer de donnees sensibles.",
-      "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
+      "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: GitHub public actif.",
       "capabilities": [
         "Cockpit KPI avec risques et indicateurs",
         "Navigation multi-vues de planification",
@@ -455,7 +455,7 @@ export const orchestratorProjectCards = [
       "Fonctionnement: fonctionnel.",
       "Securite: OK pour une presentation publique.",
       "Ma Methode: fiche explicative visible.",
-      "Publication externe: candidat public, validation finale separee."
+      "Publication externe: GitHub public actif."
     ],
     "highlights": [
       "Donner une vue claire et exploitable du planning operationnel: savoir quoi traiter, quoi surveiller, ou sont les blocages et quelles capacites restent disponibles.",
@@ -521,7 +521,7 @@ export const orchestratorProjectCards = [
       "application": "Le Générateur Image C2R est une application web locale qui agit comme une interface moderne pour piloter le moteur historique C2R. Elle permet de générer des images via des prompts, de suivre les jobs de génération en temps réel, et de valider ou rejeter les résultats. Les images validées sont automatiquement ajoutées à un corpus centralisé, et leur manifeste est rafraîchi dynamiquement. L'application évite la duplication des données lourdes en s'appuyant sur des chemins de fichiers existants, et intègre un mode dry-run pour tester les générations sans impact.",
       "fonctionnement": "L'application fonctionne en deux parties distinctes : un serveur Express (Node.js) qui expose une API REST et gère les jobs de génération, et un client React/Vite qui fournit l'interface utilisateur. Le serveur lit un manifeste JSON des images validées, exécute les générations via le moteur C2R, et sert les images générées. Le client permet de lancer des générations, de suivre les jobs, et de valider les résultats. Les jobs sont exécutés de manière asynchrone, et les feedbacks utilisateurs sont journalisés en JSONL pour une traçabilité complète.",
       "conception": "Le projet a été conçu comme une passerelle entre l'ancien moteur C2R et une interface moderne, en évitant la duplication des données lourdes (corpus d'images). Les choix de conception incluent : une architecture modulaire avec séparation claire entre le serveur et le client, une gestion centralisée des jobs via un store in-memory, un mode dry-run pour les tests, et une journalisation des feedbacks pour l'analyse. L'interface est responsive et utilise des composants React pour une expérience utilisateur intuitive. Le serveur est écrit en Node.js avec Express pour une API REST simple et efficace, et le client utilise Vite pour un développement rapide et une optimisation de production. La sécurité est renforcée par des vérifications de chemins pour éviter les accès non autorisés.",
-      "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
+      "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: GitHub public actif.",
       "capabilities": [
         "Génération d'images via le moteur C2R historique",
         "Suivi en temps réel des jobs de génération",
@@ -567,7 +567,7 @@ export const orchestratorProjectCards = [
       "Fonctionnement: fonctionnel.",
       "Securite: OK pour une presentation publique.",
       "Ma Methode: fiche explicative visible.",
-      "Publication externe: candidat public, validation finale separee."
+      "Publication externe: GitHub public actif."
     ],
     "highlights": [
       "Fournir un studio visuel ergonomique pour créer, valider et organiser des images générées par le moteur C2R, en évitant la duplication des données lourdes (corpus d'images) et en centralisant la gestion des jobs de génération.",
@@ -632,7 +632,7 @@ export const orchestratorProjectCards = [
       "application": "L'application est une reconstruction sécurisée du flux métier du classeur Excel COMMANDE_MATIERE.xlsm. Elle permet de piloter des commandes matière fictives, d’archiver des saisies, de consulter et modifier des référentiels, de suivre des lignes galva, et de visualiser des indicateurs clés — le tout sans exposer aucune donnée sensible du fichier source. Elle remplace les macros VBA, les connexions SAP/ADO/Outlook par des simulations locales fiables et traçables.",
       "fonctionnement": "L'application fonctionne entièrement côté client en HTML/CSS/JavaScript. Elle démarre sur un module de saisie (Commande) où l'utilisateur entre machine, nombre d'OF et type (PROD/MET). Les champs calculés sont générés localement via des fonctions déterministes basées sur des hash. Une fois validée, la commande est ajoutée aux Archives, qui offrent filtrage, tri, pagination et édition inline. Les modules Référentiels et Suivi galva exposent des listes modifiables. Les indicateurs (KPI) sont mis à jour dynamiquement depuis les données locales. Toutes les modifications sont persistées dans localStorage.",
       "conception": "Le projet a été conçu comme une reconstruction sécurisée : il conserve la structure, les volumes, les noms de colonnes et les cas d'usage du classeur source, mais remplace systématiquement les données métiers par des valeurs fictives générées localement à partir de seeds reproductibles. L’approche statique (sans backend) garantit zéro exposition de données. Le design suit les principes Windows 11 (Mica, Segoe UI, navigation latérale, boutons compacts) et intègre une compatibilité mobile via des tables horizontales scrollables. La modularité des vues (Tableau, Commande, Archives, Référentiels) facilite la maintenance. La fenêtre SAP simulée assure traçabilité des actions, tandis que les calculs JavaScript traduisent fidèlement les formules Excel (IFERROR, XLOOKUP) pour les statuts planif et taux de couverture.",
-      "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
+      "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: GitHub public actif.",
       "capabilities": [
         "Saisie rapide avec auto-remplissage déterministe",
         "Édition inline des archives et référentiels",
@@ -675,7 +675,7 @@ export const orchestratorProjectCards = [
       "Fonctionnement: fonctionnel.",
       "Securite: OK pour une presentation publique.",
       "Ma Methode: fiche explicative visible.",
-      "Publication externe: candidat public, validation finale separee."
+      "Publication externe: GitHub public actif."
     ],
     "highlights": [
       "Fournir une interface simplifiée et sécurisée pour gérer les flux de commande matière (PROD/MET), les archives, les indicateurs et les référentiels, en reproduisant la structure et les volumes du classeur métier COMMANDE_MATIERE.xlsm mais avec des données fictives.",
@@ -746,7 +746,7 @@ export const orchestratorProjectCards = [
       "application": "Orbe SkyIA est un prototype qui matérialise l'assistant SkyIA sous la forme d'une orbe interactive en 3D, permettant une expérience utilisateur plus immersive que les interfaces textuelles classiques. L'application combine un noyau fonctionnel SkyIA avec une interface visuelle riche, intégrant des services externes (modèles IA, synthèse vocale, paiements) pour tester des scénarios d'interaction avancés. Le projet sert de banc d'essai pour évaluer l'impact de l'immersion visuelle et sonore sur l'engagement utilisateur, tout en fournissant un outil de démonstration pour les partenaires techniques.",
       "fonctionnement": "L'application démarre un serveur Node.js qui initialise les services Firebase (Auth, Firestore) et prépare l'environnement d'exécution. Le frontend React, construit avec Vite, charge les composants principaux (orbe WebGL, interface de chat, tableaux de bord) et établit une connexion avec les services IA via OpenRouter ou l'API Google. Les interactions vocales sont gérées par la Web Speech API, tandis que les sauvegardes sont stockées localement ou synchronisées avec Firestore. Les crédits sont vérifiés via Stripe, et les rapports de session sont générés dynamiquement en PDF. L'orbe 3D réagit aux messages de l'IA et aux actions utilisateur, créant une boucle de feedback visuel.",
       "conception": "Le projet a été conçu comme un laboratoire d'innovation pour les interfaces IA, avec une architecture modulaire séparant clairement les responsabilités : frontend (React + Three.js), backend (Node.js + Firebase), services externes (IA, voix, paiements) et gestion d'état (React Context). Les choix clés incluent l'utilisation de Three.js pour le rendu 3D afin de garantir une expérience fluide, l'intégration de Firebase pour une gestion centralisée des utilisateurs et des sessions, et l'adoption de TypeScript pour une robustesse accrue. L'interface a été pensée pour être intuitive malgré sa complexité, avec des effets visuels (CRT, arrière-plan) servant à renforcer l'immersion sans distraire de la fonction principale. La sécurité a été renforcée via des règles Firestore strictes et des mécanismes d'auto-réparation pour les documents utilisateurs.",
-      "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
+      "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: GitHub public actif.",
       "capabilities": [
         "Rendu 3D temps réel de l'orbe SkyIA avec réactions aux messages",
         "Sélection dynamique de modèles IA parmi une liste de fournisseurs (OpenRouter)",
@@ -796,7 +796,7 @@ export const orchestratorProjectCards = [
       "Fonctionnement: fonctionnel.",
       "Securite: OK pour une presentation publique.",
       "Ma Methode: fiche explicative visible.",
-      "Publication externe: candidat public, validation finale separee."
+      "Publication externe: GitHub public actif."
     ],
     "highlights": [
       "Fournir un laboratoire d'innovation pour concevoir une interface IA plus expressive, immersive et mémorable que les assistants textuels traditionnels, tout en testant des fonctionnalités avancées comme la reconnaissance vocale, la synthèse vocale et la gestion de sessions persistantes.",
@@ -868,7 +868,7 @@ export const orchestratorProjectCards = [
       "application": "SkyIA est une plateforme full-stack conçue pour évaluer et comparer les modèles d'IA via des duels adversariaux. Elle permet aux utilisateurs de lancer des conversations avec un ou plusieurs modèles, d'organiser des duels structurés, et de sauvegarder leurs sessions. Les résultats sont archivés et exportables sous forme de rapports détaillés, incluant des métriques de performance comme la latence et la qualité des réponses. L'application intègre également un système de gestion des crédits et des modèles personnalisés (BYOK), ainsi qu'une interface immersive inspirée des terminaux rétro pour une expérience utilisateur unique.",
       "fonctionnement": "L'application fonctionne en deux couches principales : un frontend React/Vite gérant l'interface utilisateur et une API PHP/MySQL assurant la persistance des données et la logique métier. Le frontend pilote les interactions utilisateur (conversations, duels, sauvegardes) tandis que l'API gère l'authentification, le routage vers les fournisseurs de modèles, le streaming des réponses, et l'archivage des rapports. Les services frontaux intègrent des mécanismes de compaction de contexte pour les modèles à faible capacité token, et des optimisations pour le streaming SSE afin d'améliorer l'expérience utilisateur.",
       "conception": "Le projet a été conçu avec une architecture modulaire et sécurisée, séparant clairement les responsabilités entre frontend et backend. Le frontend utilise React avec TypeScript pour un typage strict et une maintenabilité accrue, tandis que le backend repose sur une API PHP/MySQL pour une compatibilité avec les hébergements mutualisés. La sécurité est renforcée par un stockage chiffré des clés BYOK côté utilisateur et une séparation des données sensibles (tokens, sessions) des données publiques (rapports, statistiques). L'interface utilisateur a été pensée pour être intuitive tout en intégrant des éléments visuels inspirés des interfaces rétro (style terminal, effets CRT) pour une expérience immersive. L'architecture a été optimisée pour une évolutivité et une maintenabilité à long terme, avec des tests automatisés et des audits de sécurité intégrés.",
-      "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
+      "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: GitHub public actif.",
       "capabilities": [
         "Lancement de duels IA en temps réel",
         "Comparaison multi-modèles avec streaming des réponses",
@@ -918,7 +918,7 @@ export const orchestratorProjectCards = [
       "Fonctionnement: fonctionnel.",
       "Securite: OK pour une presentation publique.",
       "Ma Methode: fiche explicative visible.",
-      "Publication externe: candidat public, validation finale separee."
+      "Publication externe: GitHub public actif."
     ],
     "highlights": [
       "Fournir une interface centralisée et un protocole standardisé pour comparer objectivement les modèles IA (gratuits, serveurs, BYOK), archiver les résultats, mesurer les latences et générer des rapports détaillés. Destiné aux chercheurs, développeurs et observatoires de modèles.",
@@ -991,7 +991,7 @@ export const orchestratorProjectCards = [
       "application": "Site vitrine moderne pour Bukit Lawang Garden Inn, conçu comme une plateforme de découverte et de réservation. L'application présente les chambres, le restaurant, les excursions et les services de transfert avec une interface responsive et accessible. Les fonctionnalités clés incluent une navigation multilingue, une conversion de devises en temps réel, et des outils d'interaction comme les itinéraires Google Maps et les liens de réservation directe.",
       "fonctionnement": "L'application React s'appuie sur une architecture modulaire où chaque section (accueil, chambres, restaurant, etc.) est un composant indépendant. Les données sont chargées dynamiquement et traduites selon la langue sélectionnée. La détection de section active au scroll est gérée via IntersectionObserver, tandis que les prix sont convertis en temps réel via une API de taux de change. Les liens de réservation directe et les itinéraires Google Maps sont intégrés pour faciliter l'action des visiteurs.",
       "conception": "Le projet a été conçu comme une vitrine touristique orientée réservation, avec une structure claire et des parcours utilisateurs logiques : découverte du lieu, compréhension des offres, filtrage des services, puis réservation ou contact. L'architecture repose sur des contextes React (langue et devise) pour centraliser la gestion des préférences utilisateur. Les choix techniques incluent Vite pour le bundling, TypeScript pour le typage strict, et Tailwind CSS pour le styling. Les images sont versionnées pour éviter les problèmes de cache, et un système de fallback est implémenté pour les contenus externes (notes Google Places).",
-      "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
+      "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: GitHub public actif.",
       "capabilities": [
         "Affichage des chambres avec descriptions et photos",
         "Présentation du restaurant et de ses menus",
@@ -1041,7 +1041,7 @@ export const orchestratorProjectCards = [
       "Fonctionnement: fonctionnel.",
       "Securite: OK pour une presentation publique.",
       "Ma Methode: fiche explicative visible.",
-      "Publication externe: candidat public, validation finale separee."
+      "Publication externe: GitHub public actif."
     ],
     "highlights": [
       "Valoriser l'établissement Bukit Lawang Garden Inn en fournissant une vitrine claire, accessible et engageante pour les voyageurs internationaux, avec des outils facilitant la réservation et la découverte des services.",
@@ -1109,7 +1109,7 @@ export const orchestratorProjectCards = [
       "application": "Harmos Calc est une application web interactive conçue pour aider les familles à suivre la progression scolaire des élèves selon le système HarmoS suisse. L'application permet de saisir des notes par matière et composant, calcule automatiquement les moyennes pondérées, et évalue l'orientation scolaire (Général, Moderne, Pré-gymnasial) en fonction des niveaux A/B/C. Un système de bonus/malus transforme les performances en temps de jeu, offrant une motivation supplémentaire. Le mode parent, sécurisé par mot de passe, permet de configurer les seuils et de consulter l'historique des actions.",
       "fonctionnement": "L'application fonctionne en temps réel : à chaque saisie de note, les moyennes sont recalculées instantanément. Le système HarmoS analyse les niveaux A/B/C par matière pour déterminer une orientation. Le mode bonus/malus est appliqué automatiquement selon des règles configurables (ex : +15 min par note ≥ 5, -15 min par note < 4). Le timer de jeu est synchronisé avec ces bonus/malus. Le mode parent, protégé par mot de passe, permet de configurer les seuils et de consulter l'historique des actions.",
       "conception": "Le projet a été conçu comme un outil familial simple et visuel, combinant calcul scolaire, visualisation immédiate et mécanique de motivation. L'architecture repose sur une séparation claire entre l'interface utilisateur (React), la logique métier (calculs locaux) et les services externes (appel à une API pour les règles HarmoS). Le choix de React et Vite permet une interface responsive et un développement modulaire. Le stockage des données est local (IndexedDB ou localStorage) pour garantir la confidentialité. La sécurité est renforcée par un mode parent protégé et une journalisation des actions. L'optimisation inclut un recalcul différé des moyennes pour éviter les blocages UI.",
-      "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
+      "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: GitHub public actif.",
       "capabilities": [
         "Calcul dynamique des moyennes pondérées",
         "Évaluation automatique de l'orientation HarmoS",
@@ -1155,7 +1155,7 @@ export const orchestratorProjectCards = [
       "Fonctionnement: fonctionnel.",
       "Securite: OK pour une presentation publique.",
       "Ma Methode: fiche explicative visible.",
-      "Publication externe: candidat public, validation finale separee."
+      "Publication externe: GitHub public actif."
     ],
     "highlights": [
       "Simplifier le suivi scolaire des élèves en transformant les notes brutes en informations actionnables (moyennes, orientation, progression) et en motivant l'élève via un système de récompenses temporelles.",
@@ -1228,7 +1228,7 @@ export const orchestratorProjectCards = [
       "application": "Chess 3D Ultimate est une application web interactive permettant de jouer aux échecs en 3D directement dans un navigateur. Le projet combine une logique de jeu robuste (via chess.js) avec un rendu 3D immersif (via Three.js) pour offrir une expérience visuelle et tactile unique. Les utilisateurs peuvent affronter une IA locale paramétrable (niveaux de difficulté) ou une IA externe (Gemini) en fournissant une clé API valide. L'application propose également plusieurs thèmes visuels (Classic, Disney, LEGO) pour personnaliser l'apparence du plateau et des pièces. La caméra est contrôlable via la souris pour une exploration libre de la scène, et les animations (captures, sélections) renforcent l'immersion.",
       "fonctionnement": "L'application repose sur une architecture modulaire où la logique du jeu (gestion des coups, vérification des règles) est séparée de la scène 3D (affichage, interactions, animations). Lorsque l'utilisateur sélectionne une pièce, un raycast est utilisé pour détecter la case cliquée. Si le coup est valide selon chess.js, la pièce est déplacée et la scène est mise à jour. Après le tour du joueur, l'IA locale ou externe génère un coup, qui est validé avant d'être exécuté. Les thèmes visuels sont appliqués dynamiquement, et les effets (comme les messages de capture) sont affichés en overlay. La caméra est contrôlable via la souris pour une exploration libre de la scène.",
       "conception": "Le projet a été conçu avec une séparation claire des responsabilités : chess.js gère la logique des échecs, tandis que Three.js s'occupe du rendu 3D et des interactions. L'architecture suit une approche modulaire avec des composants React pour l'interface utilisateur (HUD, paramètres) et une scène Three.js encapsulée dans un composant dédié. Les choix de design incluent : l'utilisation de pièces procédurales pour une génération dynamique, des thèmes visuels variés pour personnaliser l'expérience, et une gestion centralisée des paramètres de jeu. L'application est responsive et optimisée pour une utilisation fluide sur desktop et mobile. La sécurité a été prise en compte en évitant l'exposition de données sensibles (comme les clés API) dans le code public.",
-      "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
+      "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: GitHub public actif.",
       "capabilities": [
         "Génération procédurale du plateau et des pièces d'échecs",
         "Détection des coups légaux via raycasting",
@@ -1274,7 +1274,7 @@ export const orchestratorProjectCards = [
       "Fonctionnement: fonctionnel.",
       "Securite: OK pour une presentation publique.",
       "Ma Methode: fiche explicative visible.",
-      "Publication externe: candidat public, validation finale separee."
+      "Publication externe: GitHub public actif."
     ],
     "highlights": [
       "Fournir une expérience visuelle et interactive de jeu d'échecs en 3D, accessible directement depuis un navigateur, avec des fonctionnalités avancées comme le jeu contre une IA locale ou un adversaire externe (Gemini), des thèmes visuels variés et une gestion dynamique des coups.",
@@ -1344,7 +1344,7 @@ export const orchestratorProjectCards = [
       "application": "Neon Rush 3D est un jeu 3D temps réel développé avec React, Three.js et Vite. L'application permet aux utilisateurs de naviguer dans un environnement 3D dynamique, de collecter des objets, d'éviter des obstacles et de tirer sur des cibles. Le jeu repose sur une architecture modulaire où chaque composant gère une partie spécifique : la scène 3D, le joueur, les obstacles, les projectiles, l'interface utilisateur et le système audio. L'état du jeu est centralisé via un store Zustand, assurant une synchronisation fluide entre les éléments. Three.js est utilisé pour le rendu graphique, avec des effets de post-traitement pour améliorer l'immersion visuelle.",
       "fonctionnement": "L'application fonctionne en temps réel grâce à un serveur de développement Vite qui permet une mise à jour instantanée des modifications. Le jeu est structuré autour d'une boucle principale qui gère les entrées utilisateur, les mises à jour de l'état du jeu et le rendu graphique. Les interactions sont capturées via des événements clavier ou tactiles, puis traitées par les composants dédiés. Les collisions sont détectées et gérées par des algorithmes simples, tandis que les effets visuels et sonores sont synchronisés avec les actions du joueur. L'état global du jeu est stocké dans un store Zustand, permettant une réactivité optimale.",
       "conception": "Le projet a été conçu avec une approche modulaire et scalable, en séparant clairement les responsabilités entre les composants React, les utilitaires et le store d'état. Three.js a été choisi pour son intégration native avec React via @react-three/fiber, offrant une syntaxe déclarative pour la création d'objets 3D. L'architecture a été pensée pour faciliter la maintenance et l'ajout de nouvelles fonctionnalités, avec une attention particulière portée à la performance et à l'optimisation du rendu. Les choix techniques incluent l'utilisation de Tailwind CSS pour le style, Zustand pour la gestion d'état, et Firebase pour les fonctionnalités backend optionnelles. L'application est optimisée pour une expérience fluide sur desktop et mobile.",
-      "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
+      "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: GitHub public actif.",
       "capabilities": [
         "Rendu 3D temps réel avec Three.js et @react-three/fiber",
         "Gestion des collisions et de la physique basique",
@@ -1387,7 +1387,7 @@ export const orchestratorProjectCards = [
       "Fonctionnement: fonctionnel.",
       "Securite: OK pour une presentation publique.",
       "Ma Methode: fiche explicative visible.",
-      "Publication externe: candidat public, validation finale separee."
+      "Publication externe: GitHub public actif."
     ],
     "highlights": [
       "Créer une application web interactive permettant aux utilisateurs de naviguer dans un environnement 3D dynamique, de collecter des objets, d'éviter des obstacles et de tirer sur des cibles, avec un rendu visuel optimisé et une gestion d'état centralisée.",
@@ -1455,7 +1455,7 @@ export const orchestratorProjectCards = [
       "application": "MorphoStyle AI est une application web qui permet de tester une consultation coiffure/visagisme. Elle combine cinq profils demo prepares en base statique et un parcours photo personnelle utilisant OpenAI Image cote serveur. L'objectif est de montrer des recommandations morphologiques realistes sans multiplier les appels API inutiles.",
       "fonctionnement": "L'application suit deux parcours. Les profils demo chargent des planches statiques deja preparees et decoupees localement. Pour une photo personnelle, l'utilisateur charge son portrait, choisit ses reglages, puis OpenAI genere une premiere planche 4x4 avec quatre propositions. L'utilisateur selectionne une proposition et une seconde planche finale est generee puis decoupee en face, profil gauche, profil droit et dos. Le serveur applique une limite d'un essai complet OpenAI par jour et conserve uniquement des empreintes de session pour le quota.",
       "conception": "Le projet a ete reconstruit autour d'une logique economique et controlable: les exemples restent statiques, les images personnelles utilisent deux appels OpenAI maximum par essai, et le serveur garde les cles API hors du navigateur. Les planches sont decoupees avec Sharp pour afficher des portraits independants et agrandissables. L'interface React garde un parcours simple: selection d'un profil ou upload, reglages, choix d'une proposition, resultat final avec vues complementaires.",
-      "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
+      "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: GitHub public actif.",
       "capabilities": [
         "Selection de profils demo statiques",
         "Upload d'une photo personnelle",
@@ -1501,7 +1501,7 @@ export const orchestratorProjectCards = [
       "Fonctionnement: fonctionnel.",
       "Securite: OK pour une presentation publique.",
       "Ma Methode: fiche explicative visible.",
-      "Publication externe: candidat public, validation finale separee."
+      "Publication externe: GitHub public actif."
     ],
     "highlights": [
       "Démocratiser l'accès à des conseils professionnels en coiffure et style en combinant analyse morphologique automatisée et génération d'images réalistes, pour fournir des recommandations personnalisées et immédiates.",
@@ -1564,7 +1564,7 @@ export const orchestratorProjectCards = [
       "application": "C2R PulseDeck est actuellement un cahier des charges, pas encore une application executable. Le concept decrit un futur outil local qui devra recevoir une idee brute, la clarifier et produire une fiche projet prete a relire ou a publier.",
       "fonctionnement": "Le MVP prevu devra proposer une saisie d'idee, transformer cette saisie en blocs structures, conserver les projets dans un fichier JSON local et exporter une fiche Markdown. Les fonctions de tableau de bord, de detection des fiches incompletes et d'assistance IA sont decrites comme des etapes a developper; elles ne sont pas encore implementees dans ce dossier.",
       "conception": "Le brief propose une application React et TypeScript construite avec Vite et Tailwind CSS, sans backend ni cloud pour le MVP. Les ecrans envisages sont la capture d'idee, la fiche generee et un tableau de bord. La priorite est de valider un parcours simple avant d'ajouter des automatisations ou des effets visuels avances.",
-      "avancement": "Etat du projet: candidat public avec controles a finaliser. Fonctionnement: non teste faute d'informations suffisantes. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
+      "avancement": "Etat du projet: candidat public avec controles a finaliser. Fonctionnement: non teste faute d'informations suffisantes. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: GitHub public actif.",
       "capabilities": [
         "Specification du parcours de capture d'idee",
         "Definition du format de fiche projet",
@@ -1593,7 +1593,7 @@ export const orchestratorProjectCards = [
       "Fonctionnement: non teste faute d'informations suffisantes.",
       "Securite: OK pour une presentation publique.",
       "Ma Methode: fiche explicative visible.",
-      "Publication externe: candidat public, validation finale separee."
+      "Publication externe: GitHub public actif."
     ],
     "highlights": [
       "Preparer un MVP capable de clarifier une idee, produire une fiche reutilisable et faciliter sa publication dans un portfolio.",
@@ -1651,7 +1651,7 @@ export const orchestratorProjectCards = [
       "application": "Application web locale (React/Vite) conçue pour analyser les factures médicales suisses et estimer leur traitement par l'assurance obligatoire LAMal ou complémentaire LCA. L'application permet de configurer les membres de la famille, leurs contrats d'assurance, et d'importer des factures au format PDF ou texte pour une analyse automatique. Les estimations sont basées sur les règles configurées pour chaque contrat et chaque membre, avec une attention particulière aux franchises, quote-parts et limites annuelles. L'application ne stocke aucun mot de passe d'assureur et guide l'utilisateur pour l'envoi des justificatifs via les portails officiels.",
       "fonctionnement": "L'application fonctionne en local-first : toutes les données restent dans le navigateur de l'utilisateur. L'analyse des factures repose sur l'extraction du texte (PDF ou texte brut) et sa parsing pour détecter les champs clés (montant, date, prestataire, catégorie de soin, mode de facturation). Un moteur de remboursement calcule ensuite les montants estimés selon les règles configurées pour chaque contrat (LAMal et complémentaires). L'application propose des presets pour les assureurs Visana et Groupe Mutuel, mais ne se connecte pas directement à leurs portails. Les estimations sont affichées avec les montants, les justificatifs requis et les raisons du choix de traitement.",
       "conception": "L'application est conçue comme une application locale, sans publication web, pour garantir la confidentialité des données de santé. L'architecture repose sur React pour l'interface, Vite pour le bundling, et TypeScript pour la typage fort. Le projet est structuré en modules clairs : types de domaine, données d'exemple, connecteurs d'assureurs, moteur de remboursement, parsing de factures et persistance locale. Les choix de design incluent une interface responsive, des composants modulaires, et une séparation claire entre la logique métier et l'interface utilisateur. La sécurité est renforcée par l'absence de stockage de données personnelles et l'utilisation de chemins relatifs pour le mode portable.",
-      "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
+      "avancement": "Etat du projet: pret cote usage public. Fonctionnement: fonctionnel. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: GitHub public actif.",
       "capabilities": [
         "Configuration des membres de la famille et de leurs contrats d'assurance",
         "Analyse automatique de factures médicales (PDF ou texte brut)",
@@ -1692,7 +1692,7 @@ export const orchestratorProjectCards = [
       "Fonctionnement: fonctionnel.",
       "Securite: OK pour une presentation publique.",
       "Ma Methode: fiche explicative visible.",
-      "Publication externe: candidat public, validation finale separee."
+      "Publication externe: GitHub public actif."
     ],
     "highlights": [
       "Aider les familles suisses à gérer leurs contrats d'assurance maladie en analysant les factures médicales, en estimant les remboursements selon les règles LAMal et LCA, et en guidant l'envoi des justificatifs vers les portails des assureurs.",
@@ -1754,7 +1754,7 @@ export const orchestratorProjectCards = [
       "application": "Cerveau IA est un environnement local de travail assiste par IA. Il rassemble des instructions communes, des memoires persistantes, des competences reutilisables, des configurations API locales et un ensemble de projets independants. Son objectif est de conserver la continuite du travail entre les sessions et les outils sans melanger les donnees de chaque projet.",
       "fonctionnement": "Le systeme separe les responsabilites en espaces dedies: les instructions definissent les regles de travail, la memoire conserve les decisions et apprentissages, les competences apportent des methodes reutilisables, les configurations API restent locales, et chaque projet garde ses propres sources et documents. Les assistants utilisent ce contexte commun pour travailler de maniere coherente tout en respectant les limites de chaque projet.",
       "conception": "Le projet suit une approche locale, modulaire et prudente. Les informations partagees entre projets sont centralisees uniquement lorsqu'elles sont reellement transverses; les sources, secrets et donnees metier restent separes. Une representation publique limitee permet de presenter le concept et les fonctions sans exposer la structure privee complete.",
-      "avancement": "Etat du projet: reserve a l'usage interne. Fonctionnement: non teste faute d'informations suffisantes. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: interne.",
+      "avancement": "Etat du projet: reserve a l'usage interne. Fonctionnement: non teste faute d'informations suffisantes. Securite: OK pour une presentation publique. Ma Methode: fiche explicative visible. Publication externe: GitHub public actif.",
       "capabilities": [
         "Conserver un contexte IA durable",
         "Maintenir une memoire utilisateur et des memoires projet",
@@ -1794,7 +1794,7 @@ export const orchestratorProjectCards = [
       "Fonctionnement: non teste faute d'informations suffisantes.",
       "Securite: OK pour une presentation publique.",
       "Ma Methode: fiche explicative visible.",
-      "Publication externe: interne."
+      "Publication externe: GitHub public actif."
     ],
     "highlights": [
       "Conserver un contexte durable entre les assistants IA et les projets, reutiliser les memes competences et appliquer des regles communes sans exposer les donnees privees.",

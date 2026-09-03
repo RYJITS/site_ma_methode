@@ -19,7 +19,7 @@ Ce skill permet d'intégrer Mistral comme sous-agent dans des workflows automati
 - Fonctionnement: fonctionnel.
 - Securite: OK pour une presentation publique.
 - Ma Methode: fiche explicative visible.
-- Publication externe: candidat public, validation finale separee.
+- Publication externe: GitHub public actif.
 
 ## Liens
 - Application: pas encore disponible.

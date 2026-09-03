@@ -20,7 +20,7 @@ Cerveau IA est un environnement local de travail assiste par IA. Il rassemble de
 - Fonctionnement: non teste faute d'informations suffisantes.
 - Securite: OK pour une presentation publique.
 - Ma Methode: fiche explicative visible.
-- Publication externe: interne.
+- Publication externe: GitHub public actif.
 
 ## Liens
 - Application: pas encore disponible.

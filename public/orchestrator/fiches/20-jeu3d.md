@@ -20,7 +20,7 @@ Neon Rush 3D est un jeu 3D temps réel développé avec React, Three.js et Vite.
 - Fonctionnement: fonctionnel.
 - Securite: OK pour une presentation publique.
 - Ma Methode: fiche explicative visible.
-- Publication externe: candidat public, validation finale separee.
+- Publication externe: GitHub public actif.
 
 ## Liens
 - [Application](https://neon-rush.skyia.net/)
