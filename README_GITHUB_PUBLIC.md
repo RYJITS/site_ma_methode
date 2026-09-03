@@ -107,7 +107,7 @@ Il a ete concu comme un hub vivant plutot qu'une liste statique. Le design exist
 - Gestionnaire: npm
 - Nom package: ai-video-webgl-competences-clean
 - Version: 1.0.0
-- Lien public: https://cv.c2rdesign.com/
+- Lien public: https://c2rdesign.com/
 
 ### Stack et dependances principales
 

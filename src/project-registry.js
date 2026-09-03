@@ -105,9 +105,9 @@ export const orchestratorProjectCards = [
     "name": "Site Ma Methode",
     "comment": "Vitrine interactive et hub des projets. Elle presente la methode de travail, affiche la carte des applications et ouvre des fiches detaillees synchronisees par l'orchestrateur.",
     "image": "public/orchestrator/thumbnails-ai/01-site-ma-methode.webp",
-    "url": "https://cv.c2rdesign.com/",
+    "url": "https://c2rdesign.com/",
     "githubUrl": "https://github.com/RYJITS/site_ma_methode",
-    "hostingerUrl": "https://cv.c2rdesign.com/",
+    "hostingerUrl": "https://c2rdesign.com/",
     "linkPolicy": {
       "exposure": "public-links",
       "publicationAllowed": true,
@@ -183,7 +183,7 @@ export const orchestratorProjectCards = [
       "Etat du projet: pret cote usage public.",
       "Fonctionnement: fonctionnel.",
       "Securite: OK pour une presentation publique.",
-      "Application disponible: https://cv.c2rdesign.com/."
+      "Application disponible: https://c2rdesign.com/."
     ],
     "functions": [
       "Affiche une grille navigable de tous les projets.",

@@ -20,4 +20,4 @@ Allow: /
 User-agent: Perplexity-User
 Allow: /
 
-Sitemap: https://cv.c2rdesign.com/sitemap.xml
+Sitemap: https://c2rdesign.com/sitemap.xml

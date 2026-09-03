@@ -23,5 +23,5 @@ Site Ma Methode est la vitrine centrale qui relie les projets du Cerveau IA. La 
 - Publication externe: GitHub public actif.
 
 ## Liens
-- [Application](https://cv.c2rdesign.com/)
+- [Application](https://c2rdesign.com/)
 - [GitHub](https://github.com/RYJITS/site_ma_methode)

@@ -4,8 +4,8 @@ Ma Méthode est la page publique de Yann Scheidegger pour C2R Design. Elle prés
 
 ## Page principale
 
-- Accueil: https://cv.c2rdesign.com/
-- Grille projets: https://cv.c2rdesign.com/#projets
+- Accueil: https://c2rdesign.com/
+- Grille projets: https://c2rdesign.com/#projets
 - GitHub: https://github.com/RYJITS
 
 ## Sujets principaux
@@ -24,7 +24,7 @@ Yann Scheidegger conçoit des expériences et des outils numériques pour rendre
 
 ## Références projets publiques
 
-- Site Ma Méthode: https://cv.c2rdesign.com/ et https://github.com/RYJITS/site_ma_methode
+- Site Ma Méthode: https://c2rdesign.com/ et https://github.com/RYJITS/site_ma_methode
 - Garden Inn: https://garden-inn.c2rdesign.com/ et https://github.com/RYJITS/garden-inn
 - Harmos Calc: https://mamoyenne.c2rdesign.com/ et https://github.com/RYJITS/harmos-calc
 - Chess 3D Ultimate: https://chess.c2rdesign.com/ et https://github.com/RYJITS/chess-3d-ultimate
@@ -35,4 +35,4 @@ Yann Scheidegger conçoit des expériences et des outils numériques pour rendre
 
 ## Indexation
 
-La version canonique publique est https://cv.c2rdesign.com/. L'ancienne page https://cv.c2rdesign.com/projets.html n'est plus publiée; les projets sont accessibles depuis l'ancre https://cv.c2rdesign.com/#projets et les références lisibles depuis https://cv.c2rdesign.com/#references-projets.
+La version canonique publique est https://c2rdesign.com/. L'ancienne page https://c2rdesign.com/projets.html n'est plus publiée; les projets sont accessibles depuis l'ancre https://c2rdesign.com/#projets et les références lisibles depuis https://c2rdesign.com/#references-projets.

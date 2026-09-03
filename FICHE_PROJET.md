@@ -4,7 +4,7 @@
 Projet explique sur Site Ma Methode: la fiche publique peut presenter son utilite, ses fonctions, son avancement et ses liens disponibles.
 
 ## Liens vers l'application
-- Application: [https://cv.c2rdesign.com/](https://cv.c2rdesign.com/)
+- Application: [https://c2rdesign.com/](https://c2rdesign.com/)
 - GitHub: [https://github.com/RYJITS/site_ma_methode](https://github.com/RYJITS/site_ma_methode)
 
 ## Avancement du projet

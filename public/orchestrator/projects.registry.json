@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-03T08:34:51.373Z",
+  "generatedAt": "2026-09-03T09:06:46.119Z",
   "source": "00_ORCHESTRATEUR",
   "projects": [
     {
@@ -107,9 +107,9 @@
       "name": "Site Ma Methode",
       "comment": "Vitrine interactive et hub des projets. Elle presente la methode de travail, affiche la carte des applications et ouvre des fiches detaillees synchronisees par l'orchestrateur.",
       "image": "public/orchestrator/thumbnails-ai/01-site-ma-methode.webp",
-      "url": "https://cv.c2rdesign.com/",
+      "url": "https://c2rdesign.com/",
       "githubUrl": "https://github.com/RYJITS/site_ma_methode",
-      "hostingerUrl": "https://cv.c2rdesign.com/",
+      "hostingerUrl": "https://c2rdesign.com/",
       "linkPolicy": {
         "exposure": "public-links",
         "publicationAllowed": true,
@@ -185,7 +185,7 @@
         "Etat du projet: pret cote usage public.",
         "Fonctionnement: fonctionnel.",
         "Securite: OK pour une presentation publique.",
-        "Application disponible: https://cv.c2rdesign.com/."
+        "Application disponible: https://c2rdesign.com/."
       ],
       "functions": [
         "Affiche une grille navigable de tous les projets.",
