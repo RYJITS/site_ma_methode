@@ -1,26 +1,26 @@
 # Bord PLANIF - Toolkit de planification
 
 ## Projet
-Application web de planification MRP pour suivre les lignes a planifier, les priorites, les capacites, les retards et les indicateurs de pilotage.
+Application web de planification MRP pour suivre les lignes à planifier, les priorités, les capacités, les retards et les indicateurs de pilotage.
 
-## A quoi il sert
-Bord PLANIF est un toolkit de planification MRP. L'application aide a piloter un planning operationnel en regroupant les lignes a traiter, les statuts, les priorites, les capacites, les retards, les risques et les indicateurs utiles dans une interface claire. Elle sert a voir rapidement ce qui doit etre planifie, ce qui est bloque, ce qui est sous surveillance et ce qui peut etre archive.
+## À quoi il sert
+Bord PLANIF est un toolkit de planification MRP. L'application aide à piloter un planning opérationnel en regroupant les lignes à traiter, les statuts, les priorités, les capacités, les retards, les risques et les indicateurs utiles dans une interface claire. Elle sert à voir rapidement ce qui doit être planifié, ce qui est bloqué, ce qui est sous surveillance et ce qui peut être archivé.
 
 ## Fonctions
 - Cockpit KPI avec risques et indicateurs
 - Navigation multi-vues de planification
-- Filtrage multi-criteres par statut, semaine, recherche et groupe de colonnes
-- Edition CRUD des lignes avec validation integree
-- Recalcul dynamique des couvertures, capacites, buffers et retards
+- Filtrage multi-critères par statut, semaine, recherche et groupe de colonnes
+- Édition CRUD des lignes avec validation intégrée
+- Recalcul dynamique des couvertures, capacités, buffers et retards
 - Graphiques et heatmaps de charge
 - Snapshots d'archive
 
 ## Avancement
-- Etat du projet: pret cote usage public.
+- État du projet: prêt côté usage public.
 - Fonctionnement: fonctionnel.
-- Securite: OK pour une presentation publique.
-- Ma Methode: fiche explicative visible.
-- Publication externe: candidat public, validation finale separee.
+- Sécurité: OK pour une présentation publique.
+- Ma Méthode: fiche explicative visible.
+- Publication externe: GitHub public actif.
 
 ## Liens
 - Application: pas encore disponible.

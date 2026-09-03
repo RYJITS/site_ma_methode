@@ -3,7 +3,7 @@
 ## Projet
 Outil interactif pour saisir les notes, calculer les moyennes, évaluer l'orientation HarmoS et gérer un système de bonus/malus lié au temps de jeu.
 
-## A quoi il sert
+## À quoi il sert
 Harmos Calc est une application web interactive conçue pour aider les familles à suivre la progression scolaire des élèves selon le système HarmoS suisse. L'application permet de saisir des notes par matière et composant, calcule automatiquement les moyennes pondérées, et évalue l'orientation scolaire (Général, Moderne, Pré-gymnasial) en fonction des niveaux A/B/C. Un système de bonus/malus transforme les performances en temps de jeu, offrant une motivation supplémentaire. Le mode parent, sécurisé par mot de passe, permet de configurer les seuils et de consulter l'historique des actions.
 
 ## Fonctions
@@ -16,11 +16,11 @@ Harmos Calc est une application web interactive conçue pour aider les familles 
 - Réinitialisation complète des données
 
 ## Avancement
-- Etat du projet: pret cote usage public.
+- État du projet: prêt côté usage public.
 - Fonctionnement: fonctionnel.
-- Securite: OK pour une presentation publique.
-- Ma Methode: fiche explicative visible.
-- Publication externe: candidat public, validation finale separee.
+- Sécurité: OK pour une présentation publique.
+- Ma Méthode: fiche explicative visible.
+- Publication externe: GitHub public actif.
 
 ## Liens
 - [Application](https://mamoyenne.c2rdesign.com/)

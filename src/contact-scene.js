@@ -32,11 +32,13 @@ export function initContactScene({ canvas, trigger, panel, received }) {
     energyLines: [],
     onFormReady: null,
     receivedUntil: 0,
+    active: true,
     prefersReducedMotion: window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches || false,
     dpr: 1,
     width: 1,
     height: 1
   };
+  let frameId = 0;
   window.__contactSceneProbe = () => ({
     width: state.width,
     height: state.height,
@@ -57,22 +59,37 @@ export function initContactScene({ canvas, trigger, panel, received }) {
   const api = {
     setScrollProgress(progress) {
       state.progress = clamp(progress, 0, 1);
+      scheduleRender();
     },
     setPhase(phase) {
       state.phase = phase;
+      scheduleRender();
     },
     setHover(value) {
       state.hover = value;
+      scheduleRender();
+    },
+    setActive(value) {
+      state.active = Boolean(value);
+      if (state.active) {
+        scheduleRender();
+      } else if (frameId) {
+        cancelAnimationFrame(frameId);
+        frameId = 0;
+      }
     },
     explodeToForm(onFormReady) {
       const now = performance.now();
+      state.active = true;
       state.explodeStart = now;
       state.formReadyAt = now + (state.prefersReducedMotion ? 80 : 2450);
       state.onFormReady = onFormReady;
       state.energyLines = createContactEnergyLines(state);
+      scheduleRender();
     },
     showReceivedMessage() {
       showReceived(received, state);
+      scheduleRender();
     }
   };
 
@@ -81,11 +98,14 @@ export function initContactScene({ canvas, trigger, panel, received }) {
   trigger?.addEventListener("focus", () => api.setHover(true));
   trigger?.addEventListener("blur", () => api.setHover(false));
 
+  function scheduleRender() {
+    if (frameId || document.hidden || !state.active) return;
+    frameId = requestAnimationFrame(render);
+  }
+
   function render(now) {
-    if (document.hidden) {
-      requestAnimationFrame(render);
-      return;
-    }
+    frameId = 0;
+    if (document.hidden || !state.active) return;
 
     try {
       resizeCanvas(gl, canvas, state);
@@ -116,10 +136,18 @@ export function initContactScene({ canvas, trigger, panel, received }) {
       window.__contactSceneError = String(error?.message || error);
     }
 
-    requestAnimationFrame(render);
+    if (
+      !state.prefersReducedMotion
+      || state.hover
+      || state.explodeStart
+      || (received && !received.hidden)
+    ) {
+      scheduleRender();
+    }
   }
 
-  requestAnimationFrame(render);
+  document.addEventListener("visibilitychange", scheduleRender);
+  scheduleRender();
   return api;
 }
 
@@ -146,6 +174,7 @@ function createNoopScene() {
     setScrollProgress() {},
     setPhase() {},
     setHover() {},
+    setActive() {},
     explodeToForm(callback) {
       callback?.();
     },

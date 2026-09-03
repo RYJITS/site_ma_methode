@@ -3,7 +3,7 @@
 ## Projet
 Plateforme open source dédiée à l'évaluation, au benchmark et au suivi des performances des modèles d'intelligence artificielle via des duels structurés et des sessions comparatives.
 
-## A quoi il sert
+## À quoi il sert
 SkyIA est une plateforme full-stack conçue pour évaluer et comparer les modèles d'IA via des duels adversariaux. Elle permet aux utilisateurs de lancer des conversations avec un ou plusieurs modèles, d'organiser des duels structurés, et de sauvegarder leurs sessions. Les résultats sont archivés et exportables sous forme de rapports détaillés, incluant des métriques de performance comme la latence et la qualité des réponses. L'application intègre également un système de gestion des crédits et des modèles personnalisés (BYOK), ainsi qu'une interface immersive inspirée des terminaux rétro pour une expérience utilisateur unique.
 
 ## Fonctions
@@ -16,11 +16,11 @@ SkyIA est une plateforme full-stack conçue pour évaluer et comparer les modèl
 - Interface responsive adaptée aux mobiles et desktop
 
 ## Avancement
-- Etat du projet: pret cote usage public.
+- État du projet: prêt côté usage public.
 - Fonctionnement: fonctionnel.
-- Securite: OK pour une presentation publique.
-- Ma Methode: fiche explicative visible.
-- Publication externe: candidat public, validation finale separee.
+- Sécurité: OK pour une présentation publique.
+- Ma Méthode: fiche explicative visible.
+- Publication externe: GitHub public actif.
 
 ## Liens
 - [Application](https://skyia.net)

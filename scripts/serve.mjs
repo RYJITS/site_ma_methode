@@ -1,90 +1,27 @@
-import { createServer } from "node:http";
-import { createReadStream } from "node:fs";
-import { readFile, stat } from "node:fs/promises";
-import { extname, join, normalize, resolve } from "node:path";
 import { networkInterfaces } from "node:os";
+import { createStaticServer } from "./static-server.mjs";
 
-const root = resolve(new URL("..", import.meta.url).pathname.slice(1));
 const args = parseArgs(process.argv.slice(2));
-let port = Number(args.port || process.env.PORT || 4177);
-const host = String(args.host || process.env.HOST || "127.0.0.1");
+let port = normalizePort(args.port ?? process.env.PORT ?? 4177);
+const host = String(args.host || process.env.HOST || (process.env.NODE_ENV === "production" ? "0.0.0.0" : "127.0.0.1"));
 const strictPort = Boolean(args.strictPort || process.env.STRICT_PORT === "true" || process.env.STRICT_PORT === "1");
-const isProduction = process.env.NODE_ENV === "production";
+const bandwidthKbps = normalizeNetworkValue(args.kbps ?? process.env.THROTTLE_KBPS);
+const latencyMs = normalizeNetworkValue(args.latency ?? process.env.THROTTLE_LATENCY_MS);
 const maxPortAttempts = 20;
 let portAttempts = 0;
 
-const mime = {
-  ".html": "text/html; charset=utf-8",
-  ".css": "text/css; charset=utf-8",
-  ".js": "text/javascript; charset=utf-8",
-  ".json": "application/json; charset=utf-8",
-  ".png": "image/png",
-  ".jpg": "image/jpeg",
-  ".jpeg": "image/jpeg",
-  ".webp": "image/webp",
-  ".svg": "image/svg+xml",
-  ".mp4": "video/mp4"
-};
-
-const server = createServer(async (request, response) => {
-  const url = new URL(request.url || "/", `http://127.0.0.1:${port}`);
-  const requested = url.pathname === "/" ? "/index.html" : decodeURIComponent(url.pathname);
-  const filePath = normalize(join(root, requested));
-
-  if (!filePath.startsWith(root)) {
-    response.writeHead(403);
-    response.end("Forbidden");
-    return;
-  }
-
-  try {
-    if (extname(filePath) === ".mp4") {
-      const fileStat = await stat(filePath);
-      const range = request.headers.range;
-      const cacheControl = getCacheControl(filePath);
-
-      if (range) {
-        const match = /bytes=(\d+)-(\d*)/.exec(range);
-        const start = match ? Number(match[1]) : 0;
-        const end = match && match[2] ? Number(match[2]) : fileStat.size - 1;
-        const safeEnd = Math.min(end, fileStat.size - 1);
-        const chunkSize = safeEnd - start + 1;
-
-        response.writeHead(206, {
-          "Content-Type": "video/mp4",
-          "Accept-Ranges": "bytes",
-          "Content-Range": `bytes ${start}-${safeEnd}/${fileStat.size}`,
-          "Content-Length": chunkSize,
-          "Cache-Control": cacheControl
-        });
-        createReadStream(filePath, { start, end: safeEnd }).pipe(response);
-        return;
-      }
-
-      response.writeHead(200, {
-        "Content-Type": "video/mp4",
-        "Accept-Ranges": "bytes",
-        "Content-Length": fileStat.size,
-        "Cache-Control": cacheControl
-      });
-      createReadStream(filePath).pipe(response);
-      return;
-    }
-
-    const body = await readFile(filePath);
-    response.writeHead(200, {
-      "Content-Type": mime[extname(filePath)] || "application/octet-stream",
-      "Cache-Control": getCacheControl(filePath)
-    });
-    response.end(body);
-  } catch {
-    response.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
-    response.end("Not found");
-  }
+const server = createStaticServer({
+  isProduction: process.env.NODE_ENV === "production",
+  bandwidthKbps,
+  latencyMs
 });
 
 server.on("error", (error) => {
-  if (error.code !== "EADDRINUSE") throw error;
+  if (error.code !== "EADDRINUSE") {
+    console.error("Le serveur local a rencontre une erreur.", error);
+    process.exitCode = 1;
+    return;
+  }
 
   if (!strictPort && portAttempts < maxPortAttempts) {
     const busyPort = port;
@@ -98,22 +35,32 @@ server.on("error", (error) => {
   console.error(`Port ${port} deja utilise sur ${host}.`);
   console.error(`Site possiblement deja lance: http://127.0.0.1:${port}`);
   console.error(`Autre port: npm run dev -- --port ${port + 1}`);
-  process.exit(1);
+  process.exitCode = 1;
 });
 
 server.listen(port, host, () => {
-  console.log(`AI Video WebGL clean site: http://127.0.0.1:${port}`);
+  const address = server.address();
+  const activePort = typeof address === "object" && address ? address.port : port;
+  console.log(`Site Ma Methode: http://127.0.0.1:${activePort}`);
+  if (bandwidthKbps > 0 || latencyMs > 0) {
+    console.log(`Simulation reseau: ${bandwidthKbps || "sans limite"} kbps, latence ${latencyMs} ms par requete.`);
+  }
   if (host === "0.0.0.0" || host === "::") {
-    getLanAddresses().forEach((address) => {
-      console.log(`iPhone / Wi-Fi local: http://${address}:${port}`);
+    getLanAddresses().forEach((ipAddress) => {
+      console.log(`iPhone / Wi-Fi local: http://${ipAddress}:${activePort}`);
     });
   }
 });
 
-function getCacheControl(filePath) {
-  if (!isProduction) return "no-store";
-  if (extname(filePath) === ".html") return "no-cache";
-  return "public, max-age=31536000, immutable";
+function normalizePort(value) {
+  const parsed = Number(value);
+  if (!Number.isInteger(parsed) || parsed < 0 || parsed > 65535) return 4177;
+  return parsed;
+}
+
+function normalizeNetworkValue(value) {
+  const parsed = Number(value);
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : 0;
 }
 
 function parseArgs(values) {
@@ -123,8 +70,12 @@ function parseArgs(values) {
     if (value === "--strictPort" || value === "--strict-port") result.strictPort = true;
     if (value === "--host") result.host = values[index + 1];
     if (value === "--port") result.port = values[index + 1];
+    if (value === "--kbps") result.kbps = values[index + 1];
+    if (value === "--latency") result.latency = values[index + 1];
     if (value.startsWith("--host=")) result.host = value.slice("--host=".length);
     if (value.startsWith("--port=")) result.port = value.slice("--port=".length);
+    if (value.startsWith("--kbps=")) result.kbps = value.slice("--kbps=".length);
+    if (value.startsWith("--latency=")) result.latency = value.slice("--latency=".length);
   }
   return result;
 }

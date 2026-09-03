@@ -62,7 +62,13 @@ try {
   const gridStart = Date.now();
   await page.evaluate(() => window.openProjectGrid?.());
   await page.waitForFunction(() => document.getElementById("project-grid-overlay")?.classList.contains("is-open"), null, { timeout: 5000 });
-  const gridElapsed = Date.now() - gridStart;
+  const gridOpenElapsed = Date.now() - gridStart;
+  await page.waitForFunction(() => {
+    const firstImage = document.querySelector("#project-mobile-page [data-project-index] img");
+    return Boolean(firstImage?.complete && firstImage.naturalWidth > 0);
+  }, null, { timeout: 3000 }).catch(() => {});
+  await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+  const gridReadyElapsed = Date.now() - gridStart;
   const afterGrid = await probe(page);
   await page.screenshot({ path: resolve(outputDir, "qa-iphone-grille.png"), fullPage: false });
 
@@ -83,20 +89,24 @@ try {
       ok: Math.abs(beforeExplorer.scrollY - afterClose.scrollY) <= 2
     },
     {
-      name: "Grille projets prechargee",
-      ok: gridElapsed < 250
+      name: "Grille projets ouvrable",
+      ok: gridOpenElapsed < 1500
+    },
+    {
+      name: "Premiere vignette projet chargee",
+      ok: afterGrid.firstMobileImageLoaded && gridReadyElapsed < 3500
     },
     {
       name: "Page projets mobile active",
       ok: afterGrid.mobileProjectPage && afterGrid.mobileCards >= afterGrid.gridCards && afterGrid.firstMobileSection === "tools"
     },
     {
-      name: "Fiche projet mobile ouvrable",
+      name: "Projet mobile ouvrable",
       ok: afterMobileDetail.projectDetailOpen
     }
   ];
 
-  printSummary({ beforeExplorer, afterExplorer, afterClose, afterGrid, afterMobileDetail, gridElapsed, checks });
+  printSummary({ beforeExplorer, afterExplorer, afterClose, afterGrid, afterMobileDetail, gridOpenElapsed, gridReadyElapsed, checks });
   if (checks.some((check) => !check.ok)) process.exitCode = 1;
 } finally {
   if (server) server.kill();
@@ -184,23 +194,31 @@ function probe(page) {
       scrollY: data.scrollY,
       progress: data.progress,
       effectiveProgress: data.effectiveProgress,
+      activeQuality: data.activeQuality,
+      measuredMbps: data.measuredMbps,
+      qualityReason: data.qualityReason,
       storyLock: data.storyLock,
       tileOpen: document.getElementById("holographic-tile")?.classList.contains("is-open"),
       gridCards: document.querySelectorAll("#project-grid-track [data-project-index]").length,
       mobileCards: document.querySelectorAll("#project-mobile-page [data-project-index]").length,
       mobileProjectPage: document.getElementById("project-grid-overlay")?.classList.contains("is-mobile-list"),
       firstMobileSection: document.querySelector("#project-mobile-page [data-project-mobile-section]")?.dataset.projectMobileSection || "",
+      firstMobileImageLoaded: (() => {
+        const image = document.querySelector("#project-mobile-page [data-project-index] img");
+        return Boolean(image?.complete && image.naturalWidth > 0);
+      })(),
       projectDetailOpen: document.getElementById("project-grid-overlay")?.classList.contains("has-project-detail")
     };
   });
 }
 
-function printSummary({ beforeExplorer, afterExplorer, afterClose, afterGrid, afterMobileDetail, gridElapsed, checks }) {
+function printSummary({ beforeExplorer, afterExplorer, afterClose, afterGrid, afterMobileDetail, gridOpenElapsed, gridReadyElapsed, checks }) {
   console.log("QA iPhone local");
   console.log(`- Avant Explorer: scrollY=${beforeExplorer.scrollY}, progress=${beforeExplorer.progress}, effective=${beforeExplorer.effectiveProgress}`);
+  console.log(`- Video: ${beforeExplorer.activeQuality}p, debit mesure=${beforeExplorer.measuredMbps} Mbps, raison=${beforeExplorer.qualityReason || "n/a"}`);
   console.log(`- Fiches ouvertes: effective=${afterExplorer.effectiveProgress}, lock=${afterExplorer.storyLock ? "oui" : "non"}`);
   console.log(`- Apres fermeture: scrollY=${afterClose.scrollY}, progress=${afterClose.progress}, effective=${afterClose.effectiveProgress}`);
-  console.log(`- Grille projets: ${gridElapsed} ms, cartes=${afterClose.gridCards}`);
+  console.log(`- Grille projets: ouverture=${gridOpenElapsed} ms, premiere vignette=${gridReadyElapsed} ms`);
   console.log(`- Page mobile projets: ${afterGrid.mobileProjectPage ? "oui" : "non"}, sections depuis ${afterGrid.firstMobileSection || "n/a"}, vignettes=${afterGrid.mobileCards}`);
   console.log(`- Detail mobile projet: ${afterMobileDetail.projectDetailOpen ? "ouvert" : "ferme"}`);
   checks.forEach((check) => console.log(`- ${check.ok ? "OK" : "ECHEC"} ${check.name}`));

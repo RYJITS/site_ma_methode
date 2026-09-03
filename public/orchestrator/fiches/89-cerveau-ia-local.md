@@ -1,26 +1,26 @@
 # Cerveau IA
 
 ## Projet
-Espace de travail IA local qui organise les instructions, la memoire, les competences, les integrations API et les projets dans un systeme coherent.
+Espace de travail IA local qui organise les instructions, la mémoire, les compétences, les intégrations API et les projets dans un système cohérent.
 
-## A quoi il sert
-Cerveau IA est un environnement local de travail assiste par IA. Il rassemble des instructions communes, des memoires persistantes, des competences reutilisables, des configurations API locales et un ensemble de projets independants. Son objectif est de conserver la continuite du travail entre les sessions et les outils sans melanger les donnees de chaque projet.
+## À quoi il sert
+Cerveau IA est un environnement local de travail assisté par IA. Il rassemble des instructions communes, des mémoires persistantes, des compétences réutilisables, des configurations API locales et un ensemble de projets indépendants. Son objectif est de conserver la continuité du travail entre les sessions et les outils sans mélanger les données de chaque projet.
 
 ## Fonctions
 - Conserver un contexte IA durable
-- Maintenir une memoire utilisateur et des memoires projet
-- Reutiliser des competences entre plusieurs projets
+- Maintenir une mémoire utilisateur et des mémoires projet
+- Réutiliser des compétences entre plusieurs projets
 - Appliquer des instructions communes
-- Separer les configurations sensibles
-- Coordonner plusieurs projets sans melanger leurs donnees
-- Garder les donnees privees hors des espaces publics
+- Séparer les configurations sensibles
+- Coordonner plusieurs projets sans mélanger leurs données
+- Garder les données privées hors des espaces publics
 
 ## Avancement
-- Etat du projet: reserve a l'usage interne.
-- Fonctionnement: non teste faute d'informations suffisantes.
-- Securite: OK pour une presentation publique.
-- Ma Methode: fiche explicative visible.
-- Publication externe: interne.
+- État du projet: réservé à l'usage interne.
+- Fonctionnement: non testé faute d'informations suffisantes.
+- Sécurité: OK pour une présentation publique.
+- Ma Méthode: fiche explicative visible.
+- Publication externe: GitHub public actif.
 
 ## Liens
 - Application: pas encore disponible.

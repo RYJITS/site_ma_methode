@@ -1,13 +1,13 @@
-const CACHE_NAME = "site-ma-methode-visual-cards-story-v8-20260902";
+const CACHE_NAME = "site-ma-methode-optimisation-v37-20260903";
 
 const PRECACHE_URLS = [
   "./",
   "./index.html",
-  "./src/styles.css?v=visual-cards-story-v8-20260902",
-  "./src/main.js?v=visual-cards-story-v8-20260902",
-  "./public/generated/images/method-cards/ma-philosophie-preferred-image-v1-20260902.webp",
-  "./public/generated/images/method-cards/mon-approche-visual-card-v8-20260902.webp",
-  "./public/generated/images/method-cards/applications-visual-card-v8-20260902.webp",
+  "./src/styles.css?v=optimisation-v37-20260903",
+  "./src/main.js?v=optimisation-v37-20260903",
+  "./public/generated/images/method-cards/ma-philosophie-cyan-gold-v3-20260902.webp",
+  "./public/generated/images/method-cards/mon-approche-neutral-people-cyan-gold-v11-20260902.webp",
+  "./public/generated/images/method-cards/applications-cyan-gold-v10-20260902.webp",
   "./public/generated/videos/storyboard-7-scenes-v4-compress-block/kling-assembled/poster/storyboard-kling-12-clips-poster.jpg",
   "./public/generated/images/textures/method-card-edge-v2/method-card-edge-v2-plate.webp",
   "./public/generated/images/textures/method-card-edge-v2/method-card-edge-v2-grain.webp",
@@ -15,11 +15,7 @@ const PRECACHE_URLS = [
 ];
 
 self.addEventListener("install", (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => cache.addAll(PRECACHE_URLS))
-      .then(() => self.skipWaiting())
-  );
+  event.waitUntil(precacheAvailableAssets().then(() => self.skipWaiting()));
 });
 
 self.addEventListener("activate", (event) => {
@@ -54,11 +50,23 @@ self.addEventListener("fetch", (event) => {
   }
 });
 
+async function precacheAvailableAssets() {
+  const cache = await caches.open(CACHE_NAME);
+  await Promise.all(PRECACHE_URLS.map(async (url) => {
+    try {
+      const response = await fetch(new Request(url, { cache: "reload" }));
+      if (response.ok) await cache.put(url, response);
+    } catch {
+      // Une ressource optionnelle ne doit pas empecher l'installation du worker.
+    }
+  }));
+}
+
 async function networkFirst(request) {
   const cache = await caches.open(CACHE_NAME);
   try {
     const response = await fetch(request);
-    cache.put(request, response.clone());
+    if (response.ok) await cache.put(request, response.clone());
     return response;
   } catch {
     return cache.match(request) || cache.match("./index.html");
@@ -71,6 +79,6 @@ async function cacheFirst(request) {
   if (cached) return cached;
 
   const response = await fetch(request);
-  if (response.ok) cache.put(request, response.clone());
+  if (response.ok) await cache.put(request, response.clone());
   return response;
 }
