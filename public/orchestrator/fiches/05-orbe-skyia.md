@@ -3,7 +3,7 @@
 ## Projet
 Prototype expérimental transformant l'assistant SkyIA en une expérience visuelle et interactive via une orbe WebGL, intégrant voix, sauvegardes et statistiques.
 
-## A quoi il sert
+## À quoi il sert
 Orbe SkyIA est un prototype qui matérialise l'assistant SkyIA sous la forme d'une orbe interactive en 3D, permettant une expérience utilisateur plus immersive que les interfaces textuelles classiques. L'application combine un noyau fonctionnel SkyIA avec une interface visuelle riche, intégrant des services externes (modèles IA, synthèse vocale, paiements) pour tester des scénarios d'interaction avancés. Le projet sert de banc d'essai pour évaluer l'impact de l'immersion visuelle et sonore sur l'engagement utilisateur, tout en fournissant un outil de démonstration pour les partenaires techniques.
 
 ## Fonctions
@@ -16,10 +16,10 @@ Orbe SkyIA est un prototype qui matérialise l'assistant SkyIA sous la forme d'u
 - Tableau de bord de statistiques utilisateur (victoires, défaites, crédits consommés)
 
 ## Avancement
-- Etat du projet: pret cote usage public.
+- État du projet: prêt côté usage public.
 - Fonctionnement: fonctionnel.
-- Securite: OK pour une presentation publique.
-- Ma Methode: fiche explicative visible.
+- Sécurité: OK pour une présentation publique.
+- Ma Méthode: fiche explicative visible.
 - Publication externe: GitHub public actif.
 
 ## Liens

@@ -1,23 +1,23 @@
-# Agent Design - Equipe IA de conception web
+# Agent Design - Équipe IA de conception web
 
 ## Projet
-Projet autonome pour construire un agent capable d'analyser un site, de produire une direction visuelle sourcee, de faire choisir les layouts de toutes les pages, puis d'appliquer le design choisi dans une copie isolee avec verification.
+Projet autonome pour construire un agent capable d'analyser un site, de produire une direction visuelle sourcée, de faire choisir les layouts de toutes les pages, puis d'appliquer le design choisi dans une copie isolée avec vérification.
 
-## A quoi il sert
-Agent Design est un projet de conception d'agent, pas encore une application executable.
+## À quoi il sert
+Agent Design est un projet de conception d'agent, pas encore une application exécutable.
 
 ## Fonctions
-- Architecture d'agents specialisee UI/UX
-- Catalogues de sources qualifiees
+- Architecture d'agents spécialisée UI/UX
+- Catalogues de sources qualifiées
 - Templates de livrables design
-- Memoire locale du projet
-- Verification de structure
+- Mémoire locale du projet
+- Vérification de structure
 
 ## Avancement
-- Etat du projet: pret cote usage public.
+- État du projet: prêt côté usage public.
 - Fonctionnement: fonctionnel.
-- Securite: OK pour une presentation publique.
-- Ma Methode: fiche explicative visible.
+- Sécurité: OK pour une présentation publique.
+- Ma Méthode: fiche explicative visible.
 - Publication externe: GitHub public actif.
 
 ## Liens

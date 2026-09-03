@@ -1,24 +1,24 @@
 # C2R PulseDeck
 
 ## Projet
-Cahier des charges d'une application locale qui doit transformer des idees brutes en fiches projet structurees et exportables en Markdown.
+Cahier des charges d'une application locale qui doit transformer des idées brutes en fiches projet structurées et exportables en Markdown.
 
-## A quoi il sert
-C2R PulseDeck est actuellement un cahier des charges, pas encore une application executable. Le concept decrit un futur outil local qui devra recevoir une idee brute, la clarifier et produire une fiche projet prete a relire ou a publier.
+## À quoi il sert
+C2R PulseDeck est actuellement un cahier des charges, pas encore une application exécutable. Le concept décrit un futur outil local qui devra recevoir une idée brute, la clarifier et produire une fiche projet prête à relire ou à publier.
 
 ## Fonctions
-- Specification du parcours de capture d'idee
-- Definition du format de fiche projet
-- Definition de l'export Markdown
-- Definition des statuts de progression
-- Definition du stockage JSON local
+- Spécification du parcours de capture d'idée
+- Définition du format de fiche projet
+- Définition de l'export Markdown
+- Définition des statuts de progression
+- Définition du stockage JSON local
 - Planification d'un tableau de bord MVP
 
 ## Avancement
-- Etat du projet: candidat public avec controles a finaliser.
-- Fonctionnement: non teste faute d'informations suffisantes.
-- Securite: OK pour une presentation publique.
-- Ma Methode: fiche explicative visible.
+- État du projet: candidat public avec contrôles à finaliser.
+- Fonctionnement: non testé faute d'informations suffisantes.
+- Sécurité: OK pour une présentation publique.
+- Ma Méthode: fiche explicative visible.
 - Publication externe: GitHub public actif.
 
 ## Liens

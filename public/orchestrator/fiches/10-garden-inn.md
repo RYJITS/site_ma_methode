@@ -3,7 +3,7 @@
 ## Projet
 Site vitrine moderne pour Bukit Lawang Garden Inn offrant une présentation multilingue, une conversion de devises en temps réel et des fonctionnalités de réservation directe.
 
-## A quoi il sert
+## À quoi il sert
 Site vitrine moderne pour Bukit Lawang Garden Inn, conçu comme une plateforme de découverte et de réservation. L'application présente les chambres, le restaurant, les excursions et les services de transfert avec une interface responsive et accessible. Les fonctionnalités clés incluent une navigation multilingue, une conversion de devises en temps réel, et des outils d'interaction comme les itinéraires Google Maps et les liens de réservation directe.
 
 ## Fonctions
@@ -16,10 +16,10 @@ Site vitrine moderne pour Bukit Lawang Garden Inn, conçu comme une plateforme d
 - Navigation multilingue (EN/FR/ID)
 
 ## Avancement
-- Etat du projet: pret cote usage public.
+- État du projet: prêt côté usage public.
 - Fonctionnement: fonctionnel.
-- Securite: OK pour une presentation publique.
-- Ma Methode: fiche explicative visible.
+- Sécurité: OK pour une présentation publique.
+- Ma Méthode: fiche explicative visible.
 - Publication externe: GitHub public actif.
 
 ## Liens

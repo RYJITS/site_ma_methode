@@ -1,25 +1,25 @@
-# Site Ma Methode
+# Site Ma Méthode
 
 ## Projet
-Vitrine interactive et hub des projets. Elle presente la methode de travail, affiche la carte des applications et ouvre des fiches detaillees synchronisees par l'orchestrateur.
+Vitrine interactive et hub des projets. Elle présente la méthode de travail, affiche la carte des applications et ouvre des fiches détaillées synchronisées par l'orchestrateur.
 
-## A quoi il sert
-Site Ma Methode est la vitrine centrale qui relie les projets du Cerveau IA. La page raconte la methode, propose une experience scroll/video, puis ouvre une carte interactive ou chaque application possede sa vignette, son statut, ses liens et sa fiche.
+## À quoi il sert
+Site Ma Méthode est la vitrine centrale qui relie les projets du Cerveau IA. La page raconte la méthode, propose une expérience scroll/vidéo, puis ouvre une carte interactive où chaque application possède sa vignette, son statut, ses liens et sa fiche.
 
 ## Fonctions
-- Presenter la methode de travail
+- Présenter la méthode de travail
 - Ouvrir une carte interactive des projets
 - Filtrer visuellement par familles de projets
-- Afficher une fiche detaillee par application
-- Donner le lien public et GitHub quand ils sont autorises
-- Afficher les vignettes generees
+- Afficher une fiche détaillée par application
+- Donner le lien public et GitHub quand ils sont autorisés
+- Afficher les vignettes générées
 - Envoyer un message via le contact
 
 ## Avancement
-- Etat du projet: pret cote usage public.
+- État du projet: prêt côté usage public.
 - Fonctionnement: fonctionnel.
-- Securite: OK pour une presentation publique.
-- Ma Methode: fiche explicative visible.
+- Sécurité: OK pour une présentation publique.
+- Ma Méthode: fiche explicative visible.
 - Publication externe: GitHub public actif.
 
 ## Liens

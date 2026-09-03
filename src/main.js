@@ -1,7 +1,23 @@
+import { setModalBackgroundInert, setSiblingContentInert, trapFocusWithin } from "./modal-accessibility.js?v=optimisation-v19-20260903";
+import { calculateMegabitsPerSecond, chooseAdaptiveVideoQuality } from "./video-quality.js?v=optimisation-v25-20260903";
+
+const deferredFontStylesheet = document.getElementById("site-fonts");
+if (deferredFontStylesheet instanceof HTMLLinkElement) deferredFontStylesheet.rel = "stylesheet";
+
 const CONTACT_SCENE_MODULE = "./contact-scene.js?v=contact-lazy-20260616";
-const PROJECT_REGISTRY_MODULE = "./project-registry.js?v=resultat-global-fiches-v2-20260902";
-const PROJECT_THUMBNAIL_VERSION = "resultat-global-fiches-v2-20260902";
-const DEBUG_MOBILE = new URLSearchParams(window.location.search).has("debugMobile");
+const CONTACT_PANEL_MODULE = "./contact-panel.js?v=contact-panel-lazy-v33-20260903";
+const PROJECT_REGISTRY_MODULE = "./project-registry.js?v=resultat-global-fiches-v33-20260903";
+const PROJECT_DETAIL_MODULE = "./project-detail.js?v=project-detail-lazy-v33-20260903";
+const PROJECT_GRID_STYLESHEET = new URL("./project-grid.css?v=project-grid-lazy-v33-20260903", import.meta.url).href;
+const PROJECT_THUMBNAIL_VERSION = "resultat-global-fiches-v33-20260903";
+const PAGE_PARAMS = new URLSearchParams(window.location.search);
+const DEBUG_MOBILE = PAGE_PARAMS.has("debugMobile");
+const STORY_VIDEO_SOURCES = Object.freeze({
+  900: "public/generated/videos/storyboard-7-scenes-v4-compress-block/kling-assembled/storyboard-kling-12-clips-900p-scroll-test-20260903.mp4?v=video-scroll-v23-20260903",
+  1080: "public/generated/videos/storyboard-7-scenes-v4-compress-block/kling-assembled/storyboard-kling-12-clips-1080p-scroll-web-optimized-20260614.mp4?v=video-scroll-v23-20260903"
+});
+const VIDEO_SPEED_PROBE_BYTES = 384 * 1024;
+const VIDEO_SPEED_PROBE_TIMEOUT = 3200;
 const PROJECT_GRID_HASHES = Object.freeze(["#projets", "#projet", "#applications"]);
 const STATIC_ANCHOR_IDS = Object.freeze(["ma-methode", "references-projets"]);
 const METHOD_CARD_ASSET_SOURCES = Object.freeze([
@@ -36,6 +52,7 @@ const contactReceived = document.getElementById("contact-received");
 const bootLoader = document.getElementById("boot-loader");
 const bootLoaderBar = document.getElementById("boot-loader-bar");
 const bootLoaderPercent = document.getElementById("boot-loader-percent");
+const bootLoaderLabel = document.getElementById("boot-loader-label");
 const explorerPoint = document.getElementById("explorer-point");
 const scrollCoach = document.getElementById("scroll-coach");
 const guidedCursor = document.getElementById("guided-cursor");
@@ -49,6 +66,8 @@ const projectGridClose = document.getElementById("project-grid-close");
 const projectGridZoomOut = document.getElementById("project-grid-zoom-out");
 const projectGridZoomIn = document.getElementById("project-grid-zoom-in");
 const projectGridZoomReset = document.getElementById("project-grid-zoom-reset");
+const projectGridViewMap = document.getElementById("project-grid-view-map");
+const projectGridViewList = document.getElementById("project-grid-view-list");
 const projectGridCompassButtons = Array.from(document.querySelectorAll("[data-project-grid-focus]"));
 const projectDetailPanel = document.getElementById("project-detail-panel");
 const VIDEO_DISPLAY_SCALE = 0.64;
@@ -106,10 +125,6 @@ const PROJECT_GRID_INITIAL_THEME = "tools";
 const PROJECT_GRID_ZOOM_MIN = 0.46;
 const PROJECT_GRID_ZOOM_MAX = 1.85;
 const PROJECT_GRID_ZOOM_STEP = 0.16;
-const CONTACT_PANEL_MIN_WIDTH = 320;
-const CONTACT_PANEL_MIN_HEIGHT = 420;
-const CONTACT_PANEL_VIEWPORT_GAP = 24;
-const CONTACT_PANEL_KEYBOARD_STEP = 28;
 const PROJECT_GRID_BASE_CELL_SIZE = 83.2;
 const PROJECT_GRID_THEME_ZONES = {
   tools: { x: -1180, y: 170, width: 1500, height: 1320 },
@@ -191,14 +206,14 @@ const METHOD_CARD_VISUALS = {
     0: {
       mode: "cover",
       image: "/public/generated/images/method-cards/accelerer-philosophie-flux-sans-friction-v1-20260902.webp",
-      alt: "Un flux lumineux contourne puis elimine les blocages qui ralentissaient le parcours.",
+      alt: "Un flux lumineux contourne puis élimine les blocages qui ralentissaient le parcours.",
       words: ["Vitesse", "Friction", "Flux"],
       phrase: "Les blocages sont localisés."
     },
     1: {
       mode: "cover",
       image: "/public/generated/images/method-cards/accelerer-approche-automatiser-etapes-v1-20260902.webp",
-      alt: "Des etapes repetitives sont filtrees, simplifiees puis transformees en automatisation directe.",
+      alt: "Des étapes répétitives sont filtrées, simplifiées puis transformées en automatisation directe.",
       words: ["Identifier", "Simplifier", "Automatiser"],
       phrase: "Les gestes inutiles sortent du parcours."
     },
@@ -475,9 +490,9 @@ const textBlocks = [
   {
     id: "intro",
     side: "left",
-    meta: "Systeme \u00b7 Design \u00b7 Impact",
+    meta: "Système \u00b7 Design \u00b7 Impact",
     title: ["J'OPTIMISE", "L'EXISTANT", "PLUS CLAIR,", "PLUS RAPIDE,", "PLUS SOLIDE."],
-    body: "Mon principe est simple: clarifier, accelerer, solidifier. Chaque optimisation doit produire un resultat reel et mesurable.",
+    body: "Mon principe est simple : clarifier, accélérer, solidifier. Chaque optimisation doit produire un résultat réel et mesurable.",
     foot: "Clair \u00b7 Rapide \u00b7 Solide",
     signalLine: 2,
     anchor: 0,
@@ -491,9 +506,9 @@ const textBlocks = [
   {
     id: "methodologie",
     side: "mid",
-    meta: "Methodologie",
-    title: ["Ma maniere", "de fonctionner"],
-    body: "J'optimise ce qui existe deja pour obtenir un systeme plus clair, plus rapide et plus solide.",
+    meta: "Méthodologie",
+    title: ["Ma manière", "de fonctionner"],
+    body: "J'optimise ce qui existe déjà pour obtenir un système plus clair, plus rapide et plus solide.",
     foot: "",
     signalLine: 0,
     anchor: clipAnchor(2.5),
@@ -507,10 +522,10 @@ const textBlocks = [
   {
     id: "methode-01",
     side: "mid",
-    meta: "Methode 01",
+    meta: "Méthode 01",
     title: ["Clarifier", "avant d'agir"],
     body: "Je rends une situation lisible en structurant les informations qui comptent.",
-    foot: "Un probleme complexe devient clair.",
+    foot: "Un problème complexe devient clair.",
     signalLine: 0,
     anchor: clipAnchor(3.5),
     range: 0.05,
@@ -523,9 +538,9 @@ const textBlocks = [
   {
     id: "methode-02",
     side: "mid",
-    meta: "Methode 03",
-    title: ["Accelerer", "sans friction"],
-    body: "J'elimine les etapes inutiles pour que les actions s'enchainent naturellement.",
+    meta: "Méthode 03",
+    title: ["Accélérer", "sans friction"],
+    body: "J'élimine les étapes inutiles pour que les actions s'enchaînent naturellement.",
     foot: "Moins de gestes, plus de vitesse.",
     signalLine: 0,
     anchor: clipAnchor(8.2),
@@ -539,9 +554,9 @@ const textBlocks = [
   {
     id: "methode-03",
     side: "mid",
-    meta: "Methode 04",
-    title: ["Solidifier le", "systeme en amont"],
-    body: "Je mets des garde-fous directement dans le flux pour eviter les erreurs avant production.",
+    meta: "Méthode 04",
+    title: ["Solidifier le", "système en amont"],
+    body: "Je mets des garde-fous directement dans le flux pour éviter les erreurs avant production.",
     foot: "Un fonctionnement plus fiable dans le temps.",
     signalLine: 0,
     anchor: clipAnchor(9.5),
@@ -555,10 +570,10 @@ const textBlocks = [
   {
     id: "methode-04",
     side: "mid",
-    meta: "Methode 05",
-    title: ["Donnees utiles,", "decisions nettes"],
-    body: "Je transforme les donnees en signaux d'action exploitables.",
-    foot: "Chaque indicateur guide une decision.",
+    meta: "Méthode 05",
+    title: ["Données utiles,", "décisions nettes"],
+    body: "Je transforme les données en signaux d'action exploitables.",
+    foot: "Chaque indicateur guide une décision.",
     signalLine: 0,
     anchor: clipAnchor(10.8),
     range: 0.045,
@@ -571,10 +586,10 @@ const textBlocks = [
   {
     id: "methode-05",
     side: "mid",
-    meta: "Methode 06",
-    title: ["Ameliorer", "en continu"],
-    body: "Chaque iteration sert a optimiser davantage ce qui existe deja.",
-    foot: "Le systeme progresse en permanence.",
+    meta: "Méthode 06",
+    title: ["Améliorer", "en continu"],
+    body: "Chaque itération sert à optimiser davantage ce qui existe déjà.",
+    foot: "Le système progresse en permanence.",
     signalLine: 0,
     anchor: VIDEO_FINAL_HOLD_FROM,
     range: 0.055,
@@ -588,10 +603,10 @@ const textBlocks = [
   {
     id: "methode-06",
     side: "mid",
-    meta: "Methode 02",
-    title: ["Design au service", "de la clarte"],
-    body: "Le design rend le systeme lisible, intuitif et naturel a utiliser.",
-    foot: "Une idee devient un usage concret.",
+    meta: "Méthode 02",
+    title: ["Design au service", "de la clarté"],
+    body: "Le design rend le système lisible, intuitif et naturel à utiliser.",
+    foot: "Une idée devient un usage concret.",
     signalLine: 1,
     anchor: clipAnchor(5.5),
     range: 0.05,
@@ -606,7 +621,7 @@ const textBlocks = [
     side: "mid",
     meta: "Grille des projets",
     title: ["Explorer", "la map projets"],
-    body: "Une carte interactive de mes applications: on se deplace librement, les vignettes sont dispersees par themes et chacune ouvre sa fiche.",
+    body: "Une carte interactive de mes applications : on se déplace librement, les vignettes sont dispersées par thèmes et chacune ouvre sa fiche.",
     foot: "Outils \u00b7 Design \u00b7 IA",
     signalLine: 0,
     anchor: 0.91,
@@ -624,8 +639,8 @@ const textBlocks = [
     id: "contact-final",
     side: "mid",
     meta: "Contact",
-    title: ["Un projet,", "une idee ?"],
-    body: "Une optimisation a clarifier, une interface a construire ou une idee a structurer ? Envoyez-moi un message et je reviens vers vous rapidement.",
+    title: ["Un projet,", "une idée ?"],
+    body: "Une optimisation à clarifier, une interface à construire ou une idée à structurer ? Envoyez-moi un message et je reviens vers vous rapidement.",
     foot: "",
     signalLine: 0,
     anchor: 0.99,
@@ -652,22 +667,24 @@ const cameraStops = [
 ];
 
 let projectCards = [];
+let projectGridReturnFocus = null;
+let projectDetailReturnFocus = null;
+let projectGridViewMode = "map";
 let projectRegistryRequestId = 0;
 
 let rafId = 0;
 let contactPhase = -1;
-let contactReturnFocus = null;
 let contactScene = createNoopContactScene();
 let contactSceneReady = null;
 let contactSceneLoaded = false;
-const contactPanelResize = {
-  active: false,
-  pointerId: -1,
-  startX: 0,
-  startY: 0,
-  startWidth: 0,
-  startHeight: 0
-};
+let contactPanelController = null;
+let contactPanelControllerReady = null;
+let storyVideoWarmed = false;
+let activeStoryVideoQuality = "";
+let storyVideoSelectionPromise = null;
+let storyVideoAnalysis = null;
+let bootProgressValue = 0;
+let projectRegistryWarmupScheduled = false;
 let activeTileId = "";
 let explorerPointState = null;
 let storyStateLock = null;
@@ -693,7 +710,10 @@ let methodCardScrollInlineStyles = null;
 let methodCardFitRaf = 0;
 let methodCardFitCache = new Map();
 let projectGridBuilt = false;
+let projectGridStylesReady = null;
 let projectCardsReady = null;
+let projectDetailRendererReady = null;
+let projectDetailRequestId = 0;
 let projectGridReturnSectionId = "";
 let projectGridSuppressClickUntil = 0;
 const projectGridPan = { x: 0, y: 0 };
@@ -715,9 +735,10 @@ const projectGridDrag = {
   moved: false
 };
 buildStory();
-bindContactForm();
+bindContactPanelLoader();
 bindHolographicTile();
 bindProjectGrid();
+initAdaptiveStoryVideo();
 prepareVideoForScroll();
 initMobileDebug();
 scheduleProgressiveWarmup();
@@ -765,7 +786,7 @@ function requestViewportSync() {
     positionHolographicTile(explorerPointState);
     scheduleMethodCardFit();
   }
-  fitContactPanelToViewport();
+  contactPanelController?.fitToViewport();
   requestSync();
   window.setTimeout(requestSync, 120);
   window.setTimeout(requestSync, 360);
@@ -825,7 +846,6 @@ function prepareVideoForScroll() {
   video.setAttribute("playsinline", "");
   video.setAttribute("webkit-playsinline", "");
   video.pause();
-  video.load();
 
   const keepScrollControlled = () => {
     if (!video.paused) video.pause();
@@ -837,17 +857,154 @@ function prepareVideoForScroll() {
   requestAnimationFrame(keepScrollControlled);
 }
 
+function initAdaptiveStoryVideo() {
+  if (!video) return;
+  void ensureAdaptiveStoryVideo();
+}
+
+function ensureAdaptiveStoryVideo() {
+  if (storyVideoSelectionPromise) return storyVideoSelectionPromise;
+  setBootLoaderLabel("Analyse de la connexion");
+
+  storyVideoSelectionPromise = analyzeStoryVideoConnection()
+    .catch(() => ({
+      quality: "900",
+      mode: "auto",
+      reason: "mesure de débit indisponible",
+      measuredMbps: null
+    }))
+    .then((analysis) => {
+      setStoryVideoQuality(analysis.quality, analysis);
+      return analysis;
+    });
+  return storyVideoSelectionPromise;
+}
+
+async function analyzeStoryVideoConnection() {
+  const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection || null;
+  const signals = {
+    saveData: connection?.saveData === true,
+    effectiveType: String(connection?.effectiveType || ""),
+    downlinkMbps: Number(connection?.downlink || 0),
+    deviceMemoryGb: Number(navigator.deviceMemory || 0)
+  };
+  const skipProbe = signals.saveData
+    || ["slow-2g", "2g", "3g"].includes(signals.effectiveType.toLowerCase())
+    || (signals.deviceMemoryGb > 0 && signals.deviceMemoryGb <= 2);
+  setBootProgress(12);
+
+  if (skipProbe) {
+    return {
+      ...chooseAdaptiveVideoQuality({ ...signals, probeSucceeded: false }),
+      mode: "auto",
+      measuredMbps: null
+    };
+  }
+
+  const probe = await measureStoryVideoThroughput();
+  const decision = chooseAdaptiveVideoQuality({
+    ...signals,
+    measuredMbps: probe.mbps,
+    probeSucceeded: probe.ok
+  });
+  return {
+    ...decision,
+    mode: "auto",
+    measuredMbps: probe.ok ? probe.mbps : null
+  };
+}
+
+async function measureStoryVideoThroughput() {
+  const controller = new AbortController();
+  const timer = window.setTimeout(() => controller.abort(), VIDEO_SPEED_PROBE_TIMEOUT);
+  const startedAt = performance.now();
+  let receivedBytes = 0;
+
+  try {
+    const probeUrl = new URL(STORY_VIDEO_SOURCES[900], window.location.href);
+    probeUrl.searchParams.set("speedProbe", String(Date.now()));
+    const response = await fetch(probeUrl, {
+      cache: "no-store",
+      headers: { Range: `bytes=0-${VIDEO_SPEED_PROBE_BYTES - 1}` },
+      signal: controller.signal
+    });
+    if (!response.ok || !response.body?.getReader) throw new Error("Mesure vidéo indisponible");
+
+    const reader = response.body.getReader();
+    while (receivedBytes < VIDEO_SPEED_PROBE_BYTES) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      receivedBytes += value?.byteLength || 0;
+    }
+    if (receivedBytes >= VIDEO_SPEED_PROBE_BYTES) await reader.cancel().catch(() => {});
+    const elapsedMs = performance.now() - startedAt;
+    const mbps = calculateMegabitsPerSecond(receivedBytes, elapsedMs);
+    return { ok: receivedBytes >= 64 * 1024 && mbps > 0, mbps };
+  } catch {
+    return { ok: false, mbps: 0 };
+  } finally {
+    window.clearTimeout(timer);
+  }
+}
+
+function setStoryVideoQuality(quality, analysis) {
+  const source = STORY_VIDEO_SOURCES[quality];
+  if (!video || !source) return;
+  activeStoryVideoQuality = quality;
+  storyVideoAnalysis = analysis;
+  storyVideoWarmed = true;
+  video.dataset.selectedQuality = quality;
+  video.dataset.selectionReason = String(analysis?.reason || "");
+  video.dataset.measuredMbps = Number.isFinite(analysis?.measuredMbps)
+    ? Number(analysis.measuredMbps).toFixed(2)
+    : "";
+  document.body.classList.remove("video-missing");
+  setBootLoaderLabel(`${getConnectionLabel()} · vidéo ${quality}p`);
+
+  if (video.getAttribute("src") !== source) {
+    video.pause();
+    video.src = source;
+    video.preload = "auto";
+    video.load();
+  }
+}
+
+function getConnectionLabel() {
+  const measured = Number(storyVideoAnalysis?.measuredMbps || 0);
+  if (measured > 0) return `Connexion ${measured.toLocaleString("fr-FR", { maximumFractionDigits: 1 })} Mbit/s`;
+  return storyVideoAnalysis?.reason || "Connexion prudente";
+}
+
 function scheduleProgressiveWarmup() {
   preloadCriticalImages();
-  runAfterIdleDelay(() => warmStoryVideo(), isMobileViewport() ? 420 : 0, 900);
-  runAfterIdleDelay(() => preloadProjectRegistryModule(), isMobileViewport() ? 1800 : 350, 1400);
-  runAfterIdleDelay(() => ensureContactScene("idle"), isMobileViewport() ? 3600 : 900, 1600);
+  bindStoryVideoWarmup();
+}
+
+function scheduleProjectRegistryWarmup() {
+  if (projectRegistryWarmupScheduled) return;
+  projectRegistryWarmupScheduled = true;
+  runAfterIdleDelay(() => preloadProjectRegistryModule(), isMobileViewport() ? 900 : 500, 1800);
 }
 
 function warmStoryVideo() {
-  if (!video) return;
+  if (!video || storyVideoWarmed) return;
+  if (!video.getAttribute("src")) {
+    void ensureAdaptiveStoryVideo();
+    return;
+  }
+  storyVideoWarmed = true;
   video.preload = "auto";
   video.load();
+}
+
+function bindStoryVideoWarmup() {
+  const warmOnIntent = () => warmStoryVideo();
+  window.addEventListener("scroll", warmOnIntent, { once: true, passive: true });
+  window.addEventListener("wheel", warmOnIntent, { once: true, passive: true });
+  window.addEventListener("touchmove", warmOnIntent, { once: true, passive: true });
+  window.addEventListener("keydown", (event) => {
+    if (["ArrowDown", "PageDown", "End", " "].includes(event.key)) warmStoryVideo();
+  }, { once: true });
 }
 
 function preloadCriticalImages() {
@@ -867,99 +1024,98 @@ function preloadAsset(href, as) {
 }
 
 function initBootLoader() {
-  if (!bootLoader) return;
+  if (!bootLoader) {
+    scheduleProjectRegistryWarmup();
+    return;
+  }
   const startedAt = performance.now();
+  setBootLoaderLabel("Analyse de la connexion");
   setBootProgress(6);
-  void runBootPreload()
+  void withTimeout(runBootPreload(), isMobileViewport() ? 5600 : 6500)
     .catch((error) => {
       window.__bootLoaderError = String(error?.message || error);
     })
     .finally(() => {
-      const remaining = Math.max(0, 620 - (performance.now() - startedAt));
+      const remaining = Math.max(0, 720 - (performance.now() - startedAt));
       window.setTimeout(() => {
+        setBootLoaderLabel("Prêt");
         setBootProgress(100);
         bootLoader.classList.add("is-done");
         window.setTimeout(() => {
           bootLoader.hidden = true;
+          scheduleProjectRegistryWarmup();
         }, 420);
       }, remaining);
     });
 }
 
 async function runBootPreload() {
-  const steps = [
-    () => waitForFonts(2200),
-    () => waitForVideoMetadata(video, 2600),
-    () => preloadBootImages([
+  const essentialAssets = Promise.all([
+    waitForFonts(1600),
+    preloadBootImages([
       "public/generated/videos/storyboard-7-scenes-v4-compress-block/kling-assembled/poster/storyboard-kling-12-clips-poster.jpg",
-      ...METHOD_CARD_ASSET_SOURCES,
-      "public/generated/images/contact/contact-cube-face-512-20260614.webp"
-    ], 3200),
-    () => warmMethodCardLayoutsForBoot(),
-    () => preloadProjectRegistryModule(),
-    () => buildProjectGrid(),
-    () => preloadProjectImagesForBoot(14, 3600)
-  ];
+      ...METHOD_CARD_ASSET_SOURCES
+    ], 1600)
+  ]).then(() => setBootProgress(34));
+  const videoBuffer = ensureAdaptiveStoryVideo()
+    .then(() => waitForStoryVideoBuffer(isMobileViewport() ? 4600 : 5600));
 
-  for (let index = 0; index < steps.length; index += 1) {
-    await withTimeout(Promise.resolve().then(steps[index]), 4200).catch(() => {});
-    setBootProgress(6 + ((index + 1) / steps.length) * 88);
-  }
-}
-
-async function warmMethodCardLayoutsForBoot() {
-  if (!holographicTile || !methodCards.length || activeTileId) return;
-  const previousActiveTileId = activeTileId;
-  const previousHidden = holographicTile.hidden;
-  const previousAriaLabel = holographicTile.getAttribute("aria-label");
-  const previousSectionId = holographicTile.dataset.sectionId || "";
-  const warmPoint = {
-    x: window.innerWidth / 2,
-    y: window.innerHeight / 2
-  };
-
-  positionHolographicTile(warmPoint);
-  holographicTile.hidden = false;
-  holographicTile.classList.add("is-open", "is-warming");
-
-  for (const sectionId of Object.keys(holographicTiles)) {
-    activeTileId = sectionId;
-    renderTileCards(sectionId, { scheduleFit: false });
-    resetMethodCardStack();
-    await waitForAnimationFrames(1);
-    fitMethodCards({ sectionId });
-  }
-
-  activeTileId = previousActiveTileId;
-  if (previousAriaLabel) {
-    holographicTile.setAttribute("aria-label", previousAriaLabel);
-  } else {
-    holographicTile.removeAttribute("aria-label");
-  }
-  if (previousSectionId) {
-    holographicTile.dataset.sectionId = previousSectionId;
-  } else {
-    delete holographicTile.dataset.sectionId;
-  }
-  holographicTile.classList.remove("is-open", "is-warming", "has-front");
-  holographicTile.hidden = previousHidden;
-  methodCards.forEach((card) => {
-    card.classList.remove("is-front", "is-swiping", "is-flying-left", "is-returning-behind");
-    card.removeAttribute("data-stack-rank");
-    card.removeAttribute("aria-pressed");
-    card.style.removeProperty("--mobile-stack-x");
-    card.style.removeProperty("--mobile-stack-y");
-    card.style.removeProperty("--mobile-stack-rotate");
-    card.style.removeProperty("--mobile-stack-scale");
-    card.style.removeProperty("--mobile-stack-z");
-    clearMethodCardSwipeStyle(card);
-  });
+  await Promise.all([essentialAssets, videoBuffer]);
+  await waitForAnimationFrames(1);
+  setBootProgress(94);
 }
 
 function setBootProgress(value) {
-  const percent = clamp(Math.round(value), 0, 100);
+  const percent = Math.max(bootProgressValue, clamp(Math.round(value), 0, 100));
+  bootProgressValue = percent;
   if (bootLoaderBar) bootLoaderBar.style.setProperty("--boot-progress", `${percent}%`);
   if (bootLoaderPercent) bootLoaderPercent.textContent = `${percent}%`;
+}
+
+function setBootLoaderLabel(value) {
+  if (bootLoaderLabel) bootLoaderLabel.textContent = value;
+}
+
+function getStoryVideoBufferedSeconds() {
+  if (!video?.buffered?.length) return 0;
+  let bufferedEnd = 0;
+  for (let index = 0; index < video.buffered.length; index += 1) {
+    if (video.buffered.start(index) <= 0.25) bufferedEnd = Math.max(bufferedEnd, video.buffered.end(index));
+  }
+  return bufferedEnd;
+}
+
+function waitForStoryVideoBuffer(timeout = 5200) {
+  if (!video) return Promise.resolve();
+  warmStoryVideo();
+
+  return new Promise((resolve) => {
+    let settled = false;
+    const targetSeconds = isMobileViewport() ? 3 : 5;
+    const eventNames = ["loadedmetadata", "loadeddata", "progress", "canplay", "canplaythrough", "error"];
+    const finish = (timedOut = false) => {
+      if (settled) return;
+      settled = true;
+      window.clearTimeout(timer);
+      eventNames.forEach((eventName) => video.removeEventListener(eventName, update));
+      if (timedOut) setBootLoaderLabel("Ouverture · chargement vidéo en arrière-plan");
+      resolve();
+    };
+    const update = () => {
+      if (video.error) {
+        finish();
+        return;
+      }
+      const bufferedSeconds = getStoryVideoBufferedSeconds();
+      const ratio = clamp(bufferedSeconds / targetSeconds, 0, 1);
+      setBootProgress(34 + ratio * 58);
+      setBootLoaderLabel(`Préparation vidéo · ${Math.round(ratio * 100)}%`);
+      if (video.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA && bufferedSeconds >= targetSeconds) finish();
+    };
+    const timer = window.setTimeout(() => finish(true), timeout);
+    eventNames.forEach((eventName) => video.addEventListener(eventName, update));
+    update();
+  });
 }
 
 function waitForFonts(timeout = 2200) {
@@ -967,33 +1123,8 @@ function waitForFonts(timeout = 2200) {
   return withTimeout(document.fonts.ready, timeout).catch(() => {});
 }
 
-function waitForVideoMetadata(videoElement, timeout = 2600) {
-  if (!videoElement || videoElement.readyState >= 1) return Promise.resolve();
-  return new Promise((resolve) => {
-    const done = () => {
-      window.clearTimeout(timer);
-      videoElement.removeEventListener("loadedmetadata", done);
-      videoElement.removeEventListener("loadeddata", done);
-      videoElement.removeEventListener("error", done);
-      resolve();
-    };
-    const timer = window.setTimeout(done, timeout);
-    videoElement.addEventListener("loadedmetadata", done, { once: true });
-    videoElement.addEventListener("loadeddata", done, { once: true });
-    videoElement.addEventListener("error", done, { once: true });
-  });
-}
-
 function preloadBootImages(sources, timeout = 3200) {
   return Promise.all(sources.map((src) => preloadImage(src, timeout)));
-}
-
-function preloadProjectImagesForBoot(limit = 14, timeout = 3600) {
-  const sources = projectCards
-    .map((project) => project?.image)
-    .filter(Boolean)
-    .slice(0, limit);
-  return preloadBootImages(sources, timeout);
 }
 
 function preloadImage(src, timeout = 3200) {
@@ -1052,7 +1183,7 @@ function registerSiteWorker() {
   if (!canRegister) return;
   window.addEventListener("load", () => {
     navigator.serviceWorker
-      .register("./sw.js?v=desktop-result-gap-v21-20260903")
+      .register("./sw.js?v=optimisation-v37-20260903")
       .then((registration) => registration.update?.())
       .catch((error) => {
         window.__siteWorkerError = String(error?.message || error);
@@ -1082,6 +1213,10 @@ function loadDeferredImage(image) {
 function loadDeferredVideo(videoElement) {
   if (!videoElement || videoElement.dataset.loaded === "true") return;
   let hasSource = false;
+  if (videoElement.dataset.poster) {
+    videoElement.poster = videoElement.dataset.poster;
+    videoElement.removeAttribute("data-poster");
+  }
   videoElement.querySelectorAll("source[data-src]").forEach((source) => {
     source.src = source.dataset.src;
     source.removeAttribute("data-src");
@@ -1175,6 +1310,7 @@ function updateContactDock(progress) {
 
   contactDock.style.setProperty("--contact-scroll", progress.toFixed(4));
   contactScene.setScrollProgress(progress);
+  contactScene.setActive(progress >= CONTACT_MEDIA_PRELOAD_FROM || !contactPanel?.hidden);
   if (progress >= CONTACT_MEDIA_PRELOAD_FROM && !contactSceneLoaded) ensureContactScene("contact-range");
 
   if (phase === contactPhase) return;
@@ -1228,15 +1364,13 @@ function isAfterStoryVisible() {
     });
 }
 
-function bindContactForm() {
+function bindContactPanelLoader() {
   if (!contactTrigger || !contactPanel || !contactForm) return;
 
-  bindContactResize();
-
   contactTrigger.addEventListener("click", () => {
-    contactReturnFocus = contactTrigger;
-    requestContactPanel({
-      direct: isAfterStoryVisible()
+    void requestContactPanel({
+      direct: isAfterStoryVisible(),
+      returnFocus: contactTrigger
     });
   });
 
@@ -1244,238 +1378,51 @@ function bindContactForm() {
     button.addEventListener("click", (event) => {
       event.preventDefault();
       event.stopPropagation();
-      contactReturnFocus = button;
-      requestContactPanel({
-        direct: Boolean(button.closest("#contact-entry") || isAfterStoryVisible())
+      void requestContactPanel({
+        direct: Boolean(button.closest("#contact-entry") || isAfterStoryVisible()),
+        returnFocus: button
       });
     });
   });
-
-  contactClose?.addEventListener("click", closeContactPanel);
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && !contactPanel.hidden) closeContactPanel();
-  });
-
-  contactForm.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    if (contactStatus) contactStatus.textContent = "Envoi en cours...";
-
-    const formData = new FormData(contactForm);
-    try {
-      const response = await fetch(contactForm.action, {
-        method: "POST",
-        headers: {
-          Accept: "application/json"
-        },
-        body: formData
-      });
-      const payload = await readJsonResponse(response);
-      if (!response.ok || !payload.ok) throw new Error(payload.message || "Erreur d'envoi");
-
-      contactForm.reset();
-      if (contactStatus) contactStatus.textContent = "Message recu.";
-      closeContactPanel({ restoreFocus: false });
-      contactScene.showReceivedMessage();
-    } catch (error) {
-      if (contactStatus) {
-        contactStatus.textContent = error instanceof Error && error.message
-          ? error.message
-          : "Envoi indisponible. Reessayez dans un instant.";
-      }
-    }
-  });
 }
 
-function requestContactPanel(options = {}) {
-  if (!contactPanel || !contactTrigger) return;
+async function requestContactPanel(options = {}) {
+  if (!contactPanel || !contactTrigger || !contactForm) return;
   void ensureContactScene("contact-request");
-
-  if (contactPanel.hidden) {
-    openContactPanel({ materialize: true });
-    return;
-  }
-
-  closeContactPanel();
+  const controller = await ensureContactPanelController();
+  controller?.request(options);
 }
 
-async function readJsonResponse(response) {
-  const contentType = response.headers.get("content-type") || "";
-  if (contentType.includes("application/json")) return response.json();
-  return { ok: false, message: "Envoi indisponible. Reessayez dans un instant." };
-}
+function ensureContactPanelController() {
+  if (contactPanelController) return Promise.resolve(contactPanelController);
+  if (contactPanelControllerReady) return contactPanelControllerReady;
 
-function openContactPanel(options = {}) {
-  if (!contactPanel || !contactTrigger) return;
-  const materialize = options.materialize === true;
-  contactPanel.hidden = false;
-  document.body.classList.add("is-contact-panel-open");
-  contactPanel.classList.remove("is-open", "is-materializing");
-  contactTrigger.setAttribute("aria-expanded", "true");
-  setContactCtaExpanded(true);
-  void contactPanel.offsetWidth;
-  if (materialize) contactPanel.classList.add("is-materializing");
-  contactPanel.classList.add("is-open");
-  fitContactPanelToViewport();
-  window.setTimeout(() => {
-    contactPanel.querySelector("input[name='name']")?.focus();
-  }, materialize ? 920 : 0);
-  if (materialize) {
-    window.setTimeout(() => contactPanel.classList.remove("is-materializing"), 1080);
-  }
-}
+  contactPanelControllerReady = import(CONTACT_PANEL_MODULE)
+    .then((module) => {
+      contactPanelController = module.createContactPanelController({
+        panel: contactPanel,
+        trigger: contactTrigger,
+        closeButton: contactClose,
+        form: contactForm,
+        status: contactStatus,
+        resizeHandle: contactResizeHandle,
+        getContactScene: () => contactScene,
+        getEffectiveStoryProgress,
+        contactMediaPreloadFrom: CONTACT_MEDIA_PRELOAD_FROM,
+        isMobileViewport,
+        clamp
+      });
+      contactPanelController.bind();
+      window.__contactPanelModuleLoaded = true;
+      return contactPanelController;
+    })
+    .catch((error) => {
+      window.__contactPanelLoadError = String(error?.message || error);
+      contactPanelControllerReady = null;
+      return null;
+    });
 
-function closeContactPanel(options = {}) {
-  if (!contactPanel || !contactTrigger) return;
-  const restoreFocus = options.restoreFocus !== false;
-  clearContactPanelResizeState();
-  contactPanel.classList.remove("is-open");
-  contactPanel.classList.remove("is-materializing");
-  document.body.classList.remove("is-contact-panel-open");
-  contactTrigger.setAttribute("aria-expanded", "false");
-  setContactCtaExpanded(false);
-  setTimeout(() => {
-    if (!contactPanel.classList.contains("is-open")) contactPanel.hidden = true;
-  }, 180);
-  if (restoreFocus) {
-    const focusTarget = contactReturnFocus && !contactReturnFocus.disabled
-      ? contactReturnFocus
-      : contactTrigger;
-    focusTarget?.focus();
-  }
-}
-
-function setContactCtaExpanded(expanded) {
-  document.querySelectorAll("[data-contact-cta]").forEach((button) => {
-    button.setAttribute("aria-expanded", expanded ? "true" : "false");
-  });
-}
-
-function bindContactResize() {
-  if (!contactResizeHandle || !contactPanel || !contactForm) return;
-
-  contactResizeHandle.addEventListener("pointerdown", startContactPanelResize);
-  contactResizeHandle.addEventListener("keydown", handleContactResizeKeydown);
-}
-
-function startContactPanelResize(event) {
-  if (!canResizeContactPanel()) return;
-
-  event.preventDefault();
-  event.stopPropagation();
-  contactResizeHandle.focus({ preventScroll: true });
-  const rect = contactPanel.getBoundingClientRect();
-  contactPanelResize.active = true;
-  contactPanelResize.pointerId = event.pointerId;
-  contactPanelResize.startX = event.clientX;
-  contactPanelResize.startY = event.clientY;
-  contactPanelResize.startWidth = rect.width;
-  contactPanelResize.startHeight = rect.height;
-  document.body.classList.add("is-contact-resizing");
-  contactPanel.classList.add("is-resizing");
-  contactResizeHandle.setPointerCapture?.(event.pointerId);
-  window.addEventListener("pointermove", resizeContactPanel, { passive: false });
-  window.addEventListener("pointerup", stopContactPanelResize);
-  window.addEventListener("pointercancel", stopContactPanelResize);
-}
-
-function resizeContactPanel(event) {
-  if (!contactPanelResize.active || event.pointerId !== contactPanelResize.pointerId) return;
-
-  event.preventDefault();
-  const width = contactPanelResize.startWidth + (event.clientX - contactPanelResize.startX) * 2;
-  const height = contactPanelResize.startHeight + (event.clientY - contactPanelResize.startY) * 2;
-  setContactPanelSize(width, height);
-}
-
-function stopContactPanelResize(event) {
-  if (!contactPanelResize.active || event.pointerId !== contactPanelResize.pointerId) return;
-
-  contactResizeHandle?.releasePointerCapture?.(event.pointerId);
-  clearContactPanelResizeState();
-}
-
-function handleContactResizeKeydown(event) {
-  if (!canResizeContactPanel()) return;
-
-  const rect = contactPanel.getBoundingClientRect();
-  let width = rect.width;
-  let height = rect.height;
-
-  if (event.key === "ArrowRight") width += CONTACT_PANEL_KEYBOARD_STEP;
-  else if (event.key === "ArrowLeft") width -= CONTACT_PANEL_KEYBOARD_STEP;
-  else if (event.key === "ArrowDown") height += CONTACT_PANEL_KEYBOARD_STEP;
-  else if (event.key === "ArrowUp") height -= CONTACT_PANEL_KEYBOARD_STEP;
-  else if (event.key === "Home") {
-    event.preventDefault();
-    clearContactPanelSize();
-    return;
-  } else {
-    return;
-  }
-
-  event.preventDefault();
-  setContactPanelSize(width, height);
-}
-
-function canResizeContactPanel() {
-  return Boolean(contactPanel && contactForm && contactResizeHandle && !isMobileViewport());
-}
-
-function setContactPanelSize(width, height) {
-  const limits = getContactPanelSizeLimits();
-  const nextWidth = clamp(width, limits.minWidth, limits.maxWidth);
-  const nextHeight = clamp(height, limits.minHeight, limits.maxHeight);
-
-  contactPanel.style.setProperty("--contact-panel-width", `${Math.round(nextWidth)}px`);
-  contactPanel.style.setProperty("--contact-panel-height", `${Math.round(nextHeight)}px`);
-  contactPanel.classList.add("is-user-resized");
-}
-
-function fitContactPanelToViewport() {
-  if (!contactPanel || !contactPanel.classList.contains("is-user-resized")) return;
-
-  if (!canResizeContactPanel()) {
-    clearContactPanelSize();
-    return;
-  }
-
-  const rect = contactPanel.getBoundingClientRect();
-  setContactPanelSize(rect.width, rect.height);
-}
-
-function clearContactPanelSize() {
-  if (!contactPanel) return;
-
-  clearContactPanelResizeState();
-  contactPanel.classList.remove("is-user-resized", "is-resizing");
-  contactPanel.style.removeProperty("--contact-panel-width");
-  contactPanel.style.removeProperty("--contact-panel-height");
-}
-
-function clearContactPanelResizeState() {
-  contactPanelResize.active = false;
-  contactPanelResize.pointerId = -1;
-  document.body.classList.remove("is-contact-resizing");
-  contactPanel?.classList.remove("is-resizing");
-  window.removeEventListener("pointermove", resizeContactPanel);
-  window.removeEventListener("pointerup", stopContactPanelResize);
-  window.removeEventListener("pointercancel", stopContactPanelResize);
-}
-
-function getContactPanelSizeLimits() {
-  const viewport = window.visualViewport || window;
-  const viewportWidth = Number(viewport.width) || window.innerWidth;
-  const viewportHeight = Number(viewport.height) || window.innerHeight;
-  const maxWidth = Math.max(1, viewportWidth - CONTACT_PANEL_VIEWPORT_GAP * 2);
-  const maxHeight = Math.max(1, viewportHeight - CONTACT_PANEL_VIEWPORT_GAP * 2);
-
-  return {
-    minWidth: Math.min(CONTACT_PANEL_MIN_WIDTH, maxWidth),
-    minHeight: Math.min(CONTACT_PANEL_MIN_HEIGHT, maxHeight),
-    maxWidth,
-    maxHeight
-  };
+  return contactPanelControllerReady;
 }
 
 function sampleCamera(progress) {
@@ -1612,7 +1559,7 @@ function updateScrollCoach(rawProgress) {
 }
 
 function updateGuidedScrollDemo(rawProgress) {
-  if (isMobileViewport() || !guidedCursor || !holographicTile || !explorerPoint || prefersReducedMotion() || isProjectGridOpen() || contactPanel && !contactPanel.hidden) {
+  if (!guidedCursor || !holographicTile || !explorerPoint || !isGuidedScrollDemoEnabled() || isProjectGridOpen() || contactPanel && !contactPanel.hidden) {
     if (guidedScrollDemo.active) stopGuidedScrollDemo();
     else clearGuidedDemoHighlights();
     updateGuidedCursor(null);
@@ -2023,8 +1970,7 @@ function bindHolographicTile() {
       return;
     }
     if (action === "contact") {
-      contactReturnFocus = explorerPoint;
-      requestContactPanel({ direct: true });
+      void requestContactPanel({ direct: true, returnFocus: explorerPoint });
       return;
     }
     if (activeTileId === sectionId) {
@@ -2046,7 +1992,18 @@ function bindHolographicTile() {
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && isProjectGridOpen()) {
       event.preventDefault();
+      if (projectDetailPanel && !projectDetailPanel.hidden) {
+        closeProjectDetail();
+        return;
+      }
       closeProjectGridToApplications();
+      return;
+    }
+    if (event.key === "Tab" && isProjectGridOpen()) {
+      trapFocusWithin(
+        event,
+        projectDetailPanel && !projectDetailPanel.hidden ? projectDetailPanel : projectGridOverlay
+      );
       return;
     }
     if (event.key === "Escape" && activeTileId) closeTile({ restoreFocus: true });
@@ -2436,7 +2393,7 @@ function getEffectiveStoryProgress(rawProgress = getScrollProgress()) {
 
 function getGuidedDemoEffectiveProgress(rawProgress) {
   const progress = clamp(rawProgress, 0, 1);
-  if (isMobileViewport() || prefersReducedMotion()) return progress;
+  if (!isGuidedScrollDemoEnabled()) return progress;
   if (progress < GUIDED_SCROLL_DEMO_RAW_START) return progress;
 
   if (progress <= GUIDED_SCROLL_DEMO_RAW_END) {
@@ -2457,7 +2414,7 @@ function getGuidedDemoEffectiveProgress(rawProgress) {
 
 function getRawProgressForStoryProgress(effectiveProgress) {
   const progress = clamp(effectiveProgress, 0, 1);
-  if (prefersReducedMotion() || progress < GUIDED_SCROLL_DEMO_RAW_START) return progress;
+  if (!isGuidedScrollDemoEnabled() || progress < GUIDED_SCROLL_DEMO_RAW_START) return progress;
   if (progress <= GUIDED_SCROLL_DEMO_EXIT_PROGRESS) return GUIDED_SCROLL_DEMO_RAW_END;
 
   return lerp(
@@ -2477,6 +2434,10 @@ function getGuidedScrollDemoProgress(rawProgress) {
 
 function prefersReducedMotion() {
   return Boolean(reducedMotionQuery?.matches);
+}
+
+function isGuidedScrollDemoEnabled() {
+  return !isMobileMethodCardMode() && !prefersReducedMotion();
 }
 
 function getSectionAnchorProgress(sectionId) {
@@ -2983,6 +2944,7 @@ async function buildProjectGrid(options = {}) {
       .map((project, index) => {
       const position = projectGridBasePositions[index] || { x: 0, y: 0, rotate: 0, scale: 1 };
       const imageSrc = getProjectImageSrc(project);
+      const priority = index < 6;
       return `
         <button
           class="project-grid-card"
@@ -2990,7 +2952,7 @@ async function buildProjectGrid(options = {}) {
           data-project-index="${index}"
           style="--project-x: ${position.x}px; --project-y: ${position.y}px; --project-rotate: ${position.rotate}deg; --project-scale: ${position.scale};"
           aria-label="Ouvrir le projet ${escapeHtml(project.name)}">
-          <img src="${escapeHtml(imageSrc)}" alt="${escapeHtml(project.name)}" loading="lazy" decoding="async" draggable="false">
+          <img src="${escapeHtml(imageSrc)}" alt="${escapeHtml(project.name)}" width="640" height="640" loading="${priority ? "eager" : "lazy"}" decoding="async" fetchpriority="${index < 3 ? "high" : "auto"}" draggable="false">
           <span class="project-card-category">${escapeHtml(getProjectCategoryLabel(project.category))}</span>
           <strong>${escapeHtml(project.name)}</strong>
         </button>
@@ -3023,6 +2985,43 @@ async function buildProjectGrid(options = {}) {
   projectGridBuilt = true;
   applyProjectGridItemPositions();
   buildProjectMobilePage();
+  runWhenIdle(() => void preloadProjectDetailRenderer(), 700);
+}
+
+function ensureProjectGridStyles() {
+  if (projectGridStylesReady) return projectGridStylesReady;
+
+  const existing = document.querySelector("link[data-project-grid-styles]");
+  if (existing?.sheet) return Promise.resolve(true);
+
+  projectGridStylesReady = new Promise((resolve) => {
+    const link = existing || document.createElement("link");
+    const finish = (loaded) => {
+      link.removeEventListener("load", handleLoad);
+      link.removeEventListener("error", handleError);
+      if (loaded) {
+        window.__projectGridStylesLoaded = true;
+      } else {
+        window.__projectGridStylesError = `Impossible de charger ${PROJECT_GRID_STYLESHEET}`;
+        projectGridStylesReady = null;
+      }
+      resolve(loaded);
+    };
+    const handleLoad = () => finish(true);
+    const handleError = () => finish(false);
+
+    link.addEventListener("load", handleLoad, { once: true });
+    link.addEventListener("error", handleError, { once: true });
+    if (!existing) {
+      link.rel = "stylesheet";
+      link.href = PROJECT_GRID_STYLESHEET;
+      link.dataset.projectGridStyles = "";
+      const criticalStyles = document.querySelector('link[href*="src/styles.css"]');
+      document.head.insertBefore(link, criticalStyles || null);
+    }
+  });
+
+  return projectGridStylesReady;
 }
 
 function buildProjectMobilePage() {
@@ -3070,13 +3069,14 @@ function getMobileProjectSections() {
 
 function renderProjectMobileCard(project, index) {
   const imageSrc = getProjectImageSrc(project);
+  const priority = index < 6;
   return `
     <button
       class="project-mobile-card"
       type="button"
       data-project-index="${index}"
       aria-label="Ouvrir le projet ${escapeHtml(project.name)}">
-      <img src="${escapeHtml(imageSrc)}" alt="${escapeHtml(project.name)}" loading="lazy" decoding="async" draggable="false">
+      <img src="${escapeHtml(imageSrc)}" alt="${escapeHtml(project.name)}" width="640" height="720" loading="${priority ? "eager" : "lazy"}" decoding="async" fetchpriority="${index < 3 ? "high" : "auto"}" draggable="false">
       <span class="project-card-category">${escapeHtml(getProjectCategoryLabel(project.category))}</span>
       <strong>${escapeHtml(project.name)}</strong>
     </button>
@@ -3084,15 +3084,26 @@ function renderProjectMobileCard(project, index) {
 }
 
 function bindProjectGrid() {
+  const warmProjectGridStyles = (event) => {
+    if (!event.target?.closest?.("[data-project-grid-link]")) return;
+    void ensureProjectGridStyles();
+  };
+  document.addEventListener("pointerover", warmProjectGridStyles, { passive: true });
+  document.addEventListener("focusin", warmProjectGridStyles);
+  document.addEventListener("touchstart", warmProjectGridStyles, { passive: true });
+
   document.addEventListener("click", (event) => {
     const trigger = event.target?.closest?.("[data-project-grid-link]");
     if (!trigger) return;
     event.preventDefault();
     event.stopPropagation();
+    projectGridReturnFocus = trigger instanceof HTMLElement ? trigger : null;
     void openProjectGridFromApplications({ updateHash: true });
   });
 
   projectGridClose?.addEventListener("click", closeProjectGridToHome);
+  projectGridViewMap?.addEventListener("click", () => setProjectGridView("map"));
+  projectGridViewList?.addEventListener("click", () => setProjectGridView("list"));
   projectGridZoomOut?.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
@@ -3157,7 +3168,7 @@ function bindProjectGrid() {
     if (!card || Date.now() < projectGridSuppressClickUntil) return;
     const project = projectCards[Number(card.dataset.projectIndex)];
     if (!project) return;
-    openProjectDetail(project);
+    void openProjectDetail(project, card);
   });
 
   projectMobilePage?.addEventListener("click", (event) => {
@@ -3165,7 +3176,7 @@ function bindProjectGrid() {
     if (!card) return;
     const project = projectCards[Number(card.dataset.projectIndex)];
     if (!project) return;
-    openProjectDetail(project);
+    void openProjectDetail(project, card);
   });
 
   projectDetailPanel?.addEventListener("click", (event) => {
@@ -3179,8 +3190,11 @@ function bindProjectGrid() {
 
 async function openProjectGridFromApplications(options = {}) {
   if (!projectGridOverlay) return;
-  await buildProjectGrid({ refreshRegistry: true });
-  if (!projectGridBuilt) return;
+  const [stylesReady] = await Promise.all([
+    ensureProjectGridStyles(),
+    buildProjectGrid({ refreshRegistry: true })
+  ]);
+  if (!stylesReady || !projectGridBuilt) return;
   if (options.updateHash !== false) setProjectGridHash();
   const mobileMode = isMobileProjectGridMode();
   projectGridReturnSectionId = options.returnSectionId || activeTileId || holographicTile?.dataset.sectionId || explorerPointState?.returnSectionId || explorerPointState?.sectionId || "methodologie";
@@ -3191,15 +3205,18 @@ async function openProjectGridFromApplications(options = {}) {
   projectGridOverlay.classList.add("is-open");
   projectGridOverlay.classList.toggle("is-mobile-list", mobileMode);
   if (mobileMode) {
+    projectGridOverlay.classList.remove("is-list-view");
     stopProjectGridAnimation();
+    syncProjectGridViewButtons("list");
     if (projectMobilePage) projectMobilePage.scrollTop = 0;
     projectMobilePage?.focus({ preventScroll: true });
+    setModalBackgroundInert(projectGridOverlay, true);
     return;
   }
   randomizeProjectGridLayout();
   resetProjectGridMap(PROJECT_GRID_INITIAL_THEME);
-  startProjectGridAnimation();
-  projectGridStage?.focus({ preventScroll: true });
+  setProjectGridView(projectGridViewMode);
+  setModalBackgroundInert(projectGridOverlay, true);
 }
 
 function closeProjectGridToApplications(options = {}) {
@@ -3207,6 +3224,7 @@ function closeProjectGridToApplications(options = {}) {
   if (options.updateHash !== false) clearProjectGridHash();
   hideProjectGridOverlay();
   restoreApplicationsCard();
+  restoreProjectGridTriggerFocus();
 }
 
 function closeProjectGridToHome(options = {}) {
@@ -3220,14 +3238,17 @@ function closeProjectGridToHome(options = {}) {
     window.scrollTo(0, 0);
     requestSync();
   });
+  restoreProjectGridTriggerFocus();
 }
 
 function hideProjectGridOverlay() {
   cancelProjectGridDrag();
   stopProjectGridAnimation();
-  closeProjectDetail();
+  closeProjectDetail({ restoreFocus: false });
+  setModalBackgroundInert(projectGridOverlay, false);
   projectGridOverlay.classList.remove("is-open");
   projectGridOverlay.classList.remove("is-mobile-list");
+  projectGridOverlay.classList.remove("is-list-view");
   projectGridOverlay.hidden = true;
   document.body.classList.remove("is-project-grid-open");
 }
@@ -3252,6 +3273,13 @@ function restoreApplicationsCard() {
   requestStoryStateRefresh();
 }
 
+function restoreProjectGridTriggerFocus() {
+  const target = projectGridReturnFocus;
+  projectGridReturnFocus = null;
+  if (!(target instanceof HTMLElement) || !target.isConnected || target.closest("[hidden]")) return;
+  requestAnimationFrame(() => target.focus({ preventScroll: true }));
+}
+
 function isProjectGridOpen() {
   return Boolean(projectGridOverlay && !projectGridOverlay.hidden);
 }
@@ -3265,14 +3293,48 @@ function syncProjectGridPresentationMode() {
   const mobileMode = isMobileProjectGridMode();
   projectGridOverlay.classList.toggle("is-mobile-list", mobileMode);
   if (mobileMode) {
+    projectGridOverlay.classList.remove("is-list-view");
+    syncProjectGridViewButtons("list");
     stopProjectGridAnimation();
     cancelProjectGridDrag();
     return;
   }
-  if (!projectGridFrame) {
+  setProjectGridView(projectGridViewMode, { moveFocus: false });
+  if (projectGridViewMode === "map" && !projectGridFrame) {
     resetProjectGridMap(PROJECT_GRID_INITIAL_THEME);
     startProjectGridAnimation();
   }
+}
+
+function setProjectGridView(mode, options = {}) {
+  if (!projectGridOverlay) return;
+  const requestedMode = mode === "list" ? "list" : "map";
+  if (!isMobileProjectGridMode()) projectGridViewMode = requestedMode;
+  const effectiveMode = isMobileProjectGridMode() ? "list" : requestedMode;
+  const listMode = effectiveMode === "list";
+
+  projectGridOverlay.classList.toggle("is-list-view", listMode && !isMobileProjectGridMode());
+  syncProjectGridViewButtons(effectiveMode);
+  if (listMode) {
+    stopProjectGridAnimation();
+    cancelProjectGridDrag();
+    if (options.moveFocus !== false) projectMobilePage?.focus({ preventScroll: true });
+    return;
+  }
+
+  startProjectGridAnimation();
+  if (options.moveFocus !== false) projectGridStage?.focus({ preventScroll: true });
+}
+
+function syncProjectGridViewButtons(mode) {
+  [
+    [projectGridViewMap, "map"],
+    [projectGridViewList, "list"]
+  ].forEach(([button, value]) => {
+    const active = mode === value;
+    button?.classList.toggle("is-active", active);
+    button?.setAttribute("aria-pressed", active ? "true" : "false");
+  });
 }
 
 function startProjectGridDrag(event) {
@@ -3778,174 +3840,47 @@ function getProjectCategoryLabel(category) {
   })[category] || category;
 }
 
-function openProjectDetail(project) {
+async function openProjectDetail(project, returnFocus = null) {
   if (!projectDetailPanel) return;
-  projectDetailPanel.innerHTML = renderProjectDetail(project);
+  const requestId = projectDetailRequestId + 1;
+  projectDetailRequestId = requestId;
+  projectDetailReturnFocus = returnFocus instanceof HTMLElement ? returnFocus : document.activeElement;
+  const renderer = await preloadProjectDetailRenderer();
+  if (!renderer || requestId !== projectDetailRequestId || !isProjectGridOpen()) return;
+  projectDetailPanel.innerHTML = renderer.renderProjectDetail(project, { getImageSrc: getProjectImageSrc });
   projectDetailPanel.hidden = false;
   projectGridOverlay?.classList.add("has-project-detail");
+  setSiblingContentInert(projectDetailPanel.parentElement, projectDetailPanel, true);
   const detailCard = projectDetailPanel.querySelector(".project-detail-card");
   if (detailCard) detailCard.scrollTop = 0;
   projectDetailPanel.querySelector("[data-project-detail-close]")?.focus({ preventScroll: true });
 }
 
-function closeProjectDetail() {
+function closeProjectDetail(options = {}) {
   if (!projectDetailPanel) return;
+  projectDetailRequestId += 1;
+  const wasOpen = !projectDetailPanel.hidden;
+  setSiblingContentInert(projectDetailPanel.parentElement, projectDetailPanel, false);
   projectDetailPanel.hidden = true;
   projectDetailPanel.innerHTML = "";
   projectGridOverlay?.classList.remove("has-project-detail");
-  const focusTarget = isMobileProjectGridMode() ? projectMobilePage : projectGridStage;
-  focusTarget?.focus({ preventScroll: true });
-}
-
-function renderProjectDetail(project) {
-  const imageSrc = getProjectImageSrc(project);
-  return `
-    <button class="project-detail-close" type="button" data-project-detail-close aria-label="Fermer le projet">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M18 6 6 18"></path>
-        <path d="M6 6l12 12"></path>
-      </svg>
-    </button>
-    <article class="project-detail-card">
-      <div class="project-detail-hero">
-        <img src="${escapeHtml(imageSrc)}" alt="${escapeHtml(project.name)}" loading="lazy" decoding="async">
-        <div>
-          <p class="project-detail-category">${escapeHtml(project.category)}</p>
-          <h3 id="project-detail-title">${escapeHtml(project.name)}</h3>
-          <p class="project-detail-comment">${escapeHtml(project.comment)}</p>
-          ${renderProjectHostingerLink(project)}
-          ${renderProjectActions(project)}
-        </div>
-      </div>
-      ${renderProjectTags(project.stack)}
-      ${renderProjectTextBlock("A quoi il sert", project.details?.application || project.comment, "project-detail-text-blue")}
-      ${renderProjectList("Fonctions", project.details?.capabilities || project.functions, "project-detail-list-green")}
-      ${renderProjectList("Avancement", project.progress || project.details?.avancement || [], "project-detail-list-amber")}
-      ${renderProjectLinks(project)}
-      ${renderProjectScreenshots(project)}
-    </article>
-  `;
-}
-
-function renderProjectHostingerLink(project) {
-  const projectLink = getProjectPrimaryApplicationLink(project);
-  if (!projectLink) return "";
-  const displayUrl = formatProjectUrl(projectLink.url);
-
-  return `
-    <div class="project-detail-hostinger">
-      <p>${escapeHtml(projectLink.label)}</p>
-      <a href="${escapeHtml(projectLink.url)}" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir ${escapeHtml(projectLink.label.toLowerCase())} ${escapeHtml(project.name)}">
-        <span>${escapeHtml(displayUrl)}</span>
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M7 17 17 7"></path>
-          <path d="M9 7h8v8"></path>
-        </svg>
-      </a>
-    </div>
-  `;
-}
-
-function renderProjectActions(project) {
-  const actions = [];
-  if (project.githubUrl) actions.push(renderProjectAction(project.githubUrl, "Details GitHub"));
-  if (!actions.length) return "";
-  return `<div class="project-detail-actions">${actions.join("")}</div>`;
-}
-
-function renderProjectLinks(project) {
-  const links = [];
-  const applicationLink = getProjectPrimaryApplicationLink(project);
-  if (applicationLink) links.push(`Application publique: ${formatProjectUrl(applicationLink.url)}`);
-  else links.push("Application publique: pas encore disponible.");
-  if (project.githubUrl) links.push(`Details GitHub: ${formatProjectUrl(project.githubUrl)}`);
-  else links.push("GitHub: pas encore disponible.");
-  return renderProjectList("Liens", links, "project-detail-list-blue");
-}
-
-function getProjectHostingerUrl(project) {
-  return project.hostingerUrl || project.url || "";
-}
-
-function getProjectPrimaryApplicationLink(project) {
-  const hostingerUrl = getProjectHostingerUrl(project);
-  if (hostingerUrl) return { url: hostingerUrl, label: "Application" };
-  if (project.privateUrl) return { url: project.privateUrl, label: project.privateLabel || "Acces prive" };
-  return null;
-}
-
-function formatProjectUrl(url) {
-  try {
-    const parsed = new URL(url);
-    return parsed.host + parsed.pathname.replace(/\/$/, "");
-  } catch {
-    return url;
+  if (wasOpen && options.restoreFocus !== false) {
+    const fallback = isMobileProjectGridMode() ? projectMobilePage : projectGridStage;
+    const focusTarget = projectDetailReturnFocus?.isConnected ? projectDetailReturnFocus : fallback;
+    focusTarget?.focus({ preventScroll: true });
   }
+  projectDetailReturnFocus = null;
 }
 
-function renderProjectAction(url, label) {
-  return `
-    <a class="project-detail-action" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">
-      <span>${escapeHtml(label)}</span>
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M7 17 17 7"></path>
-        <path d="M9 7h8v8"></path>
-      </svg>
-    </a>
-  `;
-}
-
-function renderProjectTags(tags = []) {
-  if (!tags.length) return "";
-  return `
-    <div class="project-detail-tags">
-      ${tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}
-    </div>
-  `;
-}
-
-function renderProjectTextBlock(title, body, className = "") {
-  if (!body) return "";
-  return `
-    <section class="project-detail-text ${className}">
-      <p>${escapeHtml(title)}</p>
-      <div>${escapeHtml(body)}</div>
-    </section>
-  `;
-}
-
-function renderProjectList(title, lines = [], className = "") {
-  const items = (Array.isArray(lines) ? lines : [lines])
-    .map((line) => String(line || "").replace(/\s+/g, " ").trim())
-    .filter(Boolean);
-  if (!items.length) return "";
-  return `
-    <section class="project-detail-list ${className}">
-      <p>${escapeHtml(title)}</p>
-      <ul>
-        ${items.map((line) => `<li><span></span>${escapeHtml(line)}</li>`).join("")}
-      </ul>
-    </section>
-  `;
-}
-
-function renderProjectScreenshots(project) {
-  const screenshots = project.screenshots || [];
-  if (!screenshots.length) return "";
-  return `
-    <section class="project-detail-shots" aria-label="Captures d'ecran">
-      <p>Captures d'ecran</p>
-      <div>
-        ${screenshots
-          .map((shot) => `
-            <figure>
-              <img src="${escapeHtml(shot)}" alt="${escapeHtml(project.name)} capture d'ecran" loading="lazy" decoding="async">
-            </figure>
-          `)
-          .join("")}
-      </div>
-    </section>
-  `;
+function preloadProjectDetailRenderer() {
+  if (projectDetailRendererReady) return projectDetailRendererReady;
+  projectDetailRendererReady = import(PROJECT_DETAIL_MODULE)
+    .catch((error) => {
+      window.__projectDetailLoadError = String(error?.message || error);
+      projectDetailRendererReady = null;
+      return null;
+    });
+  return projectDetailRendererReady;
 }
 
 function createNoopContactScene() {
@@ -3953,6 +3888,7 @@ function createNoopContactScene() {
     setScrollProgress() {},
     setPhase() {},
     setHover() {},
+    setActive() {},
     explodeToForm(callback) {
       callback?.();
     },
@@ -3976,6 +3912,11 @@ function ensureContactScene(reason = "") {
       contactSceneLoaded = true;
       contactScene.setScrollProgress(getEffectiveStoryProgress());
       contactScene.setPhase(contactPhase < 0 ? 0 : contactPhase);
+      contactScene.setActive(
+        reason === "contact-request"
+        || getEffectiveStoryProgress() >= CONTACT_MEDIA_PRELOAD_FROM
+        || !contactPanel?.hidden
+      );
       document.body.classList.remove("is-contact-scene-loading");
       document.body.classList.add("is-contact-scene-ready");
       window.__contactSceneLoadReason = reason;
@@ -4077,6 +4018,14 @@ function getProjectImageSrc(project) {
 window.__videoProbe = () => ({
   currentTime: Number(video.currentTime.toFixed(3)),
   duration: Number.isFinite(video.duration) ? Number(video.duration.toFixed(3)) : null,
+  currentSrc: video.currentSrc,
+  activeQuality: activeStoryVideoQuality || "900",
+  measuredMbps: Number(storyVideoAnalysis?.measuredMbps?.toFixed?.(2) || 0),
+  qualityReason: storyVideoAnalysis?.reason || "",
+  videoWidth: video.videoWidth,
+  videoHeight: video.videoHeight,
+  readyState: video.readyState,
+  bufferedSeconds: Number(getStoryVideoBufferedSeconds().toFixed(3)),
   scrollY: Math.round(window.scrollY),
   maxScroll: Math.round(getMaxScroll()),
   storyTimelineMax: Math.round(getStoryTimelineMax()),

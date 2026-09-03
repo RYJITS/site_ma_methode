@@ -3,7 +3,7 @@
 ## Projet
 Application web locale pour simuler et suivre les commandes matière, les archives et les référentiels sans exposer les données sensibles du classeur source.
 
-## A quoi il sert
+## À quoi il sert
 L'application est une reconstruction sécurisée du flux métier du classeur Excel COMMANDE_MATIERE.xlsm. Elle permet de piloter des commandes matière fictives, d’archiver des saisies, de consulter et modifier des référentiels, de suivre des lignes galva, et de visualiser des indicateurs clés — le tout sans exposer aucune donnée sensible du fichier source. Elle remplace les macros VBA, les connexions SAP/ADO/Outlook par des simulations locales fiables et traçables.
 
 ## Fonctions
@@ -16,10 +16,10 @@ L'application est une reconstruction sécurisée du flux métier du classeur Exc
 - Export JSON de l’état local
 
 ## Avancement
-- Etat du projet: pret cote usage public.
+- État du projet: prêt côté usage public.
 - Fonctionnement: fonctionnel.
-- Securite: OK pour une presentation publique.
-- Ma Methode: fiche explicative visible.
+- Sécurité: OK pour une présentation publique.
+- Ma Méthode: fiche explicative visible.
 - Publication externe: GitHub public actif.
 
 ## Liens

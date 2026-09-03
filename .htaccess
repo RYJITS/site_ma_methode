@@ -1,0 +1,48 @@
+Options -Indexes
+LimitRequestBody 65536
+
+<FilesMatch "(^\.|\.zip$|\.log$|\.bak$|\.map$|package(-lock)?\.json$|README|CHANGELOG|FICHE_|PROJET_JOURNAL|\.project-orchestrator)">
+  Require all denied
+</FilesMatch>
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "DENY"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), geolocation=(), microphone=(), payment=(), usb=()"
+  Header always set X-XSS-Protection "0"
+  Header always set X-Permitted-Cross-Domain-Policies "none"
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; worker-src 'self'; upgrade-insecure-requests"
+
+  <FilesMatch "\.(?:avif|gif|ico|jpe?g|png|svg|webp|woff2?|mp4|webm)$">
+    Header always set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  <FilesMatch "\.(?:css|js|mjs)$">
+    Header always set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+
+  <FilesMatch "\.(?:html?|php|txt|xml)$">
+    Header always set Cache-Control "no-cache, no-store, must-revalidate"
+    Header always set Pragma "no-cache"
+    Header always set Expires "0"
+  </FilesMatch>
+
+  <Files "sw.js">
+    Header always set Cache-Control "no-cache, no-store, must-revalidate"
+  </Files>
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType text/javascript .js
+  AddType application/manifest+json .webmanifest
+  AddType image/avif .avif
+  AddType image/webp .webp
+</IfModule>
+
+<IfModule mod_filter.c>
+  <IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript application/javascript application/xml image/svg+xml
+  </IfModule>
+</IfModule>
