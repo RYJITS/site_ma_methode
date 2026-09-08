@@ -1,25 +1,25 @@
 # MorphoStyle AI - Assistant de conseil coiffure et style par IA
 
 ## Projet
-Application web de consultation visagiste qui propose des profils démo statiques et un essai photo personnelle via OpenAI Image, limité à un essai complet par jour.
+Application web de consultation visagiste qui propose des profils demo statiques et un essai photo personnelle via OpenAI Image, limite a un essai complet par jour.
 
-## À quoi il sert
-MorphoStyle AI est une application web qui permet de tester une consultation coiffure/visagisme. Elle combine cinq profils démo préparés en base statique et un parcours photo personnelle utilisant OpenAI Image côté serveur. L'objectif est de montrer des recommandations morphologiques réalistes sans multiplier les appels API inutiles.
+## A quoi il sert
+MorphoStyle AI est une application web qui permet de tester une consultation coiffure/visagisme. Elle combine cinq profils demo prepares en base statique et un parcours photo personnelle utilisant OpenAI Image cote serveur. L'objectif est de montrer des recommandations morphologiques realistes sans multiplier les appels API inutiles.
 
 ## Fonctions
-- Sélection de profils démo statiques
+- Selection de profils demo statiques
 - Upload d'une photo personnelle
-- Génération OpenAI d'une planche 4x4 de recommandations
-- Génération OpenAI d'une planche finale pour la coupe sélectionnée
+- Generation OpenAI d'une planche 4x4 de recommandations
+- Generation OpenAI d'une planche finale pour la coupe selectionnee
 - Quota serveur: un essai complet photo personnelle par jour
-- Découpage local des planches en portraits face, profils et dos
-- Validation des âges pour éviter les suggestions inappropriées
+- Decoupage local des planches en portraits face, profils et dos
+- Validation des ages pour eviter les suggestions inappropriees
 
 ## Avancement
-- État du projet: prêt côté usage public.
+- Etat du projet: pret cote usage public.
 - Fonctionnement: fonctionnel.
-- Sécurité: OK pour une présentation publique.
-- Ma Méthode: fiche explicative visible.
+- Securite: OK pour une presentation publique.
+- Ma Methode: fiche explicative visible.
 - Publication externe: GitHub public actif.
 
 ## Liens

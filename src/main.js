@@ -1183,7 +1183,7 @@ function registerSiteWorker() {
   if (!canRegister) return;
   window.addEventListener("load", () => {
     navigator.serviceWorker
-      .register("./sw.js?v=optimisation-v37-20260903")
+      .register("./sw.js?v=no-featured-list-v2-20260904")
       .then((registration) => registration.update?.())
       .catch((error) => {
         window.__siteWorkerError = String(error?.message || error);
@@ -2950,6 +2950,7 @@ async function buildProjectGrid(options = {}) {
           class="project-grid-card"
           type="button"
           data-project-index="${index}"
+          data-project-featured="${project.featured ? "true" : "false"}"
           style="--project-x: ${position.x}px; --project-y: ${position.y}px; --project-rotate: ${position.rotate}deg; --project-scale: ${position.scale};"
           aria-label="Ouvrir le projet ${escapeHtml(project.name)}">
           <img src="${escapeHtml(imageSrc)}" alt="${escapeHtml(project.name)}" width="640" height="640" loading="${priority ? "eager" : "lazy"}" decoding="async" fetchpriority="${index < 3 ? "high" : "auto"}" draggable="false">
@@ -3058,13 +3059,14 @@ function getMobileProjectSections() {
     ...Array.from(grouped.keys()).filter((id) => !PROJECT_MOBILE_CATEGORY_ORDER.includes(id)).sort()
   ];
 
-  return orderedIds
+  const sections = orderedIds
     .map((id) => ({
       id,
       label: getProjectCategoryLabel(id),
       projects: grouped.get(id) || []
     }))
     .filter((section) => section.projects.length);
+  return sections;
 }
 
 function renderProjectMobileCard(project, index) {

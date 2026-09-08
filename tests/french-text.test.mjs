@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { readFile, readdir } from "node:fs/promises";
 import { test } from "node:test";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -13,8 +13,36 @@ const technicalKeys = new Set([
 ]);
 const missingAccent = /\b(?:Etat|Securite|Methode|pret|cote|plutot|alimentee|eviter|synchronises|implementation|planifie|prepares|detection|organises|verifier|execution|planifiee|detaillee|controlee|optimisees|chaine|serie|schemas|validee|perimetre|isolee|criteres|capacite|automatise|detectes|decoupage|ages|inappropriees|adaptee|generer|identite|creation|deuxieme|lumiere|definition|proposes|avancees|repoussees|apres|prevoir|publiee|versionnee|demarrage|utilisees|donnees|systeme|resultat|reel|idee|memoire|competences|decisions|defaut|sourcee|specifications|inspiree|verificables|structurees|integrations|definissent|partagees|centralisees|reellement|privees|indexee)\b/;
 
-test("les 18 fiches du registre actuel sont synchronisees", () => {
-  assert.equal(orchestratorProjectCards.length, 18);
+test("les fiches publiques respectent le catalogue, la selection et l'ordre editorial", async () => {
+  const featuredOrder = [
+    "89-cerveau-ia-local",
+    "05-bord-planif",
+    "10-garden-inn",
+    "20-morphostyle",
+    "03-agent-design",
+    "05-skyia",
+    "competance-recherche-emploie",
+    "50-assurance-maladie"
+  ];
+  const [registryText, presentationText, ficheFiles] = await Promise.all([
+    readFile(resolve(projectRoot, "public/orchestrator/projects.registry.json"), "utf8"),
+    readFile(resolve(projectRoot, "config/project-presentation.json"), "utf8"),
+    readdir(resolve(projectRoot, "public/orchestrator/fiches"))
+  ]);
+  const publicCards = JSON.parse(registryText).projects;
+  const presentation = JSON.parse(presentationText);
+  const cardIds = orchestratorProjectCards.map((project) => project.id);
+  assert.deepEqual(presentation.featuredOrder, featuredOrder);
+  assert.deepEqual(cardIds, publicCards.map((project) => project.id));
+  assert.equal(new Set(cardIds).size, cardIds.length);
+  assert.deepEqual([...cardIds].sort(), ficheFiles.filter((file) => file.endsWith(".md")).map((file) => file.slice(0, -3)).sort());
+  assert.ok(presentation.excludedProjectIds.every((id) => !cardIds.includes(id)));
+  assert.ok(!cardIds.includes("99-archive"));
+  assert.deepEqual(orchestratorProjectCards.slice(0, featuredOrder.length).map((project) => project.id), featuredOrder);
+  assert.deepEqual(orchestratorProjectCards.slice(0, featuredOrder.length).map((project) => project.featuredRank), [1, 2, 3, 4, 5, 6, 7, 8]);
+  assert.ok(orchestratorProjectCards.slice(0, featuredOrder.length).every((project) => project.featured === true));
+  assert.ok(orchestratorProjectCards.slice(featuredOrder.length).every((project) => project.featured === false));
+  assert.ok(!orchestratorProjectCards.some((project) => project.id === "30-pulsedeck"));
   assert.ok(orchestratorProjectCards.some((project) => project.id === "03-agent-design"));
   assert.equal(orchestratorProjectCards.find((project) => project.id === "01-site-ma-methode")?.url, "https://c2rdesign.com/");
 });

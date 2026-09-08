@@ -1,6 +1,11 @@
 Options -Indexes
 LimitRequestBody 65536
 
+# Anciennes captures privees retirees de la presentation publique.
+<FilesMatch "^(50-assurance-maladie(-.*)?\.(png|jpe?g|webp))$">
+  Require all denied
+</FilesMatch>
+
 <FilesMatch "(^\.|\.zip$|\.log$|\.bak$|\.map$|package(-lock)?\.json$|README|CHANGELOG|FICHE_|PROJET_JOURNAL|\.project-orchestrator)">
   Require all denied
 </FilesMatch>

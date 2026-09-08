@@ -3,7 +3,7 @@
 ## Projet
 Application locale pour analyser les factures médicales suisses et estimer leur traitement par l'assurance obligatoire LAMal ou complémentaire LCA.
 
-## À quoi il sert
+## A quoi il sert
 Application web locale (React/Vite) conçue pour analyser les factures médicales suisses et estimer leur traitement par l'assurance obligatoire LAMal ou complémentaire LCA. L'application permet de configurer les membres de la famille, leurs contrats d'assurance, et d'importer des factures au format PDF ou texte pour une analyse automatique. Les estimations sont basées sur les règles configurées pour chaque contrat et chaque membre, avec une attention particulière aux franchises, quote-parts et limites annuelles. L'application ne stocke aucun mot de passe d'assureur et guide l'utilisateur pour l'envoi des justificatifs via les portails officiels.
 
 ## Fonctions
@@ -16,10 +16,10 @@ Application web locale (React/Vite) conçue pour analyser les factures médicale
 - Mode portable pour une utilisation locale sans dépendance à un chemin absolu
 
 ## Avancement
-- État du projet: prêt côté usage public.
+- Etat du projet: pret cote usage public.
 - Fonctionnement: fonctionnel.
-- Sécurité: OK pour une présentation publique.
-- Ma Méthode: fiche explicative visible.
+- Securite: OK pour une presentation publique.
+- Ma Methode: fiche explicative visible.
 - Publication externe: GitHub public actif.
 
 ## Liens

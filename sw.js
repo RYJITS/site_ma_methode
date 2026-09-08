@@ -1,10 +1,10 @@
-const CACHE_NAME = "site-ma-methode-optimisation-v37-20260903";
+const CACHE_NAME = "site-ma-methode-no-featured-list-v2-20260904";
 
 const PRECACHE_URLS = [
   "./",
   "./index.html",
   "./src/styles.css?v=optimisation-v37-20260903",
-  "./src/main.js?v=optimisation-v37-20260903",
+  "./src/main.js?v=no-featured-list-v2-20260904",
   "./public/generated/images/method-cards/ma-philosophie-cyan-gold-v3-20260902.webp",
   "./public/generated/images/method-cards/mon-approche-neutral-people-cyan-gold-v11-20260902.webp",
   "./public/generated/images/method-cards/applications-cyan-gold-v10-20260902.webp",

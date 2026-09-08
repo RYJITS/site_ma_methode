@@ -63,14 +63,22 @@ test("les metadonnees SEO, sociales et le sitemap restent coherents", async () =
   ]);
   const jsonLdText = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)?.[1] || "";
   const jsonLd = JSON.parse(jsonLdText);
+  const canonicalUrl = html.match(/rel="canonical" href="([^"]+)"/)?.[1];
+  const sitemapUrl = sitemap.match(/<loc>([^<]+)<\/loc>/)?.[1];
+  const sitemapDate = sitemap.match(/<lastmod>([^<]+)<\/lastmod>/)?.[1];
+  const sitemapImage = sitemap.match(/<image:loc>([^<]+)<\/image:loc>/)?.[1];
 
   assert.equal(jsonLd["@type"], "ProfilePage");
-  assert.equal(jsonLd.dateModified, "2026-09-03");
+  assert.equal(canonicalUrl, "https://c2rdesign.com/");
+  assert.equal(jsonLd.url, canonicalUrl);
+  assert.equal(sitemapUrl, canonicalUrl);
+  assert.match(jsonLd.dateModified, /^\d{4}-\d{2}-\d{2}$/);
+  assert.equal(sitemapDate, jsonLd.dateModified);
   assert.equal(jsonLd.primaryImageOfPage.width, 1536);
   assert.match(html, /property="og:image:width" content="1536"/);
   assert.match(html, /name="twitter:image:alt"/);
-  assert.match(sitemap, /<lastmod>2026-09-03<\/lastmod>/);
-  assert.match(sitemap, /<image:image>[\s\S]+?<image:loc>https:\/\/cv\.c2rdesign\.com\//);
+  assert.equal(sitemapImage, jsonLd.primaryImageOfPage.url);
+  assert.equal(new URL(sitemapImage).origin, new URL(canonicalUrl).origin);
 });
 
 test("le formulaire partage les limites client et serveur", async () => {

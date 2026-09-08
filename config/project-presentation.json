@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "featuredOrder": [
+    "89-cerveau-ia-local",
+    "05-bord-planif",
+    "10-garden-inn",
+    "20-morphostyle",
+    "03-agent-design",
+    "05-skyia",
+    "competance-recherche-emploie",
+    "50-assurance-maladie"
+  ],
+  "excludedProjectIds": [
+    "30-pulsedeck"
+  ]
+}

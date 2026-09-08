@@ -98,7 +98,11 @@ try {
     },
     {
       name: "Page projets mobile active",
-      ok: afterGrid.mobileProjectPage && afterGrid.mobileCards >= afterGrid.gridCards && afterGrid.firstMobileSection === "tools"
+      ok: afterGrid.mobileProjectPage
+        && afterGrid.mobileCards === afterGrid.gridCards
+        && new Set(afterGrid.mobileProjectIndices).size === afterGrid.gridCards
+        && afterGrid.firstMobileSection === "tools"
+        && !afterGrid.mobileSections.includes("featured")
     },
     {
       name: "Projet mobile ouvrable",
@@ -201,6 +205,8 @@ function probe(page) {
       tileOpen: document.getElementById("holographic-tile")?.classList.contains("is-open"),
       gridCards: document.querySelectorAll("#project-grid-track [data-project-index]").length,
       mobileCards: document.querySelectorAll("#project-mobile-page [data-project-index]").length,
+      mobileProjectIndices: Array.from(document.querySelectorAll("#project-mobile-page [data-project-index]"), (card) => card.dataset.projectIndex),
+      mobileSections: Array.from(document.querySelectorAll("#project-mobile-page [data-project-mobile-section]"), (section) => section.dataset.projectMobileSection),
       mobileProjectPage: document.getElementById("project-grid-overlay")?.classList.contains("is-mobile-list"),
       firstMobileSection: document.querySelector("#project-mobile-page [data-project-mobile-section]")?.dataset.projectMobileSection || "",
       firstMobileImageLoaded: (() => {

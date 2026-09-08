@@ -10,6 +10,8 @@
     "Garde les informations sensibles hors de la vitrine."
   ],
   "recentUpdates": [
+    "8 septembre 2026 : actualisation du catalogue depuis les dossiers projets actuels et conservation des publications cv.c2rdesign.com et c2rdesign.com jusqu’à nouvel ordre.",
+    "Version locale v37 : vues Carte et Liste, modules secondaires chargés à la demande et vidéo adaptative 900p/1080p.",
     "Intégration d'un registre de projets généré automatiquement par l'orchestrateur pour éviter la maintenance manuelle des cartes",
     "Ajout d'une scène de contact interactive basée sur WebGL pour une expérience immersive",
     "Optimisation des vignettes en format WebP pour un chargement plus rapide",
@@ -20,8 +22,8 @@
     "application": "Site Ma Methode est la vitrine centrale qui relie les projets du Cerveau IA. La page raconte la methode, propose une experience scroll/video, puis ouvre une carte interactive ou chaque application possede sa vignette, son statut, ses liens et sa fiche.",
     "fonctionnement": "Le site importe un module project-registry.js genere par l'orchestrateur. A l'ouverture de la grille, il place les projets par zones, gere le zoom, le deplacement, les boutons de focus et le panneau detail. Quand une carte est ouverte, le panneau affiche l'image, le resume, les statuts, le lien public, le lien GitHub, la fiche, puis les sections Application, Fonctionnement, Conception, Techniques et Automatisations. Le contact passe par une scene interactive et une API PHP dediee.",
     "conception": "Il a ete concu comme un hub vivant plutot qu'une liste statique. Le design existant garde la narration immersive, mais la couche projet est maintenant alimentee par les donnees de l'orchestrateur pour eviter de recoder les cartes a la main et pour garder les projets synchronises.",
-    "installation": "Pour installer le projet localement, Node.js doit être installé. Aucune dépendance applicative n'est requise. Les scripts disponibles permettent de lancer le serveur de développement ou de production.",
-    "utilisation": "Après installation, accéder au site via un navigateur en local (par défaut sur `http://localhost:3000`). La grille s'affiche avec les projets positionnés. Utiliser la molette de la souris pour zoomer, les flèches ou un cliqué-glissé pour se déplacer, et cliquer sur une carte pour ouvrir sa fiche détaillée. Les fiches contiennent des sections comme 'Application', 'Fonctionnement', 'Conception', etc., ainsi que des liens publics et GitHub si disponibles. La scène de contact permet d'envoyer un message après interaction avec l'interface WebGL.",
+    "installation": "Node.js 20 ou plus récent suffit. Le site utilise HTML, CSS et JavaScript natifs sans dépendance applicative ni build. Exécuter npm run check, npm test, puis npm run dev.",
+    "utilisation": "Ouvrir http://127.0.0.1:4177/ après npm run dev. Parcourir le récit au défilement, ouvrir les projets en vue Carte ou Liste, puis sélectionner une carte pour lire la fiche et ses liens autorisés. Le contact utilise une API PHP sur l’hébergement.",
     "capabilities": [
       "Presenter la methode de travail",
       "Ouvrir une carte interactive des projets",
@@ -43,7 +45,7 @@
       "Regles de non-exposition des secrets"
     ],
     "techniques": [
-      "Vite",
+      "HTML et JavaScript ES modules natifs",
       "JavaScript modulaire",
       "CSS responsive immersif",
       "Video controlee par le scroll",
@@ -62,5 +64,7 @@
       "Ouverture QA via parametre qaScroll",
       "Import des vignettes IA depuis le dossier thumbnails-ai"
     ]
-  }
+  },
+  "publicUrl": "https://c2rdesign.com/",
+  "hostingerUrl": "https://c2rdesign.com/"
 }

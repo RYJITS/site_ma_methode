@@ -25,15 +25,24 @@ test("Contact et le rendu detail projet restent hors du module initial", async (
   assert.match(projectDetail, /export function renderProjectDetail/);
 });
 
-test("le cache publie bien la nouvelle version du module principal", async () => {
-  const [html, worker] = await Promise.all([
+test("le cache precharge les versions CSS et JavaScript referencees par la page", async () => {
+  const [html, worker, main] = await Promise.all([
     readFile(resolve(projectRoot, "index.html"), "utf8"),
-    readFile(resolve(projectRoot, "sw.js"), "utf8")
+    readFile(resolve(projectRoot, "sw.js"), "utf8"),
+    readFile(resolve(projectRoot, "src/main.js"), "utf8")
   ]);
 
-  assert.match(html, /src\/main\.js\?v=optimisation-v37-20260903/);
-  assert.match(worker, /site-ma-methode-optimisation-v37-20260903/);
-  assert.match(worker, /src\/main\.js\?v=optimisation-v37-20260903/);
+  const precache = JSON.parse(worker.match(/const PRECACHE_URLS = (\[[\s\S]*?\]);/)?.[1] || "[]");
+  for (const path of ["src/styles.css", "src/main.js"]) {
+    const assetUrl = [...html.matchAll(/(?:href|src)="([^"]+)"/g)]
+      .map((match) => match[1]).find((url) => url.startsWith(`${path}?v=`));
+    assert.ok(assetUrl, `Version publique manquante pour ${path}`);
+    assert.ok(precache.includes(`./${assetUrl}`), `Version precache incoherente pour ${path}: ${assetUrl}`);
+  }
+  const workerVersion = main.match(/\.register\("\.\/sw\.js\?v=([^"]+)"\)/)?.[1];
+  const cacheName = worker.match(/const CACHE_NAME = "([^"]+)";/)?.[1];
+  assert.ok(workerVersion, "Le service worker doit etre versionne.");
+  assert.ok(cacheName?.endsWith(workerVersion), "Le cache doit correspondre a la version du service worker.");
 });
 
 test("les styles Projet ne bloquent pas le premier affichage", async () => {

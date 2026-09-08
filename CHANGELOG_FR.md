@@ -2,45 +2,8 @@
 
 ## Evolutions documentees
 
-- 3 septembre 2026: `v37` devient la version officielle locale de `D:\00_Cerveau_IA\Projet\01_SITE_MA_METHODE`; ancien etat canonique sauvegarde dans Git, fusion terminee, video 900p reintegree sous suivi, 55/55 tests, QA iPhone, audit securite `OK_PUBLIC` et verification `FONCTIONNEL`; aucune publication en ligne
-- 3 septembre 2026: worktree `01_SITE_MA_METHODE_OPTIMISATION_20260902` archive sans suppression dans `D:\00_Cerveau_IA\Projet\99_Archive\01_SITE_MA_METHODE_OPTIMISATION_20260902_ARCHIVE_20260903`; branche Git de reprise conservee
-- 3 septembre 2026: préparation locale `v37`: ajout d'un pied de page discret identifiant Yann Scheidegger et C2R Design, avec mentions de droit d'auteur, information de confidentialité repliable et accès au formulaire Contact; aucune société ni aucun statut juridique inventé; publication non lancée
-- 3 septembre 2026: préparation locale `v36`: retrait sur mobile de la tuile `Résultat` affichée au-dessus des fiches; les fiches et leurs boutons Projet restent visibles, et l'encart demeure inchangé sur desktop; publication non lancée
-- 3 septembre 2026: préparation locale `v35`: retrait sur mobile du raccourci global `Grille projet` affiché au-dessus des fiches; les boutons Projet de chaque fiche restent visibles et fonctionnels; publication non lancée
-- 3 septembre 2026: préparation locale `v34`: suppression sur mobile de la démonstration automatique des fiches pendant le scroll et réduction mesurée de l'écart entre `Ma manière de fonctionner` et `Clarifier avant d'agir` de 2 624 px à 467 px; publication non lancée
-- 3 septembre 2026: publication finale `v33` sur `https://c2rdesign.com/` apres audit securite `OK_PUBLIC` sans alerte et validation Hostinger `OK`
-- 3 septembre 2026: correction finale du libelle public `Détails GitHub` et increment de cache `v33`
-- 3 septembre 2026: synchronisation de la copie isolee avec le registre Ma Methode courant: 18 fiches et leurs medias, dont Agent Design
-- 3 septembre 2026: alignement exact des couleurs de titres Outils, IA et Design entre la vue Liste desktop et la liste mobile
-- 3 septembre 2026: correction des accents des textes publics, hors libelles volontairement affiches en majuscules
-- 3 septembre 2026: validation en ligne des videos 900p et 1080p par plages HTTP, du formulaire PHP, des fiches desktop/iPhone et des protections HTTP
-- 3 septembre 2026: Lighthouse public: desktop 100/100 dans les quatre categories; mobile 91 performance et 100 accessibilite, bonnes pratiques et SEO
-- 3 septembre 2026: finalisation `v30` des optimisations performance, stabilite, securite et SEO dans la copie isolee
-- 3 septembre 2026: extraction de 23 474 octets de styles Projet dans `src/project-grid.css`, charge au premier survol, focus, toucher ou clic
-- 3 septembre 2026: ordre de cascade protege pour conserver la fiche Projet responsive en une colonne sur iPhone
-- 3 septembre 2026: priorisation des premieres vignettes Projet et de l'image principale des fiches, sans les charger avant l'ouverture de la grille
-- 3 septembre 2026: hauteur du recit reservee avant injection JavaScript; CLS Lighthouse passe de 1 a 0
-- 3 septembre 2026: feuille Google Fonts prechargee sans bloquer le premier rendu, avec repli `noscript`
-- 3 septembre 2026: CSP Apache appliquee, cache HTTP cible, headers defensifs supplementaires et metadonnees SEO/social enrichies
-- 3 septembre 2026: Lighthouse final desktop 100/100 dans les quatre categories; mobile 97/100 performance et 100/100 accessibilite, bonnes pratiques et SEO
-- 3 septembre 2026: validation iPhone rapide en 1080p et reseau simule a 1,51 Mbit/s en 900p, avec Projet, vignettes et fiche fonctionnels
-- 3 septembre 2026: extraction du controleur Contact et du rendu detaille Projet dans deux modules JavaScript charges au premier usage
-- 3 septembre 2026: reduction du module principal de 168 785 a 155 964 octets bruts et de 38 597 a 36 043 octets transferes en Gzip
-- 3 septembre 2026: version de cache `v26`, tests du chargement differe et validation que Contact puis Projet chargent uniquement leur propre module
-- 3 septembre 2026: activation de la compression Gzip pour HTML, CSS, JavaScript, SVG, texte et XML sur le serveur Node local et via Apache; les plages HTTP, images et videos restent non compressees
-- 3 septembre 2026: reduction mesuree du transfert initial JavaScript + CSS de 334 125 octets a 64 973 octets (-80,6 %) sans minification ni changement de logique
-- 3 septembre 2026: ajout de tests de non-regression sur le contenu decompresse, `Accept-Encoding`, les plages video et la configuration Apache
-- 3 septembre 2026: suppression complète du comparateur visuel Auto/900p/1080p et de son forçage par paramètres d'URL; la sélection reste automatique et invisible
-- 3 septembre 2026: priorité donnée à la mesure Range réelle lorsqu'une estimation réseau générique du navigateur la contredit
-- 3 septembre 2026: report de 318 Ko de ressources secondaires hors du chargement vidéo initial (affiche Contact 207 Ko et registre Projets 111 Ko)
-- 3 septembre 2026: remplacement du choix 480p/900p par une sélection adaptative 900p/1080p fondée sur une mesure réelle de débit
-- 3 septembre 2026: ajout historique d'un mode `Auto` de validation, seuil prudent de 6 Mbit/s et repli 900p pour économie de données, 3G, appareil limité ou mesure indisponible
-- 3 septembre 2026: ajout d'une limite globale du chargeur de 5,6 s sur mobile et 6,5 s sur desktop; la vidéo continue ensuite en arrière-plan
-- 3 septembre 2026: retrait réversible de la 480p de la surface publique et archivage du fichier
-- 3 septembre 2026: préchargement réel de la vidéo pendant l'écran d'ouverture, avec tampon initial borné et poursuite en arrière-plan
-- 3 septembre 2026: ajout de variantes scroll 480p et 900p à 24 i/s avec images-clés toutes les 0,5 seconde
-- 3 septembre 2026: ajout historique du comparateur provisoire 480p/900p, supprimé après validation des variantes
-- 3 septembre 2026: ajout des profils locaux `dev:slow` et `dev:3g` pour simuler le réseau sur ordinateur ou iPhone
+- 8 septembre 2026 : actualisation du catalogue depuis les dossiers projets actuels et conservation des publications cv.c2rdesign.com et c2rdesign.com jusqu’à nouvel ordre.
+- Version locale v37 : vues Carte et Liste, modules secondaires chargés à la demande et vidéo adaptative 900p/1080p.
 - Intégration d'un registre de projets généré automatiquement par l'orchestrateur pour éviter la maintenance manuelle des cartes
 - Ajout d'une scène de contact interactive basée sur WebGL pour une expérience immersive
 - Optimisation des vignettes en format WebP pour un chargement plus rapide

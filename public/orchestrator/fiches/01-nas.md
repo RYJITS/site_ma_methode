@@ -3,22 +3,22 @@
 ## Projet
 Documentation d'infrastructure pour le serveur personnel: Docker, n8n, PostgreSQL, Caddy, Tailscale, Nextcloud et sauvegardes.
 
-## À quoi il sert
-NAS est une documentation d'exploitation pour l'infrastructure personnelle. Elle explique comment sont organisés le serveur Debian, Docker Compose, n8n, PostgreSQL, Caddy, Tailscale, Nextcloud, les volumes et les sauvegardes.
+## A quoi il sert
+NAS est une documentation d'exploitation pour l'infrastructure personnelle. Elle explique comment sont organises le serveur Debian, Docker Compose, n8n, PostgreSQL, Caddy, Tailscale, Nextcloud, les volumes et les sauvegardes.
 
 ## Fonctions
-- Retrouver les procédures serveur
+- Retrouver les procedures serveur
 - Comprendre l'organisation n8n et Nextcloud
-- Vérifier les commandes de maintenance
+- Verifier les commandes de maintenance
 - Suivre les sauvegardes
 - Documenter les chemins critiques
-- Préparer la récupération après incident
+- Preparer la recuperation apres incident
 
 ## Avancement
-- État du projet: réservé à l'usage interne.
-- Fonctionnement: non testé faute d'informations suffisantes.
-- Sécurité: réservé au privé.
-- Ma Méthode: fiche explicative visible.
+- Etat du projet: reserve a l'usage interne.
+- Fonctionnement: non teste faute d'informations suffisantes.
+- Securite: reserve au prive.
+- Ma Methode: fiche explicative visible.
 - Publication externe: interne.
 
 ## Liens

@@ -2,7 +2,7 @@
 
 Portfolio immersif de Yann Scheidegger et hub public des projets C2R Design.
 
-Version officielle locale `v37` dans ce dossier. La version publique actuellement en ligne reste la `v33` sur [https://c2rdesign.com/](https://c2rdesign.com/); aucune publication `v37` n'a ete effectuee pendant son officialisation locale.
+Version de référence `v37`. Les mises à jour de Ma Méthode doivent être publiées sur [c2rdesign.com](https://c2rdesign.com/) et [cv.c2rdesign.com](https://cv.c2rdesign.com/) jusqu’à nouvel ordre. `c2rdesign.com` reste le domaine canonique pour le référencement.
 
 ## Fonctions
 
