@@ -1974,9 +1974,10 @@ export const orchestratorProjectCards = [
     "category": "tools",
     "featured": false,
     "name": "DATACHECK",
-    "comment": "Bibliothèque de ressources vérifiées issues de vidéos publiques, consultable dans une interface Prisme Studio avec recherche, filtres et score de validation.",
+    "comment": "Bibliothèque de fiches dans l’interface Prisme Studio : recherche, filtres, lecture des sources et suivi des validations. Une démonstration autonome permet de l’installer sans compte.",
     "image": "public/generated/images/projects/project-grid-map-20260614.webp",
     "url": "https://datacheck.c2rdesign.com/",
+    "githubUrl": "https://github.com/RYJITS/datacheck",
     "hostingerUrl": "https://datacheck.c2rdesign.com/",
     "linkPolicy": {
       "exposure": "public-links",
@@ -1996,46 +1997,40 @@ export const orchestratorProjectCards = [
       "publication": "PUBLIC_CANDIDATE"
     },
     "details": {
-      "application": "DATACHECK transforme des vidéos publiques en fiches pratiques classées et vérifiées par des sources. La bibliothèque propose une recherche et des filtres, puis un lecteur qui conserve les scores, les sources et les points de vigilance. La présentation Prisme Studio organise les ressources par type et garde les fonctions administrateur protégées.",
-      "fonctionnement": "Le projet fonctionne en plusieurs étapes : 1) Capture des favoris TikTok via une extension Chrome locale (sans API TikTok), 2) Import et normalisation des contenus (JSON, TXT, CSV, Markdown), 3) Classement automatique par catégorie et mots-clés, 4) Génération de fiches structurées avec vérification des sources, 5) Consultation via une interface HTML locale avec recherche, filtrage et lecture, 6) Gestion des équivalents YouTube et suivi des auteurs publics. Les données sensibles (favoris, brouillons, rapports) sont exclues du dépôt Git et gérées localement via un système de worktrees.",
-      "conception": "Le projet est conçu comme une application locale-first, sans dépendance à des services externes pour la capture ou la consultation. L'architecture repose sur Node.js avec des scripts CLI pour les tâches d'import, de scan et de génération. Les fiches sont structurées selon un modèle prédéfini (description, cas concrets, points techniques, installation, vérification, limites). L'interface HTML est développée en JavaScript vanilla avec une approche minimaliste inspirée des bonnes pratiques (Apple, Readwise Reader, Linear). Le système de catégories est extensible et permet une navigation intuitive. La gestion des auteurs publics est conçue pour être autonome sur un hébergement Hostinger via un serveur Node compatible.",
-      "avancement": "État du projet: prêt côté usage public. Fonctionnement: fonctionnel. Sécurité: OK pour une presentation publique. Ma Méthode: fiche explicative visible. Publication externe: candidat public, validation finale separee.",
+      "application": "DATACHECK est une bibliothèque de fiches avec recherche, filtres et lecteur de sources. L’interface Prisme Studio présente les ressources par type et permet d’examiner les scores et les limites de leur validation. La distribution GitHub comprend le code et trois exemples entièrement synthétiques, affichés comme non vérifiés.",
+      "fonctionnement": "Le build transforme des fiches TXT en données utilisables par l’interface. Le lecteur recherche une ressource, affine les résultats puis consulte son contenu et ses références. Le mode démo lit uniquement les exemples fournis. Un mode bibliothèque permet d’utiliser ses propres fiches ; les outils auteurs et la génération IA demandent une configuration explicite et des contrôles avant publication.",
+      "conception": "Le client utilise HTML, CSS et JavaScript natifs ; un serveur Node.js et des scripts séparés gèrent les données et les contrôles. L’export public est construit depuis une liste de fichiers examinés, avec un manifeste d’empreintes et des données synthétiques. Il exclut la bibliothèque personnelle, les comptes, les secrets et l’historique Git privé. Le démarrage local ne restaure aucun ancien déploiement et ne lance aucune collecte automatique.",
+      "avancement": "État du projet: prêt côté usage public. Fonctionnement: fonctionnel. Sécurité: OK pour une presentation publique. Ma Méthode: fiche explicative visible. Publication externe: GitHub public actif.",
       "capabilities": [
-        "Capture locale de favoris TikTok sans API",
-        "Import de contenus variés (JSON, TXT, CSV, Markdown)",
-        "Génération automatique de fiches structurées par catégorie",
-        "Recherche et filtrage avancés (sujet, type, niveau, auteur, vérification)",
-        "Lecture et navigation dans une interface HTML locale avec progression",
-        "Gestion des équivalents YouTube pour les ressources vérifiées",
-        "Suivi automatisé des auteurs publics (scans YouTube, génération de brouillons, publication)",
-        "Génération de rapports de couverture et de pertinence",
-        "Interface minimaliste avec vues rapides et navigation interne",
-        "Statistiques et métriques sur les ressources (sources, vérification, diffusion)"
+        "Bibliothèque de fiches",
+        "Recherche et filtres",
+        "Lecture détaillée",
+        "Sources et scores de validation",
+        "Génération depuis des fichiers TXT",
+        "Démonstration synthétique autonome",
+        "Import et classement locaux",
+        "Outils auteurs optionnels"
       ],
       "tools": [
-        "Node.js 20+",
-        "Extension Chrome locale pour la capture de favoris TikTok",
-        "Serveur Node.js pour l'hébergement local ou Hostinger",
-        "Hostinger Cron Jobs pour l'automatisation des tâches",
-        "Mistral (API locale) pour la génération de brouillons d'auteurs"
+        "Node.js 22+ pour la distribution publique",
+        "Navigateur web",
+        "npm et tests Node",
+        "Mistral optionnel pour les brouillons IA"
       ],
       "techniques": [
-        "JavaScript (ES Modules)",
-        "HTML/CSS (interface locale)",
-        "Node.js (scripts CLI, serveur)",
-        "JSON (structure des données)",
-        "Markdown (fiches et documentation)",
-        "TXT (fiches lisibles par outil/application)",
-        "LocalStorage (préférences utilisateur)",
-        "Fetch API (requêtes HTTP locales)"
+        "JavaScript ES Modules",
+        "HTML et CSS",
+        "Serveur HTTP Node.js",
+        "Fiches TXT et données JSON",
+        "LocalStorage pour les préférences",
+        "Export avec liste de fichiers autorisés et empreintes SHA-256"
       ],
       "automations": [
-        "Scan et import des favoris TikTok via extension Chrome",
-        "Génération automatique des fiches à partir des imports",
-        "Mise à jour des équivalents YouTube pour les ressources vérifiées",
-        "Suivi automatisé des auteurs publics (scans YouTube, génération de brouillons, publication)",
-        "Génération de rapports de couverture et de pertinence",
-        "Exécution de tâches récurrentes via Hostinger Cron Jobs"
+        "Construction des données de démonstration au démarrage",
+        "Génération de la bibliothèque depuis des fiches structurées",
+        "Contrôles du moteur de validation et de l’installation",
+        "Collecte et préparation de brouillons après activation explicite",
+        "Tâches auteurs planifiées uniquement sur activation séparée"
       ]
     },
     "progress": [
@@ -2043,33 +2038,35 @@ export const orchestratorProjectCards = [
       "Fonctionnement: fonctionnel.",
       "Sécurité: OK pour une presentation publique.",
       "Ma Méthode: fiche explicative visible.",
-      "Publication externe: candidat public, validation finale separee."
+      "Publication externe: GitHub public actif."
     ],
     "highlights": [
-      "Centraliser, structurer et rendre accessibles des ressources vérifiées (outils, astuces, prompts, agents) pour faciliter leur consultation, leur réutilisation et leur validation par des sources fiables.",
+      "Organiser des ressources techniques et créatives en fiches lisibles, retrouver leurs sources et distinguer les informations vérifiées de celles qui demandent encore un contrôle.",
       "État du projet: prêt côté usage public.",
       "Fonctionnement: fonctionnel.",
       "Sécurité: OK pour une presentation publique.",
       "Application disponible: https://datacheck.c2rdesign.com/."
     ],
     "functions": [
-      "Capture locale de favoris TikTok sans API",
-      "Import et normalisation de contenus (JSON, TXT, CSV, Markdown)",
-      "Génération automatique de fiches structurées par catégorie",
-      "Recherche et filtrage avancés (sujet, type, niveau, auteur, vérification)",
-      "Lecture et navigation dans une interface HTML locale",
-      "Gestion des équivalents YouTube pour les ressources vérifiées",
-      "Suivi automatisé des auteurs publics (scans YouTube, génération de brouillons, publication)",
-      "Génération de rapports de couverture et de pertinence",
-      "Interface minimaliste avec vues rapides et progression de lecture",
-      "Statistiques et métriques sur les ressources (sources, vérification, diffusion)",
+      "Rechercher des fiches et filtrer la bibliothèque selon leurs caractéristiques.",
+      "Parcourir les cartes Prisme Studio et ouvrir un lecteur détaillé.",
+      "Consulter les sources, les scores et les points de vigilance lorsqu’ils sont disponibles.",
+      "Générer la bibliothèque à partir de fiches TXT structurées.",
+      "Essayer trois fiches synthétiques sans clé API et sans connexion après installation.",
+      "Importer des exports fournis localement et produire des rapports de classement.",
+      "Activer volontairement les outils auteurs pour collecter des sources publiques, préparer et contrôler des brouillons.",
+      "Protéger l’administration par un token et activer séparément les tâches planifiées.",
       "Controle automatisable detecte via npm run check."
     ],
-    "screenshots": [],
+    "screenshots": [
+      "public/orchestrator/captures/40-datacheck/datacheck-demo-20260908-desktop.png",
+      "public/orchestrator/captures/40-datacheck/datacheck-demo-20260908-mobile.png"
+    ],
     "mediaPolicy": {
-      "exposure": "none",
+      "exposure": "publication-ready",
       "publicationAllowed": true,
-      "screenshotStatus": "SKIPPED_SECURITY"
+      "screenshotStatus": "PUBLIC_SAFE_CAPTURED",
+      "publicScreenshotReview": "SAFE_SYNTHETIC_UI"
     },
     "publicationGate": {
       "maMethode": "EXPLAINED_ON_MA_METHODE",
@@ -2168,6 +2165,107 @@ export const orchestratorProjectCards = [
       "exposure": "none",
       "publicationAllowed": true,
       "screenshotStatus": "NOT_CAPTURED"
+    },
+    "publicationGate": {
+      "maMethode": "EXPLAINED_ON_MA_METHODE",
+      "contentStatus": "SUFFICIENT_INFORMATION",
+      "reasons": []
+    }
+  },
+  {
+    "id": "90-tableau-de-bord-model-ia",
+    "category": "ai",
+    "featured": false,
+    "name": "Boussole IA",
+    "comment": "Application en français pour comparer des modèles IA selon une tâche et simuler les coûts, avec un budget fictif visible et des exemples synthétiques.",
+    "image": "public/generated/images/projects/project-grid-map-20260614.webp",
+    "githubUrl": "https://github.com/RYJITS/boussole-ia",
+    "linkPolicy": {
+      "exposure": "public-links",
+      "publicationAllowed": true,
+      "githubShowcaseAllowed": false,
+      "securityStatus": "OK_PUBLIC"
+    },
+    "ficheUrl": "public/orchestrator/fiches/90-tableau-de-bord-model-ia.md",
+    "localPath": "90_Tableau_de_Bord_Model_IA",
+    "stack": [
+      "Vite/Dev server",
+      "Node.js"
+    ],
+    "status": {
+      "global": "PUBLIC_READY",
+      "security": "OK_PUBLIC",
+      "functionality": "FONCTIONNEL",
+      "publication": "PUBLIC_CANDIDATE"
+    },
+    "details": {
+      "application": "Boussole IA compare des hypothèses de coût, suggère un modèle selon une heuristique explicite et prépare un prompt à copier. Son budget de 1 000 crédits et ses huit contextes sont fictifs. Elle ne lance aucun appel IA et ne change pas automatiquement de modèle.",
+      "fonctionnement": "L’utilisateur sélectionne une tâche, examine le modèle suggéré et compare les alternatives sur les mêmes hypothèses de volume. Il peut désactiver des modèles, changer les paramètres du simulateur et copier le prompt proposé. Les tarifs et disponibilités proviennent d’un référentiel daté ; les résultats sont des estimations, pas un benchmark.",
+      "conception": "Application en HTML, CSS et JavaScript natifs, avec calculs séparés des interactions. Le serveur Node.js local ne sert que les cinq fichiers du client. Le référentiel utilise des contextes synthétiques et un budget fictif ; aucun relevé de compte ni inventaire personnel n’est distribué. Les préférences de modèles restent dans le navigateur.",
+      "avancement": "État du projet: prêt côté usage public. Fonctionnement: fonctionnel. Sécurité: OK pour une presentation publique. Ma Méthode: fiche explicative visible. Publication externe: GitHub public actif.",
+      "capabilities": [
+        "Catalogue de tâches",
+        "Huit exemples synthétiques",
+        "Comparaison de modèles",
+        "Budget fictif explicite",
+        "Simulation des coûts et reprises",
+        "Prompt à copier",
+        "Préférences locales"
+      ],
+      "tools": [
+        "Navigateur web",
+        "Node.js",
+        "Sources officielles liées",
+        "Tests Node"
+      ],
+      "techniques": [
+        "JavaScript natif",
+        "HTML et CSS",
+        "Moteur de calcul séparé",
+        "LocalStorage",
+        "Serveur HTTP local à liste de fichiers autorisés"
+      ],
+      "automations": [
+        "Calcul des estimations après modification des paramètres",
+        "Suggestion de modèle selon la tâche et les modèles activés",
+        "Préparation du prompt à copier",
+        "Contrôles de syntaxe et tests du moteur"
+      ]
+    },
+    "progress": [
+      "État du projet: prêt côté usage public.",
+      "Fonctionnement: fonctionnel.",
+      "Sécurité: OK pour une presentation publique.",
+      "Ma Méthode: fiche explicative visible.",
+      "Publication externe: GitHub public actif."
+    ],
+    "highlights": [
+      "Aider à choisir manuellement un modèle adapté au besoin et à comprendre l’effet du contexte, de la réponse, du raisonnement et des reprises sur le coût estimé.",
+      "État du projet: prêt côté usage public.",
+      "Fonctionnement: fonctionnel.",
+      "Sécurité: OK pour une presentation publique."
+    ],
+    "functions": [
+      "Choisir parmi vingt catégories de tâches et huit contextes fictifs.",
+      "Obtenir une suggestion de modèle fondée sur la tâche et les modèles activés.",
+      "Comparer les crédits estimés et les tarifs API en dollars dans deux modes distincts.",
+      "Visualiser les tokens de contexte, de réponse et de raisonnement.",
+      "Calculer la part d’une tâche dans un budget de démonstration de 1 000 crédits, sans compte connecté.",
+      "Simuler le cache, les tentatives et le temps valorisé, puis copier un prompt compact.",
+      "Consulter les sources et la date du référentiel tarifaire.",
+      "Controle automatisable detecte via npm run check.",
+      "Lancement local disponible via npm run dev.",
+      "Tests automatises détectés."
+    ],
+    "screenshots": [
+      "public/orchestrator/captures/90-tableau-de-bord-model-ia/boussole-demo-20260908-desktop.png",
+      "public/orchestrator/captures/90-tableau-de-bord-model-ia/boussole-demo-20260908-mobile.png"
+    ],
+    "mediaPolicy": {
+      "exposure": "publication-ready",
+      "publicationAllowed": true,
+      "screenshotStatus": "PUBLIC_SAFE_CAPTURED",
+      "publicScreenshotReview": "SAFE_SYNTHETIC_UI"
     },
     "publicationGate": {
       "maMethode": "EXPLAINED_ON_MA_METHODE",
